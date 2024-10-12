@@ -10,8 +10,6 @@ body{
     height: 100vh;
 }
 
-
-
 .container{
     border: 1px solid black;
     width: 30%;
@@ -33,8 +31,13 @@ body{
     width: 50%;
 }
 
+
 #login-btn, #signup-btn{
     padding: 1rem;
+    background-color: white;
+    border: none;
+    border-bottom: 1px solid black;
+    cursor:pointer;
 
 }
 .title-container{

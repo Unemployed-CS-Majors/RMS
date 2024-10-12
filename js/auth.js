@@ -3,7 +3,44 @@ const signUpBtn = document.getElementById('signup-btn');
 const formContainer = document.getElementById('form-container');
 const title = document.getElementById('title');
 
+async function handleLogin(e){
+    e.preventDefault();
 
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    try{
+        const res = await axios.post('https://jsonplaceholder.typicode.com/posts', {
+            email: email,
+            password: password
+        });
+        console.log("test", res.data);
+    }catch(err){
+        console.error("test", err);
+    }
+}
+
+async function handleSignUp(e){
+    e.preventDefault();
+
+    const firstName = document.getElementById('first-name').value;
+    const lastName = document.getElementById('last-name').value;
+    const email = document.getElementById('email').value;
+    const phoneNumber = document.getElementById('phone-number').value;
+    const password = document.getElementById('password').value;
+
+    try{
+        const res = await axios.post('https://jsonplaceholder.typicode.com/posts', {
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            password: password,
+            phoneNumber: phoneNumber
+        });
+    }catch(err){
+        console.error(err);
+    }
+}
 
 function loginForm(){
     formContainer.innerHTML = `
@@ -15,6 +52,7 @@ function loginForm(){
         </form>
     `;
     title.textContent = 'Log In';
+    document.getElementById('auth-form').addEventListener('submit', handleLogin);
 }
 
 function signUpForm(){
@@ -32,6 +70,7 @@ function signUpForm(){
         </form>
     `
     title.textContent = 'Sign Up';
+    document.getElementById('auth-form').addEventListener('submit', handleSignUp);
 }
 
 loginBtn.addEventListener('click', loginForm);
