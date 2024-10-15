@@ -5,6 +5,7 @@ import "../Styles/Auth.css";
 export default function Auth(){
     const [loginForm, setLoginForm] = useState(true);
     const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
 
     const showLogin = () => {
         setLoginForm(true);
@@ -17,10 +18,22 @@ export default function Auth(){
         setPassword(e.target.value);
     }
 
-    const checkPassword = (e) => {
-        const confirmPassword = e.target.value;
+    const updateConfirmPassword = (e) => {
+        setConfirmPassword(e.target.value);
+    }
 
-        console.log(confirmPassword === password ? "Passwords Match" : "Passwords do not match");
+    const checkPassword = () => {
+        return password === confirmPassword;
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        if(!checkPassword()){
+            console.log("Passwords do not match");
+        }else{
+            console.log("Passwords match");
+        }
     }
 
     return(
@@ -32,7 +45,10 @@ export default function Auth(){
                 </div>
                 <div className="form-container" style={{width: '100%'}}>
                     {loginForm ? (
-                        <form style={{display: 'flex', flexDirection: 'column'}}>
+                        <form 
+                            style={{display: 'flex', flexDirection: 'column'}}
+                            onSubmit={handleSubmit}
+                        >
                             <input
                                 type="email"
                                 id="email"
@@ -49,7 +65,10 @@ export default function Auth(){
                             <button type="submit" className="submit-btn">Login</button>
                         </form>
                     ) : (
-                        <form style={{display: 'flex', flexDirection: 'column'}}>
+                        <form 
+                            style={{display: 'flex', flexDirection: 'column'}}
+                            onSubmit={handleSubmit}
+                        >
                             <div className="name-container" style={{display: 'flex', justifyContent: 'space-between'}}>
                                 <input
                                     type="text"
@@ -82,7 +101,7 @@ export default function Auth(){
                                 type="password"
                                 id="confirmPassword"
                                 placeholder="Confirm Password"
-                                onChange={checkPassword}
+                                onChange={updateConfirmPassword}
                                 required
                             />
                             <button type="submit" className="submit-btn">Login</button>
