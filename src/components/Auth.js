@@ -4,16 +4,23 @@ import "../Styles/Auth.css";
 
 export default function Auth(){
     const [loginForm, setLoginForm] = useState(true);
-    const [registerForm, setRegisterForm] = useState(false);
+    const [password, setPassword] = useState("");
 
     const showLogin = () => {
         setLoginForm(true);
-        setRegisterForm(false);
-    }
-
+    }   
     const showRegister = () => {
         setLoginForm(false);
-        setRegisterForm(true);
+    }
+
+    const handlePassword = (e) => {
+        setPassword(e.target.value);
+    }
+
+    const checkPassword = (e) => {
+        const confirmPassword = e.target.value;
+
+        console.log(confirmPassword === password ? "Passwords Match" : "Passwords do not match");
     }
 
     return(
@@ -68,12 +75,14 @@ export default function Auth(){
                                 type="password"
                                 id="password"
                                 placeholder="Enter Password"
+                                onChange={handlePassword}
                                 required
                             />
                             <input
                                 type="password"
                                 id="confirmPassword"
                                 placeholder="Confirm Password"
+                                onChange={checkPassword}
                                 required
                             />
                             <button type="submit" className="submit-btn">Login</button>

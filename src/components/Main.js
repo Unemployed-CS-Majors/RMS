@@ -12,7 +12,8 @@ export default function Main(){
     return(
         /* Write your HTML Code here */
         <div>
-            <button onClick={handleClick} style={{padding: "1rem"}}>Sign In</button>
+            <h1>Main Page</h1>
+            <button onClick={handleClick} style={{padding: "1rem"}}>Login</button>
         </div>
     );
 }
