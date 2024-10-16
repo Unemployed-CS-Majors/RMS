@@ -45,7 +45,8 @@ export default function Auth() {
             console.log("Passwords match");
         }
 
-        const url = '/app/auth/register';
+
+        const url = 'https://us-central1-restaurant-management-sy-1a0cd.cloudfunctions.net/app/auth/register';
 
         try {
             const response = await axios.post(url, {
