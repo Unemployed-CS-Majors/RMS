@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../Styles/Auth.css";
+import "../../Styles/Auth.css";
 import axios from "axios";
 import countryCodes from "./countryCodes";
 
@@ -25,47 +25,83 @@ export default function Auth() {
     const handleChange = (e) => {
         const {name, value} = e.target;
 
-        setFormData((prevData) => {
-            return{
-                ...prevData,
-                [name] : value
-            }
-        });
+        if(loginForm && (name == 'email' || name == 'password')){
+            setFormData((prevData) => {
+                return{
+                    ...prevData,
+                    [name] : value
+                }
+            });
+        }else {
+            setFormData((prevData) => {
+                return{
+                    ...prevData,
+                    [name] : value
+                }
+            }); 
+        }
+
     }
 
     const checkPassword = () => {
         return formData.password === formData.confirmPassword;
     }
 
-    const handleSubmit = async (e) => {
+    const handleRegister = async (e) => {
         e.preventDefault();
+        //console.log("register button clicked");
 
         if (!loginForm && !checkPassword()) {
-            console.log("Passwords do not match");
+            //console.log("Passwords do not match");
             return;
+        }else if(!loginForm && checkPassword()){
+            //console.log("Passwords match");
+            const url = '/app/auth/register';
+            const fullPhoneNumber = formData.countryCode + formData.phoneNumber;
+
+            try {
+                const res = await axios.post(url, {
+                    firstName: formData.firstName,
+                    lastName: formData.lastName,
+                    email: formData.email,
+                    password: formData.password,
+                    phoneNumber: fullPhoneNumber
+                }, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                console.log(res.data);
+                
+            } catch (error) {
+                console.error("Error:", error.response ? error.response.data : error.message);
+            }
         }else{
-            console.log("Passwords match");
+
         }
 
-        const url = '/app/auth/register';
-        const fullPhoneNumber = formData.countryCode + formData.phoneNumber;
+    }
 
-        try {
-            const response = await axios.post(url, {
-                firstName: formData.firstName,
-                lastName: formData.lastName,
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        //console.log("login button clicked");
+
+        try{
+            const url = '/app/auth/login';
+
+            const res = await axios.post(url, {
                 email: formData.email,
-                password: formData.password,
-                phoneNumber: fullPhoneNumber
+                password: formData.password
             }, {
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type' : 'application/json'
                 }
             });
-            
-            console.log("Response:", response.data);
-        } catch (error) {
-            console.error("Error:", error.response ? error.response.data : error.message);
+            console.log(res.data);
+            //console.log(res.status);
+
+        }catch(err){
+            console.error(err);
         }
     }
 
@@ -79,7 +115,7 @@ export default function Auth() {
                 <div className="form-container" style={{width: '100%'}}>
                     <form 
                         style={{display: 'flex', flexDirection: 'column'}}
-                        onSubmit={handleSubmit}
+                        onSubmit={loginForm ? handleLogin : handleRegister}
                     >
                         {loginForm ? (
                             <>
@@ -153,16 +189,17 @@ export default function Auth() {
                                         value={formData.countryCode}
                                         onChange={handleChange}
                                         style={{ 
-                                            width: '30%', 
+                                            minWidth: '25%', 
                                             padding: '10px', 
                                             height: '40px',
-                                            borderRadius: '4px', 
-                                            border: '1px solid #ccc'
                                         }}
                                         required
                                     >
                                         {countryCodes.map((country) => (
-                                            <option key={country.code} value={country.code}>
+                                            <option 
+                                                key={country.code} 
+                                                value={country.code}
+                                            >
                                                 ({country.code})
                                             </option>
                                         ))}
@@ -174,11 +211,9 @@ export default function Auth() {
                                         placeholder="Phone Number"
                                         onChange={handleChange}
                                         style={{ 
-                                            width: '65%', 
+                                            width: '70%', 
                                             padding: '10px', 
-                                            height: '40px', // Same height as the select field
-                                            borderRadius: '4px', 
-                                            border: '1px solid #ccc' 
+                                            height: '40px',
                                         }}
                                         required
                                     />

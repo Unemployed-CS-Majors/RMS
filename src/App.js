@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Main from './components/Main';
-import Auth from './components/Auth';
+import Auth from './components/Authentication/Auth.js';
 
 function App() {
   return (
