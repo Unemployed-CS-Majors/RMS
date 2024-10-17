@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../Styles/Auth.css";
 import axios from "axios";
+import countryCodes from "./countryCodes";
 
 export default function Auth() {
     const [loginForm, setLoginForm] = useState(true);
@@ -10,6 +11,7 @@ export default function Auth() {
         email: '',
         password: '',
         confirmPassword: '',
+        countryCode: '+353',
         phoneNumber: ''
     });
 
@@ -46,6 +48,7 @@ export default function Auth() {
         }
 
         const url = '/app/auth/register';
+        const fullPhoneNumber = formData.countryCode + formData.phoneNumber;
 
         try {
             const response = await axios.post(url, {
@@ -53,7 +56,7 @@ export default function Auth() {
                 lastName: formData.lastName,
                 email: formData.email,
                 password: formData.password,
-                phoneNumber: formData.phoneNumber
+                phoneNumber: fullPhoneNumber
             }, {
                 headers: {
                     'Content-Type': 'application/json'
@@ -144,14 +147,50 @@ export default function Auth() {
                                     onChange={handleChange}
                                     required
                                 />
-                                <input
+                                 <div className="phone-container" style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                    <select
+                                        name="countryCode"
+                                        value={formData.countryCode}
+                                        onChange={handleChange}
+                                        style={{ 
+                                            width: '30%', 
+                                            padding: '10px', 
+                                            height: '40px',
+                                            borderRadius: '4px', 
+                                            border: '1px solid #ccc'
+                                        }}
+                                        required
+                                    >
+                                        {countryCodes.map((country) => (
+                                            <option key={country.code} value={country.code}>
+                                                ({country.code})
+                                            </option>
+                                        ))}
+                                    </select>
+                                    <input
+                                        type="text"
+                                        name="phoneNumber"
+                                        value={formData.phoneNumber}
+                                        placeholder="Phone Number"
+                                        onChange={handleChange}
+                                        style={{ 
+                                            width: '65%', 
+                                            padding: '10px', 
+                                            height: '40px', // Same height as the select field
+                                            borderRadius: '4px', 
+                                            border: '1px solid #ccc' 
+                                        }}
+                                        required
+                                    />
+                                </div>
+                                {/*<input
                                     type="text"
                                     name="phoneNumber"
                                     value={formData.phoneNumber}
                                     placeholder="Phone Number"
                                     onChange={handleChange}
                                     required
-                                />
+                                />*/}
                                 <button type="submit" className="submit-btn">Register</button>
                             </>
                         )}
