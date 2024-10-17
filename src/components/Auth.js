@@ -55,11 +55,9 @@ export default function Auth() {
                 email: formData.email,
                 password: formData.password,
                 phoneNumber: formData.phoneNumber
-            }, {
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
+            })
+            .then(res => console.log(res.data))
+            .catch(err => console.error(err));
             
             console.log("Response:", response.data);
         } catch (error) {
