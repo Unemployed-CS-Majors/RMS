@@ -2,4 +2,42 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    background-color: #EEE2DC;
 }
+
+.signInBtn {
+    color: #EEE2DC;
+    background-color: #123C69;
+    border-radius: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+
+.signInBtn:hover { /* adds shadow to the button when cursor is on it*/
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    }
+
+.rmsLogo { /* this is just a draft*/
+    font-family: Arial, Helvetica, sans-serif;
+    color: #123C69;
+    position: fixed;
+    top: 350px;
+    left: 20px;
+    font-weight: bold;
+    font-size: 90px;
+}
+
+.rmsLogo2 { /* this is just a draft*/
+    font-family: Arial, Helvetica, sans-serif;
+    color: #123C69;
+    position: fixed;
+    top: 435px;
+    left: 20px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+
