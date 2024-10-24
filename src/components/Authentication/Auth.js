@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../../Styles/Auth.css";
 import axios from "axios";
 import countryCodes from "./countryCodes";
+import Cookies from 'js-cookie';
 
 export default function Auth() {
     const [loginForm, setLoginForm] = useState(true);
@@ -72,12 +73,12 @@ export default function Auth() {
                     }
                 });
                 console.log(res.data);
+
+                
                 
             } catch (error) {
                 console.error("Error:", error.response ? error.response.data : error.message);
             }
-        }else{
-
         }
 
     }
@@ -97,13 +98,21 @@ export default function Auth() {
                     'Content-Type' : 'application/json'
                 }
             });
+
             console.log(res.data);
             //console.log(res.status);
+
+            const{idToken, refreshToken} = res.data;
+            Cookies.set('idToken', idToken, {expires: 7});
+            Cookies.set('refreshToken', refreshToken, {expires: 7});
+
+
 
         }catch(err){
             console.error(err);
         }
     }
+
 
     return (
         <div className="auth-container">
