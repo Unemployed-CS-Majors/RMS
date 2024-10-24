@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../../Styles/Auth.css";
 import axios from "axios";
 import countryCodes from "./countryCodes";
 import Cookies from 'js-cookie';
 
 export default function Auth() {
+    const navigate = useNavigate();
     const [loginForm, setLoginForm] = useState(true);
     const [formData, setFormData] = useState({
         firstName: '',
@@ -15,6 +17,8 @@ export default function Auth() {
         countryCode: '+353',
         phoneNumber: ''
     });
+
+    
 
     const showLogin = () => {
         setLoginForm(true);
@@ -102,20 +106,27 @@ export default function Auth() {
             console.log(res.data);
             //console.log(res.status);
 
-            const{idToken, refreshToken} = res.data;
+            const{idToken, refreshToken, email} = res.data;
             Cookies.set('idToken', idToken, {expires: 7});
             Cookies.set('refreshToken', refreshToken, {expires: 7});
 
-
+            navigate('/');
 
         }catch(err){
             console.error(err);
         }
     }
+    
+    const returnHome = () => {
+        navigate('/');
+    }
 
 
     return (
         <div className="auth-container">
+            <div clasName="return-container" onClick={returnHome} style={{cursor: "pointer", width: "5rem", height: "3rem", backgroundColor: "green", position: "absolute", top: "0", left: "0"}}>
+                <h4>Return Home</h4>
+            </div>
             <div className="content-container">
                 <div className="btn-container">
                     <button className="login-btn auth-btn" onClick={showLogin}>Login</button>
