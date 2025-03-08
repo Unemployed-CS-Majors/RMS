@@ -25,6 +25,7 @@ const tableService = {
     },
 
     update : async (id, seats, nextToWindow, x, y, rotation,type, tableNum) => {
+        console.log(tableNum)
         const response = await axiosInstance.put(`/table/${id}`, {
             seats,
             nextToWindow,
