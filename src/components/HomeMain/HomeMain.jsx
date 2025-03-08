@@ -10,7 +10,7 @@ import image22 from "../../assets/image22.jpg";
 import image3 from "../../assets/image3.jpg";
 import image33 from "../../assets/image33.jpg";
 import image333 from "../../assets/image333.jpg";
-import ModernImageSlider from "./ImageSlider"; // Use our updated slider component
+import ModernImageSlider from "../ImageSlider/ImageSlider"; // Use our updated slider component
 import food1 from "../../assets/food1.jpg";
 import food2 from "../../assets/food2.jpg";
 import food3 from "../../assets/food3.jpg";
