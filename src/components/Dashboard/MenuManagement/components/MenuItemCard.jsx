@@ -13,8 +13,8 @@ import React from 'react';
 const MenuItemCard = ({ item, onEdit, onDelete, allergens }) => {
     // Format price to display with 2 decimal places
     const formattedPrice = typeof item.price === 'number'
-        ? `$${item.price.toFixed(2)}`
-        : `$${item.price}`;
+        ? `€${item.price.toFixed(2)}`
+        : `€${item.price}`;
 
     // Get allergen display names
     const allergenLabels = (item.allergens || []).map(code => {

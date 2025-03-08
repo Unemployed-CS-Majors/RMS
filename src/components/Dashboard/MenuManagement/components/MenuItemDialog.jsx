@@ -28,6 +28,7 @@ const MenuItemDialog = ({ item, menuOptions, onClose, onSave }) => {
         if (item) {
             setFormData({
                 name: item.name || '',
+                description: item.description || '',
                 price: item.price ? item.price.toString() : '',
                 type: item.type || '',
                 calories: item.calories ? item.calories.toString() : '',
@@ -141,6 +142,7 @@ const MenuItemDialog = ({ item, menuOptions, onClose, onSave }) => {
         // Prepare data for submission
         const submitData = {
             name: formData.name,
+            description: formData.description,
             price: parseFloat(formData.price),
             type: formData.type,
             allergens: formData.allergens,
@@ -186,7 +188,21 @@ const MenuItemDialog = ({ item, menuOptions, onClose, onSave }) => {
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="price">Price ($) *</label>
+                                <label htmlFor="description">Description</label>
+                                <input
+                                    type="text"
+                                    id="description"
+                                    name="description"
+                                    value={formData.description}
+                                    onChange={handleChange}
+                                    className={errors.description ? 'input-error' : ''}
+                                    required
+                                />
+                                {errors.name && <div className="error-message">{errors.name}</div>}
+                            </div>
+
+                            <div className="form-group">
+                                <label htmlFor="price">Price (€) *</label>
                                 <input
                                     type="number"
                                     id="price"
