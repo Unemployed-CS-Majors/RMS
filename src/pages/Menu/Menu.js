@@ -1,10 +1,10 @@
 // src/pages/Menu/Menu.js
 import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Menu.css";
 import menuItems from "../../constants/MenuItems.js";
 import { FaRegClock, FaSearch, FaShoppingCart, FaChevronUp, FaChevronDown } from "react-icons/fa";
-import { IoFastFoodOutline, IoFlameOutline } from "react-icons/io5";
+import { IoFlameOutline } from "react-icons/io5";
 import { FiPlus, FiMinus } from "react-icons/fi";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 
@@ -22,7 +22,6 @@ const Menu = () => {
   const [categories, setCategories] = useState([]);
   const [activeCategory, setActiveCategory] = useState("All");
   const navigate = useNavigate();
-  const location = useLocation();
 
   // Checkout button
   const handleProceedToCheckout = () => {
@@ -35,13 +34,18 @@ const Menu = () => {
     localStorage.removeItem("cart");
   };
 
-  // Updates the cart state and saves it to localStorage if a cart exists in the navigation state
+  // Load cart from localStorage when the component mounts
   useEffect(() => {
-    if (location.state?.cart) {
-      setCart(location.state.cart);
-      localStorage.setItem("cart", JSON.stringify(location.state.cart));
+    const storedCart = JSON.parse(localStorage.getItem("cart"));
+    if (storedCart) {
+      setCart(storedCart);
     }
-  }, [location.state]);
+  }, []);
+
+  // Update localStorage whenever the cart is modified
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   // Check screen size
   useEffect(() => {

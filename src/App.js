@@ -1,11 +1,12 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import AppRoutes from './AppRoutes';
+import React, { useEffect } from "react";
+import AppRoutes from "./AppRoutes";
 
 function App() {
-  return (
-    <AppRoutes />
-  );
+  useEffect(() => {
+    localStorage.removeItem("cart");
+  }, []);
+
+  return <AppRoutes />;
 }
 
 export default App;
