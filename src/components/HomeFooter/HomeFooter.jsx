@@ -1,9 +1,12 @@
 import React from "react";
 import "./HomeFooter.css";
-import { FaInstagram, FaFacebookSquare, FaTiktok, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
+import SocialIcons from "../SocialIcons/SocialIcons";
+import useCurrentYear from "../../hooks/useCurrentYear";
 
 export default function HomeFooter() {
+    const { currentYear } = useCurrentYear();
+
     return (
         <div className="footer-container">
             <div className="footer-content">
@@ -17,20 +20,7 @@ export default function HomeFooter() {
                         Stay connected with us on social media for updates, special offers, and more.
                         We look forward to serving you again soon!
                     </p>
-                    <div className="socials-container">
-                        <div className="socials instagram-container">
-                            <FaInstagram className="apps" />
-                        </div>
-                        <div className="socials x-container">
-                            <FaXTwitter className="apps" />
-                        </div>
-                        <div className="socials facebook-container">
-                            <FaFacebookSquare className="apps" />
-                        </div>
-                        <div className="socials tiktok-container">
-                            <FaTiktok className="apps" />
-                        </div>
-                    </div>
+                    <SocialIcons />
                 </div>
 
                 <div className="second-container">
@@ -71,7 +61,7 @@ export default function HomeFooter() {
             </div>
 
             <div className="copyright-bar">
-                <div>© {new Date().getFullYear()} RMS Restaurant. All rights reserved.</div>
+                <div>© {currentYear} RMS Restaurant. All rights reserved.</div>
                 <div>Designed with ♥ for food lovers</div>
             </div>
         </div>

@@ -1,7 +1,17 @@
 import React from 'react';
 import './Header.css';
 
-const Header = ({ activeTab, editingHours, toggleHoursEditMode, approveAllReservations, tablesEditMode, toggleTablesEditMode, toggleAddEmployee, toggleShowFilters}) => {
+const Header = ({
+                    activeTab,
+                    editingHours,
+                    toggleHoursEditMode,
+                    approveAllReservations,
+                    tablesEditMode,
+                    toggleTablesEditMode,
+                    toggleAddEmployee,
+                    toggleShowFilters,
+                    toggleAddMenuItem
+                }) => {
     // Function to get the appropriate icon based on active tab
     const getHeaderIcon = () => {
         switch(activeTab) {
@@ -53,6 +63,8 @@ const Header = ({ activeTab, editingHours, toggleHoursEditMode, approveAllReserv
                 return 'Employee Management';
             case 'allReservations':
                 return 'All Reservations';
+            case 'menu':
+                return 'Menu Management';
             default:
                 return 'Dashboard';
         }
@@ -135,6 +147,21 @@ const Header = ({ activeTab, editingHours, toggleHoursEditMode, approveAllReserv
                     </button>
                 </div>
             )}
+
+            {activeTab === 'menu' && (
+                <div className="header-controls">
+                    <button className="header-button primary-button" onClick={toggleAddMenuItem}>
+                        <svg className="header-button-icon" xmlns="http://www.w3.org/2000/svg" fill="none"
+                             viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                  d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+                        </svg>
+                        Add Item
+                    </button>
+                </div>
+            )
+
+            }
         </header>
     );
 };

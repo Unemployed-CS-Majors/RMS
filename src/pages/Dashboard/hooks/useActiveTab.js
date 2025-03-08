@@ -3,6 +3,7 @@ import reservationService from '../../../services/reservation.service';
 import openingHoursService from "../../../services/openingHours.service";
 import tableService from "../../../services/table.service";
 import userService from "../../../services/user.service";
+import menuService from "../../../services/menuItem.service";
 
 /**
  * Custom hook for managing active tab and related data fetching
@@ -13,6 +14,7 @@ import userService from "../../../services/user.service";
  * @param {Function} setPendingReservation - Setter for pending reservations
  * @param {Function} setTables - Setter for tables
  * @param {Function} setEmployees - Setter for employees
+ * @param {Function} setMenuItems - Setter for menu items
  * @param {Function} setLoading - Setter for loading state
  * @returns {Array} Active tab and function to change active tab
  */
@@ -23,6 +25,7 @@ export const useActiveTab = (
     setPendingReservation,
     setTables,
     setEmployees,
+    setMenuItems,
     setLoading
 ) => {
     const [activeTab, setActiveTab] = useState(initialTab);
@@ -30,7 +33,7 @@ export const useActiveTab = (
     // Set initial hash based on initialTab
     useEffect(() => {
         const hash = window.location.hash.replace('#', '');
-        if (hash && ['pendingReservations', 'hours', 'tables', 'employees', 'allReservations'].includes(hash)) {
+        if (hash && ['pendingReservations', 'hours', 'tables', 'employees', 'allReservations', 'menu'].includes(hash)) {
             setActiveTab(hash);
         } else {
             window.location.hash = initialTab;
@@ -132,6 +135,17 @@ export const useActiveTab = (
                             console.log(e);
                         }
                         break;
+                    case "menu":
+                        try {
+                            console.log("Fetching menu items...");
+                            const menuItems = await menuService.getAll();
+                            console.log("Menu items fetched:", menuItems);
+                            setMenuItems(menuItems || []);
+                        } catch (e) {
+                            console.error("Error fetching menu items:", e);
+                            setMenuItems([]);
+                        }
+                        break;
                     default:
                         console.log(activeTab);
                         break;
@@ -142,7 +156,7 @@ export const useActiveTab = (
         };
 
         fetchData();
-    }, [activeTab, setAllReservations, setOpeningHours, setPendingReservation, setTables, setEmployees, setLoading]);
+    }, [activeTab, setAllReservations, setOpeningHours, setPendingReservation, setTables, setEmployees, setMenuItems, setLoading]);
 
     return [activeTab, handleTabChange];
 };

@@ -106,6 +106,17 @@ const Sidebar = ({activeTab, setActiveTab, pendingReservations, onToggle}) => {
                             </button>
 
                             <button
+                                className={`nav-button ${activeTab === 'menu' ? 'active' : ''}`}
+                                onClick={() => setActiveTab('menu')}
+                                title="Menu"
+                            >
+                                <span className="nav-icon">🍽️</span>
+                                {!collapsed && (
+                                    <span className="nav-text">Menu Management</span>
+                                )}
+                            </button>
+
+                            <button
                                 className={`nav-button ${activeTab === 'employees' ? 'active' : ''}`}
                                 onClick={() => setActiveTab('employees')}
                                 title="Employees"
@@ -115,6 +126,8 @@ const Sidebar = ({activeTab, setActiveTab, pendingReservations, onToggle}) => {
                                     <span className="nav-text">Employees</span>
                                 )}
                             </button>
+
+
                         </>
                     )}
 
