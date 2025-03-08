@@ -10,6 +10,7 @@ import OpeningHours from '../../components/Dashboard/OpeningHours/OpeningHours';
 import EmployeeManagement from '../../components/Dashboard/EmployeeManagement/EmployeeManagement';
 import AllReservations from '../../components/Dashboard/AllReservations/AllReservations';
 import FloorPlanDesigner from '../../components/Dashboard/FloorPlanDesigner/FloorPlanDesigner';
+import MenuManagement from '../../components/Dashboard/MenuManagement/MenuManagement';
 import LoadingIndicator from '../../components/Dashboard/Loading/LoadingIndicator';
 
 // Custom hooks
@@ -18,6 +19,7 @@ import { useReservationManagement } from './hooks/useReservationManagement';
 import { useHoursManagement } from './hooks/useHoursManagement';
 import { useEmployeeManagement } from './hooks/useEmployeeManagement';
 import { useTablesManagement } from './hooks/useTablesManagement';
+import { useMenuManagement } from './hooks/useMenuManagement';
 import { useWebSocket } from './hooks/useWebSocket';
 import { useUIState } from './hooks/useUIState';
 
@@ -36,6 +38,7 @@ const RestaurantDashboard = () => {
     const [pendingReservations, setPendingReservations] = useState([]);
     const [tables, setTables] = useState([]);
     const [employees, setEmployees] = useState([]);
+    const [menuItems, setMenuItems] = useState([]);
 
     // UI state management
     const {
@@ -55,6 +58,7 @@ const RestaurantDashboard = () => {
         setPendingReservations,
         setTables,
         setEmployees,
+        setMenuItems,
         setLoading
     );
 
@@ -100,6 +104,17 @@ const RestaurantDashboard = () => {
         setAddEmployee
     } = useEmployeeManagement(employees, setEmployees);
 
+    // Menu management
+    const {
+        showAddDialog: showAddMenuItem,
+        editingItem,
+        toggleAddMenuItemDialog,
+        startEditItem,
+        createMenuItem,
+        updateMenuItem,
+        deleteMenuItem
+    } = useMenuManagement(menuItems, setMenuItems);
+
     // WebSocket connection
     useWebSocket(
         'wss://rms.bushive.app',
@@ -132,6 +147,7 @@ const RestaurantDashboard = () => {
                     toggleTablesEditMode={toggleTablesEditMode}
                     approveAllReservations={approveAllReservations}
                     toggleAddEmployee={toggleAddEmployee}
+                    toggleAddMenuItem={toggleAddMenuItemDialog}
                     toggleShowFilters={toggleReservationFilterMode}
                 />
                 <main className="dashboard-content overflow-y-auto p-6">
@@ -175,6 +191,19 @@ const RestaurantDashboard = () => {
                                     getTableName={getTableName}
                                     setFiltersVisible={toggleReservationFilterMode}
                                     filtersVisible={reservationFilterMode}
+                                />
+                            )}
+                            {activeTab === 'menu' && (
+                                <MenuManagement
+                                    menuItems={menuItems}
+                                    createMenuItem={createMenuItem}
+                                    updateMenuItem={updateMenuItem}
+                                    deleteMenuItem={deleteMenuItem}
+                                    showDialog={showAddMenuItem}
+                                    editingItem={editingItem}
+                                    setShowDialog={toggleAddMenuItemDialog}
+                                    startEditItem={startEditItem}
+                                    loading={loading}
                                 />
                             )}
                         </>
