@@ -17,7 +17,6 @@ const MyAccount = () => {
         newPassword: "",
         confirmPassword: ""
     });
-    const [isEditing, setIsEditing] = useState(false);
     const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
     const handleInputChange = (e) => {
@@ -26,15 +25,6 @@ const MyAccount = () => {
             ...prev,
             [name]: value
         }));
-    };
-
-    const handleEditToggle = () => {
-        setIsEditing(!isEditing);
-    };
-
-    const handleAccountSave = () => {
-        alert("Account details saved successfully!");
-        setIsEditing(false);
     };
 
     const handlePasswordChange = (e) => {
@@ -97,83 +87,33 @@ const MyAccount = () => {
                     <div className="card">
                         <div className="card-header">
                             <h3>Account Details</h3>
-                            <button className={isEditing ? "btn-secondary" : "btn-primary"} onClick={handleEditToggle}>
-                                {isEditing ? "Cancel" : "Edit"}
-                            </button>
                         </div>
                         <div className="card-body">
                             <div className="reservation-grid">
                                 <div className="reservation-field">
                                     <span className="field-label">First Name</span>
-                                    {isEditing ? (
-                                        <input 
-                                            type="text" 
-                                            name="firstName" 
-                                            value={formData.firstName} 
-                                            onChange={handleInputChange}
-                                            className="edit-input"
-                                        />
-                                    ) : (
-                                        <span className="field-value">{formData.firstName}</span>
-                                    )}
+                                    <span className="field-value">{formData.firstName}</span>
                                 </div>
                                 <div className="reservation-field">
                                     <span className="field-label">Last Name</span>
-                                    {isEditing ? (
-                                        <input 
-                                            type="text" 
-                                            name="lastName" 
-                                            value={formData.lastName} 
-                                            onChange={handleInputChange}
-                                            className="edit-input"
-                                        />
-                                    ) : (
-                                        <span className="field-value">{formData.lastName}</span>
-                                    )}
+                                    <span className="field-value">{formData.lastName}</span>
                                 </div>
                                 <div className="reservation-field">
                                     <span className="field-label">Email</span>
-                                    {isEditing ? (
-                                        <input 
-                                            type="email" 
-                                            name="email" 
-                                            value={formData.email} 
-                                            onChange={handleInputChange}
-                                            className="edit-input"
-                                        />
-                                    ) : (
-                                        <span className="field-value">{formData.email}</span>
-                                    )}
+                                    <span className="field-value">{formData.email}</span>
                                 </div>
                                 <div className="reservation-field">
                                     <span className="field-label">Phone</span>
-                                    {isEditing ? (
-                                        <input 
-                                            type="tel" 
-                                            name="phone" 
-                                            value={formData.phone} 
-                                            onChange={handleInputChange}
-                                            className="edit-input"
-                                        />
-                                    ) : (
-                                        <span className="field-value">{formData.phone}</span>
-                                    )}
+                                    <span className="field-value">{formData.phone}</span>
                                 </div>
                             </div>
-                            {isEditing && (
-                                <div className="card-actions">
-                                    <button className="btn-primary" onClick={handleAccountSave}>
-                                        Save Changes
-                                    </button>
-                                </div>
-                            )}
                         </div>
                     </div>
                 )}
                 
                 {/* Change Password */}
                 {activeTab === "password" && (
-                    <div className="card">
+                    <div className="card-change-password">
                         <div className="card-header">
                             <h3>Change Password</h3>
                         </div>
