@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import ROUTES from "../../../constants/routes";
 import '../Profile.css';
 
-const MyAccount = () => {
+const MyAccount = ({userDetails, deleteAccount}) => {
     const navigate = useNavigate();
     const { logout } = useContext(AuthContext);
     const [activeTab, setActiveTab] = useState("details");
@@ -42,8 +42,8 @@ const MyAccount = () => {
         }));
     };
 
-    const handleDeleteAccount = () => {
-        alert("Account deleted. Redirecting to homepage...");
+    const handleDeleteAccount = async () => {
+        await deleteAccount();
         logout();
         navigate(ROUTES.HOME);
     };
@@ -92,19 +92,19 @@ const MyAccount = () => {
                             <div className="reservation-grid">
                                 <div className="reservation-field">
                                     <span className="field-label">First Name</span>
-                                    <span className="field-value">{formData.firstName}</span>
+                                    <span className="field-value">{userDetails?.firstName}</span>
                                 </div>
                                 <div className="reservation-field">
                                     <span className="field-label">Last Name</span>
-                                    <span className="field-value">{formData.lastName}</span>
+                                    <span className="field-value">{userDetails?.lastName}</span>
                                 </div>
                                 <div className="reservation-field">
                                     <span className="field-label">Email</span>
-                                    <span className="field-value">{formData.email}</span>
+                                    <span className="field-value">{userDetails?.email}</span>
                                 </div>
                                 <div className="reservation-field">
                                     <span className="field-label">Phone</span>
-                                    <span className="field-value">{formData.phone}</span>
+                                    <span className="field-value">{userDetails?.phoneNumber}</span>
                                 </div>
                             </div>
                         </div>

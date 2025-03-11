@@ -7,12 +7,15 @@ import MyReservations from "./components/MyReservations";
 import MyAccount from "./components/MyAccount";
 import MyOrders from "./components/MyOrders";
 import reservationService from "../../services/reservation.service";
-
+import userService from "../../services/user.service";
+import authService
+ from "../../services/auth.service";
 export default function Profile() {
   const navigate = useNavigate();
   const { logout } = useContext(AuthContext);
   const [activeTab, setActiveTab] = useState("account");
   const [reservations, setReservations] = useState([]);
+  const [userDetails, setUserDetails] = useState(null);
   const [upcomingReservation, setUpcomingReservation] = useState(null);
   const [orders, setOrders] = useState([
     {
@@ -69,7 +72,10 @@ export default function Profile() {
 
           break;
         case "account":
-          // Fetch account details
+          
+          const userResponse = await userService.userDetails();
+          setUserDetails(userResponse);
+
           break;
         case "orders":
           //fetch account details
@@ -94,6 +100,10 @@ export default function Profile() {
     logout();
     navigate(ROUTES.HOME);
   };
+
+  const handleDeleteAccount = async () => {
+    await authService.deleteAccount();
+  }
 
   return (
     <div className="profile-layout">
@@ -139,7 +149,7 @@ export default function Profile() {
       )}
 
       {activeTab === 'account' && (
-          <MyAccount />
+          <MyAccount userDetails={userDetails} deleteAccount={handleDeleteAccount}/>
       )}
 
       {activeTab === 'orders' && (
