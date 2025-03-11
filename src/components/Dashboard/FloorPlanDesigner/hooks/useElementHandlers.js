@@ -421,7 +421,8 @@ export const useElementHandlers = (tables, setTables, walls, setWalls, doors, se
                         updatedTable.x,
                         updatedTable.y,
                         updatedTable.rotation,
-                        updatedTable.type.name
+                        updatedTable.type.name,
+                        updatedTable.tabeleNum
                     ).then(r => console.log("update table: " + r.intId));
                 }
                 break;
