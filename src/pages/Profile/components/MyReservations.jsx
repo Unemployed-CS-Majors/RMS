@@ -1,21 +1,6 @@
 import React, { useState } from "react";
 
-const MyReservations = ({ handleManage, handleCancel, reservations, upcomingReservation }) => {
-  // Current reservation state
-  // const [upcomingReservation, setupcomingReservation] = useState({
-  //   id: "12345",
-  //   date: "2025-02-20",
-  //   startTime: "18:00",
-  //   endTime: "20:00",
-  //   people: 4,
-  // });
-
-  // Reservation history
-  // const [reservationHistory, setReservationHistory] = useState([
-  //   { id: "12344", date: "2025-02-10", startTime: "19:00", endTime: "21:00", people: 2 },
-  //   { id: "12343", date: "2025-01-25", startTime: "20:00", endTime: "22:00", people: 6 },
-  // ]);
-
+const MyReservations = ({ handleManage, handleCancel, reservations, upcomingReservation, refreshUpcomingReservation }) => {
   const [showCancelConfirmation, setShowCancelConfirmation] = useState(false);
 
   // Handler for the manage button
@@ -29,24 +14,10 @@ const MyReservations = ({ handleManage, handleCancel, reservations, upcomingRese
   };
 
   // Handler for confirming cancellation
-  const confirmCancellation = () => {
-    // Add current reservation to history with a cancelled status
-    // setReservationHistory([
-    //   {
-    //     ...upcomingReservation,
-    //     status: "Cancelled",
-    //   },
-    //   ...reservationHistory,
-    // ]);
-
-    // Clear the current reservation
-    // setupcomingReservation(null);
-    
-    // Hide the confirmation modal
+  const confirmCancellation = async (id) => {    
+    await handleCancel(id);
+    await refreshUpcomingReservation();
     setShowCancelConfirmation(false);
-    
-    // Call the parent handler
-    // handleCancel(upcomingReservation.id);
   };
 
   // Handler for canceling the confirmation
@@ -127,7 +98,7 @@ const MyReservations = ({ handleManage, handleCancel, reservations, upcomingRese
               <button className="btn-primary" onClick={cancelCancellation}>
                 Keep My Reservation
               </button>
-              <button className="btn-secondary" onClick={confirmCancellation}>
+              <button className="btn-secondary" onClick={() => confirmCancellation(upcomingReservation.id)}>
                 Yes, Cancel
               </button>
             </div>

@@ -8,8 +8,7 @@ import MyAccount from "./components/MyAccount";
 import MyOrders from "./components/MyOrders";
 import reservationService from "../../services/reservation.service";
 import userService from "../../services/user.service";
-import authService
- from "../../services/auth.service";
+import authService from "../../services/auth.service";
 export default function Profile() {
   const navigate = useNavigate();
   const { logout } = useContext(AuthContext);
@@ -30,6 +29,23 @@ export default function Profile() {
       ]
     }
   ]);
+
+  const fetchUpcomingReservation = async () => {
+    try {
+      const upcomingReservationsResponse = await reservationService.getUserUpcomingReservations();
+      const start = new Date(upcomingReservationsResponse.startTime);
+      const end = new Date(upcomingReservationsResponse.endTime);
+      const upcomingReservations = upcomingReservationsResponse;
+      upcomingReservations.date = start.toLocaleDateString();
+      upcomingReservations.startTime = start.toLocaleTimeString();
+      upcomingReservations.endTime = end.toLocaleTimeString();
+
+      setUpcomingReservation(upcomingReservations);
+    }catch (e) {
+      console.error(e);
+    }
+  }
+
   useEffect(() => {
     const fetchData = async () => {
       console.log("activeTab", activeTab);
@@ -56,19 +72,7 @@ export default function Profile() {
             console.error(e);
           }
 
-          try {
-            const upcomingReservationsResponse = await reservationService.getUserUpcomingReservations();
-            const start = new Date(upcomingReservationsResponse.startTime);
-            const end = new Date(upcomingReservationsResponse.endTime);
-            const upcomingReservations = upcomingReservationsResponse;
-            upcomingReservations.date = start.toLocaleDateString();
-            upcomingReservations.startTime = start.toLocaleTimeString();
-            upcomingReservations.endTime = end.toLocaleTimeString();
-
-            setUpcomingReservation(upcomingReservations);
-          }catch (e) {
-            console.error(e);
-          }
+          await fetchUpcomingReservation()
 
           break;
         case "account":
@@ -92,8 +96,12 @@ export default function Profile() {
     alert(`Manage reservation ${id} clicked`);
   };
 
-  const handleCancel = () => {
-    alert("Cancel reservation clicked");
+  const handleCancel = async (id) => {
+    try {
+      await reservationService.cancel(id);
+    } catch (error) {
+        console.log(error);
+    }
   };
 
   const handleLogoutClick = () => {
@@ -102,7 +110,11 @@ export default function Profile() {
   };
 
   const handleDeleteAccount = async () => {
-    await authService.deleteAccount();
+    try {
+      await authService.deleteAccount();
+    } catch (error){
+      console.log(error);
+    }
   }
 
   return (
@@ -145,7 +157,7 @@ export default function Profile() {
       <>
 
       {activeTab === 'reservations' && (
-        <MyReservations handleManage={handleManage} handleCancel={handleCancel} reservations={reservations} upcomingReservation={upcomingReservation} />
+        <MyReservations handleManage={handleManage} handleCancel={handleCancel} reservations={reservations} upcomingReservation={upcomingReservation} refreshUpcomingReservation={fetchUpcomingReservation} />
       )}
 
       {activeTab === 'account' && (
