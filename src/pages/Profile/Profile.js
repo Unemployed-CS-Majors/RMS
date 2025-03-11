@@ -9,6 +9,7 @@ import MyOrders from "./components/MyOrders";
 import reservationService from "../../services/reservation.service";
 import userService from "../../services/user.service";
 import authService from "../../services/auth.service";
+import orderService from "../../services/order.service";
 export default function Profile() {
   const navigate = useNavigate();
   const { logout } = useContext(AuthContext);
@@ -17,17 +18,17 @@ export default function Profile() {
   const [userDetails, setUserDetails] = useState(null);
   const [upcomingReservation, setUpcomingReservation] = useState(null);
   const [orders, setOrders] = useState([
-    {
-      id: "sjdcjjd",
-      date: "Mar 5, 2025",
-      total: 89.97,
-      status: "Delivered",
-      tracking: "UPS1234567890",
-      items: [
-        { name: "Product 1", quantity: 2, price: 29.99 },
-        { name: "Product 2", quantity: 1, price: 29.99 }
-      ]
-    }
+    // {
+    //   id: "sjdcjjd",
+    //   date: "Mar 5, 2025",
+    //   total: 89.97,
+    //   status: "Delivered",
+    //   tracking: "UPS1234567890",
+    //   items: [
+    //     { name: "Product 1", quantity: 2, price: 29.99 },
+    //     { name: "Product 2", quantity: 1, price: 29.99 }
+    //   ]
+    // }
   ]);
 
   const fetchUpcomingReservation = async () => {
@@ -44,6 +45,11 @@ export default function Profile() {
     }catch (e) {
       console.error(e);
     }
+  }
+
+  const fetchAllOrders = async () => {
+    const getAllOrdersResponse  = await orderService.getAll();
+    setOrders(getAllOrdersResponse);
   }
 
   useEffect(() => {
@@ -76,13 +82,19 @@ export default function Profile() {
 
           break;
         case "account":
-          
-          const userResponse = await userService.userDetails();
-          setUserDetails(userResponse);
-
+          try {
+            const userResponse = await userService.userDetails();
+            setUserDetails(userResponse);
+          } catch (error){
+            console.log(error);
+          }
           break;
         case "orders":
-          //fetch account details
+          try {
+            await fetchAllOrders();
+          } catch (error) {
+            console.log(error);
+          }
           break;
         default:
           break;

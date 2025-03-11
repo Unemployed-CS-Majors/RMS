@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../Profile.css";
 
-const MyOrders = ({ orders = [] }) => {
+const MyOrders = ({ orders }) => {
   const [activeOrder, setActiveOrder] = useState(null);
   const [showOrderDetails, setShowOrderDetails] = useState(false);
 
