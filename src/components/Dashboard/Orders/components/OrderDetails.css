@@ -1,0 +1,514 @@
+.order-details-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.order-details-content {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+    width: 90%;
+    max-width: 850px;
+    max-height: 90vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    animation: slideUp 0.3s ease-out;
+    border: 1px solid rgba(229, 231, 235, 0.8);
+}
+
+@keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.order-details-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 28px;
+    border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 10;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.order-details-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #111827;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+.close-button {
+    background: rgba(243, 244, 246, 0.8);
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: #4b5563;
+    padding: 0;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.close-button:hover {
+    background-color: #f3f4f6;
+    color: #1f2937;
+    transform: rotate(90deg);
+}
+
+.order-details-body {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.order-info-section h3,
+.order-items-section h3,
+.order-address-section h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 0 0 18px 0;
+    letter-spacing: -0.01em;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+.order-info-section h3::after,
+.order-items-section h3::after,
+.order-address-section h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: #4f46e5;
+    border-radius: 2px;
+}
+
+.order-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    background-color: #f9fafb;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.info-item label {
+    font-size: 0.8rem;
+    color: #6b7280;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.info-item div {
+    font-size: 1rem;
+    color: #1f2937;
+    font-weight: 500;
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 12px;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-align: center;
+    width: fit-content;
+    letter-spacing: 0.02em;
+}
+
+.status-badge-success {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.status-badge-primary {
+    background-color: #dbeafe;
+    color: #1e40af;
+}
+
+.status-badge-warning {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.status-badge-danger {
+    background-color: #fee2e2;
+    color: #b91c1c;
+}
+
+.status-badge-info {
+    background-color: #e0e7ff;
+    color: #3730a3;
+}
+
+.status-badge-secondary {
+    background-color: #e5e7eb;
+    color: #1f2937;
+}
+
+.status-badge-light {
+    background-color: #f3f4f6;
+    color: #6b7280;
+}
+
+.order-address-section {
+    border: none;
+    border-radius: 10px;
+    padding: 22px;
+    background-color: #f9fafb;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+}
+
+.address-details p {
+    margin: 5px 0;
+    font-size: 1rem;
+    color: #1f2937;
+    line-height: 1.5;
+}
+
+.order-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.order-item {
+    padding: 16px;
+    border: none;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+}
+
+.order-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+}
+
+.item-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.item-name {
+    font-weight: 600;
+    color: #111827;
+    flex: 2;
+    font-size: 1.05rem;
+}
+
+.item-quantity {
+    color: #4b5563;
+    flex: 1;
+    text-align: center;
+    background-color: #f3f4f6;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.item-price {
+    font-weight: 700;
+    color: #4f46e5;
+    text-align: right;
+    font-size: 1.05rem;
+}
+
+.item-details-expanded {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #f3f4f6;
+    font-size: 0.95rem;
+    color: #4b5563;
+    line-height: 1.5;
+}
+
+.item-description {
+    margin-bottom: 8px;
+}
+
+.item-category, .item-allergens {
+    font-size: 0.85rem;
+    color: #6b7280;
+    display: inline-block;
+    background-color: #f3f4f6;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-right: 8px;
+    margin-top: 5px;
+}
+
+.order-summary {
+    margin-top: 20px;
+    padding: 24px;
+    background-color: #f9fafb;
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-size: 1rem;
+    color: #4b5563;
+}
+
+.summary-item.total {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 2px solid #e5e7eb;
+    font-weight: 700;
+    color: #111827;
+    font-size: 1.15rem;
+}
+
+.order-actions {
+    margin-top: 28px;
+    padding: 24px;
+    border: none;
+    background-color: #f9fafb;
+    border-radius: 12px;
+}
+
+.order-actions h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 0 0 18px 0;
+    letter-spacing: -0.01em;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+.order-actions h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: #4f46e5;
+    border-radius: 2px;
+}
+
+.status-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.status-button {
+    padding: 12px 16px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 150px;
+}
+
+.status-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.status-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.status-button-primary {
+    background-color: #3b82f6;
+    color: white;
+}
+
+.status-button-primary:hover {
+    background-color: #2563eb;
+}
+
+.status-button-info {
+    background-color: #6366f1;
+    color: white;
+}
+
+.status-button-info:hover {
+    background-color: #4f46e5;
+}
+
+.status-button-success {
+    background-color: #10b981;
+    color: white;
+}
+
+.status-button-success:hover {
+    background-color: #059669;
+}
+
+.status-button-warning {
+    background-color: #f59e0b;
+    color: white;
+}
+
+.status-button-warning:hover {
+    background-color: #d97706;
+}
+
+.status-button-danger {
+    background-color: #ef4444;
+    color: white;
+}
+
+.status-button-danger:hover {
+    background-color: #dc2626;
+}
+
+.status-button-secondary {
+    background-color: #6b7280;
+    color: white;
+}
+
+.status-button-secondary:hover {
+    background-color: #4b5563;
+}
+
+.status-button:disabled {
+    background-color: #9ca3af;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.button-loader {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Custom scrollbar for the order details modal */
+.order-details-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.order-details-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.order-details-content::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 10px;
+}
+
+.order-details-content::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .order-info-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .status-update-controls {
+        flex-direction: column;
+    }
+
+    .order-details-content {
+        width: 95%;
+        max-height: 95vh;
+    }
+
+    .order-details-body {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .order-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .item-details {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .item-quantity, .item-price {
+        text-align: left;
+        width: 100%;
+    }
+
+    .order-details-header {
+        padding: 16px 20px;
+    }
+
+    .order-details-header h2 {
+        font-size: 1.3rem;
+    }
+
+    .close-button {
+        width: 32px;
+        height: 32px;
+    }
+}

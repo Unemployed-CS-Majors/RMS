@@ -80,7 +80,16 @@ const Sidebar = ({activeTab, setActiveTab, pendingReservations, onToggle}) => {
                             </span>
                         )}
                     </button>
-
+                    <button
+                        className={`nav-button ${activeTab === 'orders' ? 'active' : ''}`}
+                        onClick={() => setActiveTab('orders')}
+                        title="Orders"
+                    >
+                        <span className="nav-icon">🛒</span>
+                        {!collapsed && (
+                            <span className="nav-text">Orders</span>
+                        )}
+                    </button>
                     {cookieManager.get(cookieKeys.USER) === 'owner' && (
                         <>
                             <button

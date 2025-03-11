@@ -10,7 +10,7 @@ const Header = ({
                     toggleTablesEditMode,
                     toggleAddEmployee,
                     toggleShowFilters,
-                    toggleAddMenuItem
+                    toggleAddMenuItem,
                 }) => {
     // Function to get the appropriate icon based on active tab
     const getHeaderIcon = () => {
@@ -45,6 +45,13 @@ const Header = ({
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                     </svg>
                 );
+            case 'orders':
+                return (
+                    <svg className="header-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                );
+
             default:
                 return null;
         }
@@ -65,6 +72,8 @@ const Header = ({
                 return 'All Reservations';
             case 'menu':
                 return 'Menu Management';
+            case 'orders':
+                return 'Order Management';
             default:
                 return 'Dashboard';
         }
@@ -162,6 +171,17 @@ const Header = ({
             )
 
             }
+
+            {activeTab === 'orders' && (
+                <div className="header-controls">
+                    <button className="header-button secondary-button" onClick={toggleShowFilters}>
+                        <svg className="header-button-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+                        </svg>
+                        Filter
+                    </button>
+                </div>
+            )}
         </header>
     );
 };
