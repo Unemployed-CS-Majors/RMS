@@ -4,6 +4,7 @@ import openingHoursService from "../../../services/openingHours.service";
 import tableService from "../../../services/table.service";
 import userService from "../../../services/user.service";
 import menuService from "../../../services/menuItem.service";
+import orderService from "../../../services/order.service";
 
 /**
  * Custom hook for managing active tab and related data fetching
@@ -26,14 +27,15 @@ export const useActiveTab = (
     setTables,
     setEmployees,
     setMenuItems,
-    setLoading
+    setOrders,
+    setLoading,
 ) => {
     const [activeTab, setActiveTab] = useState(initialTab);
 
     // Set initial hash based on initialTab
     useEffect(() => {
         const hash = window.location.hash.replace('#', '');
-        if (hash && ['pendingReservations', 'hours', 'tables', 'employees', 'allReservations', 'menu'].includes(hash)) {
+        if (hash && ['pendingReservations', 'hours', 'tables', 'employees', 'allReservations', 'menu', 'orders'].includes(hash)) {
             setActiveTab(hash);
         } else {
             window.location.hash = initialTab;
@@ -144,6 +146,15 @@ export const useActiveTab = (
                         } catch (e) {
                             console.error("Error fetching menu items:", e);
                             setMenuItems([]);
+                        }
+                        break;
+                    case "orders":
+                        try {
+                            const activeOrders = await orderService.getActiveOrders(50);
+                            setOrders(activeOrders);
+                        } catch (e) {
+                            console.error("Error fetching orders:", e);
+                            setOrders([]);
                         }
                         break;
                     default:

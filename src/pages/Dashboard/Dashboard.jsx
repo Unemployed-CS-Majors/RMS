@@ -12,7 +12,6 @@ import AllReservations from '../../components/Dashboard/AllReservations/AllReser
 import FloorPlanDesigner from '../../components/Dashboard/FloorPlanDesigner/FloorPlanDesigner';
 import MenuManagement from '../../components/Dashboard/MenuManagement/MenuManagement';
 import LoadingIndicator from '../../components/Dashboard/Loading/LoadingIndicator';
-
 // Custom hooks
 import { useActiveTab } from './hooks/useActiveTab';
 import { useReservationManagement } from './hooks/useReservationManagement';
@@ -22,6 +21,7 @@ import { useTablesManagement } from './hooks/useTablesManagement';
 import { useMenuManagement } from './hooks/useMenuManagement';
 import { useWebSocket } from './hooks/useWebSocket';
 import { useUIState } from './hooks/useUIState';
+import OrderManagement from "../../components/Dashboard/Orders/OrderManagement";
 
 /**
  * RestaurantDashboard component
@@ -39,6 +39,7 @@ const RestaurantDashboard = () => {
     const [tables, setTables] = useState([]);
     const [employees, setEmployees] = useState([]);
     const [menuItems, setMenuItems] = useState([]);
+    const [orders, setOrders] = useState([]);
 
     // UI state management
     const {
@@ -59,6 +60,7 @@ const RestaurantDashboard = () => {
         setTables,
         setEmployees,
         setMenuItems,
+        setOrders,
         setLoading
     );
 
@@ -204,6 +206,15 @@ const RestaurantDashboard = () => {
                                     setShowDialog={toggleAddMenuItemDialog}
                                     startEditItem={startEditItem}
                                     loading={loading}
+                                />
+                            )}
+
+                            {activeTab === 'orders' && (
+                                <OrderManagement
+                                    orders={orders}
+                                    loading={loading}
+                                    toggleShowFilters={toggleReservationFilterMode}
+                                    showFilters={reservationFilterMode}
                                 />
                             )}
                         </>
