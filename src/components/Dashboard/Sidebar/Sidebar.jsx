@@ -66,6 +66,16 @@ const Sidebar = ({activeTab, setActiveTab, pendingReservations, onToggle}) => {
                 </div>
                 <nav className="sidebar-nav">
                     <button
+                        className="nav-button home-button"
+                        onClick={() => window.location.href = '/'}
+                        title="Home Page"
+                    >
+                        <span className="nav-icon">🏠</span>
+                        {!collapsed && (
+                        <span className="nav-text">Home</span>
+                        )}
+                    </button>
+                    <button
                         className={`nav-button ${activeTab === 'pendingReservations' ? 'active' : ''}`}
                         onClick={() => setActiveTab('pendingReservations')}
                         title="Pending Reservations"
@@ -151,16 +161,6 @@ const Sidebar = ({activeTab, setActiveTab, pendingReservations, onToggle}) => {
                         )}
                     </button>
                 </nav>
-
-                <div className={`user-profile ${collapsed ? 'collapsed' : ''}`}>
-                    <div className="profile-avatar"></div>
-                    {!collapsed && (
-                        <div className="profile-info">
-                            <p className="profile-name">Restaurant Manager</p>
-                            <p className="profile-role">Admin</p>
-                        </div>
-                    )}
-                </div>
             </div>
 
             {}
