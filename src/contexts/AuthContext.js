@@ -1,4 +1,4 @@
-import React, {createContext, useState, useEffect, useContext} from "react";
+import React, { createContext, useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import COOKIE_KEYS from "../constants/cookieKeys"; // Adjust the path as necessary
 import authService from "../services/auth.service"; // Adjust the path as necessary
@@ -9,9 +9,11 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
+  const [token, setToken] = useState(null);
 
   useEffect(() => {
     const idToken = cookieManager.get(COOKIE_KEYS.ID_TOKEN);
+    setToken(idToken);
     setIsLoggedIn(!!idToken);
   }, []);
 
@@ -20,8 +22,7 @@ export const AuthProvider = ({ children }) => {
       await authService.login(email, password);
       setIsLoggedIn(true);
       const userResponse = await userService.userDetails();
-      cookieManager.set(COOKIE_KEYS.USER, userResponse.privileges,{ expires: 1 })
-
+      cookieManager.set(COOKIE_KEYS.USER, userResponse.privileges, { expires: 1 });
     } catch (error) {
       console.error("Login error:", error);
     }
@@ -45,11 +46,7 @@ export const AuthProvider = ({ children }) => {
     setIsLoggedIn(false);
   };
 
-  return (
-    <AuthContext.Provider value={{ isLoggedIn, login, register, logout, user }}>
-      {children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={{ isLoggedIn, login, register, logout, user }}>{children}</AuthContext.Provider>;
 };
 
 export const useAuth = () => useContext(AuthContext);

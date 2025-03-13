@@ -219,7 +219,6 @@ const Menu = () => {
               filteredItems.map(item => (
                 <div key={item.id} className='menu-item'>
                   <div className='item-image-container'>
-                    {/* Replace with actual image */}
                     <img
                       src={item.image}
                       alt={item.name}
