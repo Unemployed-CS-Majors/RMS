@@ -7,7 +7,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f462b43-378b-4e67-8e72-27975d40f95e" name="Changes" comment="connected API" />
+    <list default="true" id="0f462b43-378b-4e67-8e72-27975d40f95e" name="Changes" comment="connected API">
+      <change afterPath="$PROJECT_DIR$/src/components/Profile/Modal.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Profile/OrderDetail.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Profile/ProfileSidebar.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Profile/ReservationDetail.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Profile/ReservationEditForm.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Profile/ReservationHistory.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Profile/StatusBadge.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Profile/UpcomingReservation.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Profile/hooks/useOrders.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Profile/hooks/useProfileNavigation.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Profile/hooks/useReservations.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Profile/hooks/useUserDetails.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Profile/sections/MyAccount.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Profile/sections/MyOrders.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Profile/sections/MyReservations.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/dateUtils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Profile/Profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Profile/Profile.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Profile/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Profile/Profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Profile/components/MyAccount.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Profile/components/MyOrders.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Profile/components/MyReservations.jsx" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,15 +41,15 @@
       <list>
         <option value="tsconfig.json" />
         <option value="CSS File" />
-        <option value="JSX File" />
         <option value="JavaScript File" />
+        <option value="JSX File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="profile-page" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -64,7 +87,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "git-widget-placeholder": "profile-page",
+    "git-widget-placeholder": "profile-hash-navigation",
     "last_opened_file_path": "/Users/jakubolszewski/Developer/RMS/RMS",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
@@ -82,11 +105,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/Profile" />
+      <recent name="$PROJECT_DIR$/src/pages/Profile/sections" />
       <recent name="$PROJECT_DIR$/src/routing" />
       <recent name="$PROJECT_DIR$/src/components/Authentication" />
       <recent name="$PROJECT_DIR$/src/components/FloorPlan" />
-      <recent name="$PROJECT_DIR$/src/components/FloorPlan/componenets" />
-      <recent name="$PROJECT_DIR$/src/constants" />
     </key>
   </component>
   <component name="RunManager">
@@ -352,16 +375,5 @@
     <MESSAGE value="resolve conflicts" />
     <MESSAGE value="connected API" />
     <option name="LAST_COMMIT_MESSAGE" value="connected API" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/pages/Profile/components/MyAccount.jsx</url>
-          <line>34</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
