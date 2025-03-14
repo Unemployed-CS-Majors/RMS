@@ -286,7 +286,7 @@
   overflow-x: auto;
 }
 
-.history-table th, 
+.history-table th,
 .history-table td {
   padding: 12px 15px;
   text-align: left;
@@ -314,7 +314,7 @@
   background-color: rgba(0, 0, 0, 0.02);
 }
 
-.history-table th:last-child, 
+.history-table th:last-child,
 .history-table td:last-child {
   text-align: center;
 }
@@ -561,7 +561,7 @@
   .profile-layout {
     flex-direction: row;
   }
-  
+
   .sidebar-profile {
     width: 240px;
     min-width: 240px;
@@ -569,47 +569,47 @@
     top: 0;
     height: 100vh;
   }
-  
+
   .content {
     padding: 30px;
   }
-  
+
   .orders-grid {
     grid-template-columns: repeat(5, 1fr);
   }
-  
+
   .reservation-grid {
     grid-template-columns: repeat(4, 1fr);
   }
-  
+
   .card-change-password {
     width: 50%;
   }
-  
+
   .card-actions {
     flex-direction: row;
   }
-  
+
   .btn-primary,
   .btn-secondary,
   .btn-danger {
     width: auto;
   }
-  
+
   .modal-actions {
     flex-direction: row;
     justify-content: center;
   }
-  
+
   .content-header h2,
   .content-header-account h2 {
     font-size: 26px;
   }
-  
+
   .card-header h3 {
     font-size: 20px;
   }
-  
+
   .password-card {
     padding: 30px 40px;
   }
@@ -619,15 +619,15 @@
   .menu-toggle {
     display: block;
   }
-  
+
   .sidebar-menu {
     display: none;
   }
-  
+
   .sidebar-menu.show {
     display: flex;
   }
-  
+
   .logout-container {
     margin-bottom: 20px;
   }
