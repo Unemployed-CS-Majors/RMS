@@ -22,10 +22,11 @@ const reservationService = {
         const response = await axiosInstance.post(`/reservation/complete/${reservationId}`);
         return response.data.data;
     },
-    reschedule: async (reservationId, date, time) => {
+    reschedule: async (reservationId, startTime, endTime, tableId) => {
         const response = await axiosInstance.post(`/reservation/reschedule/${reservationId}`, {
-            date,
-            time
+            tableId: tableId,
+            startTime: startTime,
+            endTime: endTime
         });
         return response.data.data;
     },

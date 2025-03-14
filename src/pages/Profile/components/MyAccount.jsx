@@ -9,13 +9,7 @@ const MyAccount = ({userDetails, deleteAccount}) => {
     const { logout } = useContext(AuthContext);
     const [activeTab, setActiveTab] = useState("details");
     const [formData, setFormData] = useState({
-        firstName: "John",
-        lastName: "Doe",
-        email: "john.doe@example.com",
-        phone: "+1234567890",
-        currentPassword: "",
-        newPassword: "",
-        confirmPassword: ""
+        
     });
     const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 

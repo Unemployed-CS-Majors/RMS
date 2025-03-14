@@ -49,7 +49,54 @@ export default function Profile() {
 
   const fetchAllOrders = async () => {
     const getAllOrdersResponse  = await orderService.getAll();
-    setOrders(getAllOrdersResponse);
+    const refactoredOrders = getAllOrdersResponse.map(order => {
+      return {
+        ...order,
+        date:( new Date(order.createdAt)).toLocaleDateString()
+      }
+    })
+    setOrders(refactoredOrders);
+  }
+  const formatDateForInput = (dateString) => {
+    const dateParts = dateString.split('/');
+    if (dateParts.length === 3) {
+      // Reorder from MM/DD/YYYY to YYYY-MM-DD
+      return `${dateParts[2]}-${dateParts[0].padStart(2, '0')}-${dateParts[1].padStart(2, '0')}`;
+    }
+    return dateString; // Return original if format doesn't match
+  };
+
+  // Convert 12-hour time format to 24-hour format
+  const convertTo24Hour = (timeString) => {
+    if (!timeString) return "";
+    
+    // Remove seconds part if present
+    const timePart = timeString.replace(/:\d{2}\s/, " ");
+    
+    const [time, modifier] = timePart.split(' ');
+    let [hours, minutes] = time.split(':');
+    
+    if (hours === '12') {
+      hours = '00';
+    }
+    
+    if (modifier === 'PM') {
+      hours = parseInt(hours, 10) + 12;
+    }
+    
+    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+  };
+  const updateReseravtion = async  (updateReseravation) => {
+      console.log(updateReseravation);
+
+      const start = `${formatDateForInput(updateReseravation.date)}T${convertTo24Hour(updateReseravation.startTime)}:00Z`;
+      const end = `${formatDateForInput(updateReseravation.date)}T${convertTo24Hour(updateReseravation.endTime)}:00Z`;
+      try {
+        await reservationService.reschedule(updateReseravation.id,start,end, updateReseravation.tableId );
+
+      }catch(error){
+        console.log(error)
+      }
   }
 
   useEffect(() => {
@@ -169,7 +216,7 @@ export default function Profile() {
       <>
 
       {activeTab === 'reservations' && (
-        <MyReservations handleManage={handleManage} handleCancel={handleCancel} reservations={reservations} upcomingReservation={upcomingReservation} refreshUpcomingReservation={fetchUpcomingReservation} />
+        <MyReservations handleManage={handleManage} handleCancel={handleCancel} reservations={reservations} upcomingReservation={upcomingReservation} refreshUpcomingReservation={fetchUpcomingReservation} updateReseravation={updateReseravtion} />
       )}
 
       {activeTab === 'account' && (

@@ -17,6 +17,59 @@ const MyOrders = ({ orders }) => {
     setShowOrderDetails(false);
   };
   
+  const getStatusBadgeClass = (status) => {
+    switch (status) {
+        case 'pending_payment':
+            return 'status-badge-warning';
+        case 'paid':
+            return 'status-badge-info';
+        case 'in_progress':
+            return 'status-badge-primary';
+        case 'ready_for_pickup':
+            return 'status-badge-secondary';
+        case 'out_for_delivery':
+            return 'status-badge-secondary';
+        case 'completed':
+            return 'status-badge-success';
+        case 'canceled':
+            return 'status-badge-danger';
+        default:
+            return 'status-badge-light';
+    }
+  };
+
+  // Function to format status for display
+  const formatStatus = (status) => {
+    return status.split('_').map(word =>
+        word.charAt(0).toUpperCase() + word.slice(1)
+    ).join(' ');
+  };
+
+  // Format delivery method for display
+  const formatDeliveryMethod = (method) => {
+    switch (method) {
+      case 'home_delivery':
+        return 'Home Delivery';
+      case 'pickup':
+        return 'Pickup';
+      default:
+        return method;
+    }
+  };
+
+  // Format payment method for display
+  const formatPaymentMethod = (method) => {
+    switch (method) {
+      case 'online':
+        return 'Online Payment';
+      case 'cash_on_delivery':
+        return 'Cash on Delivery';
+      case 'in_store':
+        return 'In-Store Payment';
+      default:
+        return method;
+    }
+  };
 
   return (
     <div className="content">
@@ -55,7 +108,9 @@ const MyOrders = ({ orders }) => {
                         fontWeight: "500"
                       }}
                     >
-                      {order.status}
+                      <span className={`status-badge ${getStatusBadgeClass(order.status)}`}>
+                        {formatStatus(order.status)}
+                      </span>
                     </td>
                     <td>
                       <button
@@ -85,7 +140,7 @@ const MyOrders = ({ orders }) => {
               <h3>Order Details - #{activeOrder.id}</h3>
             </div>
             <div className="modal-body">
-              <div className="reservation-grid">
+              <div className="orders-grid">
                 <div className="reservation-field">
                   <span className="field-label">Order Date</span>
                   <span className="field-value">{activeOrder.date}</span>
@@ -99,12 +154,26 @@ const MyOrders = ({ orders }) => {
                       activeOrder.status === "Cancelled" ? "#e74c3c" : "#3498db",
                     fontWeight: "500"
                   }}>
-                    {activeOrder.status}
+                    <span className={`status-badge ${getStatusBadgeClass(activeOrder.status)}`}>
+                      {formatStatus(activeOrder.status)}
+                    </span>
                   </span>
                 </div>
                 <div className="reservation-field">
                   <span className="field-label">Total</span>
                   <span className="field-value">${activeOrder.total.toFixed(2)}</span>
+                </div>
+                <div className="reservation-field">
+                  <span className="field-label">Delivery Method</span>
+                  <span className="field-value">
+                    {formatDeliveryMethod(activeOrder.deliveryMethod)}
+                  </span>
+                </div>
+                <div className="reservation-field">
+                  <span className="field-label">Payment Method</span>
+                  <span className="field-value">
+                    {formatPaymentMethod(activeOrder.paymentMethod)}
+                  </span>
                 </div>
                 {activeOrder.tracking && (
                   <div className="reservation-field">
@@ -113,6 +182,32 @@ const MyOrders = ({ orders }) => {
                   </div>
                 )}
               </div>
+
+              {/* Display delivery address if available */}
+{activeOrder.deliveryMethod === 'home_delivery' && activeOrder.deliveryAddress && (
+  <div  style={{textAlign: 'center', borderTop: '1px solid #ddd', 
+    paddingTop: '15px' }}>
+    <h4 
+      style={{ 
+        padding: '8px', 
+        borderRadius: '4px',
+        marginBottom: '10px',
+        color: '#FF7D05',
+        border: '1px solid #FF7D05'
+      }}
+    >
+      Delivery Address
+    </h4>
+    <div>
+      <span>
+        {activeOrder.deliveryAddress.street}<br />
+        {activeOrder.deliveryAddress.city}, {activeOrder.deliveryAddress.state} {activeOrder.deliveryAddress.zipCode}<br />
+        {activeOrder.deliveryAddress.country}
+      </span>
+    </div>
+  </div>
+)}
+
 
               <h4 style={{ marginTop: '20px', marginBottom: '10px' }}>Items</h4>
               <table className="history-table">
@@ -149,4 +244,3 @@ const MyOrders = ({ orders }) => {
 };
 
 export default MyOrders;
-
