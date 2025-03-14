@@ -1,0 +1,634 @@
+.profile-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f8f8;
+  width: 100%;
+}
+
+.sidebar-profile {
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.sidebar-header-profile {
+  padding: 20px;
+  border-bottom: 1px solid #eaeaea;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebar-header-profile h2 {
+  color: #FF7D05;
+  margin: 0;
+  font-size: 20px;
+}
+
+/* Mobile menu toggle button */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 15px 0;
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-menu li {
+  padding: 12px 20px;
+  color: #333;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  transition: all 0.2s ease;
+}
+
+.sidebar-menu li:hover {
+  background-color: rgba(255, 125, 5, 0.1);
+  color: #FF7D05;
+  border-left: 3px solid #FF7D05;
+}
+
+.sidebar-menu li.active {
+  background-color: rgba(255, 125, 5, 0.1);
+  color: #FF7D05;
+  font-weight: 600;
+  border-left: 3px solid #FF7D05;
+}
+
+.logout-container {
+  padding: 0 20px;
+  margin-top: auto;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.logout-btn {
+  background-color: #f8f8f8;
+  color: #333;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  width: 80%;
+  font-weight: 500;
+  font-size: 15px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.logout-btn:hover {
+  background-color: #f0f0f0;
+  color: #666;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.content {
+  flex-grow: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-x: hidden;
+}
+
+.content-header {
+  margin-bottom: 10px;
+}
+
+.content-header h2,
+.content-header-account h2 {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  color: #333;
+  font-size: 22px;
+}
+
+.card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  margin: 0 auto;
+  overflow-x: auto;
+}
+
+.card-change-password {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.card-header {
+  padding: 15px 20px;
+  border-bottom: 1px solid #eaeaea;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-header h3 {
+  margin: 0;
+  color: #333;
+  font-size: 18px;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.upcoming-reservation {
+  border-top: 4px solid #FF7D05;
+}
+
+.orders-grid,
+.reservation-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.reservation-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.field-label {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 5px;
+  display: block;
+  font-weight: 500;
+}
+
+.field-value {
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Button styles */
+.btn-primary,
+.btn-secondary,
+.btn-danger {
+  width: 100%;
+  max-width: 250px;
+  padding: 12px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: #FF7D05;
+  color: white;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #e67100;
+}
+
+.btn-secondary {
+  background-color: white;
+  color: #FF7D05;
+  border: 2px solid #FF7D05;
+}
+
+.btn-secondary:hover {
+  background-color: rgba(255, 125, 5, 0.1);
+}
+
+.btn-danger {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: #c0392b;
+}
+
+/* New manage button style for history table */
+.manage-btn-small {
+  background-color: white;
+  color: #FF7D05;
+  border: 1px solid #FF7D05;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.manage-btn-small:hover {
+  background-color: #FF7D05;
+  color: white;
+}
+
+/* Table styles */
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 5px;
+  min-width: 600px;
+}
+
+.history-table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.history-table th, 
+.history-table td {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.history-table th {
+  background-color: #f8f8f8;
+  color: #333;
+  font-weight: 600;
+  border-bottom: 2px solid #eaeaea;
+  white-space: nowrap;
+}
+
+.history-table td {
+  font-weight: 400;
+  color: #555;
+  font-size: 14px;
+}
+
+.history-table tr {
+  border-bottom: 1px solid #eaeaea;
+}
+
+.history-table tr:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.history-table th:last-child, 
+.history-table td:last-child {
+  text-align: center;
+}
+
+/*css for my account*/
+.form-group {
+  margin-bottom: 20px;
+}
+
+.edit-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+  color: #333;
+}
+
+.edit-input:focus {
+  outline: none;
+  border-color: #FF7D05;
+  box-shadow: 0 0 0 2px rgba(255, 125, 5, 0.2);
+}
+
+.account-submenu {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 10px;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.account-tab {
+  flex: 1;
+  min-width: 80px;
+  background: none;
+  border: none;
+  padding: 10px 8px;
+  font-size: 14px;
+  color: #666;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.account-tab:hover {
+  color: #FF7D05;
+}
+
+.account-tab.active {
+  color: #FF7D05;
+  font-weight: 600;
+  position: relative;
+}
+
+.account-tab.active::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #FF7D05;
+}
+
+.warning-text {
+  color: #e74c3c;
+  margin-bottom: 20px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 15px;
+}
+
+.modal {
+  background-color: white;
+  border-radius: 12px;
+  width: 95%;
+  max-width: 500px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-top: 4px solid #FF7D05;
+}
+
+.modal-header {
+  padding: 15px 20px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.modal-header h3 {
+  margin: 0;
+  color: #333;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.modal-body p {
+  color: #555;
+  font-size: 15px;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.modal-body p:last-child {
+  color: #e74c3c;
+  font-weight: 500;
+}
+
+.modal-actions {
+  padding: 15px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  border-top: 1px solid #eaeaea;
+}
+
+.password-card {
+  padding: 20px;
+}
+
+.password-form-container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.password-input-wrapper {
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.password-input {
+  padding: 12px 15px;
+  font-size: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.password-input:focus {
+  border-color: #FF7D05;
+  box-shadow: 0 0 0 3px rgba(255, 125, 5, 0.2);
+}
+
+.password-input::placeholder {
+  color: #aaa;
+}
+
+.password-strength-indicator {
+  height: 4px;
+  background-color: #eee;
+  border-radius: 2px;
+  margin-top: 4px;
+  overflow: hidden;
+}
+
+.strength-meter {
+  height: 100%;
+  width: 30%;
+  background-color: #e74c3c;
+  border-radius: 2px;
+}
+
+.meter-medium {
+  width: 60%;
+  background-color: #f39c12;
+}
+
+.meter-strong {
+  width: 100%;
+  background-color: #2ecc71;
+}
+
+.password-requirements {
+  margin-top: 12px;
+  background-color: #f8f8f8;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.password-requirements p {
+  margin: 0 0 8px 0;
+  color: #555;
+  font-weight: 500;
+}
+
+.password-requirements ul {
+  margin: 0;
+  padding-left: 20px;
+  color: #777;
+}
+
+.password-requirements li {
+  margin-bottom: 4px;
+}
+
+.requirement-met {
+  color: #2ecc71;
+  position: relative;
+}
+
+.requirement-met::before {
+  content: "✓";
+  position: absolute;
+  left: -18px;
+}
+
+.btn-update-password {
+  margin-top: 20px;
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.btn-update-password:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 125, 5, 0.3);
+}
+
+@media (min-width: 768px) {
+  .profile-layout {
+    flex-direction: row;
+  }
+  
+  .sidebar-profile {
+    width: 240px;
+    min-width: 240px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+  }
+  
+  .content {
+    padding: 30px;
+  }
+  
+  .orders-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  
+  .reservation-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .card-change-password {
+    width: 50%;
+  }
+  
+  .card-actions {
+    flex-direction: row;
+  }
+  
+  .btn-primary,
+  .btn-secondary,
+  .btn-danger {
+    width: auto;
+  }
+  
+  .modal-actions {
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  .content-header h2,
+  .content-header-account h2 {
+    font-size: 26px;
+  }
+  
+  .card-header h3 {
+    font-size: 20px;
+  }
+  
+  .password-card {
+    padding: 30px 40px;
+  }
+}
+
+@media (max-width: 767px) {
+  .menu-toggle {
+    display: block;
+  }
+  
+  .sidebar-menu {
+    display: none;
+  }
+  
+  .sidebar-menu.show {
+    display: flex;
+  }
+  
+  .logout-container {
+    margin-bottom: 20px;
+  }
+}
