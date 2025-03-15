@@ -7,29 +7,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f462b43-378b-4e67-8e72-27975d40f95e" name="Changes" comment="connected API">
-      <change afterPath="$PROJECT_DIR$/src/components/Profile/Modal.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Profile/OrderDetail.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Profile/ProfileSidebar.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Profile/ReservationDetail.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Profile/ReservationEditForm.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Profile/ReservationHistory.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Profile/StatusBadge.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Profile/UpcomingReservation.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Profile/hooks/useOrders.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Profile/hooks/useProfileNavigation.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Profile/hooks/useReservations.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Profile/hooks/useUserDetails.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Profile/sections/MyAccount.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Profile/sections/MyOrders.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Profile/sections/MyReservations.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/dateUtils.js" afterDir="false" />
+    <list default="true" id="0f462b43-378b-4e67-8e72-27975d40f95e" name="Changes" comment="Refactor and improvement of profile page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Profile/Profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Profile/Profile.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Profile/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Profile/Profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Profile/components/MyAccount.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Profile/components/MyOrders.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Profile/components/MyReservations.jsx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -323,7 +302,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741441977821</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Refactor and improvement of profile page">
+      <option name="closed" value="true" />
+      <created>1741988507860</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1741988507860</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -374,6 +361,7 @@
     <MESSAGE value="hto fix" />
     <MESSAGE value="resolve conflicts" />
     <MESSAGE value="connected API" />
-    <option name="LAST_COMMIT_MESSAGE" value="connected API" />
+    <MESSAGE value="Refactor and improvement of profile page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor and improvement of profile page" />
   </component>
 </project>
