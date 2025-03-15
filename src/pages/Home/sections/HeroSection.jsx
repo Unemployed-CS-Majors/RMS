@@ -19,7 +19,7 @@ const HeroSection = () => {
             <div className="img-container1">
                 <ModernImageSlider imageUrls={foodImages} />
             </div>
-            <div className="content">
+            <div className="content-home">
                 <h1>
                     Eat <span style={{ color: "var(--primary)" }}>Well</span>,
                     Live <span style={{ color: "var(--primary)" }}>Better</span>

@@ -5,6 +5,7 @@ import tableService from "../../../services/table.service";
 import userService from "../../../services/user.service";
 import menuService from "../../../services/menuItem.service";
 import orderService from "../../../services/order.service";
+import restaurantConfigService from "../../../services/restaurantConfig.service";
 
 /**
  * Custom hook for managing active tab and related data fetching
@@ -35,7 +36,7 @@ export const useActiveTab = (
     // Set initial hash based on initialTab
     useEffect(() => {
         const hash = window.location.hash.replace('#', '');
-        if (hash && ['pendingReservations', 'hours', 'tables', 'employees', 'allReservations', 'menu', 'orders'].includes(hash)) {
+        if (hash && ['pendingReservations', 'hours', 'tables', 'employees', 'allReservations', 'menu', 'orders', 'restaurantConfig'].includes(hash)) {
             setActiveTab(hash);
         } else {
             window.location.hash = initialTab;
@@ -156,6 +157,9 @@ export const useActiveTab = (
                             console.error("Error fetching orders:", e);
                             setOrders([]);
                         }
+                        break;
+                    case "restaurantConfig":
+                        // The RestaurantConfig component will handle its own data fetching
                         break;
                     default:
                         console.log(activeTab);

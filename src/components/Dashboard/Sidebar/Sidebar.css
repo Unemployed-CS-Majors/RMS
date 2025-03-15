@@ -1,16 +1,24 @@
-.sidebar {
-    width: 280px;
-    height: 100vh;
-    background: linear-gradient(to bottom, #4338ca, #3730a3);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-    overflow-y: auto;
-    transition: width 0.3s ease, transform 0.3s ease;
-    z-index: 1000;
+.nav-section {
+    margin-bottom: 10px;
+    position: relative;
 }
+
+/* Add this to ensure content is shown when sidebar is collapsed */
+.sidebar.collapsed .section-content {
+    max-height: none !important;
+}.sidebar {
+     width: 280px;
+     height: 100vh;
+     background: linear-gradient(to bottom, #4338ca, #3730a3);
+     color: white;
+     display: flex;
+     flex-direction: column;
+     position: fixed;
+     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+     overflow-y: auto;
+     transition: width 0.3s ease, transform 0.3s ease;
+     z-index: 1000;
+ }
 
 .sidebar.collapsed {
     width: 100px;
@@ -104,13 +112,109 @@
     flex-direction: column;
     padding: 20px 12px;
     flex-grow: 1;
+    overflow-y: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+.sidebar-nav::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+/* Custom scrollbar - will only be visible on hover if you want it back */
+.custom-scrollbar:hover::-webkit-scrollbar {
+    display: none; /* Keep hidden even on hover */
+    width: 4px;
+}
+
+.custom-scrollbar:hover::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.custom-scrollbar:hover::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+/* New section styling */
+.nav-section {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.section-content {
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    overflow: hidden;
+    opacity: 1;
+    max-height: 500px; /* Large enough to contain all items */
+}
+
+.section-header.collapsed + .section-content {
+    max-height: 0;
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    margin: 5px 0;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.section-header.collapsed {
+    opacity: 0.7;
+}
+
+.section-header:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.section-header:hover .section-label {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.section-toggle {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.6);
+    transition: transform 0.3s ease, color 0.2s ease;
+    width: 12px;
+    text-align: center;
+}
+
+.section-header.collapsed .section-toggle {
+    transform: rotate(-90deg);
+}
+
+.section-header:hover .section-toggle {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.section-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 1px;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.sidebar.collapsed .section-label {
+    display: none;
 }
 
 .nav-button {
     display: flex;
     align-items: center;
-    padding: 14px 16px;
-    margin: 5px 0;
+    padding: 12px 16px;
+    margin: 2px 0;
     border: none;
     background-color: transparent;
     color: white;
@@ -121,6 +225,7 @@
     position: relative;
     cursor: pointer;
     white-space: nowrap;
+    width: 100%;
 }
 
 .nav-button:hover {
@@ -253,16 +358,14 @@
 
 .sidebar.collapsed .nav-icon {
     margin-right: 0;
-    font-size: 1.3rem; 
-
+    font-size: 1.3rem;
 }
 
 .sidebar.collapsed .notification-badge {
     position: absolute;
     top: 5px;
     right: 5px;
-    transform: scale(0.9); 
-
+    transform: scale(0.9);
 }
 
 .user-profile.collapsed {
@@ -272,4 +375,23 @@
 
 .user-profile.collapsed .profile-avatar {
     margin-right: 0;
+}
+
+.external-link-button {
+    color: rgba(255, 255, 255, 0.85) !important;
+    border-left: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.external-link-icon {
+    margin-left: 8px;
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+.dashboard-button {
+    margin-top: 2px;
+}
+
+.external-link-button:hover {
+    background-color: rgba(255, 255, 100, 0.1) !important;
 }
