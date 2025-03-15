@@ -14,7 +14,6 @@ const OrderManagement = ({orders, loading, showFilters, toggleShowFilters}) => {
     const [dateRange, setDateRange] = useState({start: null, end: null});
     const [showOrderDetails, setShowOrderDetails] = useState(false);
     const [loadingDetails, setLoadingDetails] = useState(false);
-    // const [showFilters, setShowFilters] = useState(false);
     const [tempStatusFilter, setTempStatusFilter] = useState('all');
     const [tempDateRange, setTempDateRange] = useState({start: null, end: null});
 
@@ -104,16 +103,6 @@ const OrderManagement = ({orders, loading, showFilters, toggleShowFilters}) => {
 
     const handleTempDateRangeChange = (newRange) => {
         setTempDateRange(newRange);
-    };
-
-    const handleToggleFilters = () => {
-        toggleShowFilters();
-
-        // Reset temporary filters to current values when opening
-        if (!showFilters) {
-            setTempStatusFilter(statusFilter);
-            setTempDateRange(dateRange);
-        }
     };
 
     const handleApplyFilters = () => {

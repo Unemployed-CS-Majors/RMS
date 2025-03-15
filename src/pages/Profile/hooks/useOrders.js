@@ -13,7 +13,7 @@ export const useOrders = () => {
         setIsLoading(true);
         setError(null);
         try {
-            const getAllOrdersResponse = await orderService.getAll();
+            const getAllOrdersResponse = await orderService.getUserOrder();
             const refactoredOrders = getAllOrdersResponse.map(order => {
                 return {
                     ...order,

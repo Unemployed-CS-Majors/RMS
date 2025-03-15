@@ -1,5 +1,3 @@
-import cookieManager from '../utils/cookieManager';
-import cookieKeys from '../constants/cookieKeys';
 import axiosInstance from "../config/apiConfig";
 
 /**
@@ -10,7 +8,7 @@ const orderService = {
      * Get all orders for the currently logged in user
      * @returns {Promise<Array>} List of orders
      */
-    getAll: async () => {
+    getUserOrder: async () => {
         try {
             const response = await axiosInstance.get(`/order`);
             return response.data.data;
@@ -104,6 +102,18 @@ const orderService = {
             return response.data;
         } catch (error) {
             console.error(`Error fetching orders with status ${status}:`, error);
+            throw error;
+        }
+    },
+
+    getAll: async (limit) => {
+        try {
+            const response = await axiosInstance.get(`/order/employee/all`, {
+                params: {limit},
+            });
+            return response.data.data;
+        } catch (error) {
+            console.error('Error fetching orders:', error);
             throw error;
         }
     }

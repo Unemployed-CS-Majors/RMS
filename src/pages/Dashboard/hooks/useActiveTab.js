@@ -151,7 +151,7 @@ export const useActiveTab = (
                         break;
                     case "orders":
                         try {
-                            const activeOrders = await orderService.getActiveOrders(50);
+                            const activeOrders = await orderService.getAll(250);
                             setOrders(activeOrders);
                         } catch (e) {
                             console.error("Error fetching orders:", e);
