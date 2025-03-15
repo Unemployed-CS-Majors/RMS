@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "proxy": "https://us-central1-restaurant-management-sy-1a0cd.cloudfunctions.net",
-
   "scripts": {
     "start": "react-scripts start",
     "build": "CI=false && react-scripts build",

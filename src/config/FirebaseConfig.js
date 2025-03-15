@@ -1,4 +1,7 @@
 import {initializeApp} from "firebase/app";
+import {getPerformance} from "firebase/performance";
+import { getAnalytics } from "firebase/analytics";
+
 import {FacebookAuthProvider, getAuth, GoogleAuthProvider} from "firebase/auth";
 
 const firebaseConfig = {
@@ -19,5 +22,7 @@ const googleProvider = new GoogleAuthProvider();
 googleProvider.addScope('email');
 
 const facebookProvider = new FacebookAuthProvider();
+const analytics = getAnalytics(app);
+const perf = getPerformance(app);
 
-export {auth, googleProvider, facebookProvider};
+export {auth, googleProvider, facebookProvider, perf,analytics};
