@@ -66,6 +66,7 @@ body {
 }
 
 .item-name {
+  padding-bottom: 0.5rem;
   font-size: 1rem;
   font-weight: 600;
 }
@@ -146,12 +147,10 @@ body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-.ordered-total-container-checkout {
+.ordered-total-container {
   display: flex;
   justify-content: space-between;
-  flex-direction: column;
   padding: 1rem 0;
-  padding-bottom: 0;
   border-top: 0px;
   margin-bottom: 0;
 }
@@ -167,13 +166,6 @@ body {
   font-weight: 600;
   color: var(--primary);
   font-size: 1.25rem;
-  cursor: text;
-}
-
-.total-value-2 {
-  font-weight: 500;
-  color: var(--text-dark);
-  font-size: 1.125rem;
   cursor: text;
 }
 
@@ -340,6 +332,11 @@ body {
   position: relative;
 }
 
+.input-field input[readonly] {
+  cursor: not-allowed;
+  background-color: #f5f5f5;
+}
+
 .input-label {
   font-size: 0.75rem;
   color: #999;
@@ -436,43 +433,39 @@ input:focus {
 
 .place-order-button-container {
   text-align: center;
-  margin-top: 1.5rem;
 }
 
 .place-order-button {
   background-color: var(--primary);
   color: white;
   font-size: 1.2rem;
-  padding: 12px 24px;
+  padding: 1rem;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
   width: 100%;
-  max-width: 350px;
   font-weight: bold;
+  gap: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .place-order-button:hover {
+  transform: translateY(-2px);
   background-color: var(--primary-dark);
-  transform: scale(1.05);
 }
 
 .place-order-button:active {
   background-color: var(--primary-dark);
-  transform: scale(1);
+  transform: scale(1.01);
 }
 
 .place-order-button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
   opacity: 0.6;
-}
-
-.total-line {
-  display: flex;
-  justify-content: space-between;
-  padding-bottom: 0.5rem;
 }
 
 @media (max-width: 768px) {

@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { FiPlus, FiMinus } from "react-icons/fi";
-import { MdOutlineKeyboardArrowLeft, MdOutlineKeyboardArrowUp, MdOutlineKeyboardArrowDown } from "react-icons/md";
+import {
+  MdOutlineKeyboardArrowLeft,
+  MdOutlineKeyboardArrowUp,
+  MdOutlineKeyboardArrowDown,
+  MdOutlineKeyboardArrowRight,
+} from "react-icons/md";
 import { useAuth } from "../../contexts/AuthContext";
 import "./Checkout.css";
+import orderService from "../../services/order.service";
+import userService from "../../services/user.service";
 
 const Checkout = () => {
   const navigate = useNavigate();
@@ -12,9 +19,11 @@ const Checkout = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [isDelivery, setIsDelivery] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState(false);
+  const [collectionMethod, setCollectionMethod] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
+
   const [address, setAddress] = useState({
     street: "",
     city: "",
@@ -22,17 +31,45 @@ const Checkout = () => {
     zipCode: "",
     country: "",
   });
-  const [collectionMethod, setCollectionMethod] = useState("");
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  const [userDetails, setUserDetails] = useState({
+    name: "N/A",
+    email: "N/A",
+    phoneNumber: "N/A",
+  });
 
   const [toggleState, setToggleState] = useState({
     1: true,
     2: true,
     3: true,
   });
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+  }, [cartItems]);
+
+  useEffect(() => {
+    const fetchUserDetails = async () => {
+      try {
+        const data = await userService.userDetails();
+        setUserDetails({
+          name: data.name || "N/A",
+          email: data.email || "N/A",
+          phoneNumber: data.phoneNumber || "N/A",
+        });
+      } catch (error) {
+        console.error("Error fetching user details:", error);
+      }
+    };
+
+    if (isLoggedIn) {
+      fetchUserDetails();
+    }
+  }, [isLoggedIn]);
 
   const toggleContent = step => {
     setToggleState(prevState => ({
@@ -41,19 +78,9 @@ const Checkout = () => {
     }));
   };
 
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cartItems));
-  }, [cartItems]);
-
   const handleBackToMenu = () => navigate("/menu");
 
-  const getTotal = () => {
-    let total = cartItems.reduce((total, item) => total + Number(item.price) * item.quantity, 0);
-    if (isDelivery) {
-      total += 5;
-    }
-    return total;
-  };
+  const getTotal = () => cartItems.reduce((total, item) => total + Number(item.price) * item.quantity, 0);
 
   const addToCart = item => {
     setCartItems(
@@ -107,11 +134,14 @@ const Checkout = () => {
   };
 
   const handlePlaceOrder = async () => {
+    setError(null);
+    setSuccess(null);
+    setLoading(true);
+
     if (!validateCheckoutInputs()) {
-      alert("invalid address inputs");
+      setLoading(false);
       return;
     }
-    console.log("Valid inputs", collectionMethod, paymentMethod);
 
     const orderData = {
       items: cartItems.map(item => ({
@@ -130,31 +160,25 @@ const Checkout = () => {
         country: address.country,
       },
     };
-    console.log("yo", orderData);
+    console.log(orderData);
 
     try {
-      const ACCESS_TOKEN = "m";
-      const response = await fetch("https://api-d4o6tbc5fq-uc.a.run.app/order", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${ACCESS_TOKEN}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(orderData),
-      });
+      const response = await orderService.createOrder(orderData);
 
-      if (response.ok) {
-        const data = await response.json();
-        alert("Order placed successfully!");
-        console.log(data);
-      } else {
-        const data = await response.json();
-        alert("Error placing order: " + data.message);
-        console.log(data, response.status);
+      if (response && response.id) {
+        if (paymentMethod !== "online") {
+          setCartItems([]);
+          localStorage.removeItem("cart");
+          setSuccess("Order placed successfully!");
+        } else {
+          window.location.href = response.redirectUrl;
+        }
       }
     } catch (error) {
-      alert("Error sending request: " + error.message);
-      console.error(error);
+      setError("Failed to place order. Please try again.");
+      console.error("Order error:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -183,15 +207,15 @@ const Checkout = () => {
                       <div className='input-grid'>
                         <div className='input-field'>
                           <label className='input-label'>Name</label>
-                          <input type='text' value={"example"} readOnly />
+                          <input type='text' value={userDetails.name} readOnly />
                         </div>
                         <div className='input-field'>
                           <label className='input-label'>Email</label>
-                          <input type='email' value={"example@gmail.com"} readOnly />
+                          <input type='email' value={userDetails.email} readOnly />
                         </div>
                         <div className='input-field'>
                           <label className='input-label'>Phone Number</label>
-                          <input type='text' placeholder='Enter your phone number' />
+                          <input type='text' value={userDetails.phoneNumber} readOnly />
                         </div>
                       </div>
                     </>
@@ -404,34 +428,20 @@ const Checkout = () => {
               </div>
 
               <div className='order-summary'>
-                <div className='ordered-total-container-checkout'>
-                  <div className='total-line'>
-                    <span className='total-label'>Subtotal</span>
-                    <span className='total-value-2'>
-                      {isDelivery ? `€${(getTotal().toFixed(2) - 5).toFixed(2)}` : `€${getTotal().toFixed(2)}`}
-                    </span>
-                  </div>
-
-                  {isDelivery && (
-                    <div className='total-line'>
-                      <span className='total-label'>Delivery Fee</span>
-                      <span className='total-value-2'>€5.00</span>
-                    </div>
-                  )}
-                  <div className='total-line'>
-                    <span className='total-label'>
-                      <b>Total</b>
-                    </span>
-                    <span className='total-value'>€{getTotal().toFixed(2)}</span>
-                  </div>
+                <div className='ordered-total-container'>
+                  <span className='total-label'>
+                    <b>Subtotal</b>
+                  </span>
+                  <span className='total-value'>€{getTotal().toFixed(2)}</span>
                 </div>
 
                 <div className='place-order-button-container'>
                   <button
                     className='place-order-button'
-                    disabled={!collectionMethod || !paymentMethod}
+                    disabled={!collectionMethod || !paymentMethod || loading}
                     onClick={handlePlaceOrder}>
-                    Place Order
+                    {loading ? "Processing..." : "Place Order"}
+                    <MdOutlineKeyboardArrowRight size={24} />
                   </button>
                 </div>
               </div>
