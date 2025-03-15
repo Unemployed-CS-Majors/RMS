@@ -1,9 +1,26 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 /**
- * Reusable Modal component
+ * Reusable Modal component with animations
  */
-const Modal = ({ isOpen, onClose, title, children, actions, maxWidth }) => {
+const Modal = ({ isOpen, onClose, title, children, actions, maxWidth = '700px' }) => {
+    const [isAnimating, setIsAnimating] = useState(false);
+    const [isVisible, setIsVisible] = useState(false);
+
+    // Handle modal open/close animations
+    useEffect(() => {
+        if (isOpen) {
+            setIsVisible(true);
+            // Small delay to ensure visibility before animation starts
+            setTimeout(() => setIsAnimating(true), 10);
+        } else {
+            setIsAnimating(false);
+            // Wait for the close animation to finish before removing from DOM
+            const timer = setTimeout(() => setIsVisible(false), 300);
+            return () => clearTimeout(timer);
+        }
+    }, [isOpen]);
+
     // Close modal when pressing escape key
     useEffect(() => {
         const handleEscapeKey = (event) => {
@@ -25,7 +42,7 @@ const Modal = ({ isOpen, onClose, title, children, actions, maxWidth }) => {
         };
     }, [isOpen, onClose]);
 
-    if (!isOpen) return null;
+    if (!isVisible) return null;
 
     // Handle click outside of modal content to close
     const handleOverlayClick = (e) => {
@@ -35,8 +52,16 @@ const Modal = ({ isOpen, onClose, title, children, actions, maxWidth }) => {
     };
 
     return (
-        <div className="modal-overlay" onClick={handleOverlayClick} aria-modal="true" role="dialog">
-            <div className="modal" style={{ maxWidth: maxWidth || '500px' }}>
+        <div
+            className={`modal-overlay ${isAnimating ? 'modal-overlay-visible' : ''}`}
+            onClick={handleOverlayClick}
+            aria-modal="true"
+            role="dialog"
+        >
+            <div
+                className={`modal ${isAnimating ? 'modal-visible' : ''}`}
+                style={{ maxWidth: maxWidth }}
+            >
                 <div className="modal-header">
                     <h3>{title}</h3>
                     <button
