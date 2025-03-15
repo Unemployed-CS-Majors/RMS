@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext } from "react";
 import LocationPin from '../../components/Location/icons/LocationPin';
 import PhoneIcon from '../../components/Location/icons/PhoneIcon';
 import ClockIcon from '../../components/Location/icons/ClockIcon';
@@ -6,10 +6,11 @@ import EmailIcon from '../../components/Location/icons/EmailIcon';
 import openingHoursService from "../../services/openingHours.service";
 import Map from "../../components/Location/Map";
 import "./Location.css"; // Import the new CSS file
+import {AuthContext} from "../../contexts/AuthContext";
 
 const LocationSection = () => {
   const [openingHours, setOpeningHours] = useState([]);
-
+  const {config} = useContext(AuthContext)
   useEffect(() => {
     const fetchOpeningHours = async () => {
       try {
@@ -42,9 +43,9 @@ const LocationSection = () => {
                     <h3>Our Location</h3>
                   </div>
                   <div className="info-content">
-                    <p>123 Culinary Avenue</p>
-                    <p>Foodie District</p>
-                    <p>New York, NY 10001</p>
+                    <p>{config?.address?.street}</p>
+                    <p>{config?.address?.eircode}, {config?.address?.city}</p>
+                    <p>{config?.address?.county}, {config?.address?.country}</p>
                   </div>
                 </div>
 
@@ -56,8 +57,7 @@ const LocationSection = () => {
                     <h3>Contact Us</h3>
                   </div>
                   <div className="info-content">
-                    <p>Phone: (555) 123-4567</p>
-                    <p>Reservations: (555) 123-4568</p>
+                    <p>Phone: {config?.phoneNumber?.phoneNumber}</p>
                   </div>
                 </div>
 
@@ -69,8 +69,7 @@ const LocationSection = () => {
                     <h3>Email Us</h3>
                   </div>
                   <div className="info-content">
-                    <p>info@restaurant.com</p>
-                    <p>reservations@restaurant.com</p>
+                    <p>{config?.email?.email}</p>
                   </div>
                 </div>
 
@@ -96,10 +95,10 @@ const LocationSection = () => {
                 </div>
 
                 <div className="buttons-container">
-                  <a href="tel:+15551234567" className="contact-button">
+                  <a href={'tel:'+ config?.phoneNumber?.phoneNumber} className="contact-button">
                     <PhoneIcon /> Call for Reservation
                   </a>
-                  <a href="mailto:reservations@restaurant.com" className="contact-button outline">
+                  <a href={'mailto:' + config?.email?.email} className="contact-button outline">
                     <EmailIcon /> Email Us
                   </a>
                 </div>

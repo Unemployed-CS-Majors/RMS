@@ -1,12 +1,13 @@
-import React from "react";
+import React, {useContext} from "react";
 import "./HomeFooter.css";
-import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
+import {FaEnvelope, FaMapMarkerAlt, FaPhoneAlt} from "react-icons/fa";
 import SocialIcons from "../SocialIcons/SocialIcons";
 import useCurrentYear from "../../hooks/useCurrentYear";
+import {AuthContext} from "../../contexts/AuthContext";
 
 export default function HomeFooter() {
     const { currentYear } = useCurrentYear();
-
+    const {config} = useContext(AuthContext)
     return (
         <div className="footer-container">
             <div className="footer-content">
@@ -41,19 +42,19 @@ export default function HomeFooter() {
                         <div className="contact-item">
                             <FaMapMarkerAlt className="contact-icon" />
                             <div className="contact-text">
-                                <p>X, Y City, Z Road.</p>
+                                <p>{config?.address?.street + ', ' + config?.address?.eircode + ', ' + config?.address?.city}</p>
                             </div>
                         </div>
                         <div className="contact-item">
                             <FaPhoneAlt className="contact-icon" />
                             <div className="contact-text">
-                                <p>+123456789</p>
+                                <p>{config?.phoneNumber?.phoneNumber}</p>
                             </div>
                         </div>
                         <div className="contact-item">
                             <FaEnvelope className="contact-icon" />
                             <div className="contact-text">
-                                <p>rms@gmail.com</p>
+                                <p>{config?.email?.email}</p>
                             </div>
                         </div>
                     </div>

@@ -1,14 +1,16 @@
 import React from "react";
-import { LuClock3 } from "react-icons/lu";
-import { BiSolidPhoneCall } from "react-icons/bi";
+import {LuClock3} from "react-icons/lu";
+import {BiSolidPhoneCall} from "react-icons/bi";
 import useOpeningHours from "../hooks/useOpeningHours";
 import useRestaurantImages from "../hooks/useRestaurantImages";
 import "./OpeningHoursSection.css";
+import {AuthContext} from "../../../contexts/AuthContext";
+import { useContext } from 'react';
 
 const OpeningHoursSection = () => {
     const { openingHours, isLoading, error } = useOpeningHours();
     const { restaurantImages } = useRestaurantImages();
-
+    const {config} = useContext(AuthContext)
     return (
         <div className="openhours-container">
             <div className="openhours-text">
@@ -33,7 +35,7 @@ const OpeningHoursSection = () => {
 
                     <div className="phoneNumber-txt">
                         <BiSolidPhoneCall className="phone-icon"/>
-                        <span className="phoneNumber">+123456789</span>
+                        <span className="phoneNumber">{config?.phoneNumber?.phoneNumber}</span>
                     </div>
                 </div>
             </div>
