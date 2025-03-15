@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { FiPlus, FiMinus } from "react-icons/fi";
+import React, {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
+import {FiMinus, FiPlus} from "react-icons/fi";
 import {
-  MdOutlineKeyboardArrowLeft,
-  MdOutlineKeyboardArrowUp,
   MdOutlineKeyboardArrowDown,
+  MdOutlineKeyboardArrowLeft,
   MdOutlineKeyboardArrowRight,
+  MdOutlineKeyboardArrowUp,
 } from "react-icons/md";
-import { useAuth } from "../../contexts/AuthContext";
+import {useAuth} from "../../contexts/AuthContext";
 import "./Checkout.css";
 import orderService from "../../services/order.service";
 import userService from "../../services/user.service";
@@ -57,7 +57,7 @@ const Checkout = () => {
       try {
         const data = await userService.userDetails();
         setUserDetails({
-          name: data.name || "N/A",
+          name: data.firstName + " " + data.lastName || "N/A",
           email: data.email || "N/A",
           phoneNumber: data.phoneNumber || "N/A",
         });
@@ -455,7 +455,7 @@ const Checkout = () => {
           <button className='checkout-login-btn' onClick={handleLoginRedirect}>
             Login here
           </button>
-          <a href='#' className='go-to-menu-link' onClick={handleBackToMenu()}>
+          <a href='#' className='go-to-menu-link' onClick={handleBackToMenu}>
             Back to Menu
           </a>
         </div>

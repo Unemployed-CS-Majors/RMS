@@ -10,6 +10,7 @@ import Profile from "../pages/Profile/Profile";
 import ProtectedRoute from "./ProtectedRoute";
 import RestaurantDashboard from "../pages/Dashboard/Dashboard";
 import ForgotPassword from "../pages/Authentication/ForgotPassword";
+import Checkout from "../pages/Checkout/Checkout";
 
 function AppRoutes() {
     return (
@@ -37,6 +38,15 @@ function AppRoutes() {
                 <Route
                     path={ROUTES.RESERVE_TABLE}
                     element={<Navigate to="/#Reservation" replace />}
+                />
+
+                <Route
+                    path={ROUTES.CHECKOUT}
+                    element={
+                        <Layout>
+                            <Checkout/>
+                        </Layout>
+                    }
                 />
 
                 {}

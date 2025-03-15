@@ -4,6 +4,8 @@ import menuService from "../../../services/menuItem.service";
 import { useViewport } from "./useViewport";
 import useCart from "./useCart";
 import useAllergens from "./useAllergens";
+import {useNavigate} from "react-router-dom";
+import ROUTES from "../../../constants/routes";
 
 const useMenuState = () => {
     // State for menu data
@@ -14,10 +16,13 @@ const useMenuState = () => {
     const [activeCategory, setActiveCategory] = useState("All");
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+// Update localStorage whenever the cart is modified
 
     // State for item details
     const [selectedItem, setSelectedItem] = useState(null);
     const detailsRef = useRef(null);
+
+
 
     // Import functionality from custom hooks
     const { isMobile } = useViewport();
@@ -28,7 +33,8 @@ const useMenuState = () => {
         getTotal,
         getItemTotalPrice,
         showMobileCart,
-        toggleMobileCart
+        toggleMobileCart,
+        goToCheckout
     } = useCart();
 
     const {
@@ -213,6 +219,7 @@ const useMenuState = () => {
         removeFromCart,
         getTotal,
         getItemTotalPrice,
+        goToCheckout,
 
         // Allergens
         allAllergens,

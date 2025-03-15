@@ -10,7 +10,8 @@ const MobileCart = ({
                         addToCart,
                         removeFromCart,
                         getTotal,
-                        getItemTotalPrice
+                        getItemTotalPrice,
+                        goToCheckout
                     }) => {
     return (
         <>
@@ -54,7 +55,7 @@ const MobileCart = ({
                             <span className='total-label'>Total</span>
                             <span className='total-value'>&euro;{getTotal().toFixed(2)}</span>
                         </div>
-                        <button className='checkout-btn'>
+                        <button className='checkout-btn' onClick={goToCheckout}>
                             Proceed to Checkout
                             <MdOutlineKeyboardArrowRight size={20} />
                         </button>

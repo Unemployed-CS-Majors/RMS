@@ -1,5 +1,7 @@
 // hooks/useCart.js
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import {useNavigate} from "react-router-dom";
+import ROUTES from "../../../constants/routes";
 
 /**
  * Custom hook to manage shopping cart functionality
@@ -7,6 +9,24 @@ import { useState } from "react";
 export const useCart = () => {
     const [cart, setCart] = useState([]);
     const [showMobileCart, setShowMobileCart] = useState(false);
+    useEffect(() => {
+        if (cart.length !== 0) {
+            localStorage.setItem("cart", JSON.stringify(cart));
+        }
+    }, [cart]);
+
+    useEffect(() => {
+        const storedCart = JSON.parse(localStorage.getItem("cart"));
+        if (storedCart) {
+            setCart(storedCart);
+        }
+    }, []);
+
+    const navigate = useNavigate();
+
+    const goToCheckout = () => {
+        navigate(ROUTES.CHECKOUT, { state: { cart } })
+    }
 
     /**
      * Add an item to the cart
@@ -67,7 +87,8 @@ export const useCart = () => {
         getTotal,
         getItemTotalPrice,
         showMobileCart,
-        toggleMobileCart
+        toggleMobileCart,
+        goToCheckout
     };
 };
 

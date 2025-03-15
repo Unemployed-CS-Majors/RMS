@@ -28,6 +28,7 @@ const Menu = () => {
     removeFromCart,
     getTotal,
     getItemTotalPrice,
+    goToCheckout,
 
     // Allergens
     allAllergens,
@@ -54,17 +55,7 @@ const Menu = () => {
     error
   } = useMenuState();
 // Load cart from localStorage when the component mounts
-    useEffect(() => {
-        const storedCart = JSON.parse(localStorage.getItem("cart"));
-        if (storedCart) {
-            setCart(storedCart);
-        }
-    }, []);
 
-    // Update localStorage whenever the cart is modified
-    useEffect(() => {
-        localStorage.setItem("cart", JSON.stringify(cart));
-    }, [cart]);
   return (
       <div className='menu-page'>
         <div
@@ -153,6 +144,7 @@ const Menu = () => {
                   removeFromCart={removeFromCart}
                   getTotal={getTotal}
                   getItemTotalPrice={getItemTotalPrice}
+                  goToCheckout={goToCheckout}
               />
           )}
 
@@ -165,6 +157,7 @@ const Menu = () => {
                   removeFromCart={removeFromCart}
                   getTotal={getTotal}
                   getItemTotalPrice={getItemTotalPrice}
+                  goToCheckout={goToCheckout}
               />
           )}
         </div>
