@@ -28,12 +28,6 @@ const Menu = () => {
     navigate("/checkout", { state: { cart } });
   };
 
-  // Clear order button
-  const clearOrder = () => {
-    setCart([]);
-    localStorage.removeItem("cart");
-  };
-
   // Load cart from localStorage when the component mounts
   useEffect(() => {
     const storedCart = JSON.parse(localStorage.getItem("cart"));
@@ -301,11 +295,6 @@ const Menu = () => {
               <span className='total-label'>Total</span>
               <span className='total-value'>&euro;{getTotal().toFixed(2)}</span>
             </div>
-            {cart.length > 0 && (
-              <button className='clear-order-btn' onClick={clearOrder}>
-                Clear Order
-              </button>
-            )}
 
             <button className='checkout-btn' onClick={handleProceedToCheckout}>
               Proceed to Checkout
@@ -366,11 +355,6 @@ const Menu = () => {
                 <span className='total-label'>Total</span>
                 <span className='total-value'>&euro;{getTotal().toFixed(2)}</span>
               </div>
-              {cart.length > 0 && (
-                <button className='clear-order-btn' onClick={clearOrder}>
-                  Clear Order
-                </button>
-              )}
               <button className='checkout-btn' onClick={handleProceedToCheckout}>
                 Proceed to Checkout
                 <MdOutlineKeyboardArrowRight size={20} />

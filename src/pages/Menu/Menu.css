@@ -584,27 +584,3 @@
 .sticky-padding {
   padding-top: 4rem;
 }
-
-.clear-order-btn {
-  background-color: #f44336;
-  color: white;
-  border: none;
-  padding: 1rem 2rem;
-  font-size: 1rem;
-  font-weight: 600;
-  border-radius: 30px;
-  cursor: pointer;
-  width: 100%;
-  margin-bottom: 1rem;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.clear-order-btn:hover {
-  background-color: #d32f2f;
-  transform: translateY(-2px);
-}
-
-.clear-order-btn:focus {
-  outline: none;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-}
