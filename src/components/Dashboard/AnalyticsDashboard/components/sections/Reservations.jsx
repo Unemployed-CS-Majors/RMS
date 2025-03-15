@@ -1,5 +1,5 @@
 
-import React, {useEffect} from 'react';
+import React, from 'react';
 import BarChartComponent from '../charts/BarChartComponent';
 import PieChartComponent from '../charts/PieChartComponent';
 import { MetricsGrid } from '../charts/MetricsDisplay';
@@ -30,12 +30,6 @@ const Reservations = ({ analyticsData, timeRange }) => {
         .sort((a, b) => b.reservations - a.reservations)
         .slice(0, 8);
 
-    useEffect(() => {
-        console.log(tablePopularityData);
-    }, [tablePopularityData]);
-    useEffect(() => {
-        console.log(reservationsByDayData);
-    }, [reservationsByDayData]);
     const reservationMetrics = [
         {
             title: 'Total Reservations',
