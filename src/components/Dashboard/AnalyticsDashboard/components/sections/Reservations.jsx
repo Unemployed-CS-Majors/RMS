@@ -1,5 +1,5 @@
 
-import React, from 'react';
+import React from 'react';
 import BarChartComponent from '../charts/BarChartComponent';
 import PieChartComponent from '../charts/PieChartComponent';
 import { MetricsGrid } from '../charts/MetricsDisplay';
