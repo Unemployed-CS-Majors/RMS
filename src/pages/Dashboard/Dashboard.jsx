@@ -24,6 +24,7 @@ import { useMenuManagement } from './hooks/useMenuManagement';
 import { useWebSocket } from './hooks/useWebSocket';
 import { useUIState } from './hooks/useUIState';
 import OrderManagement from "../../components/Dashboard/Orders/OrderManagement";
+import AnalyticsDashboard from "../../components/Dashboard/AnalyticsDashboard/AnalyticsDashboard";
 
 /**
  * RestaurantDashboard component
@@ -159,6 +160,12 @@ const RestaurantDashboard = () => {
                         <LoadingIndicator text={`Loading ${activeTab.replace(/([A-Z])/g, ' $1').trim()}...`}/>
                     ) : (
                         <>
+                            {activeTab === 'dashboard' && (
+                                <AnalyticsDashboard
+                                    loading={loading}
+                                    setLoading={setLoading}
+                                />
+                            )}
                             {activeTab === 'pendingReservations' && (
                                 <PendingReservations
                                     pendingReservations={pendingReservations}

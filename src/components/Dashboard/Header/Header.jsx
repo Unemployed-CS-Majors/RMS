@@ -21,6 +21,12 @@ const Header = ({
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
                 );
+            case 'dashboard':
+                return (
+                    <svg className="header-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                );
             case 'hours':
                 return (
                     <svg className="header-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -66,6 +72,8 @@ const Header = ({
     // Get title based on active tab
     const getHeaderTitle = () => {
         switch(activeTab) {
+            case 'dashboard':
+                return 'Analytics Dashboard';
             case 'pendingReservations':
                 return 'Reservations Requiring Approval';
             case 'hours':
@@ -83,7 +91,7 @@ const Header = ({
             case 'restaurantConfig':
                 return 'Restaurant Configuration';
             default:
-                return 'Dashboard';
+                return 'AnalyticsDashboard';
         }
     };
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 import cookieManager from "../../../utils/cookieManager";
 import cookieKeys from "../../../constants/cookieKeys";
 import "./Sidebar.css";
@@ -9,6 +9,7 @@ const Sidebar = ({activeTab, setActiveTab, pendingReservations, onToggle}) => {
     // State for section collapse
     const [collapsedSections, setCollapsedSections] = useState({
         navigation: false,
+        analytics: false,  // Added new section for analytics
         reservations: false,
         orders: false,
         management: false,
@@ -118,19 +119,45 @@ const Sidebar = ({activeTab, setActiveTab, pendingReservations, onToggle}) => {
                                         </>
                                     )}
                                 </button>
-                                <button
-                                    className={`nav-button dashboard-button ${activeTab === 'dashboard' ? 'active' : ''}`}
-                                    onClick={() => setActiveTab('dashboard')}
-                                    title="Dashboard Overview"
-                                >
-                                    <span className="nav-icon">📊</span>
-                                    {!collapsed && (
-                                        <span className="nav-text">Dashboard</span>
-                                    )}
-                                </button>
                             </div>
                         )}
                     </div>
+
+                    {/* Analytics Section - NEW */}
+                    {isOwner && (
+                        <div className="nav-section">
+                            {!collapsed && (
+                                <div
+                                    className={`section-header ${collapsedSections.analytics ? 'collapsed' : ''}`}
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        toggleSection('analytics');
+                                    }}
+                                >
+                                    <div className="section-label">Analytics</div>
+                                    <div className="section-toggle">
+                                        {collapsedSections.analytics ? '►' : '▼'}
+                                    </div>
+                                </div>
+                            )}
+                            {(!collapsedSections.analytics || collapsed) && (
+                                <div className="section-content">
+                                    <button
+                                        className={`nav-button dashboard-button ${activeTab === 'dashboard' ? 'active' : ''}`}
+                                        onClick={() => setActiveTab('dashboard')}
+                                        title="Dashboard Overview"
+                                    >
+                                        <span className="nav-icon">📊</span>
+                                        {!collapsed && (
+                                            <span className="nav-text">Analytics Dashboard</span>
+                                        )}
+                                    </button>
+                                </div>
+                            )}
+                        </div>
+                    )
+                    }
+
 
                     {/* Reservations Section */}
                     <div className="nav-section">

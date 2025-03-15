@@ -36,7 +36,7 @@ export const useActiveTab = (
     // Set initial hash based on initialTab
     useEffect(() => {
         const hash = window.location.hash.replace('#', '');
-        if (hash && ['pendingReservations', 'hours', 'tables', 'employees', 'allReservations', 'menu', 'orders', 'restaurantConfig'].includes(hash)) {
+        if (hash && ["dashboard",'pendingReservations', 'hours', 'tables', 'employees', 'allReservations', 'menu', 'orders', 'restaurantConfig'].includes(hash)) {
             setActiveTab(hash);
         } else {
             window.location.hash = initialTab;
