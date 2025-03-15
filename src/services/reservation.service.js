@@ -22,10 +22,11 @@ const reservationService = {
         const response = await axiosInstance.post(`/reservation/complete/${reservationId}`);
         return response.data.data;
     },
-    reschedule: async (reservationId, date, time) => {
+    reschedule: async (reservationId, startTime, endTime, tableId) => {
         const response = await axiosInstance.post(`/reservation/reschedule/${reservationId}`, {
-            date,
-            time
+            tableId: tableId,
+            startTime: startTime,
+            endTime: endTime
         });
         return response.data.data;
     },
@@ -33,10 +34,11 @@ const reservationService = {
         const response = await axiosInstance.get(`/reservation/get/${reservationId}`);
         return response.data.data;
     },
-    getFreeTables: async (startTime, endTime) => {
+    getFreeTables: async (startTime, endTime,seats) => {
         const response = await axiosInstance.post(`/reservation/free-tables`, {
             startTime,
-            endTime
+            endTime,
+            seats: parseInt(seats,10)
         });
         return response.data.data;
     },
@@ -46,6 +48,14 @@ const reservationService = {
     },
     getByStatus: async (status) => {
         const response = await axiosInstance.get(`/reservation/${status}`)
+        return response.data.data;
+    },
+    getByUser: async () => {
+        const response = await axiosInstance.get(`/reservation/user`);
+        return response.data.data;
+    },
+    getUserUpcomingReservations: async () => {
+        const response = await axiosInstance.get(`/reservation/user/upcoming`);
         return response.data.data;
     }
 };

@@ -1,37 +1,63 @@
-*{
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    font-family: 'Poppins';
-}
-.home-container {
-    background-image: url('../../assets/background.jpg'); 
-    background-size: cover; 
-    background-position: center; 
-    background-attachment: fixed; 
-    height: 100%; 
-    width: 100%; 
+@import '../../styles/variables.css';
+
+.main {
+    padding: 4rem 5vw;
     display: flex;
     flex-direction: column;
-    justify-content: start; 
-    overflow-y: auto;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--gray-light);
 }
 
-::-webkit-scrollbar {
-    width: 12px; 
+/* Common styles for section containers */
+.main-content-container,
+.openhours-container,
+.aboutus-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    overflow: hidden;
+    max-width: 1200px;
+    width: 100%;
+    background-color: var(--white);
+    margin-bottom: 3rem;
+    transition: var(--transition);
 }
 
-::-webkit-scrollbar-thumb {
-    background-color: #FF7D05; 
-    border-radius: 6px; 
-    border: 3px solid white; 
+.main-content-container:hover,
+.openhours-container:hover,
+.aboutus-container:hover {
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-5px);
 }
 
-::-webkit-scrollbar-track {
-    background: #f4f4f4; 
-    border-radius: 6px;
+/* Media Queries */
+@media (max-width: 992px) {
+    .main {
+        padding: 3rem 4vw;
+    }
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background-color: #e66b04; 
+@media (max-width: 768px) {
+    .main {
+        padding: 2rem 3vw;
+    }
+
+    .main-content-container,
+    .openhours-container,
+    .aboutus-container {
+        flex-direction: column;
+        padding: 0;
+        margin-bottom: 2.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .main {
+        padding: 1.5rem 2vw;
+    }
 }

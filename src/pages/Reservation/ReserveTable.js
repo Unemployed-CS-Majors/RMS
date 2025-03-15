@@ -1,9 +1,11 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import {ReserveTableContainer, PageTitle, ErrorMessage, SuccessMessage} from "./ReserveTableStyle";
 import DateTimeForm from "./DateTimeForm";
 import reservationService from "../../services/reservation.service";
 import FloorPlan from "../../components/FloorPlan/FloorPlan";
 import ReservationModal from "../../components/Reservation/ReservationModal";
+import LoginPrompt from "./LoginPrompt";
+import { AuthContext } from "../../contexts/AuthContext";
 
 const ReserveTable = () => {
     const [date, setDate] = useState(null);
@@ -15,6 +17,9 @@ const ReserveTable = () => {
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
     const [isMobile, setIsMobile] = useState(false);
+
+    // Get authentication state from AuthContext
+    const { isLoggedIn } = useContext(AuthContext);
 
     // State for modal
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -88,6 +93,11 @@ const ReserveTable = () => {
             return false;
         }
 
+        if(!number){
+            setError("Please enter the number of seats");
+            return false;
+        }
+
         // Calculate start and end times in minutes for comparison
         const startHour = parseInt(startTime.hour, 10);
         const startMinute = parseInt(startTime.minute, 10);
@@ -103,6 +113,11 @@ const ReserveTable = () => {
             return false;
         }
 
+        if (number < 1) {
+            setError("Number of people must be greater than 0");
+            return false;
+        }
+
         return true;
     };
 
@@ -110,6 +125,12 @@ const ReserveTable = () => {
         console.log("Search button clicked!");
 
         setSuccess(null);
+
+        // Check if user is authenticated
+        if (!isLoggedIn) {
+            setError("Please log in to search for available tables");
+            return;
+        }
 
         try {
             setLoading(true);
@@ -135,7 +156,7 @@ const ReserveTable = () => {
             console.log("Start Time:", startDateTime);
             console.log("End Time:", endDateTime);
 
-            const response = await reservationService.getFreeTables(startDateTime, endDateTime);
+            const response = await reservationService.getFreeTables(startDateTime, endDateTime, number);
 
             // Validate API response
             if (!response || !Array.isArray(response)) {
@@ -170,6 +191,12 @@ const ReserveTable = () => {
     const handleTableSelect = (tableId) => {
         console.log("FloorPlan selected:", tableId);
 
+        // Check if user is authenticated
+        if (!isLoggedIn) {
+            setError("Please log in to select a table");
+            return;
+        }
+
         // Only proceed if we have valid reservation data
         if (!validateInputs()) {
             console.error("Invalid reservation data. Please check your inputs and try again");
@@ -183,13 +210,19 @@ const ReserveTable = () => {
             return;
         }
 
-
         setSelectedTableId(tableId);
         setIsModalOpen(true);
     };
 
     // Process the actual reservation
     const handleConfirmReservation = async (tableId) => {
+        // Check if user is authenticated
+        if (!isLoggedIn) {
+            setError("Please log in to confirm your reservation");
+            setIsModalOpen(false);
+            return;
+        }
+
         try {
             setLoading(true);
             setError(null);
@@ -306,40 +339,43 @@ const ReserveTable = () => {
             {error && <ErrorMessage style={{fontSize: isMobile ? '0.9rem' : '1rem'}}>{error}</ErrorMessage>}
             {success && <SuccessMessage style={{fontSize: isMobile ? '0.9rem' : '1rem'}}>{success}</SuccessMessage>}
 
-            <div style={{
-                display: 'flex',
-                flexDirection: isMobile ? 'column-reverse' : 'row',
-                gap: isMobile ? '1.5rem' : '2rem',
-                width: '100%'
-            }}>
-                <ReserveTableContainer>
-                    <FloorPlan
-                        freeTables={freeTables}
-                        onTableSelect={handleTableSelect}
-                    />
-                </ReserveTableContainer>
+            {!isLoggedIn ? (
+                // Show login prompt if user is not authenticated
+                <LoginPrompt isMobile={isMobile} />
+            ) : (
+                // Show reservation UI if user is authenticated
                 <div style={{
-                    width: isMobile ? '100%' : '40%'
+                    display: 'flex',
+                    flexDirection: isMobile ? 'column-reverse' : 'row',
+                    gap: isMobile ? '1.5rem' : '2rem',
+                    width: '100%'
                 }}>
-                    <DateTimeForm
-                        date={date}
-                        setDate={setDate}
-                        startTime={startTime}
-                        setStartTime={setStartTime}
-                        endTime={endTime}
-                        setEndTime={setEndTime}
-                        number={number}
-                        setNumber={setNumber}
-                        onSearch={handleSearch}
-                        loading={loading}
-                        isMobile={isMobile}
-                    />
+                    <ReserveTableContainer>
+                        <FloorPlan
+                            freeTables={freeTables}
+                            onTableSelect={handleTableSelect}
+                        />
+                    </ReserveTableContainer>
+                    <div style={{
+                        width: isMobile ? '100%' : '40%'
+                    }}>
+                        <DateTimeForm
+                            date={date}
+                            setDate={setDate}
+                            startTime={startTime}
+                            setStartTime={setStartTime}
+                            endTime={endTime}
+                            setEndTime={setEndTime}
+                            number={number}
+                            setNumber={setNumber}
+                            onSearch={handleSearch}
+                            loading={loading}
+                            isMobile={isMobile}
+                        />
+                    </div>
                 </div>
-            </div>
+            )}
 
-            {
-
-            }
             <ReservationModal
                 isOpen={isModalOpen}
                 onClose={handleCloseModal}
