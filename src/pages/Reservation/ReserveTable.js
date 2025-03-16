@@ -1,10 +1,10 @@
 import React, {useState, useEffect, useContext} from "react";
-import {ReserveTableContainer, PageTitle, ErrorMessage, SuccessMessage} from "./ReserveTableStyle";
-import DateTimeForm from "./DateTimeForm";
+import styles from "./ReserveTable.module.css";
+import DateTimeForm from "../../components/Reservation/DateTimeForm/DateTimeForm";
 import reservationService from "../../services/reservation.service";
 import FloorPlan from "../../components/FloorPlan/FloorPlan";
-import ReservationModal from "../../components/Reservation/ReservationModal";
-import LoginPrompt from "./LoginPrompt";
+import ReservationModal from "../../components/Reservation/ReservationModal/ReservationModal";
+import LoginPrompt from "../../components/Reservation/LoginPrompt/LoginPrompt";
 import { AuthContext } from "../../contexts/AuthContext";
 
 const ReserveTable = () => {
@@ -332,12 +332,12 @@ const ReserveTable = () => {
             display: 'flex',
             flexDirection: 'column'
         }}>
-            <PageTitle style={{fontSize: isMobile ? '1.5rem' : '2rem', margin: isMobile ? '0 0 1rem' : '0 0 1.5rem'}}>
+            <h1 className={styles.pageTitle} style={{fontSize: isMobile ? '1.5rem' : '2rem', margin: isMobile ? '0 0 1rem' : '0 0 1.5rem'}}>
                 Interactive Floor Plan
-            </PageTitle>
+            </h1>
 
-            {error && <ErrorMessage style={{fontSize: isMobile ? '0.9rem' : '1rem'}}>{error}</ErrorMessage>}
-            {success && <SuccessMessage style={{fontSize: isMobile ? '0.9rem' : '1rem'}}>{success}</SuccessMessage>}
+            {error && <div className={styles.errorMessage} style={{fontSize: isMobile ? '0.9rem' : '1rem'}}>{error}</div>}
+            {success && <div className={styles.successMessage} style={{fontSize: isMobile ? '0.9rem' : '1rem'}}>{success}</div>}
 
             {!isLoggedIn ? (
                 // Show login prompt if user is not authenticated
@@ -350,12 +350,12 @@ const ReserveTable = () => {
                     gap: isMobile ? '1.5rem' : '2rem',
                     width: '100%'
                 }}>
-                    <ReserveTableContainer>
+                    <div className={styles.reserveTableContainer}>
                         <FloorPlan
                             freeTables={freeTables}
                             onTableSelect={handleTableSelect}
                         />
-                    </ReserveTableContainer>
+                    </div>
                     <div style={{
                         width: isMobile ? '100%' : '40%'
                     }}>

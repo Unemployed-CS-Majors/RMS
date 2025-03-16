@@ -1,0 +1,12 @@
+.tableWithChairs {
+    transition: all 0.2s ease;
+}
+
+.tableWithChairs.dragging {
+    transition: none;
+}
+
+.tableWithChairs.selected text {
+    font-weight: 800;
+    font-size: 1.2rem;
+}

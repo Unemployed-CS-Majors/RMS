@@ -1,11 +1,11 @@
 import React from "react";
-import "./FloorPlan.css";
+import styles from "./FloorPlan.module.css";
 
 // Components
-import FloorCanvas from "./components/FloorCanvas";
-import Legend from "./components/Legend";
-import LoadingState from "./components/LoadingState";
-import ErrorState from "./components/ErrorState";
+import FloorCanvas from "./components/FloorCanvas/FloorCanvas";
+import Legend from "./components/Legend/Legend";
+import LoadingState from "./components/LoadingState/LoadingState";
+import ErrorState from "./components/ErrorState/ErrorState";
 
 // Custom hooks
 import { useFloorPlanData } from "./hooks/useFloorPlanData";
@@ -51,7 +51,7 @@ const FloorPlan = ({ freeTables = [], onTableSelect }) => {
     }
 
     return (
-        <div className="floor-plan-container">
+        <div className={styles.floorPlanContainer}>
             <h2>Restaurant Floor Plan</h2>
 
             <FloorCanvas

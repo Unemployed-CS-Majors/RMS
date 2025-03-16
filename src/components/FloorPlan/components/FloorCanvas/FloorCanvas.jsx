@@ -1,8 +1,8 @@
 import React from "react";
-import TableWithChairs from "./TableWithChairs";
-import Wall from "./Wall";
-import Door from "./Door";
-import Window from "./Window";
+import TableWithChairs from "../TableWithChairs/TableWithChairs";
+import Wall from "../Wall/Wall";
+import Door from "../Door/Door";
+import Window from "../Window/Window";
 
 /**
  * FloorCanvas component renders the SVG canvas with all floor plan elements
