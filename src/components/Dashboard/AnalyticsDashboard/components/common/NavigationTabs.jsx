@@ -1,8 +1,9 @@
-
-import React from 'react';
+import React, { useContext } from 'react';
 
 const NavigationTabs = ({ activeSection, setActiveSection }) => {
-    const tabs = [
+
+    // Define all tabs initially
+    let tabs = [
         { id: 'summary', label: 'Overview' },
         { id: 'revenue', label: 'Revenue' },
         { id: 'orders', label: 'Orders' },

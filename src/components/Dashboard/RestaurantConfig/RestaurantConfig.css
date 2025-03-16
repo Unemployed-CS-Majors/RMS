@@ -211,13 +211,36 @@ input:focus, textarea:focus {
     gap: 20px;
 }
 
+.feature-group {
+    background-color: #f9fafb;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.feature-group-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 8px;
+}
+
+.feature-group-description {
+    font-size: 0.875rem;
+    color: #4b5563;
+    margin-bottom: 16px;
+}
+
 .feature-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 16px;
-    background-color: #f9fafb;
-    border-radius: 8px;
+    padding: 12px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.feature-item:last-child {
+    border-bottom: none;
 }
 
 .feature-info h4 {

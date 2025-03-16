@@ -33,7 +33,6 @@ export const useActiveTab = (
 ) => {
     const [activeTab, setActiveTab] = useState(initialTab);
 
-    // Set initial hash based on initialTab
     useEffect(() => {
         const hash = window.location.hash.replace('#', '');
         if (hash && ["dashboard",'pendingReservations', 'hours', 'tables', 'employees', 'allReservations', 'menu', 'orders', 'restaurantConfig'].includes(hash)) {
@@ -159,7 +158,6 @@ export const useActiveTab = (
                         }
                         break;
                     case "restaurantConfig":
-                        // The RestaurantConfig component will handle its own data fetching
                         break;
                     default:
                         console.log(activeTab);

@@ -20,12 +20,14 @@ export const useRestaurantConfig = (setLoading) => {
     });
     const [mapIFrame, setMapIFrame] = useState('');
     const [features, setFeatures] = useState({
-        onlineReservations: true,
-        onlineOrdering: true,
-        menuEnabled: true,
-        homeDelivery: true,
-        orderPickup: true,
-        onlinePayment: true
+        online_reservations: true,
+        online_ordering: true,
+        menu: true,
+        home_delivery: true,
+        order_pickup: true,
+        online_payment: true,
+        cash_payment: true,
+        in_store_payment: true
     });
 
     // State for editing modes
@@ -39,47 +41,62 @@ export const useRestaurantConfig = (setLoading) => {
 
     // Fetch restaurant configuration
     const fetchRestaurantConfig = async () => {
-        setLoading(true);
         try {
             const configResponse = await restaurantConfigService.getRestaurantConfig();
-
-            if (configResponse.data) {
+            console.log(configResponse);
+            if (configResponse) {
                 // Set phone number if available
-                if (configResponse.data.phoneNumber) {
-                    setPhoneNumber(configResponse.data.phoneNumber.phoneNumber || '');
+                console.log(configResponse);
+                if (configResponse.phoneNumber) {
+                    setPhoneNumber(configResponse.phoneNumber.phoneNumber || '');
+                    console.log(phoneNumber);
                 }
 
                 // Set email if available
-                if (configResponse.data.email) {
-                    setEmail(configResponse.data.email.email || '');
+                if (configResponse.email) {
+                    setEmail(configResponse.email.email || '');
                 }
 
                 // Set address if available
-                if (configResponse.data.address) {
-                    setAddress(configResponse.data.address);
+                if (configResponse.address) {
+                    setAddress(configResponse.address);
                 }
 
                 // Set map iframe if available
-                if (configResponse.data.map) {
-                    setMapIFrame(configResponse.data.map.mapIFrame || '');
+                if (configResponse.map) {
+                    setMapIFrame(configResponse.map.mapUrl || '');
+                }
+
+                if (configResponse.features) {
+                    const featuresObj = {};
+                    configResponse.features.forEach(feature => {
+                        featuresObj[feature.name] = feature.enabled;
+                    });
+                    setFeatures(featuresObj);
+                }
+
+                if (!configResponse.phoneNumber && !configResponse.email) {
+                    setEditingContact(true);
+                }
+
+                if (!configResponse.address) {
+                    setEditingAddress(true);
+                }
+
+                if (!configResponse.map) {
+                    setEditingMap(true);
                 }
             }
-
-            // Fetch features (mock for now)
-            // In a real implementation, you would call the API
-            // const featuresResponse = await restaurantConfigService.getFeatures();
-            // setFeatures(featuresResponse.data);
         } catch (error) {
             console.error('Error fetching restaurant configuration:', error);
             showNotification('error', 'Failed to load restaurant configuration');
-        } finally {
-            setLoading(false);
         }
     };
 
     // Load data on mount
     useEffect(() => {
         fetchRestaurantConfig();
+        console.log('fetchRestaurantConfig called')
     }, []);
 
     // Helper function to show notifications
@@ -236,13 +253,17 @@ export const useRestaurantConfig = (setLoading) => {
         setFeatures(newFeatures);
 
         try {
-            // This would be implemented in a real application
-            // await restaurantConfigService.toggleFeature(feature, newFeatures[feature]);
+            await restaurantConfigService.updateFeature({
+                name: feature,
+                enabled: newFeatures[feature]
+            });
+
             showNotification('success', `${feature} has been ${newFeatures[feature] ? 'enabled' : 'disabled'}`);
             return true;
         } catch (error) {
             // Revert on error
             setFeatures(features);
+            console.error('Error updating feature:', error);
             showNotification('error', `Failed to update ${feature}`);
             return false;
         }

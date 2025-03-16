@@ -86,15 +86,35 @@ const restaurantConfigService = {
         return response.data;
     },
 
-    toggleFeature: async (feature, enabled) => {
-        const response = await axiosInstance.put(`/restaurant/features/${feature}`, { enabled });
-        return response.data;
-    },
-
     getFeatures: async () => {
         const response = await axiosInstance.get('/restaurant/features');
         return response.data.data;
-    }
+    },
+
+    addFeature: async (data) => {
+        const response = await axiosInstance.post('/restaurant/feature', data);
+        return response.data;
+    },
+
+    updateFeature: async (data) => {
+        const response = await axiosInstance.put('/restaurant/feature', data);
+        return response.data;
+    },
+
+    getFeature: async (name) => {
+        const response = await axiosInstance.get(`/restaurant/feature/${name}`);
+        return response.data.data;
+    },
+
+    deleteFeature: async (name) => {
+        const response = await axiosInstance.delete(`/restaurant/feature/${name}`);
+        return response.data;
+    },
+
+    getAllFeatures: async () => {
+        const response = await axiosInstance.get('/restaurant/features');
+        return response.data.data;
+    },
 };
 
 export default restaurantConfigService;
