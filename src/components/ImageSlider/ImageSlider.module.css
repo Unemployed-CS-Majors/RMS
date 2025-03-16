@@ -1,6 +1,6 @@
 @import '../../styles/variables.module.css';
 
-.image-slider {
+.imageSlider {
     position: relative;
     width: 100%;
     height: 500px;
@@ -8,14 +8,14 @@
     border-radius: 0;
 }
 
-.image-slider img {
+.imageSlider img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s ease;
 }
 
-.slider-nav-button {
+.sliderNavButton {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -32,25 +32,25 @@
     z-index: 10;
 }
 
-.slider-nav-button:hover {
+.sliderNavButton:hover {
     background-color: rgba(255, 255, 255, 1);
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 }
 
-.slider-nav-button.prev {
+.sliderNavButton.prev {
     left: 20px;
 }
 
-.slider-nav-button.next {
+.sliderNavButton.next {
     right: 20px;
 }
 
-.slider-nav-button svg {
+.sliderNavButton svg {
     font-size: 1.5rem;
     color: var(--primary);
 }
 
-.slider-indicators {
+.sliderIndicators {
     position: absolute;
     bottom: 20px;
     left: 50%;
@@ -60,7 +60,7 @@
     z-index: 10;
 }
 
-.slider-indicator {
+.sliderIndicator {
     width: 10px;
     height: 10px;
     border-radius: 5px;
@@ -71,37 +71,37 @@
     cursor: pointer;
 }
 
-.slider-indicator.active {
+.sliderIndicator.active {
     width: 20px;
     background-color: var(--primary);
 }
 
 @media (max-width: 768px) {
-    .image-slider {
+    .imageSlider {
         height: 350px;
     }
 
-    .slider-nav-button {
+    .sliderNavButton {
         width: 36px;
         height: 36px;
     }
 
-    .slider-nav-button svg {
+    .sliderNavButton svg {
         font-size: 1.2rem;
     }
 }
 
 @media (max-width: 576px) {
-    .image-slider {
+    .imageSlider {
         height: 300px;
     }
 
-    .slider-nav-button {
+    .sliderNavButton {
         width: 32px;
         height: 32px;
     }
 
-    .slider-indicators {
+    .sliderIndicators {
         bottom: 15px;
     }
 }

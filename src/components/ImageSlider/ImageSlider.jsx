@@ -2,7 +2,7 @@ import React from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import useImageSlider from '../../hooks/useImageSlider';
-import './ImageSlider.css';
+import styles from './ImageSlider.module.css';
 
 const ImageSlider = ({ imageUrls }) => {
     const {
@@ -14,7 +14,7 @@ const ImageSlider = ({ imageUrls }) => {
     } = useImageSlider(imageUrls);
 
     return (
-        <div className="image-slider">
+        <div className={styles.imageSlider}>
             <img
                 src={imageUrls[currentIndex]}
                 alt={`Slide ${currentIndex}`}
@@ -22,11 +22,11 @@ const ImageSlider = ({ imageUrls }) => {
                     transform: isTransitioning ? 'scale(1.05)' : 'scale(1)',
                 }}
             />
-            <div className="slider-indicators">
+            <div className={styles.sliderIndicators}>
                 {imageUrls.map((_, index) => (
                     <button
                         key={index}
-                        className={`slider-indicator ${index === currentIndex ? 'active' : ''}`}
+                        className={`${styles.sliderIndicator} ${index === currentIndex ? styles.active : ''}`}
                         onClick={() => goToSlide(index)}
                         aria-label={`Go to slide ${index + 1}`}
                     />
@@ -34,14 +34,14 @@ const ImageSlider = ({ imageUrls }) => {
             </div>
             <button
                 onClick={goToPrevious}
-                className="slider-nav-button prev"
+                className={`${styles.sliderNavButton} ${styles.prev}`}
                 aria-label="Previous slide"
             >
                 <FaChevronLeft />
             </button>
             <button
                 onClick={goToNext}
-                className="slider-nav-button next"
+                className={`${styles.sliderNavButton} ${styles.next}`}
                 aria-label="Next slide"
             >
                 <FaChevronRight />
