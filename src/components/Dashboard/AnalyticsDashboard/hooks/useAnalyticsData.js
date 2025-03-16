@@ -1,5 +1,5 @@
 // src/components/Analytics/Dashboard/hooks/useAnalyticsData.js
-import { useState, useEffect, useCallback } from 'react';
+import {useCallback, useEffect, useState} from 'react';
 import analyticsService from '../../../../services/analytics.service';
 
 export const useAnalyticsData = (timeRange, setExternalLoading) => {
@@ -9,7 +9,7 @@ export const useAnalyticsData = (timeRange, setExternalLoading) => {
 
     const fetchData = useCallback(async () => {
         setError(null);
-
+        setLoading(true);
         try {
             // Fetch all analytics data at once
             const data = await analyticsService.getAllAnalytics(timeRange);
@@ -29,11 +29,12 @@ export const useAnalyticsData = (timeRange, setExternalLoading) => {
                     itemsByRevenue: itemsByRevenueArray
                 }
             });
+            setLoading(false);
         } catch (error) {
             console.error("Error fetching analytics data:", error);
             setError("Failed to load analytics data. Please try again later.");
         }
-    }, [timeRange, setExternalLoading]);
+    }, []);
 
     useEffect(() => {
         fetchData();

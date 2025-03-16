@@ -56,7 +56,7 @@ const RestaurantDashboard = () => {
 
     // Tab management
     const [activeTab, setActiveTab] = useActiveTab(
-        tab || 'pendingReservations',
+        tab || 'dashboard',
         setAllReservations,
         setOpeningHours,
         setPendingReservations,

@@ -21,7 +21,7 @@ import restaurantConfigService from "../../../services/restaurantConfig.service"
  * @returns {Array} Active tab and function to change active tab
  */
 export const useActiveTab = (
-    initialTab = 'pendingReservations',
+    initialTab = 'dashboard',
     setAllReservations,
     setOpeningHours,
     setPendingReservation,

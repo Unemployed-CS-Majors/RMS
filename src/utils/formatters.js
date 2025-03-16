@@ -1,8 +1,13 @@
-// src/components/Analytics/Dashboard/utils/formatters.js
-
-// Format currency for better display
+// Updated formatCurrency function
 export const formatCurrency = (value) => {
-    return `$${value.toFixed(2)}`;
+    // Check if value is a valid number before using toFixed
+    const numericValue = Number(value);
+
+    if (isNaN(numericValue)) {
+        return '$0.00'; // Return default value for invalid inputs
+    }
+
+    return `$${numericValue.toFixed(2)}`;
 };
 
 // Format percentage
