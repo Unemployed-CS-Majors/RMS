@@ -1,5 +1,6 @@
 import React from "react";
 import { MdClose } from "react-icons/md";
+import styles from "./AllergenFilter.module.css";
 
 const AllergenFilter = ({
                             showAllergenFilter,
@@ -18,42 +19,55 @@ const AllergenFilter = ({
     if (!showAllergenFilter) return null;
 
     return (
-        <div className="allergen-filter-overlay">
-            <div className="allergen-filter-panel" ref={filterRef}>
-                <div className="filter-header">
+        <div className={styles.allergenFilterOverlay}>
+            <div className={styles.allergenFilterPanel} ref={filterRef}>
+                <div className={styles.filterHeader}>
                     <h3>Exclude Allergens</h3>
-                    <button className="close-button" onClick={toggleAllergenFilter}>
+                    <button
+                        className={styles.closeButton}
+                        onClick={toggleAllergenFilter}
+                        aria-label="Close allergen filter"
+                    >
                         <MdClose />
                     </button>
                 </div>
-                <div className="filter-description">
+                <div className={styles.filterDescription}>
                     Select allergens to exclude dishes containing them from the menu.
                 </div>
-                <div className="allergen-filter-options">
+                <div className={styles.allergenFilterOptions}>
                     {allAllergens.map(allergen => (
-                        <label key={allergen} className="allergen-filter-option">
+                        <label key={allergen} className={styles.allergenFilterOption}>
                             <input
                                 type="checkbox"
                                 checked={excludedAllergens.includes(allergen)}
                                 onChange={() => toggleAllergen(allergen)}
                             />
-                            <span className="allergen-name">{formatAllergenName(allergen)}</span>
+                            <span className={styles.allergenName}>{formatAllergenName(allergen)}</span>
                         </label>
                     ))}
                 </div>
                 {excludedAllergens.length > 0 && (
-                    <button className="clear-filters-button" onClick={clearAllergenFilters}>
+                    <button
+                        className={styles.clearFiltersButton}
+                        onClick={clearAllergenFilters}
+                    >
                         Clear All Filters
                     </button>
                 )}
-                <div className="applied-filters-summary">
+                <div className={styles.appliedFiltersSummary}>
                     {excludedAllergens.length > 0 ? (
-                        <span>Excluding {excludedAllergens.length} allergen{excludedAllergens.length !== 1 ? 's' : ''}</span>
+                        <span>
+              Excluding {excludedAllergens.length} allergen
+                            {excludedAllergens.length !== 1 ? 's' : ''}
+            </span>
                     ) : (
                         <span>No allergens excluded</span>
                     )}
                 </div>
-                <button className="apply-filters-button" onClick={toggleAllergenFilter}>
+                <button
+                    className={styles.applyFiltersButton}
+                    onClick={toggleAllergenFilter}
+                >
                     Apply Filters
                 </button>
             </div>

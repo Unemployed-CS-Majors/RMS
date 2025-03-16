@@ -1,5 +1,6 @@
 import React from "react";
 import { FaSearch, FaTimes, FaFilter } from "react-icons/fa";
+import styles from "./SearchBar.module.css";
 
 const SearchBar = ({
                        searchTerm,
@@ -9,21 +10,21 @@ const SearchBar = ({
                        excludedAllergens
                    }) => {
     return (
-        <div className='sticky-searchbar'>
-            <div className='searchbar-container'>
-                <div className='search-input-wrapper'>
-                    <FaSearch className='search-icon' />
+        <div className={styles.stickySearchbar}>
+            <div className={styles.searchbarContainer}>
+                <div className={styles.searchInputWrapper}>
+                    <FaSearch className={styles.searchIcon} />
                     <input
-                        type='text'
-                        placeholder='Search for food, category, or allergens...'
+                        type="text"
+                        placeholder="Search for food, category, or allergens..."
                         value={searchTerm}
-                        onChange={e => setSearchTerm(e.target.value)}
-                        className='food-searchbar'
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        className={styles.foodSearchbar}
                     />
                     {searchTerm && (
                         <button
-                            className="clear-search-button"
-                            onClick={() => setSearchTerm('')}
+                            className={styles.clearSearchButton}
+                            onClick={() => setSearchTerm("")}
                             aria-label="Clear search"
                         >
                             <FaTimes />
@@ -31,14 +32,15 @@ const SearchBar = ({
                     )}
                 </div>
                 <button
-                    className="filter-toggle-button"
+                    className={`${styles.filterToggleButton} ${
+                        showAllergenFilter ? styles.filterToggleButtonActive : ""
+                    }`}
                     onClick={toggleAllergenFilter}
                     aria-label="Filter by allergens"
-                    data-active={showAllergenFilter}
                 >
                     <FaFilter />
                     {excludedAllergens.length > 0 && (
-                        <span className="filter-badge">{excludedAllergens.length}</span>
+                        <span className={styles.filterBadge}>{excludedAllergens.length}</span>
                     )}
                 </button>
             </div>
