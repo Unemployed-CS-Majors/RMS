@@ -2,25 +2,25 @@ import React from 'react';
 import { FaInstagram, FaFacebookSquare, FaTiktok } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import PropTypes from 'prop-types';
-import './SocialIcons.css';
+import styles from './SocialIcons.module.css';
 
 /**
  * Component for displaying social media icons with consistent styling
  */
 const SocialIcons = ({ className = '' }) => {
     return (
-        <div className={`socials-container ${className}`}>
-            <div className="socials instagram-container">
-                <FaInstagram className="apps" />
+        <div className={`${styles.socialsContainer} ${className}`}>
+            <div className={`${styles.socials} ${styles.instagramContainer}`}>
+                <FaInstagram className={styles.apps} />
             </div>
-            <div className="socials x-container">
-                <FaXTwitter className="apps" />
+            <div className={`${styles.socials} ${styles.xContainer}`}>
+                <FaXTwitter className={styles.apps} />
             </div>
-            <div className="socials facebook-container">
-                <FaFacebookSquare className="apps" />
+            <div className={`${styles.socials} ${styles.facebookContainer}`}>
+                <FaFacebookSquare className={styles.apps} />
             </div>
-            <div className="socials tiktok-container">
-                <FaTiktok className="apps" />
+            <div className={`${styles.socials} ${styles.tiktokContainer}`}>
+                <FaTiktok className={styles.apps} />
             </div>
         </div>
     );

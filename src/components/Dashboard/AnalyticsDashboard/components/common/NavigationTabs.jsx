@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import styles from './NavigationTabs.module.css';
 
 const NavigationTabs = ({ activeSection, setActiveSection }) => {
-
     // Define all tabs initially
     let tabs = [
         { id: 'summary', label: 'Overview' },
@@ -12,11 +12,11 @@ const NavigationTabs = ({ activeSection, setActiveSection }) => {
     ];
 
     return (
-        <div className="rms-analytics-tabs">
+        <div className={styles.tabs}>
             {tabs.map(tab => (
                 <button
                     key={tab.id}
-                    className={`rms-analytics-tab ${activeSection === tab.id ? 'active' : ''}`}
+                    className={`${styles.tab} ${activeSection === tab.id ? styles.active : ''}`}
                     onClick={() => setActiveSection(tab.id)}
                 >
                     {tab.label}

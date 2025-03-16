@@ -1,10 +1,10 @@
 import React from 'react';
-import './AllReservations.css';
+import styles from './AllReservations.module.css';
 
 // Component imports
-import ReservationsTable from './components/ReservationsTable';
-import FilterSidebar from './components/FilterSidebar';
-import ResultsCounter from './components/ResultsCounter';
+import ReservationsTable from './components/ReservationTable/ReservationsTable';
+import FilterSidebar from './components/FilterSidebar/FilterSidebar';
+import ResultsCounter from './components/ResultCounter/ResultsCounter';
 
 // Custom hooks
 import { useReservationFilters } from './hooks/useReservationFilters';
@@ -36,8 +36,8 @@ const AllReservations = ({ allReservations, filtersVisible, setFiltersVisible })
     };
 
     return (
-        <div className="app-container">
-            <div className="main-content-ar">
+        <div className={styles.appContainer}>
+            <div className={styles.mainContent}>
                 {/* Results counter */}
                 <ResultsCounter
                     filteredCount={filteredReservations.length}

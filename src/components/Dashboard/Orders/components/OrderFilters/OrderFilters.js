@@ -1,0 +1,117 @@
+import React from 'react';
+import styles from './OrderFilters.module.css';
+
+const OrderFilters = ({
+                          statusOptions,
+                          currentStatus,
+                          dateRange,
+                          onStatusChange,
+                          onDateRangeChange,
+                          isVisible,
+                          onClose,
+                          onApplyFilters,
+                          onResetFilters
+                      }) => {
+    // Handle status filter change
+    const handleStatusChange = (e) => {
+        onStatusChange(e.target.value);
+    };
+
+    // Handle date range changes
+    const handleStartDateChange = (e) => {
+        onDateRangeChange({
+            ...dateRange,
+            start: e.target.value
+        });
+    };
+
+    const handleEndDateChange = (e) => {
+        onDateRangeChange({
+            ...dateRange,
+            end: e.target.value
+        });
+    };
+
+    // Clear date filters
+    const handleClearDates = () => {
+        onDateRangeChange({ start: null, end: null });
+    };
+
+    return (
+        <>
+            <div
+                className={`${styles.orderFiltersOverlay} ${isVisible ? styles.orderFiltersOverlayVisible : ''}`}
+                onClick={onClose}
+            ></div>
+            <div className={`${styles.orderFilters} ${isVisible ? styles.orderFiltersVisible : ''}`}>
+                <div className={styles.filtersHeader}>
+                    <h3>Filters</h3>
+                    <button
+                        className={styles.filtersCloseButton}
+                        onClick={onClose}
+                        aria-label="Close filters"
+                    >
+                        ×
+                    </button>
+                </div>
+                <div className={styles.filtersGrid}>
+                    <div className={styles.filterGroup}>
+                        <label htmlFor="status-filter">Order Status</label>
+                        <select
+                            id="status-filter"
+                            value={currentStatus}
+                            onChange={handleStatusChange}
+                        >
+                            {statusOptions.map(option => (
+                                <option key={option.value} value={option.value}>
+                                    {option.label}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <div className={styles.filterGroup}>
+                        <label>Date Range</label>
+                        <div className={styles.dateInputs}>
+                            <input
+                                type="date"
+                                value={dateRange.start || ''}
+                                onChange={handleStartDateChange}
+                                placeholder="Start date"
+                            />
+                            <span className={styles.dateSeparator}>to</span>
+                            <input
+                                type="date"
+                                value={dateRange.end || ''}
+                                onChange={handleEndDateChange}
+                                placeholder="End date"
+                                min={dateRange.start || ''}
+                            />
+                        </div>
+                        {(dateRange.start || dateRange.end) && (
+                            <button
+                                className={styles.clearDatesBtn}
+                                onClick={handleClearDates}
+                            >
+                                Clear Dates
+                            </button>
+                        )}
+                    </div>
+                    <button
+                        className={styles.filterApplyButton}
+                        onClick={onApplyFilters}
+                    >
+                        Apply Filters
+                    </button>
+                    <button
+                        className={styles.filterResetButton}
+                        onClick={onResetFilters}
+                    >
+                        Reset Filters
+                    </button>
+                </div>
+            </div>
+        </>
+    );
+};
+
+export default OrderFilters;

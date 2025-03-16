@@ -4,6 +4,7 @@ import {
     PieChart, Pie, Cell, Tooltip,
     Legend, ResponsiveContainer
 } from 'recharts';
+import styles from './ChartComponents.module.css';
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8', '#82ca9d'];
 
@@ -16,9 +17,9 @@ const PieChartComponent = ({
                                labelFormatter = (entry) => `${entry.name}: ${(entry.percent * 100).toFixed(0)}%`
                            }) => {
     return (
-        <div className="rms-analytics-dashboard-card rms-analytics-chart-card">
-            {title && <h3 className="rms-analytics-card-title">{title}</h3>}
-            <div className="rms-analytics-chart-container">
+        <div className={`${styles.dashboardCard} ${styles.chartCard}`}>
+            {title && <h3 className={styles.cardTitle}>{title}</h3>}
+            <div className={styles.chartContainer}>
                 <ResponsiveContainer width="100%" height={300}>
                     <PieChart>
                         <Pie
@@ -44,5 +45,4 @@ const PieChartComponent = ({
         </div>
     );
 };
-
 export default PieChartComponent;

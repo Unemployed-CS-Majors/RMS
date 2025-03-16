@@ -1,26 +1,23 @@
-
 import React from 'react';
 import BarChartComponent from '../charts/BarChartComponent';
 import PieChartComponent from '../charts/PieChartComponent';
 import { MetricsGrid } from '../charts/MetricsDisplay';
 import { formatPercent, getFullDayName } from '../../../../../utils/formatters';
+import styles from '../charts/ChartComponents.module.css';
 
 const Reservations = ({ analyticsData, timeRange }) => {
-    
     const reservationsByDayData = Object.entries(analyticsData.reservationAnalytics.reservationsByDayOfWeek)
         .map(([day, count]) => ({
             day: getFullDayName(day),
             count: count
         }));
 
-    
     const reservationsByStatusData = Object.entries(analyticsData.reservationAnalytics.reservationsByStatus)
         .filter(([status, count]) => count > 0)
         .map(([status, count]) => ({
             name: status.charAt(0).toUpperCase() + status.slice(1).toLowerCase(),
             value: count
         }));
-
 
     const tablePopularityData = Object.entries(analyticsData.reservationAnalytics.tablePopularity)
         .map(([tableNum, count]) => ({
@@ -50,7 +47,7 @@ const Reservations = ({ analyticsData, timeRange }) => {
     ];
 
     return (
-        <div className="rms-analytics-grid">
+        <div className={styles.grid}>
             {/* Reservations by Day of Week */}
             <BarChartComponent
                 title="Reservations by Day of Week"

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import OrderList from './components/OrderList';
-import OrderDetails from './components/OrderDetails';
-import OrderFilters from './components/OrderFilters';
+import OrderList from './components/OrderList/OrderList';
+import OrderDetails from './components/OrderDetails/OrderDetails';
+import OrderFilters from './components/OrderFilters/OrderFilters';
 import LoadingIndicator from '../Loading/LoadingIndicator';
 import orderService from '../../../services/order.service';
 import menuItemService from '../../../services/menuItem.service';

@@ -1,28 +1,17 @@
 import React, {useState} from 'react';
-import ControlPanel from './components/ControlPanel';
-import ElementDetails from './components/ElementDetails';
-import TableNumberModal from './components/TableNumberModal'; // Import the new component
+import styles from './FloorPlanDesigner.module.css';
+import ControlPanel from './components/ControlPanel/ControlPanel';
+import ElementDetails from './components/ElementDetails/ElementDetails';
+import TableNumberModal from './components/TableNumberModal/TableNumberModal';
 import {tableTypes} from '../../../constants/tableTypes';
 import {DrawingMode} from '../../../constants/drawingModes';
-import FloorPlanCanvas from './components/FloorPlanCanvas';
+import FloorPlanCanvas from './components/FloorPlanCanvas/FloorPlanCanvas';
 
 // Import custom hooks
 import {useFloorPlanData} from './hooks/useFloorPlanData';
 import {useElementHandlers} from './hooks/useElementHandlers';
 import {useCanvasUtils} from './hooks/useCanvasUtils';
 
-import './FloorPlanDesigner.css';
-
-/**
- * FloorPlanDesigner component
- *
- * This component is responsible for rendering and managing the floor plan editor.
- * The logic has been refactored into custom hooks to reduce complexity and improve maintainability:
- *
- * - useFloorPlanData.js: Manages all data fetching and state for tables, walls, doors, and windows
- * - useElementHandlers: Contains all the logic for manipulating elements (add, drag, resize, etc.)
- * - useCanvasUtils: Provides utility functions for working with the SVG canvas
- */
 const FloorPlanDesigner = ({ editMode }) => {
     // Drawing mode and table type selection
     const [currentDrawingMode, setCurrentDrawingMode] = useState(DrawingMode.SELECT);
@@ -124,7 +113,10 @@ const FloorPlanDesigner = ({ editMode }) => {
 
     return (
         <div>
-            <div className="floor-plan-designer" onClick={handleBackgroundClicks}>
+            <div
+                className={styles.container}
+                onClick={handleBackgroundClicks}
+            >
                 {editMode && (
                     <ControlPanel
                         currentDrawingMode={currentDrawingMode}
@@ -148,7 +140,7 @@ const FloorPlanDesigner = ({ editMode }) => {
                     startPoint={startPoint}
                     isDragging={isDragging}
                     draggedItem={draggedItem}
-                    addTable={handleAddTable} // Use the modified handler
+                    addTable={handleAddTable}
                     addDoor={handleAddDoor}
                     addWindow={handleAddWindow}
                     startDrawWall={handleStartDrawWall}
@@ -178,7 +170,6 @@ const FloorPlanDesigner = ({ editMode }) => {
                     />
                 )}
 
-                {/* Render the table number modal when showTableModal is true */}
                 {showTableModal && (
                     <TableNumberModal
                         position={tableModalPosition}

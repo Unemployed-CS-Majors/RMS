@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
-import './Dashboard.css';
+import styles from './Dashboard.module.css';
 
 // Components
 import Sidebar from '../../components/Dashboard/Sidebar/Sidebar';
@@ -136,14 +136,14 @@ const RestaurantDashboard = () => {
     }, [location, tab, setActiveTab]);
 
     return (
-        <div className="flex h-screen bg-gray-100">
+        <div className={`${styles.flex} ${styles.hScreen} ${styles.bgGray100}`}>
             <Sidebar
                 activeTab={activeTab}
                 setActiveTab={setActiveTab}
                 pendingReservations={pendingReservations}
                 onToggle={handleSidebarToggle}
             />
-            <div className={`main-content ${sidebarCollapsed ? 'sidebar-collapsed' : ''}`}>
+            <div className={`${styles.mainContent} ${sidebarCollapsed ? styles.sidebarCollapsed : ''}`}>
                 <Header
                     activeTab={activeTab}
                     editingHours={editingHours}
@@ -155,7 +155,7 @@ const RestaurantDashboard = () => {
                     toggleAddMenuItem={toggleAddMenuItemDialog}
                     toggleShowFilters={toggleReservationFilterMode}
                 />
-                <main className="dashboard-content overflow-y-auto p-6">
+                <main className={`${styles.dashboardContent} ${styles.overflowYAuto} ${styles.p6}`}>
                     {loading ? (
                         <LoadingIndicator text={`Loading ${activeTab.replace(/([A-Z])/g, ' $1').trim()}...`}/>
                     ) : (

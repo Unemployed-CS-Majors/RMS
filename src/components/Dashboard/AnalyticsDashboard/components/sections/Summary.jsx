@@ -1,12 +1,11 @@
-
 import React from 'react';
 import LineChartComponent from '../charts/LineChartComponent';
 import BarChartComponent from '../charts/BarChartComponent';
 import PieChartComponent from '../charts/PieChartComponent';
 import { formatCurrency, formatStatusLabel, getDayName } from '../../../../../utils/formatters';
+import styles from '../charts/ChartComponents.module.css';
 
 const Summary = ({ analyticsData }) => {
-    
     const weeklyRevenueData = Object.entries(analyticsData.revenueAnalytics.dailyRevenue)
         .map(([date, value]) => ({
             name: new Date(date).toLocaleDateString('en-US', { weekday: 'short' }),
@@ -16,7 +15,6 @@ const Summary = ({ analyticsData }) => {
         .sort((a, b) => new Date(a.fullDate) - new Date(b.fullDate))
         .slice(-7);
 
-    
     const orderStatusData = Object.entries(analyticsData.orderStatusAnalytics.ordersByStatus)
         .filter(([status, count]) => count > 0)
         .map(([status, count]) => ({
@@ -24,7 +22,6 @@ const Summary = ({ analyticsData }) => {
             value: count
         }));
 
-    
     const topMenuItemsData = analyticsData.menuItemAnalytics.topItems
         .slice(0, 5)
         .map(item => ({
@@ -32,7 +29,6 @@ const Summary = ({ analyticsData }) => {
             sales: item.totalQuantity
         }));
 
-    
     const reservationsByDayData = Object.entries(analyticsData.reservationAnalytics.reservationsByDayOfWeek)
         .map(([day, count]) => {
             const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -43,7 +39,7 @@ const Summary = ({ analyticsData }) => {
         });
 
     return (
-        <div className="rms-analytics-grid">
+        <div className={styles.grid}>
             {/* Weekly Revenue Trend */}
             <LineChartComponent
                 title="Weekly Revenue Trend"

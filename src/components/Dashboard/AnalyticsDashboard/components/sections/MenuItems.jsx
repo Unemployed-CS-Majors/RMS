@@ -1,11 +1,10 @@
-
 import React from 'react';
 import BarChartComponent from '../charts/BarChartComponent';
 import { CenteredMetric } from '../charts/MetricsDisplay';
 import { formatCurrency } from '../../../../../utils/formatters';
+import styles from '../charts/ChartComponents.module.css';
 
 const MenuItems = ({ analyticsData }) => {
-    
     const topItemsData = analyticsData.menuItemAnalytics.topItems
         .slice(0, 5)
         .map(item => ({
@@ -13,7 +12,6 @@ const MenuItems = ({ analyticsData }) => {
             quantity: item.totalQuantity
         }));
 
-    
     const bottomItemsData = analyticsData.menuItemAnalytics.bottomItems
         .slice(0, 5)
         .map(item => ({
@@ -21,20 +19,18 @@ const MenuItems = ({ analyticsData }) => {
             quantity: item.totalQuantity
         }));
 
-    
     const topItemsByRevenueData = analyticsData.menuItemAnalytics.itemsByRevenue
         .slice(0, 5)
         .map(item => ({
-            name: item.name || `Item ${item.id}`, 
+            name: item.name || `Item ${item.id}`,
             revenue: item.revenue
         }));
 
-    
     const avgPrepTimeValue = `${analyticsData.menuItemAnalytics.averagePreparationTime.toFixed(1)} minutes`;
     const avgPrepTimeDescription = "Average preparation time across all menu items";
 
     return (
-        <div className="rms-analytics-grid">
+        <div className={styles.grid}>
             {/* Top Items by Quantity */}
             <BarChartComponent
                 title="Top Menu Items by Quantity"

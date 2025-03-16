@@ -1,9 +1,9 @@
 import React from 'react';
-import './EmployeeManagement.css';
+import styles from './EmployeeManagement.module.css';
 
-import EmployeeTable from './components/EmployeeTable';
-import AddEmployeeModal from './components/AddEmployeeModal';
-import ChangeRoleModal from './components/ChangeRoleModal';
+import EmployeeTable from './components/EmployeeTable/EmployeeTable';
+import AddEmployeeModal from './components/AddEmployeeModal/AddEmployeeModal';
+import ChangeRoleModal from './components/ChangeRoleModal/ChangeRoleModal';
 
 import {useEmployeeForm} from './hooks/useEmployeeForm';
 import {useRoleManagement} from './hooks/useRoleManagement';
@@ -41,7 +41,7 @@ const EmployeeManagement = ({
     } = useRoleManagement(updateEmployeeRole);
 
     return (
-        <div className="employee-dashboard">
+        <div className={styles.employeeDashboard}>
             {/* Employee Table */}
             <EmployeeTable
                 employees={employees}

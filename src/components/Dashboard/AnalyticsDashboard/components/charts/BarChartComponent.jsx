@@ -5,6 +5,8 @@ import {
     Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
 
+import styles from './ChartComponents.module.css';
+
 const BarChartComponent = ({
                                data,
                                dataKey,
@@ -15,9 +17,9 @@ const BarChartComponent = ({
                                legendName
                            }) => {
     return (
-        <div className="rms-analytics-dashboard-card rms-analytics-chart-card">
-            {title && <h3 className="rms-analytics-card-title">{title}</h3>}
-            <div className="rms-analytics-chart-container">
+        <div className={`${styles.dashboardCard} ${styles.chartCard}`}>
+            {title && <h3 className={styles.cardTitle}>{title}</h3>}
+            <div className={styles.chartContainer}>
                 <ResponsiveContainer width="100%" height={300}>
                     <BarChart data={data}>
                         <CartesianGrid strokeDasharray="3 3" />

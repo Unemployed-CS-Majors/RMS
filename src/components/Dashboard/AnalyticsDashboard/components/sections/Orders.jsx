@@ -1,19 +1,17 @@
-
 import React from 'react';
 import BarChartComponent from '../charts/BarChartComponent';
 import PieChartComponent from '../charts/PieChartComponent';
 import { CenteredMetric } from '../charts/MetricsDisplay';
 import { formatStatusLabel, formatMethodLabel } from '../../../../../utils/formatters';
+import styles from '../charts/ChartComponents.module.css';
 
 const Orders = ({ analyticsData }) => {
-    
     const ordersByStatusData = Object.entries(analyticsData.orderStatusAnalytics.ordersByStatus)
         .map(([status, count]) => ({
             name: formatStatusLabel(status),
             count: count
         }));
 
-    
     const ordersByPaymentMethodData = Object.entries(analyticsData.orderStatusAnalytics.ordersByPaymentMethod)
         .filter(([method, count]) => count > 0)
         .map(([method, count]) => ({
@@ -21,7 +19,6 @@ const Orders = ({ analyticsData }) => {
             value: count
         }));
 
-    
     const ordersByDeliveryMethodData = Object.entries(analyticsData.orderStatusAnalytics.ordersByDeliveryMethod)
         .filter(([method, count]) => count > 0)
         .map(([method, count]) => ({
@@ -29,12 +26,11 @@ const Orders = ({ analyticsData }) => {
             value: count
         }));
 
-    
     const avgCompletionTimeValue = `${analyticsData.orderStatusAnalytics.averageCompletionTime.toFixed(1)} minutes`;
     const avgCompletionTimeDescription = "Average time from order placement to completion";
 
     return (
-        <div className="rms-analytics-grid">
+        <div className={styles.grid}>
             {/* Orders by Status */}
             <BarChartComponent
                 title="Orders by Status"

@@ -1,67 +1,68 @@
 import React from 'react';
-import "./PendingReservations.css";
+import styles from './PendingReservations.module.css';
+
 const PendingReservations = ({ pendingReservations, handleApproveReservation, handleRejectReservation }) => {
-  return (
-      <div className="reservation-container">
-        {pendingReservations.length === 0 ? (
-            <div className="empty-state">
-              <div className="empty-icon">📋</div>
-              <p className="empty-text">No pending reservations</p>
-            </div>
-        ) : (
-            <div className="reservation-grid-dashboard">
-              {pendingReservations.map(reservation => (
-                  <div key={reservation.id} className="reservation-card">
-                    <div className="reservation-content">
-                      <div className="reservation-info">
-                        <div className="reservation-header">
-                          <h3 className="guest-name">{reservation.fullName}</h3>
-                          <span className="guest-count">{reservation.people} guests</span>
+    return (
+        <div className={styles.reservationContainer}>
+            {pendingReservations.length === 0 ? (
+                <div className={styles.emptyState}>
+                    <div className={styles.emptyIcon}>📋</div>
+                    <p className={styles.emptyText}>No pending reservations</p>
+                </div>
+            ) : (
+                <div className={styles.reservationGridDashboard}>
+                    {pendingReservations.map(reservation => (
+                        <div key={reservation.id} className={styles.reservationCard}>
+                            <div className={styles.reservationContent}>
+                                <div className={styles.reservationInfo}>
+                                    <div className={styles.reservationHeader}>
+                                        <h3 className={styles.guestName}>{reservation.fullName}</h3>
+                                        <span className={styles.guestCount}>{reservation.people} guests</span>
+                                    </div>
+
+                                    <div className={styles.tableBadge}>
+                                        {reservation.tableNum}
+                                    </div>
+
+                                    <div className={styles.reservationDetails}>
+                                        <div className={styles.detailItem}>
+                                            <span className={styles.detailIcon}>🗓️</span>
+                                            <span className={styles.detailText}>{reservation.date}</span>
+                                        </div>
+
+                                        <div className={styles.detailItem}>
+                                            <span className={styles.detailIcon}>⏰</span>
+                                            <span className={styles.detailText}>{reservation.startTime} - {reservation.endTime}</span>
+                                        </div>
+
+                                        <div className={styles.detailItem}>
+                                            <span className={styles.detailIcon}>📱</span>
+                                            <span className={styles.detailText}>{reservation.phoneNumber}</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className={styles.actionButtons}>
+                                    <button
+                                        className={styles.approveButton}
+                                        onClick={() => handleApproveReservation(reservation.id)}
+                                    >
+                                        Approve
+                                    </button>
+                                    <button
+                                        className={styles.rejectButton}
+                                        onClick={() => handleRejectReservation(reservation.id)}
+                                    >
+                                        Reject
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-
-                        <div className="table-badge">
-                          {reservation.tableNum}
-                        </div>
-
-                        <div className="reservation-details">
-                          <div className="detail-item">
-                            <span className="detail-icon">🗓️</span>
-                            <span className="detail-text">{reservation.date}</span>
-                          </div>
-
-                          <div className="detail-item">
-                            <span className="detail-icon">⏰</span>
-                            <span className="detail-text">{reservation.startTime} - {reservation.endTime}</span>
-                          </div>
-
-                          <div className="detail-item">
-                            <span className="detail-icon">📱</span>
-                            <span className="detail-text">{reservation.phoneNumber}</span>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="action-buttons">
-                        <button
-                            className="approve-button"
-                            onClick={() => handleApproveReservation(reservation.id)}
-                        >
-                          Approve
-                        </button>
-                        <button
-                            className="reject-button"
-                            onClick={() => handleRejectReservation(reservation.id)}
-                        >
-                          Reject
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-              ))}
-            </div>
-        )}
-      </div>
-  );
+                    ))}
+                </div>
+            )}
+        </div>
+    );
 };
 
 export default PendingReservations;

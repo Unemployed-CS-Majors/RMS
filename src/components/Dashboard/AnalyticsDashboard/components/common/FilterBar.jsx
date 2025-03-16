@@ -1,15 +1,15 @@
-
 import React from 'react';
+import styles from './FilterBar.module.css';
 
 const FilterBar = ({ timeRange, setTimeRange }) => {
     return (
-        <div className="rms-analytics-filter-bar">
-            <div className="rms-analytics-filter-group">
-                <label className="rms-analytics-filter-label">Time Range:</label>
+        <div className={styles.filterBar}>
+            <div className={styles.filterGroup}>
+                <label className={styles.filterLabel}>Time Range:</label>
                 <select
                     value={timeRange}
                     onChange={(e) => setTimeRange(Number(e.target.value))}
-                    className="rms-analytics-filter-select"
+                    className={styles.filterSelect}
                 >
                     <option value={7}>Last 7 days</option>
                     <option value={30}>Last 30 days</option>
@@ -21,7 +21,3 @@ const FilterBar = ({ timeRange, setTimeRange }) => {
 };
 
 export default FilterBar;
-
-
-
-

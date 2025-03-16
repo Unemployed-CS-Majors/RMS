@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import './MenuManagement.css';
-import MenuItemCard from './components/MenuItemCard';
-import MenuItemDialog from './components/MenuItemDialog';
+import styles from './MenuManagement.module.css';
+import MenuItemCard from './components/MenuItemCard/MenuItemCard';
+import MenuItemDialog from './components/MenuItemDialog/MenuItemDialog';
 import menuService from '../../../services/menuItem.service';
 import LoadingIndicator from '../Loading/LoadingIndicator';
 
@@ -89,21 +89,21 @@ const MenuManagement = ({
     });
 
     return (
-        <div className="menu-management">
-            <div className="menu-header">
-                <div className="search-filter-container">
-                    <div className="search-container">
+        <div className={styles.menuManagement}>
+            <div className={styles.menuHeader}>
+                <div className={styles.searchFilterContainer}>
+                    <div className={styles.searchContainer}>
                         <input
                             type="text"
                             placeholder="Search menu items..."
                             value={searchTerm}
                             onChange={handleSearchChange}
-                            className="search-input"
+                            className={styles.searchInput}
                             disabled={optionsLoading || loading}
                         />
                         {searchTerm && (
                             <button
-                                className="clear-search-button"
+                                className={styles.clearSearchButton}
                                 onClick={clearSearch}
                                 aria-label="Clear search"
                             >
@@ -111,13 +111,13 @@ const MenuManagement = ({
                             </button>
                         )}
                     </div>
-                    <div className="filter-container">
+                    <div className={styles.filterContainer}>
                         <label htmlFor="filterType">Filter by type:</label>
                         <select
                             id="filterType"
                             value={filterType}
                             onChange={(e) => setFilterType(e.target.value)}
-                            className="filter-select"
+                            className={styles.filterSelect}
                             disabled={optionsLoading || loading}
                         >
                             <option value="all">All Items</option>
@@ -136,7 +136,7 @@ const MenuManagement = ({
             ) : (
                 <>
                     {filteredItems.length === 0 ? (
-                        <div className="empty-state">
+                        <div className={styles.emptyState}>
                             {searchTerm || filterType !== 'all' ?
                                 <p>No menu items found matching your search and filters. Try adjusting your criteria.</p> :
                                 <p>No menu items found. Add your first item to get started!</p>
@@ -144,10 +144,10 @@ const MenuManagement = ({
                         </div>
                     ) : (
                         <>
-                            <div className="results-count">
+                            <div className={styles.resultsCount}>
                                 {filteredItems.length} item{filteredItems.length !== 1 ? 's' : ''} found
                             </div>
-                            <div className="menu-grid">
+                            <div className={styles.menuGrid}>
                                 {filteredItems.map(item => (
                                     <MenuItemCard
                                         key={item.id}

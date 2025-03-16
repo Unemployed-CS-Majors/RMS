@@ -1,4 +1,4 @@
-/* ItemDetailsModal.module.css */
+
 .itemDetailOverlay {
     position: fixed;
     top: 0;
@@ -210,7 +210,6 @@
     transform: translateY(0);
 }
 
-/* Allergen badges */
 .allergenBadges {
     display: flex;
     flex-wrap: wrap;

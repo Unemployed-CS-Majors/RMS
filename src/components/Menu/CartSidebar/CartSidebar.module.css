@@ -1,4 +1,4 @@
-/* CartSidebar.module.css */
+
 .checkoutContainer {
     width: 350px;
     padding: 1.5rem;
@@ -39,12 +39,11 @@
     overflow-y: auto;
     margin-bottom: 1.5rem;
     padding-right: 0.5rem;
-    /* Stylish scrollbar */
+
     scrollbar-width: thin;
     scrollbar-color: var(--primary-light) var(--gray-light);
 }
 
-/* Scrollbar styling for Chrome/Safari/Edge */
 .orderedItemsContainer::-webkit-scrollbar {
     width: 6px;
 }
@@ -112,7 +111,6 @@
     transform: translateY(0);
 }
 
-/* Media Queries */
 @media (max-width: 1200px) {
     .checkoutContainer {
         width: 320px;

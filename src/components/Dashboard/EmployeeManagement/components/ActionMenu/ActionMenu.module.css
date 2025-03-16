@@ -1,0 +1,75 @@
+.actionsWrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.actionButton {
+    background: none;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.actionButton:hover {
+    background-color: #f3f4f6;
+}
+
+.dotsIcon {
+    font-size: 1.2rem;
+    color: #6b7280;
+    line-height: 1;
+}
+
+.actionMenu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    min-width: 180px;
+    max-width: 80vw;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    z-index: 1000;
+    overflow: hidden;
+    border: 1px solid #f3f4f6;
+    margin-top: 5px;
+}
+
+.actionList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.actionItem {
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    position: relative;
+    z-index: 1001;
+}
+
+.actionItem:hover {
+    background-color: #f9fafb;
+}
+
+.actionIcon {
+    margin-right: 10px;
+    font-size: 1rem;
+}
+
+.changeRole {
+    color: #4b5563;
+}
+
+.deleteUser {
+    color: #dc2626;
+}

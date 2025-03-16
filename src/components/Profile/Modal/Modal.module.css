@@ -101,7 +101,6 @@
     z-index: 10;
 }
 
-/* Responsive adjustments */
 @media (min-width: 768px) {
     .modalActions {
         flex-direction: row;

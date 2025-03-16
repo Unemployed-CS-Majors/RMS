@@ -1,4 +1,4 @@
-// src/components/Analytics/Dashboard/AnalyticsDashboard.jsx
+// src/components/Dashboard/AnalyticsDashboard/AnalyticsDashboard.jsx
 import React from 'react';
 import LoadingIndicator from "../Loading/LoadingIndicator";
 import FilterBar from './components/common/FilterBar';
@@ -11,7 +11,8 @@ import MenuItems from './components/sections/MenuItems';
 import Reservations from './components/sections/Reservations';
 import { useAnalyticsData } from './hooks/useAnalyticsData';
 import { useTimeRange } from './hooks/useTimeRange';
-import './AnalyticsDashboard.css';
+import styles from './AnalyticsDashboard.module.css';
+import errorStyles from './components/Error.module.css';
 
 const AnalyticsDashboard = ({ loading: externalLoading, setLoading }) => {
     const { timeRange, setTimeRange } = useTimeRange(30);
@@ -26,11 +27,11 @@ const AnalyticsDashboard = ({ loading: externalLoading, setLoading }) => {
     // Handle error state
     if (error) {
         return (
-            <div className="rms-analytics-error">
-                <div className="rms-analytics-error-message">
+            <div className={errorStyles.error}>
+                <div className={errorStyles.errorMessage}>
                     <p>{error}</p>
                     <button
-                        className="rms-analytics-retry-button"
+                        className={errorStyles.retryButton}
                         onClick={fetchData}
                     >
                         Retry
@@ -69,14 +70,15 @@ const AnalyticsDashboard = ({ loading: externalLoading, setLoading }) => {
     };
 
     return (
-        <div className="rms-analytics-dashboard">
+        <div className={styles.dashboard}>
             <FilterBar
                 timeRange={timeRange}
                 setTimeRange={setTimeRange}
             />
 
-            <SummaryCards dashboardSummary={analyticsData.dashboardSummary}
-                          operationalAnalytics={analyticsData.operationalAnalytics}
+            <SummaryCards
+                dashboardSummary={analyticsData.dashboardSummary}
+                operationalAnalytics={analyticsData.operationalAnalytics}
             />
 
             <NavigationTabs
@@ -84,7 +86,7 @@ const AnalyticsDashboard = ({ loading: externalLoading, setLoading }) => {
                 setActiveSection={setActiveSection}
             />
 
-            <div className="rms-analytics-content">
+            <div className={styles.content}>
                 {renderActiveSection()}
             </div>
         </div>

@@ -1,23 +1,22 @@
-// LoadingIndicator.jsx
 import React from 'react';
-import './LoadingIndicator.css';
+import styles from './LoadingIndicator.module.css';
 
 const LoadingIndicator = ({size = 'medium', fullScreen = false, text = 'Loading...'}) => {
     const sizeClass = {
-        small: 'loading-indicator-sm',
-        medium: 'loading-indicator-md',
-        large: 'loading-indicator-lg'
-    }[size] || 'loading-indicator-md';
+        small: styles.loadingIndicatorSm,
+        medium: styles.loadingIndicatorMd,
+        large: styles.loadingIndicatorLg
+    }[size] || styles.loadingIndicatorMd;
 
     return (
-        <div className={`loading-indicator-container ${fullScreen ? 'fullscreen' : ''}`}>
-            <div className={`loading-indicator ${sizeClass}`}>
-                <div className="spinner">
-                    <div className="dot dot1"></div>
-                    <div className="dot dot2"></div>
-                    <div className="dot dot3"></div>
+        <div className={`${styles.loadingIndicatorContainer} ${fullScreen ? styles.fullscreen : ''}`}>
+            <div className={`${styles.loadingIndicator} ${sizeClass}`}>
+                <div className={styles.spinner}>
+                    <div className={`${styles.dot} ${styles.dot1}`}></div>
+                    <div className={`${styles.dot} ${styles.dot2}`}></div>
+                    <div className={`${styles.dot} ${styles.dot3}`}></div>
                 </div>
-                {text && <div className="loading-text">{text}</div>}
+                {text && <div className={styles.loadingText}>{text}</div>}
             </div>
         </div>
     );

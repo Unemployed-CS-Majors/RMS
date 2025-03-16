@@ -25,23 +25,19 @@
     font-family: 'Inter', sans-serif;
 }
 
-/* Additional resets */
 button, input {
     font-family: inherit;
 }
 
-/* Make sure input doesn't overflow */
 input, button, textarea, select {
     max-width: 100%;
 }
 
-/* Fixed input width issues within flex containers */
 .input-container {
     width: 100%;
     max-width: 100%;
 }
 
-/* Add better form field focus styles */
 input:focus, button:focus {
     outline: none;
 }

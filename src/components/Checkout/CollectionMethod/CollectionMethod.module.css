@@ -74,7 +74,6 @@
     padding: 16px 20px 24px;
 }
 
-/* Radio card selection */
 .radioOptions {
     display: flex;
     flex-direction: column;
@@ -143,14 +142,12 @@
     border-color: #ff8c00;
 }
 
-/* Address fields */
 .addressFields {
     margin-top: 16px;
     padding-top: 16px;
     border-top: 1px solid #e5e7eb;
 }
 
-/* Input styling */
 .inputGrid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));

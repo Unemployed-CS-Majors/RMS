@@ -1,12 +1,11 @@
-
 import React from 'react';
 import PieChartComponent from '../charts/PieChartComponent';
 import BarChartComponent from '../charts/BarChartComponent';
 import { MetricsList } from '../charts/MetricsDisplay';
 import { formatCurrency, formatMethodLabel } from '../../../../../utils/formatters';
+import styles from '../charts/ChartComponents.module.css';
 
 const Revenue = ({ analyticsData, timeRange }) => {
-    
     const paymentMethodData = Object.entries(analyticsData.revenueAnalytics.revenueByPaymentMethod)
         .filter(([method, value]) => value > 0)
         .map(([method, value]) => ({
@@ -14,7 +13,6 @@ const Revenue = ({ analyticsData, timeRange }) => {
             value: value
         }));
 
-    
     const deliveryMethodData = Object.entries(analyticsData.revenueAnalytics.revenueByDeliveryMethod)
         .filter(([method, value]) => value > 0)
         .map(([method, value]) => ({
@@ -22,7 +20,6 @@ const Revenue = ({ analyticsData, timeRange }) => {
             value: value
         }));
 
-    
     const weeklyRevenueData = Object.entries(analyticsData.revenueAnalytics.weeklyRevenue)
         .map(([week, value]) => ({
             name: new Date(week).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
@@ -32,7 +29,6 @@ const Revenue = ({ analyticsData, timeRange }) => {
         .sort((a, b) => new Date(a.fullDate) - new Date(b.fullDate))
         .slice(-4);
 
-    
     const revenueMetrics = [
         {
             title: 'Total Revenue (Period)',
@@ -49,7 +45,7 @@ const Revenue = ({ analyticsData, timeRange }) => {
     ];
 
     return (
-        <div className="rms-analytics-grid">
+        <div className={styles.grid}>
             {/* Revenue by Payment Method */}
             <PieChartComponent
                 title="Revenue by Payment Method"

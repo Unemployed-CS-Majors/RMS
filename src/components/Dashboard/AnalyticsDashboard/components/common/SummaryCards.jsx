@@ -1,36 +1,36 @@
-
 import React from 'react';
+import styles from './SummaryCards.module.css';
 
 const SummaryCards = ({ dashboardSummary, operationalAnalytics }) => {
     return (
-        <div className="rms-analytics-summary-cards">
-            <div className="rms-analytics-dashboard-card rms-analytics-summary-card">
-                <div className="rms-analytics-summary-icon rms-analytics-revenue-icon">💰</div>
-                <div className="rms-analytics-summary-data">
-                    <h3 className="rms-analytics-summary-title">Today's Revenue</h3>
-                    <p className="rms-analytics-summary-value">${dashboardSummary.todayRevenue.toFixed(2)}</p>
-                    <p className={`rms-analytics-summary-change ${dashboardSummary.revenueChange >= 0 ? 'positive' : 'negative'}`}>
+        <div className={styles.summaryCards}>
+            <div className={`${styles.dashboardCard} ${styles.summaryCard}`}>
+                <div className={`${styles.summaryIcon} ${styles.revenueIcon}`}>💰</div>
+                <div className={styles.summaryData}>
+                    <h3 className={styles.summaryTitle}>Today's Revenue</h3>
+                    <p className={styles.summaryValue}>${dashboardSummary.todayRevenue.toFixed(2)}</p>
+                    <p className={`${styles.summaryChange} ${dashboardSummary.revenueChange >= 0 ? styles.positive : styles.negative}`}>
                         {dashboardSummary.revenueChange >= 0 ? '↑' : '↓'}
                         {Math.abs(dashboardSummary.revenueChange).toFixed(1)}% from yesterday
                     </p>
                 </div>
             </div>
 
-            <div className="rms-analytics-dashboard-card rms-analytics-summary-card">
-                <div className="rms-analytics-summary-icon rms-analytics-orders-icon">🛒</div>
-                <div className="rms-analytics-summary-data">
-                    <h3 className="rms-analytics-summary-title">Today's Orders</h3>
-                    <p className="rms-analytics-summary-value">{dashboardSummary.todayOrders}</p>
-                    <p className="rms-analytics-summary-subtext">{dashboardSummary.activeOrdersCount} active now</p>
+            <div className={`${styles.dashboardCard} ${styles.summaryCard}`}>
+                <div className={`${styles.summaryIcon} ${styles.ordersIcon}`}>🛒</div>
+                <div className={styles.summaryData}>
+                    <h3 className={styles.summaryTitle}>Today's Orders</h3>
+                    <p className={styles.summaryValue}>{dashboardSummary.todayOrders}</p>
+                    <p className={styles.summarySubtext}>{dashboardSummary.activeOrdersCount} active now</p>
                 </div>
             </div>
 
-            <div className="rms-analytics-dashboard-card rms-analytics-summary-card">
-                <div className="rms-analytics-summary-icon rms-analytics-reservations-icon">📅</div>
-                <div className="rms-analytics-summary-data">
-                    <h3 className="rms-analytics-summary-title">Today's Reservations</h3>
-                    <p className="rms-analytics-summary-value">{dashboardSummary.todayReservationsCount}</p>
-                    <p className="rms-analytics-summary-subtext">
+            <div className={`${styles.dashboardCard} ${styles.summaryCard}`}>
+                <div className={`${styles.summaryIcon} ${styles.reservationsIcon}`}>📅</div>
+                <div className={styles.summaryData}>
+                    <h3 className={styles.summaryTitle}>Today's Reservations</h3>
+                    <p className={styles.summaryValue}>{dashboardSummary.todayReservationsCount}</p>
+                    <p className={styles.summarySubtext}>
                         Table occupancy: {operationalAnalytics.currentStats.tableUtilizationRate.toFixed(0)}%
                     </p>
                 </div>

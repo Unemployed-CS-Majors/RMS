@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import cookieManager from "../../../utils/cookieManager";
 import cookieKeys from "../../../constants/cookieKeys";
-import "./Sidebar.css";
+import styles from "./Sidebar.module.css";
 
 const Sidebar = ({activeTab, setActiveTab, pendingReservations, onToggle}) => {
     const [collapsed, setCollapsed] = useState(false);
@@ -59,50 +59,50 @@ const Sidebar = ({activeTab, setActiveTab, pendingReservations, onToggle}) => {
     return (
         <>
             <button
-                className="sidebar-toggle"
+                className={styles.sidebarToggle}
                 onClick={toggleSidebar}
             >
                 {collapsed ? '☰' : '✕'}
             </button>
 
-            <div className={`sidebar ${collapsed ? 'collapsed' : ''}`}>
-                <div className="sidebar-header">
+            <div className={`${styles.sidebar} ${collapsed ? styles.collapsed : ''}`}>
+                <div className={styles.sidebarHeader}>
                     {
                         !collapsed && (
-                            <h1 className="sidebar-title">
+                            <h1 className={styles.sidebarTitle}>
                                 {collapsed ? '' : 'Dashboard'}
                             </h1>
                         )
                     }
 
                     <button
-                        className="sidebar-collapse-btn"
+                        className={styles.sidebarCollapseBtn}
                         onClick={toggleSidebar}
                     >
                         {collapsed ? '→' : '←'}
                     </button>
                 </div>
-                <nav className="sidebar-nav custom-scrollbar">
+                <nav className={styles.sidebarNav}>
                     {/* General Navigation */}
-                    <div className="nav-section">
+                    <div className={styles.navSection}>
                         {!collapsed && (
                             <div
-                                className={`section-header ${collapsedSections.navigation ? 'collapsed' : ''}`}
+                                className={`${styles.sectionHeader} ${collapsedSections.navigation ? styles.sectionHeaderCollapsed : ''}`}
                                 onClick={(e) => {
                                     e.stopPropagation();
                                     toggleSection('navigation');
                                 }}
                             >
-                                <div className="section-label">Navigation</div>
-                                <div className="section-toggle">
+                                <div className={styles.sectionLabel}>Navigation</div>
+                                <div className={styles.sectionToggle}>
                                     {collapsedSections.navigation ? '►' : '▼'}
                                 </div>
                             </div>
                         )}
                         {(!collapsedSections.navigation || collapsed) && (
-                            <div className="section-content">
+                            <div className={styles.sectionContent}>
                                 <button
-                                    className="nav-button external-link-button"
+                                    className={`${styles.navButton} ${styles.externalLinkButton}`}
                                     onClick={() => {
                                         // Show confirmation dialog before navigating away
                                         if (window.confirm("Leave dashboard and go to customer website?")) {
@@ -111,11 +111,11 @@ const Sidebar = ({activeTab, setActiveTab, pendingReservations, onToggle}) => {
                                     }}
                                     title="Customer Website"
                                 >
-                                    <span className="nav-icon">🌐</span>
+                                    <span className={styles.navIcon}>🌐</span>
                                     {!collapsed && (
                                         <>
-                                            <span className="nav-text">Customer Site</span>
-                                            <span className="external-link-icon">↗</span>
+                                            <span className={styles.navText}>Customer Site</span>
+                                            <span className={styles.externalLinkIcon}>↗</span>
                                         </>
                                     )}
                                 </button>
@@ -125,31 +125,31 @@ const Sidebar = ({activeTab, setActiveTab, pendingReservations, onToggle}) => {
 
                     {/* Analytics Section - NEW */}
                     {isOwner && (
-                        <div className="nav-section">
+                        <div className={styles.navSection}>
                             {!collapsed && (
                                 <div
-                                    className={`section-header ${collapsedSections.analytics ? 'collapsed' : ''}`}
+                                    className={`${styles.sectionHeader} ${collapsedSections.analytics ? styles.sectionHeaderCollapsed : ''}`}
                                     onClick={(e) => {
                                         e.stopPropagation();
                                         toggleSection('analytics');
                                     }}
                                 >
-                                    <div className="section-label">Analytics</div>
-                                    <div className="section-toggle">
+                                    <div className={styles.sectionLabel}>Analytics</div>
+                                    <div className={styles.sectionToggle}>
                                         {collapsedSections.analytics ? '►' : '▼'}
                                     </div>
                                 </div>
                             )}
                             {(!collapsedSections.analytics || collapsed) && (
-                                <div className="section-content">
+                                <div className={styles.sectionContent}>
                                     <button
-                                        className={`nav-button dashboard-button ${activeTab === 'dashboard' ? 'active' : ''}`}
+                                        className={`${styles.navButton} ${styles.dashboardButton} ${activeTab === 'dashboard' ? styles.active : ''}`}
                                         onClick={() => setActiveTab('dashboard')}
                                         title="Dashboard Overview"
                                     >
-                                        <span className="nav-icon">📊</span>
+                                        <span className={styles.navIcon}>📊</span>
                                         {!collapsed && (
-                                            <span className="nav-text">Analytics Dashboard</span>
+                                            <span className={styles.navText}>Analytics Dashboard</span>
                                         )}
                                     </button>
                                 </div>
@@ -160,46 +160,46 @@ const Sidebar = ({activeTab, setActiveTab, pendingReservations, onToggle}) => {
 
 
                     {/* Reservations Section */}
-                    <div className="nav-section">
+                    <div className={styles.navSection}>
                         {!collapsed && (
                             <div
-                                className={`section-header ${collapsedSections.reservations ? 'collapsed' : ''}`}
+                                className={`${styles.sectionHeader} ${collapsedSections.reservations ? styles.sectionHeaderCollapsed : ''}`}
                                 onClick={(e) => {
                                     e.stopPropagation();
                                     toggleSection('reservations');
                                 }}
                             >
-                                <div className="section-label">Reservations</div>
-                                <div className="section-toggle">
+                                <div className={styles.sectionLabel}>Reservations</div>
+                                <div className={styles.sectionToggle}>
                                     {collapsedSections.reservations ? '►' : '▼'}
                                 </div>
                             </div>
                         )}
                         {(!collapsedSections.reservations || collapsed) && (
-                            <div className="section-content">
+                            <div className={styles.sectionContent}>
                                 <button
-                                    className={`nav-button ${activeTab === 'pendingReservations' ? 'active' : ''}`}
+                                    className={`${styles.navButton} ${activeTab === 'pendingReservations' ? styles.active : ''}`}
                                     onClick={() => setActiveTab('pendingReservations')}
                                     title="Pending Reservations"
                                 >
-                                    <span className="nav-icon">📋</span>
+                                    <span className={styles.navIcon}>📋</span>
                                     {!collapsed && (
-                                        <span className="nav-text">Pending Reservations</span>
+                                        <span className={styles.navText}>Pending Reservations</span>
                                     )}
                                     {pendingReservations.length > 0 && (
-                                        <span className="notification-badge">
+                                        <span className={styles.notificationBadge}>
                                             {pendingReservations.length}
                                         </span>
                                     )}
                                 </button>
                                 <button
-                                    className={`nav-button ${activeTab === 'allReservations' ? 'active' : ''}`}
+                                    className={`${styles.navButton} ${activeTab === 'allReservations' ? styles.active : ''}`}
                                     onClick={() => setActiveTab('allReservations')}
                                     title="All Reservations"
                                 >
-                                    <span className="nav-icon">📅</span>
+                                    <span className={styles.navIcon}>📅</span>
                                     {!collapsed && (
-                                        <span className="nav-text">All Reservations</span>
+                                        <span className={styles.navText}>All Reservations</span>
                                     )}
                                 </button>
                             </div>
@@ -207,31 +207,31 @@ const Sidebar = ({activeTab, setActiveTab, pendingReservations, onToggle}) => {
                     </div>
 
                     {/* Orders Section */}
-                    <div className="nav-section">
+                    <div className={styles.navSection}>
                         {!collapsed && (
                             <div
-                                className={`section-header ${collapsedSections.orders ? 'collapsed' : ''}`}
+                                className={`${styles.sectionHeader} ${collapsedSections.orders ? styles.sectionHeaderCollapsed : ''}`}
                                 onClick={(e) => {
                                     e.stopPropagation();
                                     toggleSection('orders');
                                 }}
                             >
-                                <div className="section-label">Orders</div>
-                                <div className="section-toggle">
+                                <div className={styles.sectionLabel}>Orders</div>
+                                <div className={styles.sectionToggle}>
                                     {collapsedSections.orders ? '►' : '▼'}
                                 </div>
                             </div>
                         )}
                         {(!collapsedSections.orders || collapsed) && (
-                            <div className="section-content">
+                            <div className={styles.sectionContent}>
                                 <button
-                                    className={`nav-button ${activeTab === 'orders' ? 'active' : ''}`}
+                                    className={`${styles.navButton} ${activeTab === 'orders' ? styles.active : ''}`}
                                     onClick={() => setActiveTab('orders')}
                                     title="Orders"
                                 >
-                                    <span className="nav-icon">🛒</span>
+                                    <span className={styles.navIcon}>🛒</span>
                                     {!collapsed && (
-                                        <span className="nav-text">Order Management</span>
+                                        <span className={styles.navText}>Order Management</span>
                                     )}
                                 </button>
                             </div>
@@ -240,53 +240,53 @@ const Sidebar = ({activeTab, setActiveTab, pendingReservations, onToggle}) => {
 
                     {/* Restaurant Management Section - Only for Owner */}
                     {isOwner && (
-                        <div className="nav-section">
+                        <div className={styles.navSection}>
                             {!collapsed && (
                                 <div
-                                    className={`section-header ${collapsedSections.management ? 'collapsed' : ''}`}
+                                    className={`${styles.sectionHeader} ${collapsedSections.management ? styles.sectionHeaderCollapsed : ''}`}
                                     onClick={(e) => {
                                         e.stopPropagation();
                                         toggleSection('management');
                                     }}
                                 >
-                                    <div className="section-label">Restaurant Management</div>
-                                    <div className="section-toggle">
+                                    <div className={styles.sectionLabel}>Restaurant Management</div>
+                                    <div className={styles.sectionToggle}>
                                         {collapsedSections.management ? '►' : '▼'}
                                     </div>
                                 </div>
                             )}
                             {(!collapsedSections.management || collapsed) && (
-                                <div className="section-content">
+                                <div className={styles.sectionContent}>
                                     <button
-                                        className={`nav-button ${activeTab === 'tables' ? 'active' : ''}`}
+                                        className={`${styles.navButton} ${activeTab === 'tables' ? styles.active : ''}`}
                                         onClick={() => setActiveTab('tables')}
                                         title="Tables Management"
                                     >
-                                        <span className="nav-icon">🪑</span>
+                                        <span className={styles.navIcon}>🪑</span>
                                         {!collapsed && (
-                                            <span className="nav-text">Tables</span>
+                                            <span className={styles.navText}>Tables</span>
                                         )}
                                     </button>
 
                                     <button
-                                        className={`nav-button ${activeTab === 'menu' ? 'active' : ''}`}
+                                        className={`${styles.navButton} ${activeTab === 'menu' ? styles.active : ''}`}
                                         onClick={() => setActiveTab('menu')}
                                         title="Menu Management"
                                     >
-                                        <span className="nav-icon">🍽️</span>
+                                        <span className={styles.navIcon}>🍽️</span>
                                         {!collapsed && (
-                                            <span className="nav-text">Menu</span>
+                                            <span className={styles.navText}>Menu</span>
                                         )}
                                     </button>
 
                                     <button
-                                        className={`nav-button ${activeTab === 'hours' ? 'active' : ''}`}
+                                        className={`${styles.navButton} ${activeTab === 'hours' ? styles.active : ''}`}
                                         onClick={() => setActiveTab('hours')}
                                         title="Opening Hours"
                                     >
-                                        <span className="nav-icon">🕒</span>
+                                        <span className={styles.navIcon}>🕒</span>
                                         {!collapsed && (
-                                            <span className="nav-text">Opening Hours</span>
+                                            <span className={styles.navText}>Opening Hours</span>
                                         )}
                                     </button>
                                 </div>
@@ -296,42 +296,42 @@ const Sidebar = ({activeTab, setActiveTab, pendingReservations, onToggle}) => {
 
                     {/* Administration Section - Only for Owner */}
                     {isOwner && (
-                        <div className="nav-section">
+                        <div className={styles.navSection}>
                             {!collapsed && (
                                 <div
-                                    className={`section-header ${collapsedSections.administration ? 'collapsed' : ''}`}
+                                    className={`${styles.sectionHeader} ${collapsedSections.administration ? styles.sectionHeaderCollapsed : ''}`}
                                     onClick={(e) => {
                                         e.stopPropagation();
                                         toggleSection('administration');
                                     }}
                                 >
-                                    <div className="section-label">Administration</div>
-                                    <div className="section-toggle">
+                                    <div className={styles.sectionLabel}>Administration</div>
+                                    <div className={styles.sectionToggle}>
                                         {collapsedSections.administration ? '►' : '▼'}
                                     </div>
                                 </div>
                             )}
                             {(!collapsedSections.administration || collapsed) && (
-                                <div className="section-content">
+                                <div className={styles.sectionContent}>
                                     <button
-                                        className={`nav-button ${activeTab === 'employees' ? 'active' : ''}`}
+                                        className={`${styles.navButton} ${activeTab === 'employees' ? styles.active : ''}`}
                                         onClick={() => setActiveTab('employees')}
                                         title="Employees"
                                     >
-                                        <span className="nav-icon">👥</span>
+                                        <span className={styles.navIcon}>👥</span>
                                         {!collapsed && (
-                                            <span className="nav-text">Employees</span>
+                                            <span className={styles.navText}>Employees</span>
                                         )}
                                     </button>
 
                                     <button
-                                        className={`nav-button ${activeTab === 'restaurantConfig' ? 'active' : ''}`}
+                                        className={`${styles.navButton} ${activeTab === 'restaurantConfig' ? styles.active : ''}`}
                                         onClick={() => setActiveTab('restaurantConfig')}
                                         title="Restaurant Configuration"
                                     >
-                                        <span className="nav-icon">⚙️</span>
+                                        <span className={styles.navIcon}>⚙️</span>
                                         {!collapsed && (
-                                            <span className="nav-text">Settings</span>
+                                            <span className={styles.navText}>Settings</span>
                                         )}
                                     </button>
                                 </div>
@@ -342,7 +342,7 @@ const Sidebar = ({activeTab, setActiveTab, pendingReservations, onToggle}) => {
             </div>
 
             {!collapsed && window.innerWidth <= 768 && (
-                <div className="sidebar-overlay" onClick={toggleSidebar}></div>
+                <div className={styles.sidebarOverlay} onClick={toggleSidebar}></div>
             )}
         </>
     );

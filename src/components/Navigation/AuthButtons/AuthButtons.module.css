@@ -1,0 +1,42 @@
+
+.headerRight {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-right: 0.5rem;
+}
+
+.mobileHeaderRight {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.8rem;
+}
+
+.authBtn {
+    padding: 0.6rem 1.2rem;
+    border-radius: 2rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    outline: none;
+}
+
+.loginBtn {
+    background-color: white;
+    color: #FF7D05;
+    border: 2px solid #FF7D05;
+}
+
+.signupBtn {
+    background-color: #FF7D05;
+    color: white;
+}
+
+.mobileAuthBtn {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+}

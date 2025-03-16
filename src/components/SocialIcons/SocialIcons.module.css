@@ -1,0 +1,61 @@
+@import '../../styles/variables.module.css';
+
+.socialsContainer {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.socials {
+    background-color: rgba(255, 255, 255, 0.15);
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.socials:hover {
+    background-color: var(--white);
+    transform: translateY(-3px);
+}
+
+.socials:hover .apps {
+    color: var(--primary);
+}
+
+.apps {
+    font-size: 1.2rem;
+    color: var(--white);
+    transition: var(--transition);
+}
+
+@media (max-width: 768px) {
+    .socials {
+        width: 38px;
+        height: 38px;
+    }
+
+    .apps {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .socialsContainer {
+        gap: 0.5rem;
+    }
+
+    .socials {
+        width: 36px;
+        height: 36px;
+    }
+
+    .apps {
+        font-size: 1rem;
+    }
+}

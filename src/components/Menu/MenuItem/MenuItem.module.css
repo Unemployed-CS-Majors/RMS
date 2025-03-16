@@ -1,4 +1,4 @@
-/* MenuItem.module.css */
+
 .menuItem {
     display: flex;
     flex-direction: column;
@@ -136,7 +136,6 @@
     transform: scale(0.95);
 }
 
-/* Allergen badges */
 .allergenBadges {
     display: flex;
     flex-wrap: wrap;

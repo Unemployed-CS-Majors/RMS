@@ -1,4 +1,4 @@
-/* MobileCart.module.css */
+
 .mobileCartToggle {
     position: fixed;
     bottom: 0;
@@ -70,7 +70,6 @@
     padding-bottom: 100px;
 }
 
-/* Header section similar to desktop */
 .cartHeaderContainer {
     display: flex;
     align-items: center;
@@ -92,18 +91,16 @@
     margin: 0;
 }
 
-/* Items container with scrolling */
 .cartItemsContainer {
     flex: 1;
     overflow-y: auto;
     margin-bottom: 1.5rem;
     padding-right: 0.5rem;
-    /* Stylish scrollbar */
+
     scrollbar-width: thin;
     scrollbar-color: var(--primary-light) var(--gray-light);
 }
 
-/* Scrollbar styling */
 .cartItemsContainer::-webkit-scrollbar {
     width: 6px;
 }
@@ -118,7 +115,6 @@
     border-radius: 10px;
 }
 
-/* Total section */
 .cartTotalContainer {
     display: flex;
     justify-content: space-between;
@@ -139,7 +135,6 @@
     font-size: 1.25rem;
 }
 
-/* Checkout button */
 .checkoutBtn {
     width: 100%;
     padding: 1rem;

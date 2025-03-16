@@ -74,7 +74,6 @@
     padding: 16px 20px 24px;
 }
 
-/* Input styling */
 .inputGrid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -116,7 +115,6 @@
     cursor: not-allowed;
 }
 
-/* Personal info section */
 .personalInfo {
     background: transparent;
     border-radius: 8px;

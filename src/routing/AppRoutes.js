@@ -1,7 +1,7 @@
 import React from "react";
 import {BrowserRouter as Router, Navigate, Route, Routes} from "react-router-dom";
 
-import HashNavigationWrapper from "../components/Navigation/HashNavigationWrapper";
+import HashNavigationWrapper from "../components/Navigation/HashNavigationWrapper/HashNavigationWrapper";
 import Auth from "../pages/Authentication/Auth";
 import NotFound from "../pages/NotFound/NotFound";
 import Layout from "../components/Layout/Layout";

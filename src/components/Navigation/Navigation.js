@@ -1,13 +1,13 @@
 import React, { useContext, useState, useEffect } from "react";
-import "./Navigation.css";
 import { useNavigate, useLocation } from "react-router-dom";
 import { ROUTES } from "../../constants/routes.js";
-import Logo from "./Logo";
-import NavigationTabs from "./NavigationTabs";
-import AuthButtons from "./AuthButtons";
+import Logo from "./Logo/Logo";
+import NavigationTabs from "./NavigationTabs/NavigationTabs";
+import AuthButtons from "./AuthButtons/AuthButtons";
 import { AuthContext } from "../../contexts/AuthContext";
-import ProfileButton from "./ProfileButton";
+import ProfileButton from "./ProfileButton/ProfileButton";
 import { FaBars, FaTimes } from "react-icons/fa";
+import styles from "./Navigation.module.css";
 
 const Navigation = () => {
     const [currentPage, setCurrentPage] = useState("Home");
@@ -94,13 +94,13 @@ const Navigation = () => {
     const isMainRoute = location.pathname === '/' || location.pathname === ROUTES.HOME;
 
     return (
-        <div className="header-container">
+        <div className={`${styles.headerContainer} ${window.scrollY > 0 ? styles.scrolled : ''}`}>
             <Logo />
 
             {isMobile ? (
                 <>
                     <button
-                        className="hamburger-menu"
+                        className={styles.hamburgerMenu}
                         onClick={toggleMenu}
                         aria-label={menuOpen ? "Close menu" : "Open menu"}
                     >
@@ -108,7 +108,7 @@ const Navigation = () => {
                     </button>
 
                     {menuOpen && (
-                        <div className="mobile-menu">
+                        <div className={styles.mobileMenu}>
                             <NavigationTabs
                                 currentPage={currentPage}
                                 handleCurrentPage={handleCurrentPage}
@@ -141,7 +141,7 @@ const Navigation = () => {
                         isMobile={false}
                     />
 
-                    <div className="header-right-container">
+                    <div className={styles.headerRightContainer}>
                         {isLoggedIn ? (
                             <ProfileButton
                                 handleProfileClick={handleProfileClick}
