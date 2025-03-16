@@ -1,7 +1,7 @@
 import React from "react";
 import MenuItem from "./MenuItem";
 
-const MenuItemsList = ({ filteredItems, openItemDetails, addToCart }) => {
+const MenuItemsList = ({ filteredItems, openItemDetails, addToCart,orderEnabled }) => {
     if (filteredItems.length === 0) {
         return (
             <div
@@ -24,6 +24,7 @@ const MenuItemsList = ({ filteredItems, openItemDetails, addToCart }) => {
                     item={item}
                     openItemDetails={openItemDetails}
                     addToCart={addToCart}
+                    orderEnabled={orderEnabled}
                 />
             ))}
         </div>

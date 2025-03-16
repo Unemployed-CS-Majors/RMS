@@ -1,14 +1,16 @@
 // hooks/useMenuState.js
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import menuService from "../../../services/menuItem.service";
 import { useViewport } from "./useViewport";
 import useCart from "./useCart";
 import useAllergens from "./useAllergens";
 import {useNavigate} from "react-router-dom";
 import ROUTES from "../../../constants/routes";
+import {AuthContext} from "../../../contexts/AuthContext";
 
 const useMenuState = () => {
     // State for menu data
+    const { config } = useContext(AuthContext);
     const [searchTerm, setSearchTerm] = useState("");
     const [menuItems, setMenuItems] = useState([]);
     const [filteredItems, setFilteredItems] = useState([]);
@@ -16,13 +18,10 @@ const useMenuState = () => {
     const [activeCategory, setActiveCategory] = useState("All");
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-// Update localStorage whenever the cart is modified
-
+    const [orderEnabled, setOrderEnabled] = useState(true);
     // State for item details
     const [selectedItem, setSelectedItem] = useState(null);
     const detailsRef = useRef(null);
-
-
 
     // Import functionality from custom hooks
     const { isMobile } = useViewport();
@@ -110,8 +109,13 @@ const useMenuState = () => {
                 setLoading(false);
             }
         };
-
+        const checkOrderEnabled = () => {
+                if (!config?.features || !Array.isArray(config.features)) return true;
+                const feature = config.features.find(f => f.name === "online_ordering");
+                 setOrderEnabled(feature ? feature.enabled : true);
+        }
         fetchMenuItems();
+        checkOrderEnabled();
     }, []);
 
     // Filter items based on search, category, and excluded allergens
@@ -219,6 +223,7 @@ const useMenuState = () => {
         removeFromCart,
         getTotal,
         getItemTotalPrice,
+        orderEnabled,
         goToCheckout,
 
         // Allergens

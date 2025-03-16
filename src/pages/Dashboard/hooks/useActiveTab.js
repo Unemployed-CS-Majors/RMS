@@ -5,6 +5,7 @@ import tableService from "../../../services/table.service";
 import userService from "../../../services/user.service";
 import menuService from "../../../services/menuItem.service";
 import orderService from "../../../services/order.service";
+import restaurantConfigService from "../../../services/restaurantConfig.service";
 
 /**
  * Custom hook for managing active tab and related data fetching
@@ -20,7 +21,7 @@ import orderService from "../../../services/order.service";
  * @returns {Array} Active tab and function to change active tab
  */
 export const useActiveTab = (
-    initialTab = 'pendingReservations',
+    initialTab = 'dashboard',
     setAllReservations,
     setOpeningHours,
     setPendingReservation,
@@ -32,10 +33,9 @@ export const useActiveTab = (
 ) => {
     const [activeTab, setActiveTab] = useState(initialTab);
 
-    // Set initial hash based on initialTab
     useEffect(() => {
         const hash = window.location.hash.replace('#', '');
-        if (hash && ['pendingReservations', 'hours', 'tables', 'employees', 'allReservations', 'menu', 'orders'].includes(hash)) {
+        if (hash && ["dashboard",'pendingReservations', 'hours', 'tables', 'employees', 'allReservations', 'menu', 'orders', 'restaurantConfig'].includes(hash)) {
             setActiveTab(hash);
         } else {
             window.location.hash = initialTab;
@@ -150,12 +150,14 @@ export const useActiveTab = (
                         break;
                     case "orders":
                         try {
-                            const activeOrders = await orderService.getActiveOrders(50);
+                            const activeOrders = await orderService.getAll(250);
                             setOrders(activeOrders);
                         } catch (e) {
                             console.error("Error fetching orders:", e);
                             setOrders([]);
                         }
+                        break;
+                    case "restaurantConfig":
                         break;
                     default:
                         console.log(activeTab);

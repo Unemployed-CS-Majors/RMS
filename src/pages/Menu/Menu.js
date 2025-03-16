@@ -29,6 +29,7 @@ const Menu = () => {
     getTotal,
     getItemTotalPrice,
     goToCheckout,
+    orderEnabled,
 
     // Allergens
     allAllergens,
@@ -54,7 +55,6 @@ const Menu = () => {
     loading,
     error
   } = useMenuState();
-// Load cart from localStorage when the component mounts
 
   return (
       <div className='menu-page'>
@@ -122,6 +122,7 @@ const Menu = () => {
                     filteredItems={filteredItems}
                     openItemDetails={openItemDetails}
                     addToCart={addToCart}
+                    orderEnabled={orderEnabled}
                 />
             )}
           </div>
@@ -134,6 +135,7 @@ const Menu = () => {
                   cart={cart}
                   addToCart={addToCart}
                   removeFromCart={removeFromCart}
+                  orderEnabled={orderEnabled}
               />
           )}
 

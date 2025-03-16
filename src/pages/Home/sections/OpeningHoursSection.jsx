@@ -1,13 +1,15 @@
-import React from 'react';
-import { LuClock3 } from 'react-icons/lu';
-import { BiSolidPhoneCall } from 'react-icons/bi';
-import useOpeningHours from '../hooks/useOpeningHours';
-import useRestaurantImages from '../hooks/useRestaurantImages';
-import './OpeningHoursSection.css';
+import React,{ useContext }  from "react";
+import { LuClock3 } from "react-icons/lu";
+import { BiSolidPhoneCall } from "react-icons/bi";
+import useOpeningHours from "../hooks/useOpeningHours";
+import useRestaurantImages from "../hooks/useRestaurantImages";
+import "./OpeningHoursSection.css";
+import {AuthContext} from "../../../contexts/AuthContext";
 
 const OpeningHoursSection = () => {
   const { openingHours, isLoading, error } = useOpeningHours();
   const { restaurantImages } = useRestaurantImages();
+    const {config} = useContext(AuthContext)
 
   const convertTo12HourFormat = time24 => {
     const [hour, minute] = time24.split(':').map(Number);
@@ -43,12 +45,12 @@ const OpeningHoursSection = () => {
               ) : null
             )}
 
-          <div className='phoneNumber-txt'>
-            <BiSolidPhoneCall className='phone-icon' />
-            <span className='phoneNumber'>+123456789</span>
-          </div>
-        </div>
-      </div>
+                    <div className="phoneNumber-txt">
+                        <BiSolidPhoneCall className="phone-icon"/>
+                        <span className="phoneNumber">{config?.phoneNumber?.phoneNumber}</span>
+                    </div>
+                </div>
+            </div>
 
       <div className='img-container2'>
         {restaurantImages.map((image, index) => (

@@ -11,7 +11,9 @@ import EmployeeManagement from '../../components/Dashboard/EmployeeManagement/Em
 import AllReservations from '../../components/Dashboard/AllReservations/AllReservations';
 import FloorPlanDesigner from '../../components/Dashboard/FloorPlanDesigner/FloorPlanDesigner';
 import MenuManagement from '../../components/Dashboard/MenuManagement/MenuManagement';
+import RestaurantConfig from '../../components/Dashboard/RestaurantConfig/RestaurantConfig';
 import LoadingIndicator from '../../components/Dashboard/Loading/LoadingIndicator';
+
 // Custom hooks
 import { useActiveTab } from './hooks/useActiveTab';
 import { useReservationManagement } from './hooks/useReservationManagement';
@@ -22,6 +24,7 @@ import { useMenuManagement } from './hooks/useMenuManagement';
 import { useWebSocket } from './hooks/useWebSocket';
 import { useUIState } from './hooks/useUIState';
 import OrderManagement from "../../components/Dashboard/Orders/OrderManagement";
+import AnalyticsDashboard from "../../components/Dashboard/AnalyticsDashboard/AnalyticsDashboard";
 
 /**
  * RestaurantDashboard component
@@ -53,7 +56,7 @@ const RestaurantDashboard = () => {
 
     // Tab management
     const [activeTab, setActiveTab] = useActiveTab(
-        tab || 'pendingReservations',
+        tab || 'dashboard',
         setAllReservations,
         setOpeningHours,
         setPendingReservations,
@@ -157,6 +160,12 @@ const RestaurantDashboard = () => {
                         <LoadingIndicator text={`Loading ${activeTab.replace(/([A-Z])/g, ' $1').trim()}...`}/>
                     ) : (
                         <>
+                            {activeTab === 'dashboard' && (
+                                <AnalyticsDashboard
+                                    loading={loading}
+                                    setLoading={setLoading}
+                                />
+                            )}
                             {activeTab === 'pendingReservations' && (
                                 <PendingReservations
                                     pendingReservations={pendingReservations}
@@ -208,13 +217,18 @@ const RestaurantDashboard = () => {
                                     loading={loading}
                                 />
                             )}
-
                             {activeTab === 'orders' && (
                                 <OrderManagement
                                     orders={orders}
                                     loading={loading}
                                     toggleShowFilters={toggleReservationFilterMode}
                                     showFilters={reservationFilterMode}
+                                />
+                            )}
+                            {activeTab === 'restaurantConfig' && (
+                                <RestaurantConfig
+                                    loading={loading}
+                                    setLoading={setLoading}
                                 />
                             )}
                         </>
