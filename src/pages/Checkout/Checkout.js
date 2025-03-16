@@ -531,7 +531,7 @@ const Checkout = () => {
           <a
             href='#'
             className='go-to-menu-link'
-            onClick={handleBackToMenu()}>
+            onClick={handleBackToMenu}>
             Back to Menu
           </a>
         </div>
