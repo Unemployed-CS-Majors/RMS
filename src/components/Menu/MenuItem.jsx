@@ -3,7 +3,7 @@ import { FaRegClock } from "react-icons/fa";
 import { IoFlameOutline } from "react-icons/io5";
 import { FiPlus } from "react-icons/fi";
 
-const MenuItem = ({ item, openItemDetails, addToCart }) => {
+const MenuItem = ({ item, openItemDetails, addToCart, orderEnabled }) => {
     // Display allergen information as badges
     const renderAllergens = (item) => {
         if (!item.allergens || item.allergens.length === 0) return null;
@@ -58,7 +58,7 @@ const MenuItem = ({ item, openItemDetails, addToCart }) => {
                             <IoFlameOutline className='info-icon' /> {item.kcal} kcal
                         </div>
                     </div>
-                    <div className='menu-item-btn-container'>
+                    {orderEnabled === true && (<div className='menu-item-btn-container'>
                         <div className='menu-item-price'>&euro;{Number(item.price).toFixed(2)}</div>
                         <button
                             className='item-btn'
@@ -67,9 +67,9 @@ const MenuItem = ({ item, openItemDetails, addToCart }) => {
                                 addToCart(item);
                             }}
                         >
-                            <FiPlus />
+                            <FiPlus/>
                         </button>
-                    </div>
+                    </div>)}
                 </div>
             </div>
         </div>

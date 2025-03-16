@@ -53,7 +53,7 @@ const ReservationsTable = ({ reservations }) => {
                             </td>
                             <td data-label="Table">
                                     <span className="table-badge">
-                                        {reservation.tableId}
+                                        {reservation.tableNum}
                                     </span>
                             </td>
                             <td data-label="Contact">{reservation.phoneNumber}</td>

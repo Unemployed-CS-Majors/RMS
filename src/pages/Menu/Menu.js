@@ -28,6 +28,7 @@ const Menu = () => {
     removeFromCart,
     getTotal,
     getItemTotalPrice,
+    orderEnabled,
 
     // Allergens
     allAllergens,
@@ -120,6 +121,7 @@ const Menu = () => {
                     filteredItems={filteredItems}
                     openItemDetails={openItemDetails}
                     addToCart={addToCart}
+                    orderEnabled={orderEnabled}
                 />
             )}
           </div>
@@ -132,6 +134,7 @@ const Menu = () => {
                   cart={cart}
                   addToCart={addToCart}
                   removeFromCart={removeFromCart}
+                  orderEnabled={orderEnabled}
               />
           )}
 

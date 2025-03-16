@@ -20,7 +20,7 @@ const PendingReservations = ({ pendingReservations, handleApproveReservation, ha
                         </div>
 
                         <div className="table-badge">
-                          {reservation.tableId}
+                          {reservation.tableNum}
                         </div>
 
                         <div className="reservation-details">

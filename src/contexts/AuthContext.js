@@ -1,19 +1,25 @@
 import React, {createContext, useContext, useEffect, useState} from "react";
 import PropTypes from "prop-types";
-import COOKIE_KEYS from "../constants/cookieKeys"; 
-import authService from "../services/auth.service"; 
+import COOKIE_KEYS from "../constants/cookieKeys";
+import authService from "../services/auth.service";
 import userService from "../services/user.service";
 import cookieManager from "../utils/cookieManager";
 import {GoogleAuthProvider, signInWithPopup} from "firebase/auth";
-import {auth, facebookProvider, googleProvider} from "../config/FirebaseConfig"; 
+import {auth, facebookProvider, googleProvider} from "../config/FirebaseConfig";
+import restaurantConfigService from "../services/restaurantConfig.service";
+
 export const AuthContext = createContext();
 
 export const AuthProvider = ({children}) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    
+    const [config, setConfig] = useState({});
     useEffect(() => {
         const idToken = cookieManager.get(COOKIE_KEYS.ID_TOKEN);
         setIsLoggedIn(!!idToken);
+        getConfig();
+        const config = JSON.parse(cookieManager.get(COOKIE_KEYS.CONFIG) || '{}');
+        console.log(config);
+        setConfig(config);
     }, []);
 
     const login = async (email, password) => {
@@ -126,8 +132,14 @@ export const AuthProvider = ({children}) => {
         }
     }
 
+    const getConfig = async () => {
+        const response = await restaurantConfigService.getRestaurantConfig()
+        setConfig(response);
+        cookieManager.set(COOKIE_KEYS.CONFIG, JSON.stringify(response), {expires: 1});
+    }
+
     return (
-        <AuthContext.Provider value={{isLoggedIn, login, register, logout, loginWithGoogle,loginWithFacebook, sendGoogleToken,resetPassword, deleteAccount}}>
+        <AuthContext.Provider value={{isLoggedIn, login, register, logout, loginWithGoogle,loginWithFacebook, sendGoogleToken,resetPassword, deleteAccount, config}}>
             {children}
         </AuthContext.Provider>
     );
