@@ -1,13 +1,13 @@
 import React from 'react';
-import "./Auth.css";
+import styles from "./Auth.module.css";
 import AuthBackground from "../../assets/auth-background.jpg";
 
 // Components
-import AuthHeader from '../../components/Authentication/AuthHeader';
-import ErrorDisplay from '../../components/Authentication/ErrorDisplay';
-import SocialAuthButtons from '../../components/Authentication/SocialAuthButtons';
-import LoginForm from '../../components/Authentication/LoginForm';
-import RegisterForm from '../../components/Authentication/RegisterForm';
+import AuthHeader from '../../components/Authentication/AuthHeader/AuthHeader';
+import ErrorDisplay from '../../components/Authentication/ErrorDisplay/ErrorDisplay';
+import SocialAuthButtons from '../../components/Authentication/SocialAuthButtons/SocialAuthButtons';
+import LoginForm from '../../components/Authentication/LoginForm/LoginForm';
+import RegisterForm from '../../components/Authentication/RegisterForm/RegisterForm';
 
 // Custom hooks
 import { useAuthForm } from './hooks/useAuthForm';
@@ -36,18 +36,18 @@ const Auth = () => {
     } = useAuthForm();
 
     return (
-        <div className="auth-container">
+        <div className={styles.authContainer}>
             <AuthHeader
                 isLoginForm={loginForm}
                 returnHome={returnHome}
             />
 
-            <img src={AuthBackground} className="auth-background" alt="Background" />
+            <img src={AuthBackground} className={styles.authBackground} alt="Background" />
 
-            <div className="auth-card">
-                <div className="auth-header">
+            <div className={styles.authCard}>
+                <div className={styles.authHeader}>
                     <h1>{loginForm ? "Welcome Back" : "Create Account"}</h1>
-                    <p className="auth-subheader">{loginForm ? "Login to continue your journey" : "Join us today"}</p>
+                    <p className={styles.authSubheader}>{loginForm ? "Login to continue your journey" : "Join us today"}</p>
                 </div>
 
                 <ErrorDisplay error={formError} />
@@ -58,7 +58,7 @@ const Auth = () => {
                     handleFacebookAuth={handleFacebookAuth}
                 />
 
-                <div className="divider">
+                <div className={styles.divider}>
                     <span>or</span>
                 </div>
 

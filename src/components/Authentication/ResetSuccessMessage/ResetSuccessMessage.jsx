@@ -1,4 +1,5 @@
 import React from "react";
+import styles from './ResetSuccessMessage.module.css';
 
 /**
  * Component shown after successful password reset request
@@ -9,21 +10,21 @@ import React from "react";
  */
 const ResetSuccessMessage = ({ email, returnToLogin }) => {
     return (
-        <div className="reset-success">
-            <div className="auth-header">
+        <div className={styles.resetSuccess}>
+            <div className={styles.authHeader}>
                 <h1>Email Sent</h1>
-                <p className="auth-subheader">
+                <p className={styles.authSubheader}>
                     A password reset link has been sent to <strong>{email}</strong>
                 </p>
             </div>
 
-            <p className="reset-instructions">
+            <p className={styles.resetInstructions}>
                 Please check your email and follow the instructions to reset your password.
                 If you don't see the email in your inbox, please check your spam folder.
             </p>
 
             <button
-                className="auth-button"
+                className={styles.authButton}
                 onClick={returnToLogin}
             >
                 Return to Login

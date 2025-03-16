@@ -1,11 +1,11 @@
 import React from "react";
-import "./Auth.css";
+import styles from "./Auth.module.css";
 import AuthBackground from "../../assets/auth-background.jpg";
 
 // Components
-import HomeButton from "../../components/Authentication/HomeButton";
-import ForgotPasswordForm from "../../components/Authentication/ForgotPasswordForm";
-import ResetSuccessMessage from "../../components/Authentication/ResetSuccessMessage";
+import HomeButton from "../../components/Authentication/HomeButton/HomeButton";
+import ForgotPasswordForm from "../../components/Authentication/ForgotPasswordForm/ForgotPasswordForm";
+import ResetSuccessMessage from "../../components/Authentication/ResetSuccessMessage/ResetSuccessMessage";
 
 // Custom hooks
 import { useForgotPassword } from "./hooks/useForgotPassword";
@@ -26,12 +26,12 @@ const ForgotPassword = () => {
     } = useForgotPassword();
 
     return (
-        <div className="auth-container">
+        <div className={styles.authContainer}>
             <HomeButton onClick={returnHome} />
 
-            <img src={AuthBackground} className="auth-background" alt="Background" />
+            <img src={AuthBackground} className={styles.authBackground} alt="Background" />
 
-            <div className="auth-card">
+            <div className={styles.authCard}>
                 {!isSubmitted ? (
                     <ForgotPasswordForm
                         email={email}

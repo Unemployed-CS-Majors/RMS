@@ -1,0 +1,87 @@
+.resetSuccess {
+    text-align: center;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.authHeader {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.authHeader h1 {
+    color: #ff7d05;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.authHeader h1::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: #ff7d05;
+    border-radius: 2px;
+}
+
+.authSubheader {
+    color: #bdbdbd;
+    font-size: 0.95rem;
+    font-weight: 400;
+}
+
+.resetInstructions {
+    color: #bdbdbd;
+    margin: 1.5rem 0;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 1.2rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.authButton {
+    background-color: #ff7d05;
+    color: white;
+    padding: 0.95rem;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+}
+
+.authButton:hover {
+    background-color: #e66b04;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 125, 5, 0.4);
+}
+
+.authButton:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 5px rgba(255, 125, 5, 0.3);
+}
+
+.resetSuccess strong {
+    color: #ff7d05;
+    font-weight: 600;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

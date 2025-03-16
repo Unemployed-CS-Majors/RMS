@@ -1,5 +1,6 @@
 import React from "react";
 import { FaEnvelope, FaArrowLeft } from "react-icons/fa";
+import styles from './ForgotPasswordForm.module.css';
 
 /**
  * Form component for requesting password reset
@@ -17,20 +18,20 @@ const ForgotPasswordForm = ({
                             }) => {
     return (
         <>
-            <div className="auth-header">
+            <div className={styles.authHeader}>
                 <h1>Forgot Password</h1>
-                <p className="auth-subheader">Enter your email to receive a reset link</p>
+                <p className={styles.authSubheader}>Enter your email to receive a reset link</p>
             </div>
 
             {formError && (
-                <div className="auth-error">
+                <div className={styles.authError}>
                     {formError}
                 </div>
             )}
 
-            <form className="auth-form" onSubmit={handleSubmit}>
-                <div className="input-group">
-                    <FaEnvelope className="input-icon" />
+            <form className={styles.authForm} onSubmit={handleSubmit}>
+                <div className={styles.inputGroup}>
+                    <FaEnvelope className={styles.inputIcon} />
                     <input
                         type="email"
                         name="email"
@@ -43,13 +44,13 @@ const ForgotPasswordForm = ({
 
                 <button
                     type="submit"
-                    className="auth-button"
+                    className={styles.authButton}
                     disabled={isSubmitting}
                 >
                     {isSubmitting ? "Sending..." : "Send Reset Link"}
                 </button>
 
-                <div className="back-to-login" onClick={returnToLogin}>
+                <div className={styles.backToLogin} onClick={returnToLogin}>
                     <FaArrowLeft /> <span>Back to Login</span>
                 </div>
             </form>

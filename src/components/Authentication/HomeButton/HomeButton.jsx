@@ -1,5 +1,6 @@
 import React from "react";
 import { FaHome } from "react-icons/fa";
+import styles from './HomeButton.module.css';
 
 /**
  * Home button component for navigation
@@ -9,7 +10,7 @@ import { FaHome } from "react-icons/fa";
  */
 const HomeButton = ({ onClick }) => {
     return (
-        <div className="return-home-button" onClick={onClick}>
+        <div className={styles.returnHomeButton} onClick={onClick}>
             <FaHome />
             <span>Home</span>
         </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaEnvelope, FaLock } from 'react-icons/fa';
-import { ROUTES } from '../../constants/routes.js';
+import { ROUTES } from '../../../constants/routes.js';
+import styles from './LoginForm.module.css';
 
 /**
  * Login form component
@@ -13,9 +14,9 @@ import { ROUTES } from '../../constants/routes.js';
  */
 const LoginForm = ({ formData, handleChange, handleSubmit, showRegister }) => {
     return (
-        <form className="auth-form" onSubmit={handleSubmit}>
-            <div className="input-group">
-                <FaEnvelope className="input-icon" />
+        <form className={styles.authForm} onSubmit={handleSubmit}>
+            <div className={styles.inputGroup}>
+                <FaEnvelope className={styles.inputIcon} />
                 <input
                     type="email"
                     name="email"
@@ -26,8 +27,8 @@ const LoginForm = ({ formData, handleChange, handleSubmit, showRegister }) => {
                 />
             </div>
 
-            <div className="input-group">
-                <FaLock className="input-icon" />
+            <div className={styles.inputGroup}>
+                <FaLock className={styles.inputIcon} />
                 <input
                     type="password"
                     name="password"
@@ -38,13 +39,13 @@ const LoginForm = ({ formData, handleChange, handleSubmit, showRegister }) => {
                 />
             </div>
 
-            <div className="forgot-password">
+            <div className={styles.forgotPassword}>
                 <a href={ROUTES.FORGOT_PASSWORD}>Forgot Password?</a>
             </div>
 
-            <button type="submit" className="auth-button">Sign In</button>
+            <button type="submit" className={styles.authButton}>Sign In</button>
 
-            <p className="auth-switch">
+            <p className={styles.authSwitch}>
                 Don't have an account?
                 <span onClick={showRegister}>Sign up</span>
             </p>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaUser, FaEnvelope, FaLock, FaPhone, FaGlobe, FaChevronDown } from 'react-icons/fa';
-import { countryCodes } from '../../utils/countryCodeData';
+import { countryCodes } from '../../../utils/countryCodeData';
+import styles from './RegisterForm.module.css';
 
 /**
  * Registration form component
@@ -19,10 +20,10 @@ const RegisterForm = ({
                           handleCountryCodeSelect
                       }) => {
     return (
-        <form className="auth-form" onSubmit={handleSubmit}>
-            <div className="name-fields">
-                <div className="input-group">
-                    <FaUser className="input-icon" />
+        <form className={styles.authForm} onSubmit={handleSubmit}>
+            <div className={styles.nameFields}>
+                <div className={styles.inputGroup}>
+                    <FaUser className={styles.inputIcon} />
                     <input
                         type="text"
                         name="firstName"
@@ -32,8 +33,8 @@ const RegisterForm = ({
                         required
                     />
                 </div>
-                <div className="input-group">
-                    <FaUser className="input-icon" />
+                <div className={styles.inputGroup}>
+                    <FaUser className={styles.inputIcon} />
                     <input
                         type="text"
                         name="lastName"
@@ -45,8 +46,8 @@ const RegisterForm = ({
                 </div>
             </div>
 
-            <div className="input-group">
-                <FaEnvelope className="input-icon" />
+            <div className={styles.inputGroup}>
+                <FaEnvelope className={styles.inputIcon} />
                 <input
                     type="email"
                     name="email"
@@ -57,8 +58,8 @@ const RegisterForm = ({
                 />
             </div>
 
-            <div className="input-group">
-                <FaLock className="input-icon" />
+            <div className={styles.inputGroup}>
+                <FaLock className={styles.inputIcon} />
                 <input
                     type="password"
                     name="password"
@@ -69,8 +70,8 @@ const RegisterForm = ({
                 />
             </div>
 
-            <div className="input-group">
-                <FaLock className="input-icon" />
+            <div className={styles.inputGroup}>
+                <FaLock className={styles.inputIcon} />
                 <input
                     type="password"
                     name="confirmPassword"
@@ -81,34 +82,32 @@ const RegisterForm = ({
                 />
             </div>
 
-            <div className="phone-input-container">
-                <div ref={countryCodeRef} className="country-code-selector">
+            <div className={styles.phoneInputContainer}>
+                <div ref={countryCodeRef} className={styles.countryCodeSelector}>
                     <div
-                        className="country-code-display"
+                        className={styles.countryCodeDisplay}
                         onClick={toggleCountryCodeDropdown}
                     >
-                        <FaGlobe className="country-code-icon" />
+                        <FaGlobe className={styles.countryCodeIcon} />
                         <span>{formData.countryCode}</span>
-                        <FaChevronDown className="dropdown-icon" />
+                        <FaChevronDown className={styles.dropdownIcon} />
                     </div>
 
                     {showCountryCodeDropdown && (
-                        <div className="country-code-dropdown">
+                        <div className={styles.countryCodeDropdown}>
                             {countryCodes.map((item, index) => (
-                                <div
-                                    key={index}
-                                    className="country-code-option"
-                                    onClick={() => handleCountryCodeSelect(item.code)}
+                                <div className={styles.countryCodeOption}
+                                     onClick={() => handleCountryCodeSelect(item.code)}
                                 >
-                                    <span className="country-code">{item.code}</span>
-                                    <span className="country-name">{item.country}</span>
+                                    <span className={styles.countryCode}>{item.code}</span>
+                                    <span className={styles.countryName}>{item.country}</span>
                                 </div>
                             ))}
                         </div>
                     )}
                 </div>
-                <div className="phone-input-group">
-                    <FaPhone className="phone-input-icon" />
+                <div className={styles.phoneInputGroup}>
+                    <FaPhone className={styles.phoneInputIcon} />
                     <input
                         type="tel"
                         name="phoneNumber"
@@ -120,9 +119,9 @@ const RegisterForm = ({
                 </div>
             </div>
 
-            <button type="submit" className="auth-button">Register</button>
+            <button type="submit" className={styles.authButton}>Register</button>
 
-            <p className="auth-switch">
+            <p className={styles.authSwitch}>
                 Already have an account?
                 <span onClick={showLogin}>Sign in</span>
             </p>

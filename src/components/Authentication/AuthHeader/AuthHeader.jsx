@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaHome } from 'react-icons/fa';
+import styles from './AuthHeader.module.css';
 
 /**
  * Auth header component with title, subtitle and home button
@@ -11,7 +12,7 @@ import { FaHome } from 'react-icons/fa';
 const AuthHeader = ({ isLoginForm, returnHome }) => {
     return (
         <>
-            <div className="return-home-button" onClick={returnHome}>
+            <div className={styles.returnHomeButton} onClick={returnHome}>
                 <FaHome />
                 <span>Home</span>
             </div>

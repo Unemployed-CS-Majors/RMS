@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './ErrorDisplay.module.css';
 
 /**
  * Component to display error messages
@@ -10,7 +11,7 @@ const ErrorDisplay = ({ error }) => {
     if (!error) return null;
 
     return (
-        <div className="auth-error">
+        <div className={styles.authError}>
             {error}
         </div>
     );

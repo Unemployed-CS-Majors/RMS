@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaGoogle, FaFacebook } from 'react-icons/fa';
+import styles from './SocialAuthButtons.module.css';
 
 /**
  * Social authentication buttons component
@@ -11,9 +12,9 @@ import { FaGoogle, FaFacebook } from 'react-icons/fa';
  */
 const SocialAuthButtons = ({ loading, handleGoogleAuth, handleFacebookAuth }) => {
     return (
-        <div className="auth-providers">
+        <div className={styles.authProviders}>
             <button
-                className="provider-button google"
+                className={`${styles.providerButton} ${styles.google}`}
                 onClick={handleGoogleAuth}
                 type="button"
                 disabled={loading}
@@ -21,7 +22,7 @@ const SocialAuthButtons = ({ loading, handleGoogleAuth, handleFacebookAuth }) =>
                 <FaGoogle /> <span>{loading ? "Signing in..." : "Continue with Google"}</span>
             </button>
             <button
-                className="provider-button facebook"
+                className={`${styles.providerButton} ${styles.facebook}`}
                 type="button"
                 onClick={handleFacebookAuth}
                 disabled={loading}
