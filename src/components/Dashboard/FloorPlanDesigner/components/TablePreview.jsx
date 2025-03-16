@@ -29,7 +29,7 @@ const TablePreview = ({ selectedTableType }) => {
             <svg width={previewWidth} height={previewHeight} className="table-preview-svg">
                 <g transform={`scale(${scale})`}>
                     <TableWithChairs
-                        id={table.intId}
+                        id={table.tableNum}
                         x={tableX / scale}
                         y={tableY / scale}
                         tableType={table.tableType}

@@ -116,6 +116,21 @@ const orderService = {
             console.error('Error fetching orders:', error);
             throw error;
         }
+    },
+
+  /**
+   * Create a new order
+   * @param {Object} orderData - The order details
+   * @returns {Promise<Object>} Created order details
+   */
+  createOrder: async orderData => {
+      try {
+          const response = await axiosInstance.post(`/order`, orderData);
+          return response.data;
+      } catch (error) {
+          console.error("Error creating order:", error);
+          throw error;
+      }
     }
 };
 

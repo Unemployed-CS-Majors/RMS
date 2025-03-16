@@ -28,6 +28,7 @@ const Menu = () => {
     removeFromCart,
     getTotal,
     getItemTotalPrice,
+    goToCheckout,
     orderEnabled,
 
     // Allergens
@@ -145,6 +146,7 @@ const Menu = () => {
                   removeFromCart={removeFromCart}
                   getTotal={getTotal}
                   getItemTotalPrice={getItemTotalPrice}
+                  goToCheckout={goToCheckout}
               />
           )}
 
@@ -157,6 +159,7 @@ const Menu = () => {
                   removeFromCart={removeFromCart}
                   getTotal={getTotal}
                   getItemTotalPrice={getItemTotalPrice}
+                  goToCheckout={goToCheckout}
               />
           )}
         </div>

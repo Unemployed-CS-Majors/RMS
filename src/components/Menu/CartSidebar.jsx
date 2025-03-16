@@ -3,7 +3,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import CartItem from "./CartItem";
 
-const CartSidebar = ({ cart, addToCart, removeFromCart, getTotal, getItemTotalPrice }) => {
+const CartSidebar = ({ cart, addToCart, removeFromCart, getTotal, getItemTotalPrice, goToCheckout }) => {
     return (
         <div className='checkout-container'>
             <div className='checkout-header-container'>
@@ -25,7 +25,7 @@ const CartSidebar = ({ cart, addToCart, removeFromCart, getTotal, getItemTotalPr
                 <span className='total-label'>Total</span>
                 <span className='total-value'>&euro;{getTotal().toFixed(2)}</span>
             </div>
-            <button className='checkout-btn'>
+            <button className='checkout-btn' onClick={goToCheckout}>
                 Proceed to Checkout
                 <MdOutlineKeyboardArrowRight size={20} />
             </button>

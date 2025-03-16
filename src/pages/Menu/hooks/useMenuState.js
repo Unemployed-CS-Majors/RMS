@@ -4,6 +4,8 @@ import menuService from "../../../services/menuItem.service";
 import { useViewport } from "./useViewport";
 import useCart from "./useCart";
 import useAllergens from "./useAllergens";
+import {useNavigate} from "react-router-dom";
+import ROUTES from "../../../constants/routes";
 import {AuthContext} from "../../../contexts/AuthContext";
 
 const useMenuState = () => {
@@ -30,7 +32,8 @@ const useMenuState = () => {
         getTotal,
         getItemTotalPrice,
         showMobileCart,
-        toggleMobileCart
+        toggleMobileCart,
+        goToCheckout
     } = useCart();
 
     const {
@@ -221,6 +224,7 @@ const useMenuState = () => {
         getTotal,
         getItemTotalPrice,
         orderEnabled,
+        goToCheckout,
 
         // Allergens
         allAllergens,

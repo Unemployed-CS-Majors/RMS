@@ -24,6 +24,14 @@ const LocationSection = () => {
     fetchOpeningHours();
   }, []);
 
+  const convertTo12HourFormat = time24 => {
+    const [hour, minute] = time24.split(':').map(Number);
+    const ampm = hour >= 12 ? 'PM' : 'AM';
+    const hour12 = hour % 12 || 12;
+    const minuteFormatted = minute < 10 ? `0${minute}` : minute;
+    return `${hour12}:${minuteFormatted} ${ampm}`;
+  };
+
   return (
       <div id="location">
         <section className="location-section">
@@ -73,26 +81,32 @@ const LocationSection = () => {
                   </div>
                 </div>
 
-                <div className="info-group">
-                  <div className="info-header">
-                    <div className="icon-container">
-                      <ClockIcon />
-                    </div>
-                    <h3>Opening Hours</h3>
+              <div className='info-group'>
+                <div className='info-header'>
+                  <div className='icon-container'>
+                    <ClockIcon />
                   </div>
-                  <div className="info-content">
-                    <div className="operating-hours">
-                      {openingHours.map((hours, index) => (
-                          (hours.startTime && hours.endTime) && (
-                              <div key={index} className="hours-item">
-                                <span className="day">{hours.day}</span>
-                                <span className="hours">{`${hours.startTime} - ${hours.endTime}`}</span>
-                              </div>
-                          )
-                      ))}
-                    </div>
+                  <h3>Opening Hours</h3>
+                </div>
+                <div className='info-content'>
+                  <div className='operating-hours'>
+                    {openingHours.map(
+                      (hours, index) =>
+                        hours.startTime &&
+                        hours.endTime && (
+                          <div
+                            key={index}
+                            className='hours-item'>
+                            <span className='day'>{hours.day.charAt(0).toUpperCase() + hours.day.slice(1)}</span>
+                            <span className='hours'>{`${convertTo12HourFormat(
+                              hours.startTime
+                            )} - ${convertTo12HourFormat(hours.endTime)}`}</span>
+                          </div>
+                        )
+                    )}
                   </div>
                 </div>
+              </div>
 
                 <div className="buttons-container">
                   <a href={'tel:'+ config?.phoneNumber?.phoneNumber} className="contact-button">
