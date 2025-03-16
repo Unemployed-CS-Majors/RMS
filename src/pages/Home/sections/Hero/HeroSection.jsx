@@ -1,10 +1,10 @@
 import React from "react";
 import { FaCalendarAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { ROUTES } from "../../../constants/routes.js";
-import ModernImageSlider from "../../../components/ImageSlider/ImageSlider";
-import useHomeImages from "../hooks/useHomeImages";
-import "./HeroSection.css";
+import { ROUTES } from "../../../../constants/routes.js";
+import ModernImageSlider from "../../../../components/ImageSlider/ImageSlider";
+import useHomeImages from "../../hooks/useHomeImages";
+import styles from "./HeroSection.module.css";
 
 const HeroSection = () => {
     const { foodImages } = useHomeImages();
@@ -15,20 +15,20 @@ const HeroSection = () => {
     };
 
     return (
-        <div className="main-content-container">
-            <div className="img-container1">
+        <div className={styles.mainContentContainer}>
+            <div className={styles.imgContainer}>
                 <ModernImageSlider imageUrls={foodImages} />
             </div>
-            <div className="content-home">
+            <div className={styles.content}>
                 <h1>
-                    Eat <span style={{ color: "var(--primary)" }}>Well</span>,
-                    Live <span style={{ color: "var(--primary)" }}>Better</span>
+                    Eat <span className={styles.primary}>Well</span>,
+                    Live <span className={styles.primary}>Better</span>
                 </h1>
                 <p>
                     Experience the taste of excellence with every dish we serve.
                     Where good food meets great company.
                 </p>
-                <button className="reserve-btn" onClick={goToReservation}>
+                <button className={styles.reserveBtn} onClick={goToReservation}>
                     Reserve Now <FaCalendarAlt />
                 </button>
             </div>

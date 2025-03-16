@@ -1,13 +1,13 @@
 import React from "react";
-import useAboutImages from "../hooks/useAboutImages";
-import "./AboutUsSection.css";
+import useAboutImages from "../../hooks/useAboutImages";
+import styles from "./AboutUsSection.module.css";
 
 const AboutUsSection = () => {
     const { aboutImages } = useAboutImages();
 
     return (
-        <div className="aboutus-container">
-            <div className="aboutus-content-container">
+        <div className={styles.aboutusContainer}>
+            <div className={styles.aboutusContentContainer}>
                 <h1>About Us</h1>
 
                 <p>Welcome to RMS, where passion meets flavor. Nestled in the heart of RMS, our mission is to create
@@ -23,7 +23,7 @@ const AboutUsSection = () => {
                 <p>Join us for a culinary journey filled with bold flavors, vibrant colors, and a dash of magic.
                     Because here, food is more than nourishment — it's an experience.</p>
 
-                <div className="img3-container">
+                <div className={styles.img3Container}>
                     {aboutImages.map((image, index) => (
                         <img
                             key={index}

@@ -1,24 +1,42 @@
-@import '../../../styles/variables.css';
+/* AboutUsSection.module.css */
+@import '../../../../styles/variables.module.css';
 
-.aboutus-container {
+.aboutusContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
     overflow: visible;
+    max-width: 1200px;
+    width: 100%;
+    background-color: var(--white);
+    margin-bottom: 3rem;
+    transition: var(--transition);
     padding: 0;
 }
 
-.aboutus-content-container {
+.aboutusContainer:hover {
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-5px);
+}
+
+.aboutusContentContainer {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 4rem;
     border: none;
     text-align: left;
-    border-radius: 0;
+    border-radius: var(--radius-md);
     flex-direction: column;
     width: 100%;
     background-color: var(--white);
 }
 
-.aboutus-content-container h1 {
+.aboutusContentContainer h1 {
     color: var(--primary);
     font-size: 2.5rem;
     margin-bottom: 2rem;
@@ -28,7 +46,7 @@
     padding-bottom: 15px;
 }
 
-.aboutus-content-container h1::after {
+.aboutusContentContainer h1::after {
     content: "";
     position: absolute;
     bottom: 0;
@@ -39,7 +57,7 @@
     border-radius: 2px;
 }
 
-.aboutus-content-container p {
+.aboutusContentContainer p {
     margin-bottom: 1.5rem;
     font-size: 1.1rem;
     line-height: 1.8;
@@ -48,7 +66,7 @@
     align-self: flex-start;
 }
 
-.img3-container {
+.img3Container {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -57,19 +75,19 @@
     margin-top: 2rem;
 }
 
-.img3-container img {
+.img3Container img {
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-soft);
     transition: var(--transition);
 }
 
-.img3-container img:nth-child(1) {
+.img3Container img:nth-child(1) {
     z-index: 3;
     width: 50%;
     border: 5px solid var(--white);
 }
 
-.img3-container img:nth-child(2) {
+.img3Container img:nth-child(2) {
     position: absolute;
     z-index: 2;
     width: 30%;
@@ -78,7 +96,7 @@
     border: 5px solid var(--white);
 }
 
-.img3-container img:nth-child(3) {
+.img3Container img:nth-child(3) {
     position: absolute;
     z-index: 1;
     width: 40%;
@@ -87,7 +105,7 @@
     border: 5px solid var(--white);
 }
 
-.img3-container img:hover {
+.img3Container img:hover {
     transform: scale(1.05);
     box-shadow: var(--shadow-medium);
     z-index: 4;
@@ -95,39 +113,39 @@
 
 /* Media Queries */
 @media (max-width: 992px) {
-    .img3-container {
+    .img3Container {
         padding-top: 2rem;
     }
 }
 
 @media (max-width: 768px) {
-    .aboutus-content-container {
+    .aboutusContentContainer {
         padding: 2.5rem;
         text-align: center;
     }
 
-    .aboutus-content-container h1 {
+    .aboutusContentContainer h1 {
         font-size: 2rem;
         align-self: center;
     }
 
-    .aboutus-content-container h1::after {
+    .aboutusContentContainer h1::after {
         left: 50%;
         transform: translateX(-50%);
     }
 
-    .aboutus-content-container p {
+    .aboutusContentContainer p {
         font-size: 1rem;
         text-align: center;
         align-self: center;
     }
 
-    .img3-container {
+    .img3Container {
         height: 350px;
         margin-top: 1.5rem;
     }
 
-    .img3-container img {
+    .img3Container img {
         position: absolute;
         width: 75%;
         max-width: 250px;
@@ -135,29 +153,29 @@
         margin: 0 auto;
     }
 
-    .img3-container img:nth-child(1) {
+    .img3Container img:nth-child(1) {
         top: 0;
         left: 50%;
         transform: translateX(-50%);
     }
 
-    .img3-container img:nth-child(2) {
+    .img3Container img:nth-child(2) {
         top: 40%;
         right: 10%;
     }
 
-    .img3-container img:nth-child(3) {
+    .img3Container img:nth-child(3) {
         top: 50%;
         left: 10%;
     }
 }
 
 @media (max-width: 576px) {
-    .aboutus-content-container {
+    .aboutusContentContainer {
         padding: 2rem 1.5rem;
     }
 
-    .img3-container {
+    .img3Container {
         height: 300px;
     }
 }

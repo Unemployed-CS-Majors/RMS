@@ -1,10 +1,12 @@
 import React, {useContext} from "react";
-import {AuthContext} from "../../contexts/AuthContext";
+import {AuthContext} from "../../../contexts/AuthContext";
+import styles from "./Map.module.css";
+
 const Map = () => {
     const {config} = useContext(AuthContext)
     return (
-        <div className="map-container">
-            <div className="map">
+        <div className={styles.mapContainer}>
+            <div className={styles.map}>
                 <iframe
                     title="Google Maps Location"
                     width="100%"

@@ -1,19 +1,36 @@
-@import '../../../styles/variables.css';
+/* OpeningHoursSection.module.css */
+@import '../../../../styles/variables.module.css';
 
-.openhours-container {
-    padding: 0;
+.openhoursContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
     overflow: visible;
+    max-width: 1200px;
+    width: 100%;
     background: linear-gradient(135deg, var(--white) 50%, var(--primary-light) 50%);
+    margin-bottom: 3rem;
+    transition: var(--transition);
+    padding: 0;
 }
 
-.openhours-text,
-.img-container2 {
+.openhoursContainer:hover {
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-5px);
+}
+
+.openhoursText,
+.imgContainer {
     height: auto;
     width: 50%;
     position: relative;
 }
 
-.openhours-text {
+.openhoursText {
     display: flex;
     justify-content: flex-start;
     padding: 4rem;
@@ -23,13 +40,13 @@
     background-color: transparent;
 }
 
-.openhours-text-top {
+.openhoursTextTop {
     display: flex;
     align-items: center;
     margin-bottom: 2rem;
 }
 
-.openhours-text-top h1 {
+.openhoursTextTop h1 {
     font-size: 2.5rem;
     color: var(--text-dark);
     font-weight: 700;
@@ -37,7 +54,7 @@
     padding-bottom: 15px;
 }
 
-.openhours-text-top h1::after {
+.openhoursTextTop h1::after {
     content: "";
     position: absolute;
     bottom: 0;
@@ -48,18 +65,18 @@
     border-radius: 2px;
 }
 
-.clock-icon {
+.clockIcon {
     font-size: 2.125rem;
     margin-left: 1rem;
     color: var(--primary);
 }
 
-.openhours-text-btm {
+.openhoursTextBtm {
     display: flex;
     flex-direction: column;
 }
 
-.openhours-text-btm p {
+.openhoursTextBtm p {
     font-weight: 500;
     margin-bottom: 1rem;
     font-size: 1.1rem;
@@ -68,13 +85,13 @@
     align-items: center;
 }
 
-.openhours-text-btm p span.time-dash {
+.timeDash {
     color: var(--primary);
     margin: 0 8px;
     font-weight: 600;
 }
 
-.phoneNumber-txt {
+.phoneNumberTxt {
     margin-top: 2.5rem;
     display: flex;
     align-items: center;
@@ -85,7 +102,7 @@
     width: fit-content;
 }
 
-.phone-icon {
+.phoneIcon {
     font-size: 2.5rem;
     margin-right: 1rem;
     color: var(--primary);
@@ -97,7 +114,7 @@
     color: var(--text-dark);
 }
 
-.img-container2 {
+.imgContainer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -105,14 +122,14 @@
     position: relative;
 }
 
-.img-container2 img {
+.imgContainer img {
     position: absolute;
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-soft);
     transition: var(--transition);
 }
 
-.img-container2 img:first-child {
+.imgContainer img:first-child {
     left: 10%;
     top: -1rem;
     width: 60%;
@@ -120,7 +137,7 @@
     border: 5px solid var(--white);
 }
 
-.img-container2 img:last-child {
+.imgContainer img:last-child {
     right: 10%;
     top: 5rem;
     width: 45%;
@@ -128,14 +145,14 @@
     border: 5px solid var(--white);
 }
 
-.img-container2 img:hover {
+.imgContainer img:hover {
     transform: scale(1.05);
     box-shadow: var(--shadow-medium);
     z-index: 3;
 }
 
 /* Error state for opening hours */
-.error-message {
+.errorMessage {
     color: #e74c3c;
     font-weight: 500;
     margin-bottom: 1rem;
@@ -143,38 +160,38 @@
 
 /* Media Queries */
 @media (max-width: 992px) {
-    .openhours-text,
-    .img-container2 {
+    .openhoursText,
+    .imgContainer {
         padding: 3rem;
     }
 }
 
 @media (max-width: 768px) {
-    .openhours-container {
+    .openhoursContainer {
         background: var(--white);
     }
 
-    .openhours-text,
-    .img-container2 {
+    .openhoursText,
+    .imgContainer {
         width: 100%;
     }
 
-    .openhours-text {
+    .openhoursText {
         padding: 2.5rem;
         order: 2;
     }
 
-    .openhours-text-top h1 {
+    .openhoursTextTop h1 {
         font-size: 2rem;
     }
 
-    .img-container2 {
+    .imgContainer {
         height: 350px;
         order: 1;
         padding: 0;
     }
 
-    .img-container2 img {
+    .imgContainer img {
         position: relative;
         display: block;
         width: 70%;
@@ -182,17 +199,17 @@
         position: absolute;
     }
 
-    .img-container2 img:first-child {
+    .imgContainer img:first-child {
         left: 10%;
         top: 2rem;
     }
 
-    .img-container2 img:last-child {
+    .imgContainer img:last-child {
         right: 10%;
         top: 8rem;
     }
 
-    .phone-icon {
+    .phoneIcon {
         font-size: 2rem;
     }
 
@@ -202,15 +219,15 @@
 }
 
 @media (max-width: 576px) {
-    .openhours-text {
+    .openhoursText {
         padding: 2rem 1.5rem;
     }
 
-    .phoneNumber-txt {
+    .phoneNumberTxt {
         padding: 0.75rem 1.25rem;
     }
 
-    .phone-icon {
+    .phoneIcon {
         font-size: 1.75rem;
     }
 
@@ -218,7 +235,7 @@
         font-size: 1.1rem;
     }
 
-    .img-container2 {
+    .imgContainer {
         height: 300px;
     }
 }

@@ -1,0 +1,191 @@
+/* Location.module.css */
+
+.locationSection {
+    padding: 5rem 0;
+    background: linear-gradient(to bottom, #f8f9fa, #ffffff);
+}
+
+.locationContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.locationHeader {
+    text-align: center;
+    margin-bottom: 4rem;
+    position: relative;
+}
+
+.locationHeader h2 {
+    font-size: 2.75rem;
+    color: #333;
+    margin-bottom: 1rem;
+    font-family: serif;
+    font-weight: 700;
+}
+
+.headerDivider {
+    width: 80px;
+    height: 4px;
+    background-color: #e8962a;
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+.locationContent {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
+}
+
+.contactInfo {
+    padding: 2.5rem;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contactInfo:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+.infoGroup {
+    margin-bottom: 2rem;
+}
+
+.infoHeader {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.iconContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    background-color: #fff5e6;
+    border-radius: 12px;
+    margin-right: 1rem;
+}
+
+.iconContainer svg {
+    width: 22px;
+    height: 22px;
+    color: #e8962a;
+}
+
+.infoGroup h3 {
+    font-size: 1.25rem;
+    color: #333;
+    margin: 0;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.infoGroup:hover h3 {
+    color: #e8962a;
+}
+
+.infoContent {
+    padding-left: 3.5rem;
+}
+
+.infoGroup p {
+    color: #666;
+    line-height: 1.7;
+    margin: 0;
+    margin-bottom: 0.5rem;
+}
+
+.mapContainer {
+    background: white;
+    padding: 1rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mapContainer:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+.map {
+    width: 100%;
+    height: 450px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.operatingHours {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.hoursItem {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.buttonsContainer {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #f2f2f2;
+    display: flex;
+    gap: 1rem;
+}
+
+.contactButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #e8962a;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-decoration: none;
+    font-weight: 500;
+    flex: 1;
+    justify-content: center;
+}
+
+.contactButton:hover {
+    background-color: #d78620;
+    transform: translateY(-2px);
+}
+
+.outline {
+    background-color: transparent;
+    border: 2px solid #e8962a;
+    color: #e8962a;
+}
+
+.outline:hover {
+    background-color: #fff5e6;
+}
+
+@media (max-width: 768px) {
+    .locationContent {
+        grid-template-columns: 1fr;
+    }
+
+    .map {
+        height: 350px;
+    }
+
+    .buttonsContainer {
+        flex-direction: column;
+    }
+}

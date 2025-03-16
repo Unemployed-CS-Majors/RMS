@@ -1,0 +1,31 @@
+/* CommonStyles.module.css */
+/* Contains common styles shared across multiple section components */
+
+.sectionContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    overflow: hidden;
+    max-width: 1200px;
+    width: 100%;
+    background-color: var(--white);
+    margin-bottom: 3rem;
+    transition: var(--transition);
+}
+
+.sectionContainer:hover {
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-5px);
+}
+
+@media (max-width: 768px) {
+    .sectionContainer {
+        flex-direction: column;
+        padding: 0;
+        margin-bottom: 2.5rem;
+    }
+}
