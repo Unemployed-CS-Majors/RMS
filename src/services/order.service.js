@@ -124,13 +124,13 @@ const orderService = {
    * @returns {Promise<Object>} Created order details
    */
   createOrder: async orderData => {
-    try {
-      const response = await axiosInstance.post(`/order`, orderData);
-      return response.data;
-    } catch (error) {
-      console.error("Error creating order:", error);
-      throw error;
-    }
+      try {
+          const response = await axiosInstance.post(`/order`, orderData);
+          return response.data;
+      } catch (error) {
+          console.error("Error creating order:", error);
+          throw error;
+      }
     }
 };
 
