@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FiCheck } from 'react-icons/fi';
 import { MdLocalShipping, MdOutlineDone, MdOutlineKeyboardArrowDown, MdOutlineKeyboardArrowUp, MdOutlineStore } from 'react-icons/md';
 import styles from './CollectionMethod.module.css';
+import { AuthContext } from "../../../contexts/AuthContext";
 
 const CollectionMethod = ({
                               isOpen,
@@ -13,6 +14,18 @@ const CollectionMethod = ({
                               setAddress,
                               handleCollectionMethodChange
                           }) => {
+    const { config } = useContext(AuthContext);
+
+    // Extract delivery-related feature flags
+    const isFeatureEnabled = (featureName) => {
+        if (!config?.features || !Array.isArray(config.features)) return false;
+        const feature = config.features.find(f => f.name === featureName);
+        return feature ? feature.enabled : false;
+    };
+
+    const isHomeDeliveryEnabled = isFeatureEnabled('home_delivery');
+    const isOrderPickupEnabled = isFeatureEnabled('order_pickup');
+
     return (
         <div className={styles.step}>
             <div
@@ -31,36 +44,48 @@ const CollectionMethod = ({
             <div className={`${styles.stepContent} ${isOpen ? styles.open : ''}`}>
                 <div className={styles.collectionMethod}>
                     <div className={styles.radioOptions}>
-                        <div
-                            className={`${styles.radioCard} ${collectionMethod === 'pickup' ? styles.selected : ''}`}
-                            onClick={() => handleCollectionMethodChange('pickup')}
-                        >
-                            <MdOutlineStore className={styles.optionIcon} />
-                            <div className={styles.optionInfo}>
-                                <span className={styles.optionTitle}>Pickup</span>
-                                <span className={styles.optionDesc}>Collect your order at our store</span>
-                            </div>
-                            <div className={styles.radioIndicator}>
-                                {collectionMethod === 'pickup' && <FiCheck />}
-                            </div>
-                        </div>
+                        {isHomeDeliveryEnabled || isOrderPickupEnabled ? (
+                            <>
+                                {isOrderPickupEnabled && (
+                                    <div
+                                        className={`${styles.radioCard} ${collectionMethod === 'pickup' ? styles.selected : ''}`}
+                                        onClick={() => handleCollectionMethodChange('pickup')}
+                                    >
+                                        <MdOutlineStore className={styles.optionIcon} />
+                                        <div className={styles.optionInfo}>
+                                            <span className={styles.optionTitle}>Pickup</span>
+                                            <span className={styles.optionDesc}>Collect your order at our store</span>
+                                        </div>
+                                        <div className={styles.radioIndicator}>
+                                            {collectionMethod === 'pickup' && <FiCheck />}
+                                        </div>
+                                    </div>
+                                )}
 
-                        <div
-                            className={`${styles.radioCard} ${collectionMethod === 'home_delivery' ? styles.selected : ''}`}
-                            onClick={() => handleCollectionMethodChange('home_delivery')}
-                        >
-                            <MdLocalShipping className={styles.optionIcon} />
-                            <div className={styles.optionInfo}>
-                                <span className={styles.optionTitle}>Home Delivery</span>
-                                <span className={styles.optionDesc}>Delivered to your address</span>
+                                {isHomeDeliveryEnabled && (
+                                    <div
+                                        className={`${styles.radioCard} ${collectionMethod === 'home_delivery' ? styles.selected : ''}`}
+                                        onClick={() => handleCollectionMethodChange('home_delivery')}
+                                    >
+                                        <MdLocalShipping className={styles.optionIcon} />
+                                        <div className={styles.optionInfo}>
+                                            <span className={styles.optionTitle}>Home Delivery</span>
+                                            <span className={styles.optionDesc}>Delivered to your address</span>
+                                        </div>
+                                        <div className={styles.radioIndicator}>
+                                            {collectionMethod === 'home_delivery' && <FiCheck />}
+                                        </div>
+                                    </div>
+                                )}
+                            </>
+                        ) : (
+                            <div className={styles.noCollectionMethods}>
+                                <p>Sorry, we currently don't have any collection methods available.</p>
                             </div>
-                            <div className={styles.radioIndicator}>
-                                {collectionMethod === 'home_delivery' && <FiCheck />}
-                            </div>
-                        </div>
+                        )}
                     </div>
 
-                    {isDelivery && (
+                    {isDelivery && isHomeDeliveryEnabled && (
                         <div className={styles.addressFields}>
                             <div className={styles.inputGrid}>
                                 <div className={styles.inputField}>

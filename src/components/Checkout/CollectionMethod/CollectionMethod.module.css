@@ -208,3 +208,16 @@
         font-size: 1rem;
     }
 }
+
+.noCollectionMethods {
+    padding: 16px;
+    text-align: center;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+.noCollectionMethods p {
+    color: #6c757d;
+    margin: 0;
+}
