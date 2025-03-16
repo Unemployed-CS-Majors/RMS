@@ -8,7 +8,8 @@ const ItemDetailsModal = ({
                               detailsRef,
                               cart,
                               addToCart,
-                              removeFromCart
+                              removeFromCart,
+                              orderEnabled
                           }) => {
     // Format allergen name for display
     const formatAllergenName = (allergen) => {
@@ -82,14 +83,14 @@ const ItemDetailsModal = ({
                             </div>
                         </div>
 
-                        <div className="item-detail-actions">
+                        {orderEnabled === true && (<div className="item-detail-actions">
                             <div className="item-quantity-controls">
                                 <button
                                     className="quantity-control-btn minus-btn"
                                     onClick={() => removeFromCart(selectedItem.id)}
                                     disabled={!cart.find(item => item.id === selectedItem.id)}
                                 >
-                                    <FiMinus />
+                                    <FiMinus/>
                                 </button>
 
                                 <span className="quantity-display">
@@ -100,7 +101,7 @@ const ItemDetailsModal = ({
                                     className="quantity-control-btn plus-btn"
                                     onClick={() => addToCart(selectedItem)}
                                 >
-                                    <FiPlus />
+                                    <FiPlus/>
                                 </button>
                             </div>
 
@@ -110,7 +111,7 @@ const ItemDetailsModal = ({
                             }}>
                                 Add to Cart
                             </button>
-                        </div>
+                        </div>)}
                     </div>
                 </div>
             </div>
