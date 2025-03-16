@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './StatusBadge.module.css';
 
 /**
  * Get CSS class based on status
@@ -8,22 +9,22 @@ import React from 'react';
 export const getStatusBadgeClass = (status) => {
     switch (status) {
         case 'pending_payment':
-            return 'status-badge-warning';
+            return styles.statusBadgeWarning;
         case 'paid':
-            return 'status-badge-info';
+            return styles.statusBadgeInfo;
         case 'in_progress':
-            return 'status-badge-primary';
+            return styles.statusBadgePrimary;
         case 'ready_for_pickup':
-            return 'status-badge-secondary';
+            return styles.statusBadgeSecondary;
         case 'out_for_delivery':
-            return 'status-badge-secondary';
-        case 'completed':
-            return 'status-badge-success';
+            return styles.statusBadgeSecondary;
+        case 'completed', 'confirmed':
+            return styles.statusBadgeSuccess;
         case 'canceled':
         case 'cancelled':
-            return 'status-badge-danger';
+            return styles.statusBadgeDanger;
         default:
-            return 'status-badge-light';
+            return styles.statusBadgeLight;
     }
 };
 
@@ -53,9 +54,9 @@ const StatusBadge = ({ status }) => {
     const displayStatus = formatStatus(status);
 
     return (
-        <span className={`status-badge ${badgeClass}`}>
-      {displayStatus}
-    </span>
+        <span className={`${styles.statusBadge} ${badgeClass}`}>
+            {displayStatus}
+        </span>
     );
 };
 

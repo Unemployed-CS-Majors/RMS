@@ -1,16 +1,15 @@
 import React, { useContext, useEffect } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
-import ProfileSidebar from "../../components/Profile/ProfileSidebar";
-import MyReservations from "./sections/MyReservations";
-import MyAccount from "./sections/MyAccount";
-import MyOrders from "./sections/MyOrders";
-
-import './Profile.css';
+import ProfileSidebar from "../../components/Profile/ProfileSidebar/ProfileSidebar";
+import MyReservations from "./sections/MyReservations/MyReservations";
+import MyAccount from "./sections/MyAccount/MyAccount";
+import MyOrders from "./sections/MyOrders/MyOrders";
 import authService from "../../services/auth.service";
-import {useProfileNavigation} from "./hooks/useProfileNavigation";
-import {useReservations} from "./hooks/useReservations";
-import {useOrders} from "./hooks/useOrders";
-import {useUserDetails} from "./hooks/useUserDetails";
+import { useProfileNavigation } from "./hooks/useProfileNavigation";
+import { useReservations } from "./hooks/useReservations";
+import { useOrders } from "./hooks/useOrders";
+import { useUserDetails } from "./hooks/useUserDetails";
+import layoutStyles from '../../components/Profile/ProfileLayout.module.css';
 
 /**
  * Main Profile component that handles tab navigation and data fetching
@@ -78,7 +77,7 @@ export default function Profile() {
   };
 
   return (
-      <div className="profile-layout">
+      <div className={layoutStyles.profileLayout}>
         {/* Sidebar Navigation */}
         <ProfileSidebar
             activeTab={activeTab}

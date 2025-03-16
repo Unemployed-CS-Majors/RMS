@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import styles from './Modal.module.css';
 
 /**
  * Reusable Modal component with animations
@@ -53,19 +54,19 @@ const Modal = ({ isOpen, onClose, title, children, actions, maxWidth = '700px' }
 
     return (
         <div
-            className={`modal-overlay ${isAnimating ? 'modal-overlay-visible' : ''}`}
+            className={`${styles.modalOverlay} ${isAnimating ? styles.modalOverlayVisible : ''}`}
             onClick={handleOverlayClick}
             aria-modal="true"
             role="dialog"
         >
             <div
-                className={`modal ${isAnimating ? 'modal-visible' : ''}`}
+                className={`${styles.modal} ${isAnimating ? styles.modalVisible : ''}`}
                 style={{ maxWidth: maxWidth }}
             >
-                <div className="modal-header">
+                <div className={styles.modalHeader}>
                     <h3>{title}</h3>
                     <button
-                        className="modal-close-btn"
+                        className={styles.modalCloseBtn}
                         onClick={onClose}
                         aria-label="Close"
                     >
@@ -75,11 +76,11 @@ const Modal = ({ isOpen, onClose, title, children, actions, maxWidth = '700px' }
                         </svg>
                     </button>
                 </div>
-                <div className="modal-body">
+                <div className={styles.modalBody}>
                     {children}
                 </div>
                 {actions && (
-                    <div className="modal-actions">
+                    <div className={styles.modalActions}>
                         {actions}
                     </div>
                 )}

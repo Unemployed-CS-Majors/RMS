@@ -1,0 +1,66 @@
+.historyTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 5px;
+    min-width: 600px;
+}
+
+.historyTableContainer {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.historyTable th,
+.historyTable td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.historyTable th {
+    background-color: #f8f8f8;
+    color: #333;
+    font-weight: 600;
+    border-bottom: 2px solid #eaeaea;
+    white-space: nowrap;
+}
+
+.historyTable td {
+    font-weight: 400;
+    color: #555;
+    font-size: 14px;
+}
+
+.historyTable tr {
+    border-bottom: 1px solid #eaeaea;
+}
+
+.historyTable tr:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+.historyTable th:last-child,
+.historyTable td:last-child {
+    text-align: center;
+}
+
+.totalRow td {
+    border-top: 2px solid #eaeaea;
+    font-weight: 600;
+}
+
+.manageBtnSmall {
+    background-color: white;
+    color: #FF7D05;
+    border: 1px solid #FF7D05;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.manageBtnSmall:hover {
+    background-color: #FF7D05;
+    color: white;
+}

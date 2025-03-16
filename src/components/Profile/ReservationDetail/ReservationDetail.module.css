@@ -1,0 +1,48 @@
+.reservationField {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.fieldLabel {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: block;
+    font-weight: 500;
+}
+
+.fieldValue {
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.reservationGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.modifyOptions {
+    margin-top: 15px;
+}
+
+.modifyOptions h4 {
+    margin-bottom: 8px;
+    font-size: 15px;
+}
+
+.modifyOptions p {
+    color: #666;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+@media (min-width: 768px) {
+    .reservationGrid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

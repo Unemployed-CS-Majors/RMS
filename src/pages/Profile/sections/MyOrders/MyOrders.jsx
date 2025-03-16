@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
-import Modal from "../../../components/Profile/Modal";
-import { OrderDetail } from "../../../components/Profile/OrderDetail";
-import StatusBadge from "../../../components/Profile/StatusBadge";
-import { formatId } from "../../../utils/dateUtils";
+import Modal from "../../../../components/Profile/Modal/Modal";
+import { OrderDetail } from "../../../../components/Profile/OrderDetail/OrderDetail";
+import StatusBadge from "../../../../components/Profile/StatusBadge/StatusBadge";
+import { formatId } from "../../../../utils/dateUtils";
+import layoutStyles from '../../../../components/Profile/ProfileLayout.module.css';
+import tableStyles from '../../../../components/Profile/TableComponents.module.css';
 
 /**
  * OrderHistory component displays past orders in a table
@@ -11,14 +13,14 @@ const OrderHistory = ({ orders, onViewDetails }) => {
     const isMobile = window.innerWidth < 768;
 
     return (
-        <div className="card history-card">
-            <div className="card-header">
+        <div className={layoutStyles.card}>
+            <div className={layoutStyles.cardHeader}>
                 <h3>Order History</h3>
             </div>
-            <div className="card-body">
+            <div className={layoutStyles.cardBody}>
                 {orders.length > 0 ? (
-                    <div className="history-table-container">
-                        <table className="history-table">
+                    <div className={tableStyles.historyTableContainer}>
+                        <table className={tableStyles.historyTable}>
                             <thead>
                             <tr>
                                 <th>Order ID</th>
@@ -39,7 +41,7 @@ const OrderHistory = ({ orders, onViewDetails }) => {
                                     </td>
                                     <td>
                                         <button
-                                            className="manage-btn-small"
+                                            className={tableStyles.manageBtnSmall}
                                             onClick={() => onViewDetails(order.id)}
                                         >
                                             View
@@ -100,8 +102,8 @@ const MyOrders = ({
     };
 
     return (
-        <div className="content">
-            <div className="content-header">
+        <div className={layoutStyles.content}>
+            <div className={layoutStyles.contentHeader}>
                 <h2>My Orders</h2>
             </div>
 
@@ -114,7 +116,7 @@ const MyOrders = ({
                 onClose={closeOrderDetails}
                 title="Order Details"
                 actions={
-                    <button className="btn-primary" onClick={closeOrderDetails}>
+                    <button className={layoutStyles.btnPrimary} onClick={closeOrderDetails}>
                         Close
                     </button>
                 }

@@ -1,34 +1,38 @@
 import React, { useContext, useState, useEffect } from "react";
-import { AuthContext } from "../../../contexts/AuthContext";
+import { AuthContext } from "../../../../contexts/AuthContext";
 import { useNavigate, useLocation } from "react-router-dom";
-import ROUTES from "../../../constants/routes";
+import ROUTES from "../../../../constants/routes";
+import layoutStyles from '../../../../components/Profile/ProfileLayout.module.css';
+import formStyles from '../../../../components/Profile/ReservationEditForm/FormComponents.module.css';
+import styles from './MyAccount.module.css';
+import reservationStyles from '../../../../components/Profile/ReservationDetail/ReservationDetail.module.css';
 
 /**
  * AccountDetails component displays user account information
  */
 const AccountDetails = ({ userDetails }) => {
     return (
-        <div className="card">
-            <div className="card-header">
+        <div className={layoutStyles.card}>
+            <div className={layoutStyles.cardHeader}>
                 <h3>Account Details</h3>
             </div>
-            <div className="card-body">
-                <div className="reservation-grid">
-                    <div className="reservation-field">
-                        <span className="field-label">First Name</span>
-                        <span className="field-value">{userDetails?.firstName}</span>
+            <div className={layoutStyles.cardBody}>
+                <div className={reservationStyles.reservationGrid}>
+                    <div className={reservationStyles.reservationField}>
+                        <span className={reservationStyles.fieldLabel}>First Name</span>
+                        <span className={reservationStyles.fieldValue}>{userDetails?.firstName}</span>
                     </div>
-                    <div className="reservation-field">
-                        <span className="field-label">Last Name</span>
-                        <span className="field-value">{userDetails?.lastName}</span>
+                    <div className={reservationStyles.reservationField}>
+                        <span className={reservationStyles.fieldLabel}>Last Name</span>
+                        <span className={reservationStyles.fieldValue}>{userDetails?.lastName}</span>
                     </div>
-                    <div className="reservation-field">
-                        <span className="field-label">Email</span>
-                        <span className="field-value">{userDetails?.email}</span>
+                    <div className={reservationStyles.reservationField}>
+                        <span className={reservationStyles.fieldLabel}>Email</span>
+                        <span className={reservationStyles.fieldValue}>{userDetails?.email}</span>
                     </div>
-                    <div className="reservation-field">
-                        <span className="field-label">Phone</span>
-                        <span className="field-value">{userDetails?.phoneNumber}</span>
+                    <div className={reservationStyles.reservationField}>
+                        <span className={reservationStyles.fieldLabel}>Phone</span>
+                        <span className={reservationStyles.fieldValue}>{userDetails?.phoneNumber}</span>
                     </div>
                 </div>
             </div>
@@ -72,48 +76,48 @@ const PasswordChange = ({ onPasswordChange }) => {
     };
 
     return (
-        <div className="card-change-password">
-            <div className="card-header">
+        <div className={styles.cardChangePassword}>
+            <div className={layoutStyles.cardHeader}>
                 <h3>Change Password</h3>
             </div>
-            <div className="card-body">
+            <div className={layoutStyles.cardBody}>
                 <form onSubmit={handleSubmit}>
-                    <div className="form-group">
-                        <label className="field-label">Current Password</label>
+                    <div className={formStyles.formGroup}>
+                        <label className={reservationStyles.fieldLabel}>Current Password</label>
                         <input
                             type="password"
                             name="currentPassword"
                             value={formData.currentPassword}
                             onChange={handleInputChange}
-                            className="edit-input"
+                            className={formStyles.editInput}
                             required
                         />
                     </div>
-                    <div className="form-group">
-                        <label className="field-label">New Password</label>
+                    <div className={formStyles.formGroup}>
+                        <label className={reservationStyles.fieldLabel}>New Password</label>
                         <input
                             type="password"
                             name="newPassword"
                             value={formData.newPassword}
                             onChange={handleInputChange}
-                            className="edit-input"
+                            className={formStyles.editInput}
                             required
                             minLength="8"
                         />
                     </div>
-                    <div className="form-group">
-                        <label className="field-label">Confirm New Password</label>
+                    <div className={formStyles.formGroup}>
+                        <label className={reservationStyles.fieldLabel}>Confirm New Password</label>
                         <input
                             type="password"
                             name="confirmPassword"
                             value={formData.confirmPassword}
                             onChange={handleInputChange}
-                            className="edit-input"
+                            className={formStyles.editInput}
                             required
                         />
                     </div>
-                    <div className="card-actions">
-                        <button type="submit" className="btn-primary">
+                    <div className={layoutStyles.cardActions}>
+                        <button type="submit" className={layoutStyles.btnPrimary}>
                             Update Password
                         </button>
                     </div>
@@ -128,34 +132,34 @@ const PasswordChange = ({ onPasswordChange }) => {
  */
 const DeleteAccount = ({ onDelete, showConfirm, setShowConfirm }) => {
     return (
-        <div className="card">
-            <div className="card-header">
+        <div className={layoutStyles.card}>
+            <div className={layoutStyles.cardHeader}>
                 <h3>Delete Account</h3>
             </div>
-            <div className="card-body">
+            <div className={layoutStyles.cardBody}>
                 {!showConfirm ? (
                     <div>
-                        <p className="warning-text">
+                        <p className={formStyles.warningText}>
                             Warning: Deleting your account is permanent and cannot be undone.
                             All your data will be removed from our system.
                         </p>
-                        <div className="card-actions">
-                            <button className="btn-danger" onClick={() => setShowConfirm(true)}>
+                        <div className={layoutStyles.cardActions}>
+                            <button className={layoutStyles.btnDanger} onClick={() => setShowConfirm(true)}>
                                 Delete My Account
                             </button>
                         </div>
                     </div>
                 ) : (
                     <div>
-                        <p className="warning-text">
+                        <p className={formStyles.warningText}>
                             Are you absolutely sure you want to delete your account?
                             This action cannot be undone.
                         </p>
-                        <div className="card-actions">
-                            <button className="btn-danger" onClick={onDelete}>
+                        <div className={layoutStyles.cardActions}>
+                            <button className={layoutStyles.btnDanger} onClick={onDelete}>
                                 Yes, Delete My Account
                             </button>
-                            <button className="btn-secondary" onClick={() => setShowConfirm(false)}>
+                            <button className={layoutStyles.btnSecondary} onClick={() => setShowConfirm(false)}>
                                 Cancel
                             </button>
                         </div>
@@ -171,21 +175,21 @@ const DeleteAccount = ({ onDelete, showConfirm, setShowConfirm }) => {
  */
 const AccountTabs = ({ activeTab, setActiveTab }) => {
     return (
-        <div className="account-submenu">
+        <div className={formStyles.accountSubmenu}>
             <button
-                className={activeTab === "details" ? "account-tab active" : "account-tab"}
+                className={activeTab === "details" ? `${formStyles.accountTab} ${formStyles.active}` : formStyles.accountTab}
                 onClick={() => setActiveTab("details")}
             >
                 Account Details
             </button>
             <button
-                className={activeTab === "password" ? "account-tab active" : "account-tab"}
+                className={activeTab === "password" ? `${formStyles.accountTab} ${formStyles.active}` : formStyles.accountTab}
                 onClick={() => setActiveTab("password")}
             >
                 Change Password
             </button>
             <button
-                className={activeTab === "delete" ? "account-tab active" : "account-tab"}
+                className={activeTab === "delete" ? `${formStyles.accountTab} ${formStyles.active}` : formStyles.accountTab}
                 onClick={() => setActiveTab("delete")}
             >
                 Delete Account
@@ -237,8 +241,8 @@ const MyAccount = ({ userDetails, deleteAccount }) => {
     };
 
     return (
-        <div className="content">
-            <div className="content-header-account">
+        <div className={layoutStyles.content}>
+            <div className={layoutStyles.contentHeaderAccount}>
                 <h2>My Account</h2>
             </div>
 

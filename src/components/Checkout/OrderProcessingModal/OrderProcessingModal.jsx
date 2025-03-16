@@ -13,6 +13,9 @@ const OrderProcessingModal = ({
     const [progressValue, setProgressValue] = useState(0);
 
     useEffect(() => {
+        console.log(redirectUrl);
+        console.log(orderStatus);
+
         if (isOpen && orderStatus === 'processing') {
             // Animate the progress bar
             let progress = 0;

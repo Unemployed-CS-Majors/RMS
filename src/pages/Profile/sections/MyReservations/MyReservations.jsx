@@ -1,19 +1,11 @@
 import React, {useEffect, useState} from "react";
-import Modal from "../../../components/Profile/Modal";
-import ReservationDetail from "../../../components/Profile/ReservationDetail";
-import ReservationEditForm from "../../../components/Profile/ReservationEditForm";
-import UpcomingReservation from "../../../components/Profile/UpcomingReservation";
-import ReservationHistory from "../../../components/Profile/ReservationHistory";
-import {
-    convertTo12Hour,
-    convertTo24Hour,
-    formatDateForInput,
-    formatDateForStorage,
-    formatId
-} from "../../../utils/dateUtils";
-
-
-
+import Modal from "../../../../components/Profile/Modal/Modal";
+import ReservationDetail from "../../../../components/Profile/ReservationDetail/ReservationDetail";
+import UpcomingReservation from "../../../../components/Profile/UpcominReservation/UpcomingReservation";
+import ReservationEditForm from "../../../../components/Profile/ReservationEditForm/ReservationEditForm";
+import ReservationHistory from "../../../../components/Profile/ReservationHistory/ReservationHistory";
+import layoutStyles from '../../../../components/Profile/ProfileLayout.module.css';
+import {convertTo12Hour, convertTo24Hour, formatDateForInput, formatDateForStorage} from "../../../../utils/dateUtils";
 
 /**
  * Main MyReservations component
@@ -91,7 +83,7 @@ const MyReservations = ({
 
     // Handler for form input changes
     const handleInputChange = (e) => {
-        const {name, value} = e.target;
+        const { name, value } = e.target;
         setEditFormData({
             ...editFormData,
             [name]: value
@@ -142,8 +134,8 @@ const MyReservations = ({
     };
 
     return (
-        <div className="content">
-            <div className="content-header">
+        <div className={layoutStyles.content}>
+            <div className={layoutStyles.contentHeader}>
                 <h2>My Reservations</h2>
             </div>
 
@@ -154,8 +146,7 @@ const MyReservations = ({
                 onCancel={() => {
                     onCancelClick();
                     setActiveReservation(upcomingReservation);
-                }
-            }
+                }}
             />
 
             {/* Reservation History */}
@@ -172,22 +163,21 @@ const MyReservations = ({
                 actions={
                     activeReservation?.status !== "Cancelled" ? (
                         <>
-                            <button className="btn-primary" onClick={openEditModal}>
+                            <button className={layoutStyles.btnPrimary} onClick={openEditModal}>
                                 Edit
                             </button>
-                            <span/> <span/><span/>
-                            <button className="btn-secondary" onClick={onCancelClick}>
+                            <button className={layoutStyles.btnSecondary} onClick={onCancelClick}>
                                 Cancel Reservation
                             </button>
                         </>
                     ) : (
-                        <button className="btn-primary" onClick={closeManageModal}>
+                        <button className={layoutStyles.btnPrimary} onClick={closeManageModal}>
                             Close
                         </button>
                     )
                 }
             >
-                {activeReservation && <ReservationDetail reservation={activeReservation}/>}
+                {activeReservation && <ReservationDetail reservation={activeReservation} />}
             </Modal>
 
             {/* Edit Reservation Modal */}
@@ -211,10 +201,10 @@ const MyReservations = ({
                 title="Confirm Cancellation"
                 actions={
                     <>
-                        <button className="btn-secondary" onClick={() => confirmCancellation(activeReservation?.id)}>
+                        <button className={layoutStyles.btnSecondary} onClick={() => confirmCancellation(activeReservation?.id)}>
                             Yes, Cancel
                         </button>
-                        <button className="btn-primary" onClick={cancelCancellation}>
+                        <button className={layoutStyles.btnPrimary} onClick={cancelCancellation}>
                             Keep My Reservation
                         </button>
                     </>

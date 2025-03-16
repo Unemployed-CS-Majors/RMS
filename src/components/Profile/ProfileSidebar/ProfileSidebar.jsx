@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ROUTES from '../../constants/routes';
+import ROUTES from '../../../constants/routes';
+import styles from './ProfileSidebar.module.css';
 
 /**
  * ProfileSidebar component displays the navigation sidebar/header for the profile page
@@ -26,11 +27,11 @@ const ProfileSidebar = ({ activeTab, handleTabChange, logout }) => {
     };
 
     return (
-        <nav className="sidebar-profile">
-            <div className="sidebar-header-profile">
+        <nav className={styles.sidebar}>
+            <div className={styles.sidebarHeader}>
                 <h2>My Profile</h2>
                 <button
-                    className="menu-toggle"
+                    className={styles.menuToggle}
                     onClick={toggleMenu}
                     aria-label="Toggle menu"
                     aria-expanded={menuOpen}
@@ -38,32 +39,32 @@ const ProfileSidebar = ({ activeTab, handleTabChange, logout }) => {
                     {menuOpen ? "✕" : "☰"}
                 </button>
             </div>
-            <ul className={`sidebar-menu ${menuOpen ? 'show' : ''}`}>
+            <ul className={`${styles.sidebarMenu} ${menuOpen ? styles.show : ''}`}>
                 <li
-                    className={activeTab === "account" ? "active" : ""}
+                    className={activeTab === "account" ? styles.active : ""}
                     onClick={() => handleTabSelect("account")}
                 >
                     My Account
                 </li>
                 <li
-                    className={activeTab === "reservations" ? "active" : ""}
+                    className={activeTab === "reservations" ? styles.active : ""}
                     onClick={() => handleTabSelect("reservations")}
                 >
                     Reservations
                 </li>
                 <li
-                    className={activeTab === "orders" ? "active" : ""}
+                    className={activeTab === "orders" ? styles.active : ""}
                     onClick={() => handleTabSelect("orders")}
                 >
                     Orders
                 </li>
-                <li className="logout-mobile" onClick={handleLogoutClick}>
+                <li className={styles.logoutMobile} onClick={handleLogoutClick}>
                     Logout
                 </li>
             </ul>
             {/* Separate logout container for desktop */}
-            <div className="logout-container desktop-only">
-                <button onClick={handleLogoutClick} className="logout-btn">
+            <div className={`${styles.logoutContainer} ${styles.desktopOnly}`}>
+                <button onClick={handleLogoutClick} className={styles.logoutBtn}>
                     Logout
                 </button>
             </div>

@@ -117,10 +117,10 @@ const useCheckout = (cartItems, clearCart) => {
 
             if (response) {
                 setOrderStatus('success');
-                setOrderId(response.data.id);
                 if (paymentMethod === 'online') {
                     setRedirectUrl(response.redirectUrl);
                 } else {
+                    setOrderId(response.data.id);
                     setSuccess('Order placed successfully!');
                     clearCart();
                 }
