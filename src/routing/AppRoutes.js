@@ -1,16 +1,16 @@
 import React from "react";
 import {BrowserRouter as Router, Navigate, Route, Routes} from "react-router-dom";
 
-import HashNavigationWrapper from "../components/Navigation/HashNavigationWrapper/HashNavigationWrapper";
-import Auth from "../pages/Authentication/Auth";
-import NotFound from "../pages/NotFound/NotFound";
-import Layout from "../components/Layout/Layout";
+import HashNavigationWrapper from "../modules/shared/components/Navigation/HashNavigationWrapper/HashNavigationWrapper";
+import Auth from "../modules/authentication/pages/Auth";
+import NotFound from "../modules/notFound/NotFound";
+import Layout from "../modules/shared/components/Layout/Layout";
 import {ROUTES} from "../constants/routes";
-import Profile from "../pages/Profile/Profile";
+import Profile from "../modules/profile/pages/Profile";
 import ProtectedRoute from "./ProtectedRoute";
-import RestaurantDashboard from "../pages/Dashboard/Dashboard";
-import ForgotPassword from "../pages/Authentication/ForgotPassword";
-import Checkout from "../pages/Checkout/Checkout";
+import RestaurantDashboard from "../modules/dashboard/pages/Dashboard";
+import ForgotPassword from "../modules/authentication/pages/ForgotPassword";
+import Checkout from "../modules/checkout/pages/Checkout";
 
 function AppRoutes() {
     return (

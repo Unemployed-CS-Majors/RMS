@@ -1,4 +1,4 @@
-import cookieManager from '../utils/cookieManager';
+import cookieManager from '../modules/shared/utils/cookieManager';
 import COOKIE_KEYS from '../constants/cookieKeys';
 import axios from 'axios';
 import axiosInstance from '../config/apiConfig';

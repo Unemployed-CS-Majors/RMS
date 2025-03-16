@@ -1,5 +1,5 @@
 import axiosInstance from '../config/apiConfig';
-import cookieManager from "../utils/cookieManager";
+import cookieManager from "../modules/shared/utils/cookieManager";
 import COOKIE_KEYS from "../constants/cookieKeys";
 
 const userService = {

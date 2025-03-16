@@ -1,5 +1,5 @@
 import { Navigate, Outlet } from 'react-router-dom';
-import cookieManager from "../utils/cookieManager";
+import cookieManager from "../modules/shared/utils/cookieManager";
 import cookieKeys from "../constants/cookieKeys";
 const ProtectedRoute = ({ roles }) => {
   const user = cookieManager.get(cookieKeys.USER)
