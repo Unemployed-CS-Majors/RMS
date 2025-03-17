@@ -7,7 +7,7 @@ import styles from './ErrorDisplay.module.css';
  * @param {string} error - Error message to display
  * @returns {JSX.Element|null} Error display component or null if no error
  */
-const ErrorDisplay = ({ error }) => {
+const ErrorDisplay = ({error}) => {
     if (!error) return null;
 
     return (

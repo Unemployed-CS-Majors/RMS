@@ -5,7 +5,12 @@ import UpcomingReservation from "../../components/UpcominReservation/UpcomingRes
 import ReservationEditForm from "../../components/ReservationEditForm/ReservationEditForm";
 import ReservationHistory from "../../components/ReservationHistory/ReservationHistory";
 import layoutStyles from '../../components/ProfileLayout.module.css';
-import {convertTo12Hour, convertTo24Hour, formatDateForInput, formatDateForStorage} from "../../../shared/utils/dateUtils";
+import {
+    convertTo12Hour,
+    convertTo24Hour,
+    formatDateForInput,
+    formatDateForStorage
+} from "../../../shared/utils/dateUtils";
 
 /**
  * Main MyReservations component
@@ -83,7 +88,7 @@ const MyReservations = ({
 
     // Handler for form input changes
     const handleInputChange = (e) => {
-        const { name, value } = e.target;
+        const {name, value} = e.target;
         setEditFormData({
             ...editFormData,
             [name]: value
@@ -177,7 +182,7 @@ const MyReservations = ({
                     )
                 }
             >
-                {activeReservation && <ReservationDetail reservation={activeReservation} />}
+                {activeReservation && <ReservationDetail reservation={activeReservation}/>}
             </Modal>
 
             {/* Edit Reservation Modal */}
@@ -201,7 +206,8 @@ const MyReservations = ({
                 title="Confirm Cancellation"
                 actions={
                     <>
-                        <button className={layoutStyles.btnSecondary} onClick={() => confirmCancellation(activeReservation?.id)}>
+                        <button className={layoutStyles.btnSecondary}
+                                onClick={() => confirmCancellation(activeReservation?.id)}>
                             Yes, Cancel
                         </button>
                         <button className={layoutStyles.btnPrimary} onClick={cancelCancellation}>

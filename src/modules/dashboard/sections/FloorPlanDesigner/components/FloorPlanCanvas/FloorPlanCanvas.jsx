@@ -3,7 +3,7 @@ import TableComponent from '../Table/TableComponent';
 import WallComponent from '../Wall/WallComponent';
 import DoorComponent from '../Door/DoorComponent';
 import WindowComponent from '../Window/WindowComponent';
-import { DrawingMode } from "../../../../../../constants/drawingModes";
+import {DrawingMode} from "../../../../../../constants/drawingModes";
 
 /**
  * FloorPlanCanvas component for rendering the floor plan with interactive elements
@@ -127,7 +127,7 @@ const FloorPlanCanvas = ({
                     stopDragging();
                 }
             }}
-            style={{ border: '1px solid #ccc' }}
+            style={{border: '1px solid #ccc'}}
         >
             {/* Walls */}
             {walls.map(wall => (

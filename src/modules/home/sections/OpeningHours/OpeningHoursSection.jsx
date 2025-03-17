@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
-import { LuClock3 } from "react-icons/lu";
-import { BiSolidPhoneCall } from "react-icons/bi";
+import React, {useContext} from "react";
+import {LuClock3} from "react-icons/lu";
+import {BiSolidPhoneCall} from "react-icons/bi";
 import useOpeningHours from "../../hooks/useOpeningHours";
 import useRestaurantImages from "../../hooks/useRestaurantImages";
 import styles from "./OpeningHoursSection.module.css";
-import { AuthContext } from "../../../shared/contexts/AuthContext";
-import { convertTo12HourFormat } from "../../../shared/utils/timeUtils";
+import {AuthContext} from "../../../shared/contexts/AuthContext";
+import {convertTo12HourFormat} from "../../../shared/utils/timeUtils";
 
 /**
  * OpeningHoursSection component
@@ -15,16 +15,16 @@ import { convertTo12HourFormat } from "../../../shared/utils/timeUtils";
  * @returns {JSX.Element} The OpeningHoursSection component
  */
 const OpeningHoursSection = () => {
-    const { openingHours, isLoading, error } = useOpeningHours();
-    const { restaurantImages } = useRestaurantImages();
-    const { config } = useContext(AuthContext);
+    const {openingHours, isLoading, error} = useOpeningHours();
+    const {restaurantImages} = useRestaurantImages();
+    const {config} = useContext(AuthContext);
 
     return (
         <div className={styles.openhoursContainer}>
             <div className={styles.openhoursText}>
                 <div className={styles.openhoursTextTop}>
                     <h1>Opening Hours</h1>
-                    <LuClock3 className={styles.clockIcon} />
+                    <LuClock3 className={styles.clockIcon}/>
                 </div>
 
                 <div className={styles.openhoursTextBtm}>
@@ -36,14 +36,16 @@ const OpeningHoursSection = () => {
                         openingHours.map((hours, index) =>
                             hours.startTime != null && hours.endTime != null ? (
                                 <p key={index}>
-                                    {hours.day.charAt(0).toUpperCase() + hours.day.slice(1)} <span className={styles.timeDash}>-</span>
-                                    {convertTo12HourFormat(hours.startTime)} <span className={styles.timeDash}>-</span> {convertTo12HourFormat(hours.endTime)}
+                                    {hours.day.charAt(0).toUpperCase() + hours.day.slice(1)} <span
+                                    className={styles.timeDash}>-</span>
+                                    {convertTo12HourFormat(hours.startTime)} <span
+                                    className={styles.timeDash}>-</span> {convertTo12HourFormat(hours.endTime)}
                                 </p>
                             ) : null
                         )}
 
                     <div className={styles.phoneNumberTxt}>
-                        <BiSolidPhoneCall className={styles.phoneIcon} />
+                        <BiSolidPhoneCall className={styles.phoneIcon}/>
                         <span className={styles.phoneNumber}>{config?.phoneNumber?.phoneNumber}</span>
                     </div>
                 </div>

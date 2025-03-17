@@ -1,8 +1,14 @@
-import React, { useContext } from 'react';
-import { FiCheck } from 'react-icons/fi';
-import { MdLocalShipping, MdOutlineDone, MdOutlineKeyboardArrowDown, MdOutlineKeyboardArrowUp, MdOutlineStore } from 'react-icons/md';
+import React, {useContext} from 'react';
+import {FiCheck} from 'react-icons/fi';
+import {
+    MdLocalShipping,
+    MdOutlineDone,
+    MdOutlineKeyboardArrowDown,
+    MdOutlineKeyboardArrowUp,
+    MdOutlineStore
+} from 'react-icons/md';
 import styles from './CollectionMethod.module.css';
-import { AuthContext } from "../../../shared/contexts/AuthContext";
+import {AuthContext} from "../../../shared/contexts/AuthContext";
 
 /**
  * CollectionMethod component renders the collection method selection step in the checkout process.
@@ -28,7 +34,7 @@ const CollectionMethod = ({
                               setAddress,
                               handleCollectionMethodChange
                           }) => {
-    const { config } = useContext(AuthContext);
+    const {config} = useContext(AuthContext);
 
     // Extract delivery-related feature flags
     const isFeatureEnabled = (featureName) => {
@@ -47,11 +53,11 @@ const CollectionMethod = ({
                 onClick={() => toggleContent(2)}
             >
                 <div className={`${styles.stepIcon} ${isCompleted ? styles.completed : ''}`}>
-                    {isCompleted ? <MdOutlineDone /> : <MdLocalShipping />}
+                    {isCompleted ? <MdOutlineDone/> : <MdLocalShipping/>}
                 </div>
                 <h3 className={styles.stepTitle}>Collection Method</h3>
                 <button className={styles.toggleButton}>
-                    {isOpen ? <MdOutlineKeyboardArrowUp /> : <MdOutlineKeyboardArrowDown />}
+                    {isOpen ? <MdOutlineKeyboardArrowUp/> : <MdOutlineKeyboardArrowDown/>}
                 </button>
             </div>
 
@@ -65,13 +71,13 @@ const CollectionMethod = ({
                                         className={`${styles.radioCard} ${collectionMethod === 'pickup' ? styles.selected : ''}`}
                                         onClick={() => handleCollectionMethodChange('pickup')}
                                     >
-                                        <MdOutlineStore className={styles.optionIcon} />
+                                        <MdOutlineStore className={styles.optionIcon}/>
                                         <div className={styles.optionInfo}>
                                             <span className={styles.optionTitle}>Pickup</span>
                                             <span className={styles.optionDesc}>Collect your order at our store</span>
                                         </div>
                                         <div className={styles.radioIndicator}>
-                                            {collectionMethod === 'pickup' && <FiCheck />}
+                                            {collectionMethod === 'pickup' && <FiCheck/>}
                                         </div>
                                     </div>
                                 )}
@@ -81,13 +87,13 @@ const CollectionMethod = ({
                                         className={`${styles.radioCard} ${collectionMethod === 'home_delivery' ? styles.selected : ''}`}
                                         onClick={() => handleCollectionMethodChange('home_delivery')}
                                     >
-                                        <MdLocalShipping className={styles.optionIcon} />
+                                        <MdLocalShipping className={styles.optionIcon}/>
                                         <div className={styles.optionInfo}>
                                             <span className={styles.optionTitle}>Home Delivery</span>
                                             <span className={styles.optionDesc}>Delivered to your address</span>
                                         </div>
                                         <div className={styles.radioIndicator}>
-                                            {collectionMethod === 'home_delivery' && <FiCheck />}
+                                            {collectionMethod === 'home_delivery' && <FiCheck/>}
                                         </div>
                                     </div>
                                 )}
@@ -107,7 +113,7 @@ const CollectionMethod = ({
                                     <input
                                         type='text'
                                         value={address.street}
-                                        onChange={e => setAddress({ ...address, street: e.target.value })}
+                                        onChange={e => setAddress({...address, street: e.target.value})}
                                         placeholder='123 Main St'
                                     />
                                 </div>
@@ -116,7 +122,7 @@ const CollectionMethod = ({
                                     <input
                                         type='text'
                                         value={address.city}
-                                        onChange={e => setAddress({ ...address, city: e.target.value })}
+                                        onChange={e => setAddress({...address, city: e.target.value})}
                                         placeholder='Dublin'
                                     />
                                 </div>
@@ -125,7 +131,7 @@ const CollectionMethod = ({
                                     <input
                                         type='text'
                                         value={address.county}
-                                        onChange={e => setAddress({ ...address, county: e.target.value })}
+                                        onChange={e => setAddress({...address, county: e.target.value})}
                                         placeholder='Dublin'
                                     />
                                 </div>
@@ -134,7 +140,7 @@ const CollectionMethod = ({
                                     <input
                                         type='text'
                                         value={address.eirCode}
-                                        onChange={e => setAddress({ ...address, eirCode: e.target.value })}
+                                        onChange={e => setAddress({...address, eirCode: e.target.value})}
                                         placeholder='D01 AB12'
                                     />
                                 </div>
@@ -143,7 +149,7 @@ const CollectionMethod = ({
                                     <input
                                         type='text'
                                         value={address.country}
-                                        onChange={e => setAddress({ ...address, country: e.target.value })}
+                                        onChange={e => setAddress({...address, country: e.target.value})}
                                         placeholder='Ireland'
                                     />
                                 </div>

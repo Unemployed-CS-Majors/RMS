@@ -111,9 +111,9 @@ const FloorCanvas = ({
                     height="60"
                     patternTransform="rotate(45)"
                 >
-                    <rect width="60" height="60" fill="#f5f5f5" />
-                    <rect width="30" height="30" fill="#efefef" />
-                    <rect x="30" y="30" width="30" height="30" fill="#efefef" />
+                    <rect width="60" height="60" fill="#f5f5f5"/>
+                    <rect width="30" height="30" fill="#efefef"/>
+                    <rect x="30" y="30" width="30" height="30" fill="#efefef"/>
                 </pattern>
             </defs>
 

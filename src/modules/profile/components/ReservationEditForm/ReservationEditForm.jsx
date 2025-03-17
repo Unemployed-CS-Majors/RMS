@@ -1,5 +1,5 @@
 import React from 'react';
-import { isValidDate, isValidTime } from '../../../shared/utils/dateUtils';
+import {isValidDate, isValidTime} from '../../../shared/utils/dateUtils';
 import styles from './FormComponents.module.css';
 import layoutStyles from '../ProfileLayout.module.css';
 

@@ -26,7 +26,8 @@ const Wall = ({
                   thickness = 8,
                   color = '#555',
                   isSelected = false,
-                  onClick = () => {},
+                  onClick = () => {
+                  },
                   id
               }) => {
     // Calculate the angle of the wall
@@ -47,15 +48,16 @@ const Wall = ({
     return (
         <g onClick={handleClick}>
             <defs>
-                <pattern id={`wall-pattern-${id}`} patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="rotate(45)">
-                    <rect width="20" height="20" fill={color} />
-                    <rect width="10" height="20" fill={`${color}ee`} />
-                    <line x1="0" y1="0" x2="0" y2="20" stroke="#444" strokeWidth="0.5" strokeOpacity="0.1" />
-                    <line x1="10" y1="0" x2="10" y2="20" stroke="#444" strokeWidth="0.5" strokeOpacity="0.1" />
+                <pattern id={`wall-pattern-${id}`} patternUnits="userSpaceOnUse" width="20" height="20"
+                         patternTransform="rotate(45)">
+                    <rect width="20" height="20" fill={color}/>
+                    <rect width="10" height="20" fill={`${color}ee`}/>
+                    <line x1="0" y1="0" x2="0" y2="20" stroke="#444" strokeWidth="0.5" strokeOpacity="0.1"/>
+                    <line x1="10" y1="0" x2="10" y2="20" stroke="#444" strokeWidth="0.5" strokeOpacity="0.1"/>
                 </pattern>
 
                 <filter id={`wall-shadow-${id}`} x="-20%" y="-20%" width="140%" height="140%">
-                    <feDropShadow dx="1" dy="1" stdDeviation="1" floodOpacity="0.3" />
+                    <feDropShadow dx="1" dy="1" stdDeviation="1" floodOpacity="0.3"/>
                 </filter>
             </defs>
 
@@ -70,7 +72,7 @@ const Wall = ({
                     strokeWidth="2"
                     strokeDasharray="4,2"
                     transform={`translate(${x1}, ${y1}) rotate(${angle})`}
-                    style={{ pointerEvents: 'none' }}
+                    style={{pointerEvents: 'none'}}
                 />
             )}
 
@@ -84,7 +86,7 @@ const Wall = ({
                 strokeWidth="0.5"
                 filter={`url(#wall-shadow-${id})`}
                 transform={`translate(${x1}, ${y1}) rotate(${angle})`}
-                style={{ cursor: 'pointer' }}
+                style={{cursor: 'pointer'}}
             />
 
             <line
@@ -95,7 +97,7 @@ const Wall = ({
                 stroke="#333"
                 strokeWidth="0.5"
                 strokeLinecap="round"
-                transform={`translate(0, ${-thickness/2 + 0.25})`}
+                transform={`translate(0, ${-thickness / 2 + 0.25})`}
             />
             <line
                 x1={x1}
@@ -105,7 +107,7 @@ const Wall = ({
                 stroke="#333"
                 strokeWidth="0.5"
                 strokeLinecap="round"
-                transform={`translate(0, ${thickness/2 - 0.25})`}
+                transform={`translate(0, ${thickness / 2 - 0.25})`}
             />
         </g>
     );

@@ -17,14 +17,14 @@ import {useCanvasUtils} from './hooks/useCanvasUtils';
  * @param {boolean} props.editMode - Flag indicating if edit mode is enabled
  * @returns {JSX.Element} The FloorPlanDesigner component
  */
-const FloorPlanDesigner = ({ editMode }) => {
+const FloorPlanDesigner = ({editMode}) => {
     // Drawing mode and table type selection
     const [currentDrawingMode, setCurrentDrawingMode] = useState(DrawingMode.SELECT);
     const [selectedTableType, setSelectedTableType] = useState(tableTypes.medium1);
 
     // State for the table number modal
     const [showTableModal, setShowTableModal] = useState(false);
-    const [tableModalPosition, setTableModalPosition] = useState({ x: 0, y: 0 });
+    const [tableModalPosition, setTableModalPosition] = useState({x: 0, y: 0});
     const [pendingTableEvent, setPendingTableEvent] = useState(null);
 
     // Use custom hooks to manage state and logic

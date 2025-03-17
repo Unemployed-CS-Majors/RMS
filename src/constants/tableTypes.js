@@ -358,7 +358,9 @@ const backwardCompatibility = {
 Object.entries(backwardCompatibility).forEach(([oldKey, newKey]) => {
     if (!tableTypes[oldKey] && tableTypes[newKey]) {
         Object.defineProperty(tableTypes, oldKey, {
-            get: function() { return tableTypes[newKey]; }
+            get: function () {
+                return tableTypes[newKey];
+            }
         });
     }
 });

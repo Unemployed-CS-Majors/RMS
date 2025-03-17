@@ -10,7 +10,7 @@ import LoginForm from '../components/LoginForm/LoginForm';
 import RegisterForm from '../components/RegisterForm/RegisterForm';
 
 // Custom hooks
-import { useAuthForm } from '../hooks/useAuthForm';
+import {useAuthForm} from '../hooks/useAuthForm';
 
 /**
  * Authentication component that handles both login and registration
@@ -42,7 +42,7 @@ const Auth = () => {
                 returnHome={returnHome}
             />
 
-            <img src={AuthBackground} className={styles.authBackground} alt="Background" />
+            <img src={AuthBackground} className={styles.authBackground} alt="Background"/>
 
             <div className={styles.authCard}>
                 <div className={styles.authHeader}>
@@ -50,7 +50,7 @@ const Auth = () => {
                     <p className={styles.authSubheader}>{loginForm ? "Login to continue your journey" : "Join us today"}</p>
                 </div>
 
-                <ErrorDisplay error={formError} />
+                <ErrorDisplay error={formError}/>
 
                 <SocialAuthButtons
                     loading={loading}

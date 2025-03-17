@@ -10,7 +10,7 @@ import styles from "./ErrorState.module.css";
  * @param {string} props.message - The error message to display
  * @returns {JSX.Element} The ErrorState component
  */
-const ErrorState = ({ message }) => {
+const ErrorState = ({message}) => {
     return (
         <div className={styles.errorContainer}>
             <div className={styles.errorIcon}>❌</div>

@@ -35,7 +35,8 @@ const Door = ({
                   doorType = 'hinged',
                   isSelected = false,
                   color = '#855E42',
-                  onClick = () => {},
+                  onClick = () => {
+                  },
                   id
               }) => {
     // Door arc settings
@@ -77,12 +78,13 @@ const Door = ({
         >
             <defs>
                 <pattern id={`door-pattern-${id}`} patternUnits="userSpaceOnUse" width="30" height="30">
-                    <rect width="30" height="30" fill={doorColor} />
-                    <rect x="5" y="5" width="20" height="20" fill={`${doorColor}aa`} stroke={doorBorder} strokeWidth="0.5" />
+                    <rect width="30" height="30" fill={doorColor}/>
+                    <rect x="5" y="5" width="20" height="20" fill={`${doorColor}aa`} stroke={doorBorder}
+                          strokeWidth="0.5"/>
                 </pattern>
 
                 <filter id={`door-shadow-${id}`} x="-20%" y="-20%" width="140%" height="140%">
-                    <feDropShadow dx="1" dy="1" stdDeviation="1" floodOpacity="0.3" />
+                    <feDropShadow dx="1" dy="1" stdDeviation="1" floodOpacity="0.3"/>
                 </filter>
             </defs>
 
@@ -117,7 +119,7 @@ const Door = ({
                     stroke={selectionColor}
                     strokeWidth="2"
                     strokeDasharray="4,2"
-                    style={{ pointerEvents: 'none' }}
+                    style={{pointerEvents: 'none'}}
                 />
             )}
 
@@ -157,7 +159,7 @@ const Door = ({
                         fill={handleColor}
                         stroke="#555"
                         strokeWidth="0.5"
-                        style={{ pointerEvents: 'none' }}
+                        style={{pointerEvents: 'none'}}
                     />
                 </>
             )}
@@ -250,7 +252,7 @@ const Door = ({
                 fontSize="10"
                 fill="#333"
                 fontWeight="bold"
-                style={{ pointerEvents: 'none' }}
+                style={{pointerEvents: 'none'}}
             >
                 {id}
             </text>

@@ -12,7 +12,7 @@ import styles from "./CategoryFilter.module.css";
  * @param {Function} props.setActiveCategory - Function to set the active category
  * @returns {JSX.Element} The CategoryFilter component
  */
-const CategoryFilter = ({ categories, activeCategory, setActiveCategory }) => {
+const CategoryFilter = ({categories, activeCategory, setActiveCategory}) => {
     return (
         <div className={styles.categoryContainer}>
             {categories.map((category) => (

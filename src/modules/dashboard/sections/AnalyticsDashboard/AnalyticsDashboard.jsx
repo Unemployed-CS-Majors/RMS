@@ -9,13 +9,13 @@ import Revenue from './components/sections/Revenue';
 import Orders from './components/sections/Orders';
 import MenuItems from './components/sections/MenuItems';
 import Reservations from './components/sections/Reservations';
-import { useAnalyticsData } from './hooks/useAnalyticsData';
-import { useTimeRange } from './hooks/useTimeRange';
+import {useAnalyticsData} from './hooks/useAnalyticsData';
+import {useTimeRange} from './hooks/useTimeRange';
 import styles from './AnalyticsDashboard.module.css';
 import errorStyles from './components/Error.module.css';
 
-const AnalyticsDashboard = ({ loading: externalLoading, setLoading }) => {
-    const { timeRange, setTimeRange } = useTimeRange(30);
+const AnalyticsDashboard = ({loading: externalLoading, setLoading}) => {
+    const {timeRange, setTimeRange} = useTimeRange(30);
     const {
         analyticsData,
         loading,
@@ -43,7 +43,7 @@ const AnalyticsDashboard = ({ loading: externalLoading, setLoading }) => {
 
     // Handle loading state
     if (loading || externalLoading) {
-        return <LoadingIndicator text="Loading analytics data..." />;
+        return <LoadingIndicator text="Loading analytics data..."/>;
     }
 
     // Handle no data state
@@ -55,17 +55,17 @@ const AnalyticsDashboard = ({ loading: externalLoading, setLoading }) => {
     const renderActiveSection = () => {
         switch (activeSection) {
             case 'summary':
-                return <Summary analyticsData={analyticsData} />;
+                return <Summary analyticsData={analyticsData}/>;
             case 'revenue':
-                return <Revenue analyticsData={analyticsData} timeRange={timeRange} />;
+                return <Revenue analyticsData={analyticsData} timeRange={timeRange}/>;
             case 'orders':
-                return <Orders analyticsData={analyticsData} />;
+                return <Orders analyticsData={analyticsData}/>;
             case 'menu':
-                return <MenuItems analyticsData={analyticsData} />;
+                return <MenuItems analyticsData={analyticsData}/>;
             case 'reservations':
-                return <Reservations analyticsData={analyticsData} timeRange={timeRange} />;
+                return <Reservations analyticsData={analyticsData} timeRange={timeRange}/>;
             default:
-                return <Summary analyticsData={analyticsData} />;
+                return <Summary analyticsData={analyticsData}/>;
         }
     };
 

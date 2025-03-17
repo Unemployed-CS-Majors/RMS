@@ -41,7 +41,7 @@ const ReservationModal = ({
     // Format date and time for display
     const formatDate = (date) => {
         if (!date || !(date instanceof Date) || isNaN(date)) return 'Not specified';
-        return date.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+        return date.toLocaleDateString(undefined, {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'});
     };
 
     const formatTime = (time) => {
@@ -80,7 +80,8 @@ const ReservationModal = ({
 
                 <div className={styles.infoRow}>
                     <span className={styles.infoLabel}>Party Size:</span>
-                    <span className={styles.infoValue}>{people || 'Not specified'} {people && people !== 1 ? 'people' : 'person'}</span>
+                    <span
+                        className={styles.infoValue}>{people || 'Not specified'} {people && people !== 1 ? 'people' : 'person'}</span>
                 </div>
 
                 <div className={styles.buttonContainer}>

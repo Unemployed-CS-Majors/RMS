@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import {useEffect, useState} from 'react';
 import menuService from '../../../services/menuItem.service';
 
 /**
@@ -40,7 +40,10 @@ const useCart = () => {
      */
     const addToCart = item => {
         setCartItems(
-            cartItems.map(cartItem => (cartItem.id === item.id ? { ...cartItem, quantity: cartItem.quantity + 1 } : cartItem))
+            cartItems.map(cartItem => (cartItem.id === item.id ? {
+                ...cartItem,
+                quantity: cartItem.quantity + 1
+            } : cartItem))
         );
     };
 

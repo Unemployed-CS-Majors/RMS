@@ -1,8 +1,7 @@
-
 import React from 'react';
 import styles from './ChartComponents.module.css';
 
-export const CenteredMetric = ({ title, value, description }) => {
+export const CenteredMetric = ({title, value, description}) => {
     return (
         <div className={`${styles.dashboardCard} ${styles.chartCard}`}>
             {title && <h3 className={styles.cardTitle}>{title}</h3>}
@@ -16,7 +15,7 @@ export const CenteredMetric = ({ title, value, description }) => {
     );
 };
 
-export const MetricsGrid = ({ title, metrics }) => {
+export const MetricsGrid = ({title, metrics}) => {
     return (
         <div className={`${styles.dashboardCard} ${styles.chartCard}`}>
             {title && <h3 className={styles.cardTitle}>{title}</h3>}
@@ -34,7 +33,7 @@ export const MetricsGrid = ({ title, metrics }) => {
     );
 };
 
-export const MetricsList = ({ title, metrics }) => {
+export const MetricsList = ({title, metrics}) => {
     return (
         <div className={`${styles.dashboardCard} ${styles.chartCard}`}>
             {title && <h3 className={styles.cardTitle}>{title}</h3>}

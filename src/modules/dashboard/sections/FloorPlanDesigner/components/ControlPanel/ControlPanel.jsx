@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './ControlPanel.module.css';
-import { DrawingMode } from "../../../../../../constants/drawingModes";
+import {DrawingMode} from "../../../../../../constants/drawingModes";
 import TablePreview from "../TablePreview/TablePreview";
 
 /**
@@ -102,7 +102,7 @@ const ControlPanel = ({
                     </select>
 
                     <div className={styles.previewContainer}>
-                        <TablePreview selectedTableType={selectedTableType} />
+                        <TablePreview selectedTableType={selectedTableType}/>
                     </div>
                 </div>
             )}

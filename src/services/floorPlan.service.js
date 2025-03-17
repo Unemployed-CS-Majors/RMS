@@ -6,7 +6,7 @@ const floorPlanService = {
      *
      * @returns {Promise<Object>} The floor plan data
      */
-    get : async () => {
+    get: async () => {
         const response = await axiosInstance.get(`/floorPlan`);
         return response.data.data;
     }

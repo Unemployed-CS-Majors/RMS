@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './RestaurantConfig.module.css';
-import { useRestaurantConfig } from '../../hooks/useRestaurantConfig';
+import {useRestaurantConfig} from '../../hooks/useRestaurantConfig';
 import LoadingIndicator from '../Loading/LoadingIndicator';
 
 /**
@@ -13,7 +13,7 @@ import LoadingIndicator from '../Loading/LoadingIndicator';
  * @param {Function} props.setLoading - Function to set the loading state
  * @returns {JSX.Element} The RestaurantConfig component
  */
-const RestaurantConfig = ({ loading, setLoading }) => {
+const RestaurantConfig = ({loading, setLoading}) => {
     // Use the custom hook
     const {
         phoneNumber,
@@ -43,7 +43,7 @@ const RestaurantConfig = ({ loading, setLoading }) => {
 
     // If loading, show loading indicator
     if (loading) {
-        return <LoadingIndicator text="Loading Restaurant Configuration..." />;
+        return <LoadingIndicator text="Loading Restaurant Configuration..."/>;
     }
 
     return (
@@ -262,7 +262,8 @@ const RestaurantConfig = ({ loading, setLoading }) => {
                                     rows={4}
                                 />
                                 <p className={styles.helpText}>
-                                    Paste the URL from the Google Maps embed code (src attribute). You can get this from Google Maps by clicking "Share" and then "Embed a map".
+                                    Paste the URL from the Google Maps embed code (src attribute). You can get this from
+                                    Google Maps by clicking "Share" and then "Embed a map".
                                 </p>
                                 {validationErrors.mapIFrame && (
                                     <span className={styles.errorMessage}>{validationErrors.mapIFrame}</span>
@@ -281,7 +282,7 @@ const RestaurantConfig = ({ loading, setLoading }) => {
                                         src={mapIFrame}
                                         width="100%"
                                         height="300"
-                                        style={{border:0}}
+                                        style={{border: 0}}
                                         allowFullScreen=""
                                         loading="lazy"
                                         referrerPolicy="no-referrer-when-downgrade"
@@ -306,7 +307,8 @@ const RestaurantConfig = ({ loading, setLoading }) => {
                         {/* Website Navigation Features */}
                         <div className={styles.featureGroup}>
                             <h4 className={styles.featureGroupTitle}>Website Navigation</h4>
-                            <p className={styles.featureGroupDescription}>Control which tabs appear in your website navigation</p>
+                            <p className={styles.featureGroupDescription}>Control which tabs appear in your website
+                                navigation</p>
 
                             <div className={styles.featureItem}>
                                 <div className={styles.featureInfo}>
@@ -344,7 +346,8 @@ const RestaurantConfig = ({ loading, setLoading }) => {
                         {/* Ordering Features */}
                         <div className={styles.featureGroup}>
                             <h4 className={styles.featureGroupTitle}>Ordering Capabilities</h4>
-                            <p className={styles.featureGroupDescription}>Control ordering functionality and delivery options</p>
+                            <p className={styles.featureGroupDescription}>Control ordering functionality and delivery
+                                options</p>
 
                             <div className={styles.featureItem}>
                                 <div className={styles.featureInfo}>
@@ -398,7 +401,8 @@ const RestaurantConfig = ({ loading, setLoading }) => {
                         {/* Payment Features */}
                         <div className={styles.featureGroup}>
                             <h4 className={styles.featureGroupTitle}>Payment Options</h4>
-                            <p className={styles.featureGroupDescription}>Control available payment methods for customer orders</p>
+                            <p className={styles.featureGroupDescription}>Control available payment methods for customer
+                                orders</p>
 
                             <div className={styles.featureItem}>
                                 <div className={styles.featureInfo}>

@@ -65,6 +65,7 @@
     height: 3px;
     background-color: #FF7D05;
 }
+
 .account-submenu {
     display: flex;
     flex-wrap: wrap;

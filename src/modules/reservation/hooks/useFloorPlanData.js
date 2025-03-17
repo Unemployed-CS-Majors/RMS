@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { tableTypes } from "../../../constants/tableTypes";
+import {useEffect, useState} from "react";
+import {tableTypes} from "../../../constants/tableTypes";
 import floorPlanService from "../../../services/floorPlan.service";
 
 /**

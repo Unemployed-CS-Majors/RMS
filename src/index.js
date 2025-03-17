@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import { AuthProvider } from './modules/shared/contexts/AuthContext';
+import {AuthProvider} from './modules/shared/contexts/AuthContext';
 import './index.css';
 
 /**
@@ -17,6 +17,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 // Render the App component within the AuthProvider context
 root.render(
     <AuthProvider>
-        <App />
+        <App/>
     </AuthProvider>
 );

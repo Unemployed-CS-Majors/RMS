@@ -1,7 +1,7 @@
-import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import { ROUTES } from "../../../constants/routes.js";
-import { AuthContext } from "../../shared/contexts/AuthContext";
+import {useContext, useState} from "react";
+import {useNavigate} from "react-router-dom";
+import {ROUTES} from "../../../constants/routes.js";
+import {AuthContext} from "../../shared/contexts/AuthContext";
 
 /**
  * Custom hook for handling forgot password functionality
@@ -14,7 +14,7 @@ export const useForgotPassword = () => {
     const [formError, setFormError] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
-    const { resetPassword, error } = useContext(AuthContext);
+    const {resetPassword, error} = useContext(AuthContext);
 
     // Navigation handlers
     const returnHome = () => navigate(ROUTES.HOME);

@@ -12,10 +12,10 @@ import styles from "./Layout.module.css";
  * @param {React.ReactNode} props.children - The content to be displayed within the main area of the layout
  * @returns {JSX.Element} The Layout component
  */
-const Layout = ({ children }) => {
+const Layout = ({children}) => {
     return (
         <div className={styles.layoutContainer}>
-            <Navigation />
+            <Navigation/>
             <main className={styles.main}>{children}</main>
         </div>
     );

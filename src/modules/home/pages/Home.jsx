@@ -16,11 +16,11 @@ export default function Home() {
     return (
         <div className={styles.homeContainer}>
             <div className={styles.main}>
-                <HeroSection />
-                <OpeningHoursSection />
-                <AboutUsSection />
+                <HeroSection/>
+                <OpeningHoursSection/>
+                <AboutUsSection/>
             </div>
-            <HomeFooter />
+            <HomeFooter/>
         </div>
     );
 }

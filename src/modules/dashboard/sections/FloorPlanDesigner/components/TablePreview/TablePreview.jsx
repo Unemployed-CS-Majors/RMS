@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './TablePreview.module.css';
 import TableWithChairs from '../../../../../reservation/components/TableWithChairs/TableWithChairs';
-import { tableTypes } from '../../../../../../constants/tableTypes';
+import {tableTypes} from '../../../../../../constants/tableTypes';
 
 /**
  * TablePreview component for rendering a preview of the selected table type
@@ -10,7 +10,7 @@ import { tableTypes } from '../../../../../../constants/tableTypes';
  * @param {Object} props.selectedTableType - The selected table type to preview
  * @returns {JSX.Element} The TablePreview component
  */
-const TablePreview = ({ selectedTableType }) => {
+const TablePreview = ({selectedTableType}) => {
     const table = {
         id: "preview",
         x: 10,
@@ -47,7 +47,8 @@ const TablePreview = ({ selectedTableType }) => {
                         tableType={table.tableType}
                         isAvailable={true}
                         rotation={table.rotation}
-                        onClick={() => {}}
+                        onClick={() => {
+                        }}
                     />
                 </g>
             </svg>

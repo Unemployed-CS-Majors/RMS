@@ -6,7 +6,7 @@ import reservationStyles from '../ReservationDetail/ReservationDetail.module.css
 /**
  * UpcomingReservation component displays the next upcoming reservation
  */
-const UpcomingReservation = ({ reservation, onManage, onCancel }) => {
+const UpcomingReservation = ({reservation, onManage, onCancel}) => {
     if (!reservation) {
         return (
             <div className={`${layoutStyles.card} ${styles.upcomingReservation}`}>
@@ -14,7 +14,7 @@ const UpcomingReservation = ({ reservation, onManage, onCancel }) => {
                     <h3>No Upcoming Reservations</h3>
                 </div>
                 <div className={layoutStyles.cardBody}>
-                    <p style={{ textAlign: 'center', color: '#666', fontSize: '15px' }}>
+                    <p style={{textAlign: 'center', color: '#666', fontSize: '15px'}}>
                         You don't have any upcoming reservations.
                     </p>
                 </div>

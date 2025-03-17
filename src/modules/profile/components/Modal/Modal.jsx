@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './Modal.module.css';
 
 /**
  * Reusable Modal component with animations
  */
-const Modal = ({ isOpen, onClose, title, children, actions, maxWidth = '700px' }) => {
+const Modal = ({isOpen, onClose, title, children, actions, maxWidth = '700px'}) => {
     const [isAnimating, setIsAnimating] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
 
@@ -61,7 +61,7 @@ const Modal = ({ isOpen, onClose, title, children, actions, maxWidth = '700px' }
         >
             <div
                 className={`${styles.modal} ${isAnimating ? styles.modalVisible : ''}`}
-                style={{ maxWidth: maxWidth }}
+                style={{maxWidth: maxWidth}}
             >
                 <div className={styles.modalHeader}>
                     <h3>{title}</h3>
@@ -70,7 +70,8 @@ const Modal = ({ isOpen, onClose, title, children, actions, maxWidth = '700px' }
                         onClick={onClose}
                         aria-label="Close"
                     >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                             stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <line x1="18" y1="6" x2="6" y2="18"></line>
                             <line x1="6" y1="6" x2="18" y2="18"></line>
                         </svg>

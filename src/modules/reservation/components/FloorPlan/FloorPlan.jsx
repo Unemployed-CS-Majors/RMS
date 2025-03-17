@@ -8,8 +8,8 @@ import LoadingState from "../LoadingState/LoadingState";
 import ErrorState from "../ErrorState/ErrorState";
 
 // Custom hooks
-import { useFloorPlanData } from "../../hooks/useFloorPlanData";
-import { useSelection } from "../../hooks/useSelection";
+import {useFloorPlanData} from "../../hooks/useFloorPlanData";
+import {useSelection} from "../../hooks/useSelection";
 
 /**
  * FloorPlan component
@@ -19,7 +19,7 @@ import { useSelection } from "../../hooks/useSelection";
  * @param {Array} freeTables - Array of currently available tables
  * @param {Function} onTableSelect - Callback function for when a table is selected
  */
-const FloorPlan = ({ freeTables = [], onTableSelect }) => {
+const FloorPlan = ({freeTables = [], onTableSelect}) => {
     // Canvas dimensions
     const canvasWidth = 800;
     const canvasHeight = 600;
@@ -43,11 +43,11 @@ const FloorPlan = ({ freeTables = [], onTableSelect }) => {
 
     // Conditional rendering for loading and error states
     if (isLoading) {
-        return <LoadingState />;
+        return <LoadingState/>;
     }
 
     if (error) {
-        return <ErrorState message={error} />;
+        return <ErrorState message={error}/>;
     }
 
     return (
@@ -67,7 +67,7 @@ const FloorPlan = ({ freeTables = [], onTableSelect }) => {
                 onClearSelection={clearSelection}
             />
 
-            <Legend />
+            <Legend/>
         </div>
     );
 };

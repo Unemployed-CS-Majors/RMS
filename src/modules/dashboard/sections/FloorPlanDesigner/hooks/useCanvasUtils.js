@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import {useRef, useState} from 'react';
 
 /**
  * Custom hook for managing canvas utilities in the floor plan designer
@@ -13,7 +13,7 @@ import { useRef, useState } from 'react';
  */
 export const useCanvasUtils = () => {
     const svgRef = useRef(null);
-    const [svgDimensions] = useState({ width: 800, height: 600 });
+    const [svgDimensions] = useState({width: 800, height: 600});
     const [controlPanelOpen, setControlPanelOpen] = useState(true);
 
     /**
@@ -24,7 +24,7 @@ export const useCanvasUtils = () => {
      */
     const getCursorPosition = (event) => {
         const svg = svgRef.current;
-        if (!svg) return { x: 0, y: 0 };
+        if (!svg) return {x: 0, y: 0};
 
         const point = svg.createSVGPoint();
         point.x = event.clientX;

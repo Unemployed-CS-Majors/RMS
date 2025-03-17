@@ -3,7 +3,7 @@ import styles from './AllReservations.module.css';
 import ReservationsTable from './components/ReservationTable/ReservationsTable';
 import FilterSidebar from './components/FilterSidebar/FilterSidebar';
 import ResultsCounter from './components/ResultCounter/ResultsCounter';
-import { useReservationFilters } from './hooks/useReservationFilters';
+import {useReservationFilters} from './hooks/useReservationFilters';
 
 /**
  * AllReservations component
@@ -14,7 +14,7 @@ import { useReservationFilters } from './hooks/useReservationFilters';
  * @param {boolean} filtersVisible - Whether the filter sidebar is visible
  * @param {Function} setFiltersVisible - Function to set filter sidebar visibility
  */
-const AllReservations = ({ allReservations, filtersVisible, setFiltersVisible }) => {
+const AllReservations = ({allReservations, filtersVisible, setFiltersVisible}) => {
     // Use custom hook for filtering functionality
     const {
         filters,
@@ -41,7 +41,7 @@ const AllReservations = ({ allReservations, filtersVisible, setFiltersVisible })
                 />
 
                 {/* Reservations table */}
-                <ReservationsTable reservations={filteredReservations} />
+                <ReservationsTable reservations={filteredReservations}/>
             </div>
 
             {/* Filter sidebar */}

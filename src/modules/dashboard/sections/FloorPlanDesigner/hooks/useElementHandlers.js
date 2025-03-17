@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import {useState} from 'react';
+import {v4 as uuidv4} from 'uuid';
 import tableService from "../../../../../services/table.service";
 import wallsService from "../../../../../services/walls.service";
 import doorService from "../../../../../services/door.service";
 import windowService from "../../../../../services/window.service";
-import { DrawingMode } from '../../../../../constants/drawingModes';
+import {DrawingMode} from '../../../../../constants/drawingModes';
 
 /**
  * Custom hook for managing element handlers in the floor plan designer
@@ -34,10 +34,10 @@ export const useElementHandlers = (tables, setTables, walls, setWalls, doors, se
     const [deactivatingTables, setDeactivatingTables] = useState([]);
 
     // Table methods
-    const addTable = async (event, currentDrawingMode, selectedTableType,tableNum) => {
+    const addTable = async (event, currentDrawingMode, selectedTableType, tableNum) => {
         if (currentDrawingMode !== DrawingMode.TABLE) return;
 
-        const { x, y } = getCursorPosition(event);
+        const {x, y} = getCursorPosition(event);
 
         try {
             const seats = selectedTableType.chairsTop + selectedTableType.chairsBottom +
@@ -70,7 +70,7 @@ export const useElementHandlers = (tables, setTables, walls, setWalls, doors, se
             setTimeout(() => {
                 setTables(tables =>
                     tables.map(table =>
-                        table.id === newTable.id ? { ...table, isNew: false } : table
+                        table.id === newTable.id ? {...table, isNew: false} : table
                     )
                 );
             }, 500);
@@ -86,7 +86,7 @@ export const useElementHandlers = (tables, setTables, walls, setWalls, doors, se
 
             // Update UI state immediately for better user experience
             setTables(tables.map(table =>
-                table.id === element.id ? { ...table, isActive: true } : table
+                table.id === element.id ? {...table, isActive: true} : table
             ));
 
             // Also update the selected element's state so the button updates
@@ -110,7 +110,7 @@ export const useElementHandlers = (tables, setTables, walls, setWalls, doors, se
             console.error('Error activating table:', error);
             // Revert the state change if the API call fails
             setTables(tables.map(table =>
-                table.id === element.id ? { ...table, isActive: false } : table
+                table.id === element.id ? {...table, isActive: false} : table
             ));
             if (selectedElement && selectedElement.id === element.id) {
                 setSelectedElement({
@@ -132,7 +132,7 @@ export const useElementHandlers = (tables, setTables, walls, setWalls, doors, se
 
             // Update UI state immediately for better user experience
             setTables(tables.map(table =>
-                table.id === element.id ? { ...table, isActive: false } : table
+                table.id === element.id ? {...table, isActive: false} : table
             ));
 
             // Also update the selected element's state so the button updates
@@ -156,7 +156,7 @@ export const useElementHandlers = (tables, setTables, walls, setWalls, doors, se
             console.error('Error deactivating table:', error);
             // Revert the state change if the API call fails
             setTables(tables.map(table =>
-                table.id === element.id ? { ...table, isActive: true } : table
+                table.id === element.id ? {...table, isActive: true} : table
             ));
             if (selectedElement && selectedElement.id === element.id) {
                 setSelectedElement({
@@ -174,13 +174,13 @@ export const useElementHandlers = (tables, setTables, walls, setWalls, doors, se
     // Wall methods
     const startDrawWall = (event, currentDrawingMode) => {
         if (currentDrawingMode !== DrawingMode.WALL) return;
-        const { x, y } = getCursorPosition(event);
-        setStartPoint({ x, y });
+        const {x, y} = getCursorPosition(event);
+        setStartPoint({x, y});
     };
 
     const endDrawWall = async (event, currentDrawingMode) => {
         if (currentDrawingMode !== DrawingMode.WALL || !startPoint) return;
-        const { x, y } = getCursorPosition(event);
+        const {x, y} = getCursorPosition(event);
 
         // Only create a wall if it has some length
         if (Math.hypot(x - startPoint.x, y - startPoint.y) > 5) {
@@ -208,7 +208,7 @@ export const useElementHandlers = (tables, setTables, walls, setWalls, doors, se
     const addDoor = async (event, currentDrawingMode) => {
         if (currentDrawingMode !== DrawingMode.DOOR) return;
 
-        const { x, y } = getCursorPosition(event);
+        const {x, y} = getCursorPosition(event);
         const newDoor = {
             id: uuidv4(),
             intId: 0,
@@ -239,7 +239,7 @@ export const useElementHandlers = (tables, setTables, walls, setWalls, doors, se
     const addWindow = async (event, currentDrawingMode) => {
         if (currentDrawingMode !== DrawingMode.WINDOW) return;
 
-        const { x, y } = getCursorPosition(event);
+        const {x, y} = getCursorPosition(event);
         const newWindow = {
             id: uuidv4(),
             intId: windows.length > 0 ? Math.max(...windows.map(w => w.intId || 0), 0) + 1 : 1,
@@ -272,7 +272,7 @@ export const useElementHandlers = (tables, setTables, walls, setWalls, doors, se
         event.stopPropagation();
         setIsDragging(true);
 
-        const { x, y } = getCursorPosition(event);
+        const {x, y} = getCursorPosition(event);
 
         // Calculate offset from the cursor to the element origin
         let offsetX, offsetY;
@@ -304,7 +304,7 @@ export const useElementHandlers = (tables, setTables, walls, setWalls, doors, se
 
         if (!isDragging || !draggedItem) return;
 
-        const { x, y } = getCursorPosition(event);
+        const {x, y} = getCursorPosition(event);
 
         switch (draggedItem.type) {
             case 'table':
@@ -314,7 +314,7 @@ export const useElementHandlers = (tables, setTables, walls, setWalls, doors, se
 
                 const updatedTables = tables.map(table =>
                     table.id === draggedItem.id
-                        ? { ...table, x: newX, y: newY }
+                        ? {...table, x: newX, y: newY}
                         : table
                 );
 
@@ -345,7 +345,7 @@ export const useElementHandlers = (tables, setTables, walls, setWalls, doors, se
             case 'door':
                 const updatedDoors = doors.map(door =>
                     door.id === draggedItem.id
-                        ? { ...door, x: x - draggedItem.offsetX, y: y - draggedItem.offsetY }
+                        ? {...door, x: x - draggedItem.offsetX, y: y - draggedItem.offsetY}
                         : door
                 );
                 setDoors(updatedDoors);
@@ -354,7 +354,7 @@ export const useElementHandlers = (tables, setTables, walls, setWalls, doors, se
             case 'window':
                 const updatedWindows = windows.map(window =>
                     window.id === draggedItem.id
-                        ? { ...window, x: x - draggedItem.offsetX, y: y - draggedItem.offsetY }
+                        ? {...window, x: x - draggedItem.offsetX, y: y - draggedItem.offsetY}
                         : window
                 );
                 setWindows(updatedWindows);
@@ -489,7 +489,7 @@ export const useElementHandlers = (tables, setTables, walls, setWalls, doors, se
     const startResize = (element, event, type) => {
         event.stopPropagation();
         setIsResizing(true);
-        setResizeElement({ ...element, type });
+        setResizeElement({...element, type});
         setResizeStartPoint(getCursorPosition(event));
     };
 
@@ -506,7 +506,7 @@ export const useElementHandlers = (tables, setTables, walls, setWalls, doors, se
             case 'wall':
                 const updatedWalls = walls.map(wall =>
                     wall.id === resizeElement.id
-                        ? { ...wall, x2: wall.x2 + dx, y2: wall.y2 + dy }
+                        ? {...wall, x2: wall.x2 + dx, y2: wall.y2 + dy}
                         : wall
                 );
                 setWalls(updatedWalls);
@@ -514,7 +514,7 @@ export const useElementHandlers = (tables, setTables, walls, setWalls, doors, se
             case 'door':
                 const updatedDoors = doors.map(door =>
                     door.id === resizeElement.id
-                        ? { ...door, width: Math.max(30, door.width + dx), height: Math.max(10, door.height + dy) }
+                        ? {...door, width: Math.max(30, door.width + dx), height: Math.max(10, door.height + dy)}
                         : door
                 );
                 setDoors(updatedDoors);
@@ -522,12 +522,13 @@ export const useElementHandlers = (tables, setTables, walls, setWalls, doors, se
             case 'window':
                 const updatedWindows = windows.map(window =>
                     window.id === resizeElement.id
-                        ? { ...window, width: Math.max(20, window.width + dx), height: Math.max(5, window.height + dy) }
+                        ? {...window, width: Math.max(20, window.width + dx), height: Math.max(5, window.height + dy)}
                         : window
                 );
                 setWindows(updatedWindows);
                 break;
-            default: break;
+            default:
+                break;
         }
 
         setResizeStartPoint(currentPoint);
@@ -538,7 +539,7 @@ export const useElementHandlers = (tables, setTables, walls, setWalls, doors, se
             case 'table':
                 const updatedTables = tables.map(table =>
                     table.id === element.id
-                        ? { ...table, rotation: (table.rotation + 90) % 360 }
+                        ? {...table, rotation: (table.rotation + 90) % 360}
                         : table
                 );
                 setTables(updatedTables);
@@ -622,7 +623,8 @@ export const useElementHandlers = (tables, setTables, walls, setWalls, doors, se
                 });
                 setWindows(updatedWindows);
                 break;
-            default: break;
+            default:
+                break;
         }
         setSelectedElement(null);
         setElementDetailsPosition(null);
@@ -646,7 +648,8 @@ export const useElementHandlers = (tables, setTables, walls, setWalls, doors, se
                 windowService.delete(element.intId);
                 setWindows(windows.filter(window => window.id !== element.id));
                 break;
-            default: break;
+            default:
+                break;
         }
         setSelectedElement(null);
         setElementDetailsPosition(null);
@@ -656,7 +659,7 @@ export const useElementHandlers = (tables, setTables, walls, setWalls, doors, se
         event.stopPropagation();
         if (currentDrawingMode !== DrawingMode.SELECT) return;
 
-        setSelectedElement({ ...element, type });
+        setSelectedElement({...element, type});
         setElementDetailsPosition({
             x: event.clientX,
             y: event.clientY

@@ -1,6 +1,6 @@
 import React from "react";
-import { FaUserCircle, FaRegChartBar } from "react-icons/fa";
-import { motion } from "framer-motion";
+import {FaRegChartBar, FaUserCircle} from "react-icons/fa";
+import {motion} from "framer-motion";
 import cookieManager from "../../../utils/cookieManager";
 import COOKIE_KEYS from "../../../../../constants/cookieKeys";
 import styles from "./ProfileButton.module.css";
@@ -16,7 +16,7 @@ import styles from "./ProfileButton.module.css";
  * @param {boolean} props.isMobile - Flag to indicate if the view is on a mobile device
  * @returns {JSX.Element} The ProfileButton component
  */
-const ProfileButton = ({ handleProfileClick, handleDashboardOnClick, isMobile }) => {
+const ProfileButton = ({handleProfileClick, handleDashboardOnClick, isMobile}) => {
     const user = cookieManager.get(COOKIE_KEYS.USER);
     const isAdmin = ["owner", "employee"].includes(user);
 
@@ -26,18 +26,18 @@ const ProfileButton = ({ handleProfileClick, handleDashboardOnClick, isMobile })
                 <motion.button
                     onClick={handleProfileClick}
                     className={styles.mobileProfileBtn}
-                    whileTap={{ scale: 0.95 }}
+                    whileTap={{scale: 0.95}}
                 >
-                    <FaUserCircle /> Profile
+                    <FaUserCircle/> Profile
                 </motion.button>
 
                 {isAdmin && (
                     <motion.button
                         onClick={handleDashboardOnClick}
                         className={styles.mobileDashboardBtn}
-                        whileTap={{ scale: 0.95 }}
+                        whileTap={{scale: 0.95}}
                     >
-                        <FaRegChartBar /> Dashboard
+                        <FaRegChartBar/> Dashboard
                     </motion.button>
                 )}
             </div>
@@ -49,20 +49,20 @@ const ProfileButton = ({ handleProfileClick, handleDashboardOnClick, isMobile })
             <motion.button
                 onClick={handleProfileClick}
                 className={styles.profileBtn}
-                whileHover={{ scale: 1.05, boxShadow: "0px 3px 8px rgba(0, 0, 0, 0.1)" }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{scale: 1.05, boxShadow: "0px 3px 8px rgba(0, 0, 0, 0.1)"}}
+                whileTap={{scale: 0.95}}
             >
-                <FaUserCircle /> Profile
+                <FaUserCircle/> Profile
             </motion.button>
 
             {isAdmin && (
                 <motion.button
                     onClick={handleDashboardOnClick}
                     className={styles.dashboardBtn}
-                    whileHover={{ scale: 1.05, boxShadow: "0px 3px 8px rgba(0, 0, 0, 0.1)" }}
-                    whileTap={{ scale: 0.95 }}
+                    whileHover={{scale: 1.05, boxShadow: "0px 3px 8px rgba(0, 0, 0, 0.1)"}}
+                    whileTap={{scale: 0.95}}
                 >
-                    <FaRegChartBar /> Dashboard
+                    <FaRegChartBar/> Dashboard
                 </motion.button>
             )}
         </div>

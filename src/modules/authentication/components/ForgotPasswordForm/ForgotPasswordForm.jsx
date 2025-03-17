@@ -1,5 +1,5 @@
 import React from "react";
-import { FaEnvelope, FaArrowLeft } from "react-icons/fa";
+import {FaArrowLeft, FaEnvelope} from "react-icons/fa";
 import styles from './ForgotPasswordForm.module.css';
 
 /**
@@ -31,7 +31,7 @@ const ForgotPasswordForm = ({
 
             <form className={styles.authForm} onSubmit={handleSubmit}>
                 <div className={styles.inputGroup}>
-                    <FaEnvelope className={styles.inputIcon} />
+                    <FaEnvelope className={styles.inputIcon}/>
                     <input
                         type="email"
                         name="email"
@@ -51,7 +51,7 @@ const ForgotPasswordForm = ({
                 </button>
 
                 <div className={styles.backToLogin} onClick={returnToLogin}>
-                    <FaArrowLeft /> <span>Back to Login</span>
+                    <FaArrowLeft/> <span>Back to Login</span>
                 </div>
             </form>
         </>

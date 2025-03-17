@@ -1,5 +1,5 @@
 import React from "react";
-import { FiMinus, FiPlus } from "react-icons/fi";
+import {FiMinus, FiPlus} from "react-icons/fi";
 import styles from "./CartItem.module.css";
 
 /**
@@ -15,7 +15,7 @@ import styles from "./CartItem.module.css";
  * @param {Function} props.getItemTotalPrice - Function to get the total price of the item
  * @returns {JSX.Element} The CartItem component
  */
-const CartItem = ({ item, addToCart, removeFromCart, getItemTotalPrice }) => {
+const CartItem = ({item, addToCart, removeFromCart, getItemTotalPrice}) => {
     return (
         <div className={styles.orderedItem}>
             <div className={styles.orderedItemHeader}>
@@ -30,7 +30,7 @@ const CartItem = ({ item, addToCart, removeFromCart, getItemTotalPrice }) => {
                     onClick={() => removeFromCart(item.id)}
                     aria-label="Decrease quantity"
                 >
-                    <FiMinus size={14} />
+                    <FiMinus size={14}/>
                 </button>
                 <span className={styles.quantityValue}>{item.quantity}</span>
                 <button
@@ -38,7 +38,7 @@ const CartItem = ({ item, addToCart, removeFromCart, getItemTotalPrice }) => {
                     onClick={() => addToCart(item)}
                     aria-label="Increase quantity"
                 >
-                    <FiPlus size={14} />
+                    <FiPlus size={14}/>
                 </button>
             </div>
         </div>

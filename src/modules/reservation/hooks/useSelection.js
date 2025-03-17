@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useState} from "react";
 
 /**
  * Custom hook for managing element selection in the floor plan

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useState} from 'react';
 
 /**
  * Custom hook for managing employee form state and validation
@@ -20,7 +20,7 @@ export const useEmployeeForm = (createNewEmployee, setShowDialog) => {
     const [formErrors, setFormErrors] = useState({});
 
     const handleEmployeeInputChange = (e) => {
-        const { name, value } = e.target;
+        const {name, value} = e.target;
         setNewEmployee({
             ...newEmployee,
             [name]: value

@@ -4,7 +4,7 @@ import AuthBackground from "../../../assets/auth-background.jpg";
 import HomeButton from "../components/HomeButton/HomeButton";
 import ForgotPasswordForm from "../components/ForgotPasswordForm/ForgotPasswordForm";
 import ResetSuccessMessage from "../components/ResetSuccessMessage/ResetSuccessMessage";
-import { useForgotPassword } from "../hooks/useForgotPassword";
+import {useForgotPassword} from "../hooks/useForgotPassword";
 
 /**
  * ForgotPassword component for resetting user passwords
@@ -23,9 +23,9 @@ const ForgotPassword = () => {
 
     return (
         <div className={styles.authContainer}>
-            <HomeButton onClick={returnHome} />
+            <HomeButton onClick={returnHome}/>
 
-            <img src={AuthBackground} className={styles.authBackground} alt="Background" />
+            <img src={AuthBackground} className={styles.authBackground} alt="Background"/>
 
             <div className={styles.authCard}>
                 {!isSubmitted ? (

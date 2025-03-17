@@ -1,5 +1,5 @@
 // hooks/useAllergens.js
-import { useState, useRef } from "react";
+import {useRef, useState} from "react";
 
 /**
  * Custom hook to manage allergen filtering functionality

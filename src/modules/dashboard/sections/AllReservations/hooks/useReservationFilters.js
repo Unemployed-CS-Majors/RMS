@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import {useEffect, useState} from 'react';
 
 /**
  * Custom hook for managing reservation filters and filtered results
@@ -67,7 +67,7 @@ export const useReservationFilters = (allReservations) => {
     };
 
     const handleFilterChange = (e) => {
-        const { name, value } = e.target;
+        const {name, value} = e.target;
         setFilters(prev => ({
             ...prev,
             [name]: value

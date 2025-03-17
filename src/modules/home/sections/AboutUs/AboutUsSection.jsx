@@ -10,7 +10,7 @@ import styles from "./AboutUsSection.module.css";
  * @returns {JSX.Element} The AboutUsSection component
  */
 const AboutUsSection = () => {
-    const { aboutImages } = useAboutImages();
+    const {aboutImages} = useAboutImages();
 
     return (
         <div className={styles.aboutusContainer}>

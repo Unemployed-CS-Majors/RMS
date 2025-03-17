@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './TableComponent.module.css';
 import TableWithChairs from '../../../../../reservation/components/TableWithChairs/TableWithChairs';
 
@@ -149,7 +149,8 @@ const TableComponent = ({
                         showElementDetails(table, 'table', {
                             clientX: screenPoint.x,
                             clientY: screenPoint.y,
-                            stopPropagation: () => {}
+                            stopPropagation: () => {
+                            }
                         });
                     }
                 }}

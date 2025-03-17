@@ -1,6 +1,6 @@
 import React from 'react';
-import { FaInstagram, FaFacebookSquare, FaTiktok } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import {FaFacebookSquare, FaInstagram, FaTiktok} from "react-icons/fa";
+import {FaXTwitter} from "react-icons/fa6";
 import PropTypes from 'prop-types';
 import styles from './SocialIcons.module.css';
 
@@ -13,20 +13,20 @@ import styles from './SocialIcons.module.css';
  * @param {string} [props.className] - Additional class names for custom styling
  * @returns {JSX.Element} The SocialIcons component
  */
-const SocialIcons = ({ className = '' }) => {
+const SocialIcons = ({className = ''}) => {
     return (
         <div className={`${styles.socialsContainer} ${className}`}>
             <div className={`${styles.socials} ${styles.instagramContainer}`}>
-                <FaInstagram className={styles.apps} />
+                <FaInstagram className={styles.apps}/>
             </div>
             <div className={`${styles.socials} ${styles.xContainer}`}>
-                <FaXTwitter className={styles.apps} />
+                <FaXTwitter className={styles.apps}/>
             </div>
             <div className={`${styles.socials} ${styles.facebookContainer}`}>
-                <FaFacebookSquare className={styles.apps} />
+                <FaFacebookSquare className={styles.apps}/>
             </div>
             <div className={`${styles.socials} ${styles.tiktokContainer}`}>
-                <FaTiktok className={styles.apps} />
+                <FaTiktok className={styles.apps}/>
             </div>
         </div>
     );

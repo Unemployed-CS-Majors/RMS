@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useState} from 'react';
 
 /**
  * Custom hook to manage the time range state
@@ -9,5 +9,5 @@ import { useState } from 'react';
 export const useTimeRange = (initialValue = 30) => {
     const [timeRange, setTimeRange] = useState(initialValue);
 
-    return { timeRange, setTimeRange };
+    return {timeRange, setTimeRange};
 };

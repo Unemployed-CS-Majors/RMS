@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Trash2, UserCog } from 'lucide-react';
+import React, {useEffect, useRef, useState} from 'react';
+import {Trash2, UserCog} from 'lucide-react';
 import styles from './ActionMenu.module.css';
 
 /**
@@ -11,7 +11,7 @@ import styles from './ActionMenu.module.css';
  * @param {Function} onChangeRole - Function to handle role change
  * @param {Function} onDeleteUser - Function to handle user deletion
  */
-const ActionMenu = ({ employee, onChangeRole, onDeleteUser }) => {
+const ActionMenu = ({employee, onChangeRole, onDeleteUser}) => {
     const [isOpen, setIsOpen] = useState(false);
     const menuRef = useRef(null);
     const buttonRef = useRef(null);

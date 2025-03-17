@@ -1,16 +1,14 @@
 // hooks/useMenuState.js
-import { useState, useEffect, useRef, useContext } from "react";
+import {useContext, useEffect, useRef, useState} from "react";
 import menuService from "../../../services/menuItem.service";
-import { useViewport } from "./useViewport";
+import {useViewport} from "./useViewport";
 import useCart from "./useCart";
 import useAllergens from "./useAllergens";
-import {useNavigate} from "react-router-dom";
-import ROUTES from "../../../constants/routes";
 import {AuthContext} from "../../shared/contexts/AuthContext";
 
 const useMenuState = () => {
     // State for menu data
-    const { config } = useContext(AuthContext);
+    const {config} = useContext(AuthContext);
     const [searchTerm, setSearchTerm] = useState("");
     const [menuItems, setMenuItems] = useState([]);
     const [filteredItems, setFilteredItems] = useState([]);
@@ -24,7 +22,7 @@ const useMenuState = () => {
     const detailsRef = useRef(null);
 
     // Import functionality from custom hooks
-    const { isMobile } = useViewport();
+    const {isMobile} = useViewport();
     const {
         cart,
         addToCart,
@@ -110,9 +108,9 @@ const useMenuState = () => {
             }
         };
         const checkOrderEnabled = () => {
-                if (!config?.features || !Array.isArray(config.features)) return true;
-                const feature = config.features.find(f => f.name === "online_ordering");
-                 setOrderEnabled(feature ? feature.enabled : true);
+            if (!config?.features || !Array.isArray(config.features)) return true;
+            const feature = config.features.find(f => f.name === "online_ordering");
+            setOrderEnabled(feature ? feature.enabled : true);
         }
         fetchMenuItems();
         checkOrderEnabled();

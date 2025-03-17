@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, {useEffect, useRef} from 'react';
 import styles from './ElementDetails.module.css';
 
 /**
@@ -61,7 +61,7 @@ const ElementDetails = ({
             yPos = windowHeight - panelHeight - 10;
         }
 
-        return { left: xPos, top: yPos };
+        return {left: xPos, top: yPos};
     };
 
     return (

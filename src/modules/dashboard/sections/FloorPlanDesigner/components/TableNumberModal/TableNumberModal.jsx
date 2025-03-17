@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import styles from './TableNumberModal.module.css';
 
 /**
@@ -12,7 +12,7 @@ import styles from './TableNumberModal.module.css';
  * @param {number} props.position.y - Y-coordinate for the modal position
  * @returns {JSX.Element} The TableNumberModal component
  */
-const TableNumberModal = ({ onConfirm, onCancel, position }) => {
+const TableNumberModal = ({onConfirm, onCancel, position}) => {
     const [tableNum, setTableNum] = useState('');
     const [error, setError] = useState('');
 

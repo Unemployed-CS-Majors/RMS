@@ -12,7 +12,7 @@ import styles from './DayHours.module.css';
  * @param {string} props.hours - The opening hours for the day
  * @returns {JSX.Element} The DayHours component
  */
-const DayHours = ({ day, hours }) => {
+const DayHours = ({day, hours}) => {
     return (
         <div className={styles.dayHours}>
             <span className={styles.day}>{day}:</span>

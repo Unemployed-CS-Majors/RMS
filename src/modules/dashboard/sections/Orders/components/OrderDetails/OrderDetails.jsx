@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState} from 'react';
 import LoadingIndicator from '../../../Loading/LoadingIndicator';
 import styles from './OrderDetails.module.css';
 
@@ -15,7 +15,7 @@ import styles from './OrderDetails.module.css';
  * @param {Function} props.onStatusUpdate - Function to update the order status
  * @returns {JSX.Element} The OrderDetails component
  */
-const OrderDetails = ({ order, orderItems, loading, onClose, onStatusUpdate }) => {
+const OrderDetails = ({order, orderItems, loading, onClose, onStatusUpdate}) => {
     const [updatingStatus, setUpdatingStatus] = useState(false);
     const [updatingStatusId, setUpdatingStatusId] = useState(null);
 
@@ -166,7 +166,7 @@ const OrderDetails = ({ order, orderItems, loading, onClose, onStatusUpdate }) =
         return (
             <div className={styles.orderDetailsModal}>
                 <div className={styles.orderDetailsContent}>
-                    <LoadingIndicator text="Loading order details..." />
+                    <LoadingIndicator text="Loading order details..."/>
                 </div>
             </div>
         );
@@ -210,7 +210,8 @@ const OrderDetails = ({ order, orderItems, loading, onClose, onStatusUpdate }) =
                             </div>
                             <div className={styles.infoItem}>
                                 <label>Status</label>
-                                <div className={`${styles.statusBadge} ${styles[`statusBadge${getStatusClass(order.status)}`]}`}>
+                                <div
+                                    className={`${styles.statusBadge} ${styles[`statusBadge${getStatusClass(order.status)}`]}`}>
                                     {formatStatusText(order.status)}
                                 </div>
                             </div>
@@ -246,7 +247,8 @@ const OrderDetails = ({ order, orderItems, loading, onClose, onStatusUpdate }) =
                                     <div className={styles.itemDetails}>
                                         <div className={styles.itemName}>{item.name}</div>
                                         <div className={styles.itemQuantity}>Qty: {item.quantity}</div>
-                                        <div className={styles.itemPrice}>${(item.price * item.quantity).toFixed(2)}</div>
+                                        <div
+                                            className={styles.itemPrice}>${(item.price * item.quantity).toFixed(2)}</div>
                                     </div>
                                     {item.details && (
                                         <div className={styles.itemDetailsExpanded}>

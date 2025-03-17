@@ -1,6 +1,6 @@
-import { useState, useContext } from 'react';
+import {useContext, useState} from 'react';
 import reservationService from '../../../services/reservation.service';
-import { AuthContext } from '../../shared/contexts/AuthContext';
+import {AuthContext} from '../../shared/contexts/AuthContext';
 
 /**
  * Custom hook for managing reservation form state and actions.
@@ -17,7 +17,7 @@ export const useReservationForm = () => {
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
 
-    const { isLoggedIn } = useContext(AuthContext);
+    const {isLoggedIn} = useContext(AuthContext);
 
     /**
      * Utility function to format date and time.
@@ -82,7 +82,7 @@ export const useReservationForm = () => {
             return false;
         }
 
-        if(!number){
+        if (!number) {
             setError("Please enter the number of seats");
             return false;
         }

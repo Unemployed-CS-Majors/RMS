@@ -1,6 +1,6 @@
 import React from "react";
-import { FaShoppingCart } from "react-icons/fa";
-import { MdOutlineKeyboardArrowRight } from "react-icons/md";
+import {FaShoppingCart} from "react-icons/fa";
+import {MdOutlineKeyboardArrowRight} from "react-icons/md";
 import CartItem from "../CartItem/CartItem";
 import styles from "./CartSidebar.module.css";
 
@@ -19,11 +19,11 @@ import styles from "./CartSidebar.module.css";
  * @param {Function} props.goToCheckout - Function to proceed to the checkout page
  * @returns {JSX.Element} The CartSidebar component
  */
-const CartSidebar = ({ cart, addToCart, removeFromCart, getTotal, getItemTotalPrice, goToCheckout }) => {
+const CartSidebar = ({cart, addToCart, removeFromCart, getTotal, getItemTotalPrice, goToCheckout}) => {
     return (
         <div className={styles.checkoutContainer}>
             <div className={styles.checkoutHeaderContainer}>
-                <FaShoppingCart className={styles.cartIcon} />
+                <FaShoppingCart className={styles.cartIcon}/>
                 <h3 className={styles.checkoutTitle}>Your Order</h3>
             </div>
 
@@ -56,7 +56,7 @@ const CartSidebar = ({ cart, addToCart, removeFromCart, getTotal, getItemTotalPr
                 disabled={cart.length === 0}
             >
                 Proceed to Checkout
-                <MdOutlineKeyboardArrowRight size={20} />
+                <MdOutlineKeyboardArrowRight size={20}/>
             </button>
         </div>
     );

@@ -35,7 +35,7 @@ const DateTimeForm = ({
                           loading
                       }) => {
     // Generate hours options (1-12)
-    const hoursOptions = Array.from({ length: 12 }, (_, i) => ({
+    const hoursOptions = Array.from({length: 12}, (_, i) => ({
         value: String(i + 1).padStart(2, "0"),
         label: String(i + 1).padStart(2, "0")
     }));
@@ -48,32 +48,32 @@ const DateTimeForm = ({
 
     // Handle hour change for start time
     const handleStartHourChange = (e) => {
-        setStartTime({ ...startTime, hour: e.target.value });
+        setStartTime({...startTime, hour: e.target.value});
     };
 
     // Handle minute change for start time
     const handleStartMinuteChange = (e) => {
-        setStartTime({ ...startTime, minute: e.target.value });
+        setStartTime({...startTime, minute: e.target.value});
     };
 
     // Handle AM/PM change for start time
     const handleStartAmPmChange = (e) => {
-        setStartTime({ ...startTime, ampm: e.target.value });
+        setStartTime({...startTime, ampm: e.target.value});
     };
 
     // Handle hour change for end time
     const handleEndHourChange = (e) => {
-        setEndTime({ ...endTime, hour: e.target.value });
+        setEndTime({...endTime, hour: e.target.value});
     };
 
     // Handle minute change for end time
     const handleEndMinuteChange = (e) => {
-        setEndTime({ ...endTime, minute: e.target.value });
+        setEndTime({...endTime, minute: e.target.value});
     };
 
     // Handle AM/PM change for end time
     const handleEndAmPmChange = (e) => {
-        setEndTime({ ...endTime, ampm: e.target.value });
+        setEndTime({...endTime, ampm: e.target.value});
     };
 
     // Filter to disable past dates
@@ -201,7 +201,8 @@ const DateTimeForm = ({
             </button>
 
             <div className={styles.helperText}>
-                Select a date and time to check table availability, then click on an available table to make your reservation.
+                Select a date and time to check table availability, then click on an available table to make your
+                reservation.
             </div>
         </div>
     );

@@ -16,7 +16,7 @@ import styles from './SummaryCards.module.css';
  * @param {number} props.operationalAnalytics.currentStats.tableUtilizationRate - Table utilization rate
  * @returns {JSX.Element} The SummaryCards component
  */
-const SummaryCards = ({ dashboardSummary, operationalAnalytics }) => {
+const SummaryCards = ({dashboardSummary, operationalAnalytics}) => {
     return (
         <div className={styles.summaryCards}>
             <div className={`${styles.dashboardCard} ${styles.summaryCard}`}>

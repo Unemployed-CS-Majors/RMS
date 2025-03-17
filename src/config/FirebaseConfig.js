@@ -1,6 +1,6 @@
 import {initializeApp} from "firebase/app";
 import {getPerformance} from "firebase/performance";
-import { getAnalytics } from "firebase/analytics";
+import {getAnalytics} from "firebase/analytics";
 
 import {FacebookAuthProvider, getAuth, GoogleAuthProvider} from "firebase/auth";
 
@@ -25,4 +25,4 @@ const facebookProvider = new FacebookAuthProvider();
 const analytics = getAnalytics(app);
 const perf = getPerformance(app);
 
-export {auth, googleProvider, facebookProvider, perf,analytics};
+export {auth, googleProvider, facebookProvider, perf, analytics};

@@ -1,8 +1,8 @@
 import React from 'react';
 import BarChartComponent from '../charts/BarChartComponent';
 import PieChartComponent from '../charts/PieChartComponent';
-import { CenteredMetric } from '../charts/MetricsDisplay';
-import { formatStatusLabel, formatMethodLabel } from '../../../../../shared/utils/formatters';
+import {CenteredMetric} from '../charts/MetricsDisplay';
+import {formatMethodLabel, formatStatusLabel} from '../../../../../shared/utils/formatters';
 import styles from '../charts/ChartComponents.module.css';
 
 /**
@@ -17,7 +17,7 @@ import styles from '../charts/ChartComponents.module.css';
  * @param {number} props.analyticsData.orderStatusAnalytics.averageCompletionTime - Average order completion time
  * @returns {JSX.Element} The Orders component
  */
-const Orders = ({ analyticsData }) => {
+const Orders = ({analyticsData}) => {
     const ordersByStatusData = Object.entries(analyticsData.orderStatusAnalytics.ordersByStatus)
         .map(([status, count]) => ({
             name: formatStatusLabel(status),

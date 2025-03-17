@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import {useEffect, useState} from 'react';
+import {useLocation, useNavigate} from 'react-router-dom';
 
 /**
  * Custom hook for handling URL navigation and parsing
@@ -44,27 +44,27 @@ export const useProfileNavigation = () => {
     // Update URL hash when tab changes
     const handleTabChange = (tab) => {
         setActiveTab(tab);
-        navigate(`#${tab}`, { replace: true });
+        navigate(`#${tab}`, {replace: true});
     };
 
     const handleViewOrder = (orderId) => {
-        navigate(`#orders?order=${orderId}`, { replace: true });
+        navigate(`#orders?order=${orderId}`, {replace: true});
         setSelectedOrderId(orderId);
     };
 
     const handleViewReservation = (reservationId) => {
-        navigate(`#reservations?reservation=${reservationId}`, { replace: true });
+        navigate(`#reservations?reservation=${reservationId}`, {replace: true});
         setSelectedReservationId(reservationId);
     };
 
     const clearSelectedOrder = () => {
         setSelectedOrderId(null);
-        navigate(`#orders`, { replace: true });
+        navigate(`#orders`, {replace: true});
     };
 
     const clearSelectedReservation = () => {
         setSelectedReservationId(null);
-        navigate(`#reservations`, { replace: true });
+        navigate(`#reservations`, {replace: true});
     };
 
     return {

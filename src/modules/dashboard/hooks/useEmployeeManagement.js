@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useState} from 'react';
 import authService from "../../../services/auth.service";
 import userService from "../../../services/user.service";
 

@@ -1,6 +1,6 @@
 import axiosInstance from '../config/apiConfig';
 
-const doorService =  {
+const doorService = {
     /**
      * Creates a new door
      *
@@ -11,7 +11,7 @@ const doorService =  {
      * @param {number} rotation - The rotation angle of the door
      * @returns {Promise<Object>} The created door data
      */
-    create : async (x, y, width, height, rotation) => {
+    create: async (x, y, width, height, rotation) => {
         const response = await axiosInstance.post(`/doors`, {
             x,
             y,
@@ -27,7 +27,7 @@ const doorService =  {
      *
      * @returns {Promise<Array>} The list of all doors
      */
-    getAll : async () => {
+    getAll: async () => {
         const response = await axiosInstance.get(`/doors`);
         return response.data.data;
     },
@@ -38,7 +38,7 @@ const doorService =  {
      * @param {string} id - The ID of the door
      * @returns {Promise<Object>} The door data
      */
-    get : async (id) => {
+    get: async (id) => {
         const response = await axiosInstance.get(`/doors/${id}`);
         return response.data.data;
     },
@@ -54,7 +54,7 @@ const doorService =  {
      * @param {number} rotation - The new rotation angle of the door
      * @returns {Promise<Object>} The updated door data
      */
-    update : async (id, x, y, width, height, rotation) => {
+    update: async (id, x, y, width, height, rotation) => {
         const response = await axiosInstance.put(`/doors/${id}`, {
             x,
             y,
@@ -71,7 +71,7 @@ const doorService =  {
      * @param {string} id - The ID of the door
      * @returns {Promise<Object>} The deletion response data
      */
-    delete : async (id) => {
+    delete: async (id) => {
         const response = await axiosInstance.delete(`/doors/${id}`);
         return response.data.data;
     }

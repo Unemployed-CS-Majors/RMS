@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import {useCallback, useEffect, useState} from 'react';
 import analyticsService from '../../../../../services/analytics.service';
 
 /**
@@ -49,5 +49,5 @@ export const useAnalyticsData = (timeRange, setExternalLoading) => {
         fetchData();
     }, [fetchData]);
 
-    return { analyticsData, loading, error, fetchData };
+    return {analyticsData, loading, error, fetchData};
 };

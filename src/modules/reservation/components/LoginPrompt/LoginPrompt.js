@@ -1,7 +1,7 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import styles from './LoginPrompt.module.css';
-import { ROUTES } from '../../../../constants/routes';
+import {ROUTES} from '../../../../constants/routes';
 
 /**
  * LoginPrompt component
@@ -12,7 +12,7 @@ import { ROUTES } from '../../../../constants/routes';
  * @param {boolean} props.isMobile - Flag to indicate if the view is on a mobile device
  * @returns {JSX.Element} The LoginPrompt component
  */
-const LoginPrompt = ({ isMobile }) => {
+const LoginPrompt = ({isMobile}) => {
     const navigate = useNavigate();
 
     /**

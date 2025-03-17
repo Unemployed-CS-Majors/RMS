@@ -6,7 +6,7 @@ import styles from './ReservationsTable.module.css';
  *
  * @param {Array} reservations - Array of reservation objects to display
  */
-const ReservationsTable = ({ reservations }) => {
+const ReservationsTable = ({reservations}) => {
     const getStatusClass = (status) => {
         switch (status) {
             case 'confirmed':

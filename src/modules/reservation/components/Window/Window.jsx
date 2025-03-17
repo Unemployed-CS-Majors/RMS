@@ -32,7 +32,8 @@ const Window = ({
                     isOpen = false,
                     openPercentage = 50,
                     isSelected = false,
-                    onClick = () => {},
+                    onClick = () => {
+                    },
                     id
                 }) => {
     // Window styles

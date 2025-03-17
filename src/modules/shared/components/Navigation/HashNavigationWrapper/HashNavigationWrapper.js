@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import {useLocation} from 'react-router-dom';
 import Home from '../../../../home/pages/Home';
 import Menu from '../../../../menu/pages/Menu';
 import Location from '../../../../location/pages/Location';
@@ -36,14 +36,14 @@ const HashNavigationWrapper = () => {
     const renderActiveComponent = () => {
         switch (activeView) {
             case 'Menu':
-                return <Menu />;
+                return <Menu/>;
             case 'Location':
-                return <Location />;
+                return <Location/>;
             case 'Reservation':
-                return <ReserveTable />;
+                return <ReserveTable/>;
             case 'Home':
             default:
-                return <Home />;
+                return <Home/>;
         }
     };
 

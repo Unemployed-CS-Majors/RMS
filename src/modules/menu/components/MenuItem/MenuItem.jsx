@@ -1,7 +1,7 @@
 import React from "react";
-import { FaRegClock } from "react-icons/fa";
-import { IoFlameOutline } from "react-icons/io5";
-import { FiPlus } from "react-icons/fi";
+import {FaRegClock} from "react-icons/fa";
+import {IoFlameOutline} from "react-icons/io5";
+import {FiPlus} from "react-icons/fi";
 import styles from "./MenuItem.module.css";
 
 /**
@@ -17,7 +17,7 @@ import styles from "./MenuItem.module.css";
  * @param {boolean} props.orderEnabled - Whether ordering is enabled
  * @returns {JSX.Element} The MenuItem component
  */
-const MenuItem = ({ item, openItemDetails, addToCart, orderEnabled }) => {
+const MenuItem = ({item, openItemDetails, addToCart, orderEnabled}) => {
     // Display allergen information as badges
     const renderAllergens = (item) => {
         if (!item.allergens || item.allergens.length === 0) return null;
@@ -64,10 +64,10 @@ const MenuItem = ({ item, openItemDetails, addToCart, orderEnabled }) => {
                 <div className={styles.menuItemDetailsContainer}>
                     <div className={styles.menuItemInfoContainer}>
                         <div className={styles.menuItemInfo}>
-                            <FaRegClock className={styles.infoIcon} /> {item.time}
+                            <FaRegClock className={styles.infoIcon}/> {item.time}
                         </div>
                         <div className={styles.menuItemInfo}>
-                            <IoFlameOutline className={styles.infoIcon} /> {item.kcal} kcal
+                            <IoFlameOutline className={styles.infoIcon}/> {item.kcal} kcal
                         </div>
                     </div>
                     {orderEnabled === true && (
@@ -80,7 +80,7 @@ const MenuItem = ({ item, openItemDetails, addToCart, orderEnabled }) => {
                                 onClick={handleAddToCart}
                                 aria-label={`Add ${item.name} to cart`}
                             >
-                                <FiPlus />
+                                <FiPlus/>
                             </button>
                         </div>
                     )}

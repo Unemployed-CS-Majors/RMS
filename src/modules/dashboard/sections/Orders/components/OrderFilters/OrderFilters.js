@@ -66,7 +66,7 @@ const OrderFilters = ({
      * Clear date filters
      */
     const handleClearDates = () => {
-        onDateRangeChange({ start: null, end: null });
+        onDateRangeChange({start: null, end: null});
     };
 
     return (

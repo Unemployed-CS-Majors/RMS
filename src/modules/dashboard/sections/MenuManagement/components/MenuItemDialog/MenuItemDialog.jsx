@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './MenuItemDialog.module.css';
 
 /**
@@ -11,7 +11,7 @@ import styles from './MenuItemDialog.module.css';
  * @param {Function} onClose - Function to close the dialog
  * @param {Function} onSave - Function to save the item
  */
-const MenuItemDialog = ({ item, menuOptions, onClose, onSave }) => {
+const MenuItemDialog = ({item, menuOptions, onClose, onSave}) => {
     const [formData, setFormData] = useState({
         name: '',
         price: '',
@@ -47,7 +47,7 @@ const MenuItemDialog = ({ item, menuOptions, onClose, onSave }) => {
      * @param {Object} e - The event object
      */
     const handleChange = (e) => {
-        const { name, value } = e.target;
+        const {name, value} = e.target;
         setFormData({
             ...formData,
             [name]: value
@@ -322,7 +322,7 @@ const MenuItemDialog = ({ item, menuOptions, onClose, onSave }) => {
                                                 className={errors.imageFile ? styles.inputError : ''}
                                             />
                                             <div className={styles.uploadInstructions}>
-                                                Click to upload or drag and drop<br />
+                                                Click to upload or drag and drop<br/>
                                                 (JPG, PNG, GIF)
                                             </div>
                                         </div>

@@ -1,5 +1,5 @@
 // hooks/useCart.js
-import { useState, useEffect } from "react";
+import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import ROUTES from "../../../constants/routes";
 
@@ -25,7 +25,7 @@ export const useCart = () => {
     const navigate = useNavigate();
 
     const goToCheckout = () => {
-        navigate(ROUTES.CHECKOUT, { state: { cart } })
+        navigate(ROUTES.CHECKOUT, {state: {cart}})
     }
 
     /**
@@ -37,10 +37,13 @@ export const useCart = () => {
 
         if (existingItem) {
             setCart(
-                cart.map(cartItem => (cartItem.id === item.id ? { ...cartItem, quantity: cartItem.quantity + 1 } : cartItem))
+                cart.map(cartItem => (cartItem.id === item.id ? {
+                    ...cartItem,
+                    quantity: cartItem.quantity + 1
+                } : cartItem))
             );
         } else {
-            setCart([...cart, { ...item, quantity: 1 }]);
+            setCart([...cart, {...item, quantity: 1}]);
         }
     };
 
@@ -51,7 +54,7 @@ export const useCart = () => {
     const removeFromCart = itemId => {
         setCart(
             cart
-                .map(item => (item.id === itemId && item.quantity > 0 ? { ...item, quantity: item.quantity - 1 } : item))
+                .map(item => (item.id === itemId && item.quantity > 0 ? {...item, quantity: item.quantity - 1} : item))
                 .filter(item => item.quantity > 0)
         );
     };

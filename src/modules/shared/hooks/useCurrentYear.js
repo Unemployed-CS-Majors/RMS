@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import {useEffect, useState} from 'react';
 
 /**
  * Custom hook to get and update the current year
@@ -21,7 +21,7 @@ const useCurrentYear = () => {
         return () => clearInterval(intervalId);
     }, [currentYear]);
 
-    return { currentYear };
+    return {currentYear};
 };
 
 export default useCurrentYear;

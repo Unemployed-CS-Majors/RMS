@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../shared/contexts/AuthContext';
+import {useEffect, useState} from 'react';
+import {useNavigate} from 'react-router-dom';
+import {useAuth} from '../../shared/contexts/AuthContext';
 import userService from '../../../services/user.service';
 
 /**
@@ -16,7 +16,7 @@ import userService from '../../../services/user.service';
  */
 const useUserDetails = () => {
     const navigate = useNavigate();
-    const { isLoggedIn } = useAuth();
+    const {isLoggedIn} = useAuth();
 
     const [userDetails, setUserDetails] = useState({
         name: 'N/A',
@@ -47,7 +47,7 @@ const useUserDetails = () => {
      * Redirects to the login page.
      */
     const handleLoginRedirect = () => {
-        navigate('/auth', { state: { from: '/checkout' } });
+        navigate('/auth', {state: {from: '/checkout'}});
     };
 
     return {

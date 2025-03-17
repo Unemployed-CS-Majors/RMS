@@ -2,7 +2,7 @@ import React from 'react';
 import LineChartComponent from '../charts/LineChartComponent';
 import BarChartComponent from '../charts/BarChartComponent';
 import PieChartComponent from '../charts/PieChartComponent';
-import { formatCurrency, formatStatusLabel, getDayName } from '../../../../../shared/utils/formatters';
+import {formatCurrency, formatStatusLabel} from '../../../../../shared/utils/formatters';
 import styles from '../charts/ChartComponents.module.css';
 
 /**
@@ -20,10 +20,10 @@ import styles from '../charts/ChartComponents.module.css';
  * @param {Object} props.analyticsData.reservationAnalytics.reservationsByDayOfWeek - Reservations grouped by day of the week
  * @returns {JSX.Element} The Summary component
  */
-const Summary = ({ analyticsData }) => {
+const Summary = ({analyticsData}) => {
     const weeklyRevenueData = Object.entries(analyticsData.revenueAnalytics.dailyRevenue)
         .map(([date, value]) => ({
-            name: new Date(date).toLocaleDateString('en-US', { weekday: 'short' }),
+            name: new Date(date).toLocaleDateString('en-US', {weekday: 'short'}),
             revenue: value,
             fullDate: date
         }))

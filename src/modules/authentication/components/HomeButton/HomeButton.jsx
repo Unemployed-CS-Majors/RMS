@@ -1,5 +1,5 @@
 import React from "react";
-import { FaHome } from "react-icons/fa";
+import {FaHome} from "react-icons/fa";
 import styles from './HomeButton.module.css';
 
 /**
@@ -8,10 +8,10 @@ import styles from './HomeButton.module.css';
  * @param {Function} onClick - Function to navigate home
  * @returns {JSX.Element} Home button component
  */
-const HomeButton = ({ onClick }) => {
+const HomeButton = ({onClick}) => {
     return (
         <div className={styles.returnHomeButton} onClick={onClick}>
-            <FaHome />
+            <FaHome/>
             <span>Home</span>
         </div>
     );

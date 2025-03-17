@@ -1,9 +1,5 @@
-
 import React from 'react';
-import {
-    LineChart, Line, XAxis, YAxis, CartesianGrid,
-    Tooltip, Legend, ResponsiveContainer
-} from 'recharts';
+import {CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis} from 'recharts';
 import styles from './ChartComponents.module.css';
 
 const LineChartComponent = ({
@@ -21,16 +17,16 @@ const LineChartComponent = ({
             <div className={styles.chartContainer}>
                 <ResponsiveContainer width="100%" height={300}>
                     <LineChart data={data}>
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey={xAxisKey} />
-                        <YAxis />
-                        <Tooltip formatter={tooltipFormatter} />
-                        <Legend />
+                        <CartesianGrid strokeDasharray="3 3"/>
+                        <XAxis dataKey={xAxisKey}/>
+                        <YAxis/>
+                        <Tooltip formatter={tooltipFormatter}/>
+                        <Legend/>
                         <Line
                             type="monotone"
                             dataKey={dataKey}
                             stroke={stroke}
-                            activeDot={{ r: 8 }}
+                            activeDot={{r: 8}}
                             name={legendName || dataKey}
                         />
                     </LineChart>

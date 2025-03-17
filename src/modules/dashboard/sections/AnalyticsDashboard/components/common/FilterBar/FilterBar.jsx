@@ -9,7 +9,7 @@ import styles from './FilterBar.module.css';
  * @param {Function} props.setTimeRange - Function to update the selected time range
  * @returns {JSX.Element} The FilterBar component
  */
-const FilterBar = ({ timeRange, setTimeRange }) => {
+const FilterBar = ({timeRange, setTimeRange}) => {
     return (
         <div className={styles.filterBar}>
             <div className={styles.filterGroup}>

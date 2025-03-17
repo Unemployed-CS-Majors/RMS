@@ -1,4 +1,4 @@
-import { Navigate, Outlet } from 'react-router-dom';
+import {Navigate, Outlet} from 'react-router-dom';
 import cookieManager from "../modules/shared/utils/cookieManager";
 import cookieKeys from "../constants/cookieKeys";
 
@@ -12,19 +12,19 @@ import cookieKeys from "../constants/cookieKeys";
  * @param {Array<string>} props.roles - The roles allowed to access the route
  * @returns {JSX.Element} The ProtectedRoute component
  */
-const ProtectedRoute = ({ roles }) => {
-  const user = cookieManager.get(cookieKeys.USER);
+const ProtectedRoute = ({roles}) => {
+    const user = cookieManager.get(cookieKeys.USER);
 
-  if (!user) {
-    console.log(user);
-    return <Navigate to="/" replace />;
-  }
+    if (!user) {
+        console.log(user);
+        return <Navigate to="/" replace/>;
+    }
 
-  if (roles && !roles.includes(user)) {
-    return <Navigate to="/" replace />;
-  }
+    if (roles && !roles.includes(user)) {
+        return <Navigate to="/" replace/>;
+    }
 
-  return <Outlet />;
+    return <Outlet/>;
 };
 
 export default ProtectedRoute;

@@ -14,7 +14,7 @@ import styles from "./MenuItemsList.module.css";
  * @param {boolean} props.orderEnabled - Whether ordering is enabled
  * @returns {JSX.Element} The MenuItemsList component
  */
-const MenuItemsList = ({ filteredItems, openItemDetails, addToCart, orderEnabled }) => {
+const MenuItemsList = ({filteredItems, openItemDetails, addToCart, orderEnabled}) => {
     if (filteredItems.length === 0) {
         return (
             <div className={styles.menuItemsContainer}>

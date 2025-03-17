@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
-import { motion } from "framer-motion";
-import { AuthContext } from "../../../contexts/AuthContext";
+import React, {useContext} from "react";
+import {motion} from "framer-motion";
+import {AuthContext} from "../../../contexts/AuthContext";
 import styles from "./NavigationTabs.module.css";
 
 /**
@@ -14,8 +14,8 @@ import styles from "./NavigationTabs.module.css";
  * @param {boolean} props.isMobile - Flag to indicate if the view is on a mobile device
  * @returns {JSX.Element} The NavigationTabs component
  */
-const NavigationTabs = ({ currentPage, handleCurrentPage, isMobile }) => {
-    const { config } = useContext(AuthContext);
+const NavigationTabs = ({currentPage, handleCurrentPage, isMobile}) => {
+    const {config} = useContext(AuthContext);
 
     /**
      * Helper function to check if a feature is enabled
@@ -46,8 +46,8 @@ const NavigationTabs = ({ currentPage, handleCurrentPage, isMobile }) => {
                 <motion.div
                     key={item}
                     className={isMobile ? styles.mobileNavItemContainer : styles.navItemContainer}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+                    whileHover={{scale: 1.05}}
+                    whileTap={{scale: 0.95}}
                 >
                     <div
                         className={isMobile ? styles.mobileHeaderBtn : styles.headerBtn}
@@ -59,7 +59,7 @@ const NavigationTabs = ({ currentPage, handleCurrentPage, isMobile }) => {
                                 className={styles.navIndicator}
                                 layoutId="indicator"
                                 initial={false}
-                                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                                transition={{type: "spring", stiffness: 300, damping: 30}}
                             />
                         )}
                     </div>

@@ -1,6 +1,6 @@
 import React from 'react';
-import { FaUser, FaEnvelope, FaLock, FaPhone, FaGlobe, FaChevronDown } from 'react-icons/fa';
-import { countryCodes } from '../../../shared/utils/countryCodeData';
+import {FaChevronDown, FaEnvelope, FaGlobe, FaLock, FaPhone, FaUser} from 'react-icons/fa';
+import {countryCodes} from '../../../shared/utils/countryCodeData';
 import styles from './RegisterForm.module.css';
 
 /**
@@ -31,7 +31,7 @@ const RegisterForm = ({
         <form className={styles.authForm} onSubmit={handleSubmit}>
             <div className={styles.nameFields}>
                 <div className={styles.inputGroup}>
-                    <FaUser className={styles.inputIcon} />
+                    <FaUser className={styles.inputIcon}/>
                     <input
                         type="text"
                         name="firstName"
@@ -42,7 +42,7 @@ const RegisterForm = ({
                     />
                 </div>
                 <div className={styles.inputGroup}>
-                    <FaUser className={styles.inputIcon} />
+                    <FaUser className={styles.inputIcon}/>
                     <input
                         type="text"
                         name="lastName"
@@ -55,7 +55,7 @@ const RegisterForm = ({
             </div>
 
             <div className={styles.inputGroup}>
-                <FaEnvelope className={styles.inputIcon} />
+                <FaEnvelope className={styles.inputIcon}/>
                 <input
                     type="email"
                     name="email"
@@ -67,7 +67,7 @@ const RegisterForm = ({
             </div>
 
             <div className={styles.inputGroup}>
-                <FaLock className={styles.inputIcon} />
+                <FaLock className={styles.inputIcon}/>
                 <input
                     type="password"
                     name="password"
@@ -79,7 +79,7 @@ const RegisterForm = ({
             </div>
 
             <div className={styles.inputGroup}>
-                <FaLock className={styles.inputIcon} />
+                <FaLock className={styles.inputIcon}/>
                 <input
                     type="password"
                     name="confirmPassword"
@@ -96,9 +96,9 @@ const RegisterForm = ({
                         className={styles.countryCodeDisplay}
                         onClick={toggleCountryCodeDropdown}
                     >
-                        <FaGlobe className={styles.countryCodeIcon} />
+                        <FaGlobe className={styles.countryCodeIcon}/>
                         <span>{formData.countryCode}</span>
-                        <FaChevronDown className={styles.dropdownIcon} />
+                        <FaChevronDown className={styles.dropdownIcon}/>
                     </div>
 
                     {showCountryCodeDropdown && (
@@ -115,7 +115,7 @@ const RegisterForm = ({
                     )}
                 </div>
                 <div className={styles.phoneInputGroup}>
-                    <FaPhone className={styles.phoneInputIcon} />
+                    <FaPhone className={styles.phoneInputIcon}/>
                     <input
                         type="tel"
                         name="phoneNumber"

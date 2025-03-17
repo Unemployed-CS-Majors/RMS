@@ -1,8 +1,8 @@
 import React from 'react';
-import { MdOutlineDone, MdOutlineKeyboardArrowDown, MdOutlineKeyboardArrowUp, MdPerson } from 'react-icons/md';
+import {MdOutlineDone, MdOutlineKeyboardArrowDown, MdOutlineKeyboardArrowUp, MdPerson} from 'react-icons/md';
 import styles from './PersonalDetails.module.css';
 
-const PersonalDetails = ({ userDetails, isOpen, toggleContent, isCompleted }) => {
+const PersonalDetails = ({userDetails, isOpen, toggleContent, isCompleted}) => {
     return (
         <div className={styles.step}>
             <div
@@ -10,11 +10,11 @@ const PersonalDetails = ({ userDetails, isOpen, toggleContent, isCompleted }) =>
                 onClick={() => toggleContent(1)}
             >
                 <div className={`${styles.stepIcon} ${isCompleted ? styles.completed : ''}`}>
-                    {isCompleted ? <MdOutlineDone /> : <MdPerson />}
+                    {isCompleted ? <MdOutlineDone/> : <MdPerson/>}
                 </div>
                 <h3 className={styles.stepTitle}>Personal Details</h3>
                 <button className={styles.toggleButton}>
-                    {isOpen ? <MdOutlineKeyboardArrowUp /> : <MdOutlineKeyboardArrowDown />}
+                    {isOpen ? <MdOutlineKeyboardArrowUp/> : <MdOutlineKeyboardArrowDown/>}
                 </button>
             </div>
 
@@ -23,15 +23,15 @@ const PersonalDetails = ({ userDetails, isOpen, toggleContent, isCompleted }) =>
                     <div className={styles.inputGrid}>
                         <div className={styles.inputField}>
                             <label>Name</label>
-                            <input type='text' value={userDetails.name} readOnly />
+                            <input type='text' value={userDetails.name} readOnly/>
                         </div>
                         <div className={styles.inputField}>
                             <label>Email</label>
-                            <input type='email' value={userDetails.email} readOnly />
+                            <input type='email' value={userDetails.email} readOnly/>
                         </div>
                         <div className={styles.inputField}>
                             <label>Phone Number</label>
-                            <input type='text' value={userDetails.phoneNumber} readOnly />
+                            <input type='text' value={userDetails.phoneNumber} readOnly/>
                         </div>
                     </div>
                 </div>

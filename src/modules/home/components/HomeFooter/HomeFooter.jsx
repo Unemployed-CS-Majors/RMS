@@ -13,22 +13,22 @@ import {AuthContext} from "../../../shared/contexts/AuthContext";
  * @returns {JSX.Element} The HomeFooter component
  */
 export default function HomeFooter() {
-    const { currentYear } = useCurrentYear();
+    const {currentYear} = useCurrentYear();
     const {config} = useContext(AuthContext);
     return (
         <div className={styles.footerContainer}>
             <div className={styles.footerContent}>
                 <div className={styles.firstContainer}>
                     <h1>
-                        <span style={{ fontFamily: "Lavishly Yours" }}>R</span>
-                        <span style={{ color: "white", fontFamily: "Lavishly Yours" }}>M</span>
-                        <span style={{ fontFamily: "Lavishly Yours" }}>S</span>
+                        <span style={{fontFamily: "Lavishly Yours"}}>R</span>
+                        <span style={{color: "white", fontFamily: "Lavishly Yours"}}>M</span>
+                        <span style={{fontFamily: "Lavishly Yours"}}>S</span>
                     </h1>
                     <p>
                         Stay connected with us on social media for updates, special offers, and more.
                         We look forward to serving you again soon!
                     </p>
-                    <SocialIcons />
+                    <SocialIcons/>
                 </div>
 
                 <div className={styles.secondContainer}>
@@ -47,19 +47,19 @@ export default function HomeFooter() {
                     <h4 className={styles.footerHeading}>Contact Us</h4>
                     <div className={styles.footerLinks}>
                         <div className={styles.contactItem}>
-                            <FaMapMarkerAlt className={styles.contactIcon} />
+                            <FaMapMarkerAlt className={styles.contactIcon}/>
                             <div className={styles.contactText}>
                                 <p>{config?.address?.street + ', ' + config?.address?.eircode + ', ' + config?.address?.city}</p>
                             </div>
                         </div>
                         <div className={styles.contactItem}>
-                            <FaPhoneAlt className={styles.contactIcon} />
+                            <FaPhoneAlt className={styles.contactIcon}/>
                             <div className={styles.contactText}>
                                 <p>{config?.phoneNumber?.phoneNumber}</p>
                             </div>
                         </div>
                         <div className={styles.contactItem}>
-                            <FaEnvelope className={styles.contactIcon} />
+                            <FaEnvelope className={styles.contactIcon}/>
                             <div className={styles.contactText}>
                                 <p>{config?.email?.email}</p>
                             </div>

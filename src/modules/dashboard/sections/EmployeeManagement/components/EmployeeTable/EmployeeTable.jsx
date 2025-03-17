@@ -11,7 +11,7 @@ import styles from './EmployeeTable.module.css';
  * @param {Function} onChangeRole - Function to handle role change
  * @param {Function} onDeleteUser - Function to handle user deletion
  */
-const EmployeeTable = ({ employees, onChangeRole, onDeleteUser }) => {
+const EmployeeTable = ({employees, onChangeRole, onDeleteUser}) => {
     return (
         <div className={styles.tableContainer}>
             <table className={styles.employeeTable}>

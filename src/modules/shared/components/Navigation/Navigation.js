@@ -1,12 +1,12 @@
-import React, { useContext, useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
-import { ROUTES } from "../../../../constants/routes.js";
+import React, {useContext, useEffect, useState} from "react";
+import {useLocation, useNavigate} from "react-router-dom";
+import {ROUTES} from "../../../../constants/routes.js";
 import Logo from "./Logo/Logo";
 import NavigationTabs from "./NavigationTabs/NavigationTabs";
 import AuthButtons from "./AuthButtons/AuthButtons";
-import { AuthContext } from "../../contexts/AuthContext";
+import {AuthContext} from "../../contexts/AuthContext";
 import ProfileButton from "./ProfileButton/ProfileButton";
-import { FaBars, FaTimes } from "react-icons/fa";
+import {FaBars, FaTimes} from "react-icons/fa";
 import styles from "./Navigation.module.css";
 
 /**
@@ -23,7 +23,7 @@ const Navigation = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
-    const { isLoggedIn } = useContext(AuthContext);
+    const {isLoggedIn} = useContext(AuthContext);
 
     // Set initial page based on hash only when on the root path
     useEffect(() => {
@@ -123,7 +123,7 @@ const Navigation = () => {
 
     return (
         <div className={`${styles.headerContainer} ${window.scrollY > 0 ? styles.scrolled : ''}`}>
-            <Logo />
+            <Logo/>
 
             {isMobile ? (
                 <>
@@ -132,7 +132,7 @@ const Navigation = () => {
                         onClick={toggleMenu}
                         aria-label={menuOpen ? "Close menu" : "Open menu"}
                     >
-                        {menuOpen ? <FaTimes /> : <FaBars />}
+                        {menuOpen ? <FaTimes/> : <FaBars/>}
                     </button>
 
                     {menuOpen && (

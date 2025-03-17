@@ -1,9 +1,5 @@
-
 import React from 'react';
-import {
-    BarChart, Bar, XAxis, YAxis, CartesianGrid,
-    Tooltip, Legend, ResponsiveContainer
-} from 'recharts';
+import {Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis} from 'recharts';
 
 import styles from './ChartComponents.module.css';
 
@@ -22,11 +18,11 @@ const BarChartComponent = ({
             <div className={styles.chartContainer}>
                 <ResponsiveContainer width="100%" height={300}>
                     <BarChart data={data}>
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey={xAxisKey} />
-                        <YAxis />
-                        <Tooltip formatter={tooltipFormatter} />
-                        <Legend />
+                        <CartesianGrid strokeDasharray="3 3"/>
+                        <XAxis dataKey={xAxisKey}/>
+                        <YAxis/>
+                        <Tooltip formatter={tooltipFormatter}/>
+                        <Legend/>
                         <Bar
                             dataKey={dataKey}
                             fill={fill}

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import {useLocation, useParams} from 'react-router-dom';
 import styles from './Dashboard.module.css';
 
 // Components
@@ -13,14 +13,14 @@ import FloorPlanDesigner from '../sections/FloorPlanDesigner/FloorPlanDesigner';
 import MenuManagement from '../sections/MenuManagement/MenuManagement';
 import RestaurantConfig from '../sections/RestaurantConfig/RestaurantConfig';
 import LoadingIndicator from '../sections/Loading/LoadingIndicator';
-import { useActiveTab } from '../hooks/useActiveTab';
-import { useReservationManagement } from '../hooks/useReservationManagement';
-import { useHoursManagement } from '../hooks/useHoursManagement';
-import { useEmployeeManagement } from '../hooks/useEmployeeManagement';
-import { useTablesManagement } from '../hooks/useTablesManagement';
-import { useMenuManagement } from '../hooks/useMenuManagement';
-import { useWebSocket } from '../hooks/useWebSocket';
-import { useUIState } from '../hooks/useUIState';
+import {useActiveTab} from '../hooks/useActiveTab';
+import {useReservationManagement} from '../hooks/useReservationManagement';
+import {useHoursManagement} from '../hooks/useHoursManagement';
+import {useEmployeeManagement} from '../hooks/useEmployeeManagement';
+import {useTablesManagement} from '../hooks/useTablesManagement';
+import {useMenuManagement} from '../hooks/useMenuManagement';
+import {useWebSocket} from '../hooks/useWebSocket';
+import {useUIState} from '../hooks/useUIState';
 import OrderManagement from "../sections/Orders/OrderManagement";
 import AnalyticsDashboard from "../sections/AnalyticsDashboard/AnalyticsDashboard";
 
@@ -31,7 +31,7 @@ import AnalyticsDashboard from "../sections/AnalyticsDashboard/AnalyticsDashboar
  * It includes sections for reservations, opening hours, employee management, menu management, and more.
  */
 const RestaurantDashboard = () => {
-    const { tab } = useParams();
+    const {tab} = useParams();
     const location = useLocation();
 
     // State for data

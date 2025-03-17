@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import {useMemo} from 'react';
 import image3 from "../../../assets/image3.jpg";
 import image33 from "../../../assets/image33.jpg";
 import image333 from "../../../assets/image333.jpg";
@@ -11,7 +11,7 @@ import image333 from "../../../assets/image333.jpg";
 const useAboutImages = () => {
     const aboutImages = useMemo(() => [image3, image33, image333], []);
 
-    return { aboutImages };
+    return {aboutImages};
 };
 
 export default useAboutImages;

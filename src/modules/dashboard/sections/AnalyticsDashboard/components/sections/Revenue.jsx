@@ -1,8 +1,8 @@
 import React from 'react';
 import PieChartComponent from '../charts/PieChartComponent';
 import BarChartComponent from '../charts/BarChartComponent';
-import { MetricsList } from '../charts/MetricsDisplay';
-import { formatCurrency, formatMethodLabel } from '../../../../../shared/utils/formatters';
+import {MetricsList} from '../charts/MetricsDisplay';
+import {formatCurrency, formatMethodLabel} from '../../../../../shared/utils/formatters';
 import styles from '../charts/ChartComponents.module.css';
 
 /**
@@ -19,7 +19,7 @@ import styles from '../charts/ChartComponents.module.css';
  * @param {number} props.timeRange - Time range for the analytics data
  * @returns {JSX.Element} The Revenue component
  */
-const Revenue = ({ analyticsData, timeRange }) => {
+const Revenue = ({analyticsData, timeRange}) => {
     const paymentMethodData = Object.entries(analyticsData.revenueAnalytics.revenueByPaymentMethod)
         .filter(([method, value]) => value > 0)
         .map(([method, value]) => ({
@@ -36,7 +36,7 @@ const Revenue = ({ analyticsData, timeRange }) => {
 
     const weeklyRevenueData = Object.entries(analyticsData.revenueAnalytics.weeklyRevenue)
         .map(([week, value]) => ({
-            name: new Date(week).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+            name: new Date(week).toLocaleDateString('en-US', {month: 'short', day: 'numeric'}),
             revenue: value,
             fullDate: week
         }))

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import {useEffect, useState} from 'react';
 import openingHoursService from '../../../services/openingHours.service';
 
 /**
@@ -29,7 +29,7 @@ const useOpeningHours = () => {
         fetchOpeningHours();
     }, []);
 
-    return { openingHours, isLoading, error };
+    return {openingHours, isLoading, error};
 };
 
 export default useOpeningHours;

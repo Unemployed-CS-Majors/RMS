@@ -7,7 +7,7 @@ import styles from './ResultsCounter.module.css';
  * @param {number} filteredCount - Number of reservations after filtering
  * @param {number} totalCount - Total number of reservations
  */
-const ResultsCounter = ({ filteredCount, totalCount }) => {
+const ResultsCounter = ({filteredCount, totalCount}) => {
     return (
         <div className={styles.resultsCount}>
             Showing {filteredCount} of {totalCount} reservations

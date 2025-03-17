@@ -47,7 +47,8 @@ const OpeningHours = ({openingHours, editingHours, handleHoursChange, handleTogg
                                         <span className={styles.toggleLabel}>{hours.isOpen ? 'Open' : 'Closed'}</span>
                                     </div>
                                 ) : (
-                                    <span className={`${styles.statusIndicator} ${hours.isOpen ? styles.statusOpen : styles.statusClosed}`}>
+                                    <span
+                                        className={`${styles.statusIndicator} ${hours.isOpen ? styles.statusOpen : styles.statusClosed}`}>
                       {hours.isOpen ? 'Open' : 'Closed'}
                     </span>
                                 )}

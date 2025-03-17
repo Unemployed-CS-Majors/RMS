@@ -1,6 +1,6 @@
 import React from 'react';
-import { FiArrowLeft, FiMinus, FiPlus } from 'react-icons/fi';
-import { useNavigate } from 'react-router-dom';
+import {FiArrowLeft, FiMinus, FiPlus} from 'react-icons/fi';
+import {useNavigate} from 'react-router-dom';
 import styles from './OrderSummary.module.css';
 
 /**
@@ -43,7 +43,7 @@ const OrderSummary = ({
     return (
         <div className={styles.summary}>
             <button className={styles.backButton} onClick={handleBackToMenu}>
-                <FiArrowLeft /> Back to Menu
+                <FiArrowLeft/> Back to Menu
             </button>
 
             <h2 className={styles.summaryTitle}>Your Order</h2>
@@ -61,11 +61,11 @@ const OrderSummary = ({
                             <div className={styles.itemActions}>
                                 <div className={styles.quantityControl}>
                                     <button className={styles.quantityBtn} onClick={() => removeFromCart(item)}>
-                                        <FiMinus />
+                                        <FiMinus/>
                                     </button>
                                     <span className={styles.quantity}>{item.quantity}</span>
                                     <button className={styles.quantityBtn} onClick={() => addToCart(item)}>
-                                        <FiPlus />
+                                        <FiPlus/>
                                     </button>
                                 </div>
                                 <span className={styles.itemPrice}>€{(item.price * item.quantity).toFixed(2)}</span>

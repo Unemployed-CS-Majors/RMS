@@ -12,7 +12,7 @@ import styles from './PendingReservations.module.css';
  * @param {Function} props.handleRejectReservation - Function to handle rejecting a reservation
  * @returns {JSX.Element} The PendingReservations component
  */
-const PendingReservations = ({ pendingReservations, handleApproveReservation, handleRejectReservation }) => {
+const PendingReservations = ({pendingReservations, handleApproveReservation, handleRejectReservation}) => {
     return (
         <div className={styles.reservationContainer}>
             {pendingReservations.length === 0 ? (
@@ -43,7 +43,8 @@ const PendingReservations = ({ pendingReservations, handleApproveReservation, ha
 
                                         <div className={styles.detailItem}>
                                             <span className={styles.detailIcon}>⏰</span>
-                                            <span className={styles.detailText}>{reservation.startTime} - {reservation.endTime}</span>
+                                            <span
+                                                className={styles.detailText}>{reservation.startTime} - {reservation.endTime}</span>
                                         </div>
 
                                         <div className={styles.detailItem}>

@@ -1,5 +1,5 @@
 import React from "react";
-import { FaTimes } from "react-icons/fa";
+import {FaTimes} from "react-icons/fa";
 import styles from "./AllergenTags.module.css";
 
 /**
@@ -12,7 +12,7 @@ import styles from "./AllergenTags.module.css";
  * @param {Function} props.toggleAllergen - Function to toggle the exclusion of an allergen
  * @returns {JSX.Element} The AllergenTags component
  */
-const AllergenTags = ({ excludedAllergens, toggleAllergen }) => {
+const AllergenTags = ({excludedAllergens, toggleAllergen}) => {
     return (
         <div className={styles.allergenTagsContainer}>
             <span className={styles.excludingLabel}>Excluding:</span>
@@ -23,7 +23,7 @@ const AllergenTags = ({ excludedAllergens, toggleAllergen }) => {
                     className={styles.allergenTag}
                     aria-label={`Remove ${allergen} filter`}
                 >
-                    {allergen} <FaTimes className={styles.removeIcon} />
+                    {allergen} <FaTimes className={styles.removeIcon}/>
                 </button>
             ))}
         </div>

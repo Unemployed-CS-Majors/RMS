@@ -49,7 +49,7 @@ export const formatStatus = (status) => {
 /**
  * StatusBadge component displays a status with appropriate styling
  */
-const StatusBadge = ({ status }) => {
+const StatusBadge = ({status}) => {
     const badgeClass = getStatusBadgeClass(status);
     const displayStatus = formatStatus(status);
 

@@ -1,12 +1,12 @@
-import React, { useState, useContext } from "react";
+import React, {useContext, useState} from "react";
 import styles from "./ReserveTable.module.css";
 import DateTimeForm from "../components/DateTimeForm/DateTimeForm";
 import FloorPlan from "../components/FloorPlan/FloorPlan";
 import ReservationModal from "../components/ReservationModal/ReservationModal";
 import LoginPrompt from "../components/LoginPrompt/LoginPrompt";
-import { AuthContext } from "../../shared/contexts/AuthContext";
-import { useResponsiveView } from "../hooks/useResponsiveView";
-import { useReservationForm } from "../hooks/useReservationForm";
+import {AuthContext} from "../../shared/contexts/AuthContext";
+import {useResponsiveView} from "../hooks/useResponsiveView";
+import {useReservationForm} from "../hooks/useReservationForm";
 
 /**
  * ReserveTable component
@@ -16,7 +16,7 @@ import { useReservationForm } from "../hooks/useReservationForm";
  * @returns {JSX.Element} The ReserveTable component
  */
 const ReserveTable = () => {
-    const { isLoggedIn } = useContext(AuthContext);
+    const {isLoggedIn} = useContext(AuthContext);
     const isMobile = useResponsiveView();
 
     const {
@@ -118,7 +118,7 @@ const ReserveTable = () => {
             )}
 
             {!isLoggedIn ? (
-                <LoginPrompt isMobile={isMobile} />
+                <LoginPrompt isMobile={isMobile}/>
             ) : (
                 <div
                     style={{

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import {useEffect, useState} from 'react';
 
 /**
  * Custom hook for WebSocket connection management
@@ -71,5 +71,5 @@ export const useWebSocket = (url, activeTab, pendingReservations, setPendingRese
         };
     }, [url, activeTab, pendingReservations, setPendingReservations]);
 
-    return { messageData };
+    return {messageData};
 };

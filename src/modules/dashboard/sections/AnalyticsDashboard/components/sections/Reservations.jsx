@@ -1,8 +1,8 @@
 import React from 'react';
 import BarChartComponent from '../charts/BarChartComponent';
 import PieChartComponent from '../charts/PieChartComponent';
-import { MetricsGrid } from '../charts/MetricsDisplay';
-import { formatPercent, getFullDayName } from '../../../../../shared/utils/formatters';
+import {MetricsGrid} from '../charts/MetricsDisplay';
+import {formatPercent, getFullDayName} from '../../../../../shared/utils/formatters';
 import styles from '../charts/ChartComponents.module.css';
 
 /**
@@ -20,7 +20,7 @@ import styles from '../charts/ChartComponents.module.css';
  * @param {number} props.timeRange - Time range for the analytics data
  * @returns {JSX.Element} The Reservations component
  */
-const Reservations = ({ analyticsData, timeRange }) => {
+const Reservations = ({analyticsData, timeRange}) => {
     const reservationsByDayData = Object.entries(analyticsData.reservationAnalytics.reservationsByDayOfWeek)
         .map(([day, count]) => ({
             day: getFullDayName(day),

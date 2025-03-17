@@ -1,5 +1,5 @@
 import React from "react";
-import { FaSearch, FaTimes, FaFilter } from "react-icons/fa";
+import {FaFilter, FaSearch, FaTimes} from "react-icons/fa";
 import styles from "./SearchBar.module.css";
 
 /**
@@ -27,7 +27,7 @@ const SearchBar = ({
         <div className={styles.stickySearchbar}>
             <div className={styles.searchbarContainer}>
                 <div className={styles.searchInputWrapper}>
-                    <FaSearch className={styles.searchIcon} />
+                    <FaSearch className={styles.searchIcon}/>
                     <input
                         type="text"
                         placeholder="Search for food, category, or allergens..."
@@ -41,7 +41,7 @@ const SearchBar = ({
                             onClick={() => setSearchTerm("")}
                             aria-label="Clear search"
                         >
-                            <FaTimes />
+                            <FaTimes/>
                         </button>
                     )}
                 </div>
@@ -52,7 +52,7 @@ const SearchBar = ({
                     onClick={toggleAllergenFilter}
                     aria-label="Filter by allergens"
                 >
-                    <FaFilter />
+                    <FaFilter/>
                     {excludedAllergens.length > 0 && (
                         <span className={styles.filterBadge}>{excludedAllergens.length}</span>
                     )}

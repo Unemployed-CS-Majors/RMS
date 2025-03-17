@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import {useEffect, useState} from 'react';
 import restaurantConfigService from '../../../services/restaurantConfig.service';
 
 /**
@@ -37,7 +37,7 @@ export const useRestaurantConfig = (setLoading) => {
 
     // State for validation errors and notifications
     const [validationErrors, setValidationErrors] = useState({});
-    const [notification, setNotification] = useState({ show: false, type: '', message: '' });
+    const [notification, setNotification] = useState({show: false, type: '', message: ''});
 
     /**
      * Fetch restaurant configuration from the server
@@ -93,9 +93,9 @@ export const useRestaurantConfig = (setLoading) => {
      * @param {string} message - The notification message
      */
     const showNotification = (type, message) => {
-        setNotification({ show: true, type, message });
+        setNotification({show: true, type, message});
         setTimeout(() => {
-            setNotification({ show: false, type: '', message: '' });
+            setNotification({show: false, type: '', message: ''});
         }, 5000);
     };
 
@@ -172,7 +172,7 @@ export const useRestaurantConfig = (setLoading) => {
         const emailErrors = validateEmail(email);
 
         if (Object.keys(phoneErrors).length > 0 || Object.keys(emailErrors).length > 0) {
-            setValidationErrors({ ...phoneErrors, ...emailErrors });
+            setValidationErrors({...phoneErrors, ...emailErrors});
             return false;
         }
 
@@ -181,13 +181,13 @@ export const useRestaurantConfig = (setLoading) => {
 
         try {
             if (phoneNumber) {
-                await restaurantConfigService.updatePhoneNumber({ phoneNumber });
+                await restaurantConfigService.updatePhoneNumber({phoneNumber});
             } else {
                 await restaurantConfigService.deletePhoneNumber();
             }
 
             if (email) {
-                await restaurantConfigService.updateEmail({ email });
+                await restaurantConfigService.updateEmail({email});
             } else {
                 await restaurantConfigService.deleteEmail();
             }
@@ -249,7 +249,7 @@ export const useRestaurantConfig = (setLoading) => {
         setLoading(true);
 
         try {
-            await restaurantConfigService.updateMap({ mapIFrame });
+            await restaurantConfigService.updateMap({mapIFrame});
             showNotification('success', 'Map updated successfully');
             setEditingMap(false);
             return true;

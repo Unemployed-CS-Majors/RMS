@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, {useEffect, useState} from "react";
 import Modal from "../../components/Modal/Modal";
-import { OrderDetail } from "../../components/OrderDetail/OrderDetail";
+import {OrderDetail} from "../../components/OrderDetail/OrderDetail";
 import StatusBadge from "../../components/StatusBadge/StatusBadge";
-import { formatId } from "../../../shared/utils/dateUtils";
+import {formatId} from "../../../shared/utils/dateUtils";
 import layoutStyles from '../../components/ProfileLayout.module.css';
 import tableStyles from '../../components/TableComponents.module.css';
 
 /**
  * OrderHistory component displays past orders in a table
  */
-const OrderHistory = ({ orders, onViewDetails }) => {
+const OrderHistory = ({orders, onViewDetails}) => {
     const isMobile = window.innerWidth < 768;
 
     return (
@@ -37,7 +37,7 @@ const OrderHistory = ({ orders, onViewDetails }) => {
                                     <td>{order.date}</td>
                                     <td>${order.total.toFixed(2)}</td>
                                     <td>
-                                        <StatusBadge status={order.status} />
+                                        <StatusBadge status={order.status}/>
                                     </td>
                                     <td>
                                         <button
@@ -53,7 +53,7 @@ const OrderHistory = ({ orders, onViewDetails }) => {
                         </table>
                     </div>
                 ) : (
-                    <p style={{ textAlign: 'center', color: '#666', fontSize: '15px' }}>
+                    <p style={{textAlign: 'center', color: '#666', fontSize: '15px'}}>
                         No order history found.
                     </p>
                 )}
@@ -108,7 +108,7 @@ const MyOrders = ({
             </div>
 
             {/* Order History */}
-            <OrderHistory orders={orders} onViewDetails={onViewDetails} />
+            <OrderHistory orders={orders} onViewDetails={onViewDetails}/>
 
             {/* Order Details Modal */}
             <Modal
@@ -121,7 +121,7 @@ const MyOrders = ({
                     </button>
                 }
             >
-                {activeOrder && <OrderDetail order={activeOrder} />}
+                {activeOrder && <OrderDetail order={activeOrder}/>}
             </Modal>
         </div>
     );

@@ -108,7 +108,7 @@ const Menu = () => {
 
                     {loading ? (
                         <div className={styles.loadingContainer}>
-                            <LoadingIndicator text="Loading menu items..." />
+                            <LoadingIndicator text="Loading menu items..."/>
                         </div>
                     ) : error ? (
                         <div className={styles.errorContainer}>

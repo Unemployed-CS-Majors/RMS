@@ -1,6 +1,6 @@
 import React from 'react';
-import { FaEnvelope, FaLock } from 'react-icons/fa';
-import { ROUTES } from '../../../../constants/routes.js';
+import {FaEnvelope, FaLock} from 'react-icons/fa';
+import {ROUTES} from '../../../../constants/routes.js';
 import styles from './LoginForm.module.css';
 
 /**
@@ -12,11 +12,11 @@ import styles from './LoginForm.module.css';
  * @param {Function} showRegister - Function to switch to register form
  * @returns {JSX.Element} Login form component
  */
-const LoginForm = ({ formData, handleChange, handleSubmit, showRegister }) => {
+const LoginForm = ({formData, handleChange, handleSubmit, showRegister}) => {
     return (
         <form className={styles.authForm} onSubmit={handleSubmit}>
             <div className={styles.inputGroup}>
-                <FaEnvelope className={styles.inputIcon} />
+                <FaEnvelope className={styles.inputIcon}/>
                 <input
                     type="email"
                     name="email"
@@ -28,7 +28,7 @@ const LoginForm = ({ formData, handleChange, handleSubmit, showRegister }) => {
             </div>
 
             <div className={styles.inputGroup}>
-                <FaLock className={styles.inputIcon} />
+                <FaLock className={styles.inputIcon}/>
                 <input
                     type="password"
                     name="password"

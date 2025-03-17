@@ -1,6 +1,6 @@
-import React, { useContext, useState, useEffect } from "react";
-import { AuthContext } from "../../../shared/contexts/AuthContext";
-import { useNavigate, useLocation } from "react-router-dom";
+import React, {useContext, useEffect, useState} from "react";
+import {AuthContext} from "../../../shared/contexts/AuthContext";
+import {useLocation, useNavigate} from "react-router-dom";
 import ROUTES from "../../../../constants/routes";
 import layoutStyles from '../../components/ProfileLayout.module.css';
 import formStyles from '../../components/ReservationEditForm/FormComponents.module.css';
@@ -10,7 +10,7 @@ import reservationStyles from '../../components/ReservationDetail/ReservationDet
 /**
  * AccountDetails component displays user account information
  */
-const AccountDetails = ({ userDetails }) => {
+const AccountDetails = ({userDetails}) => {
     return (
         <div className={layoutStyles.card}>
             <div className={layoutStyles.cardHeader}>
@@ -43,7 +43,7 @@ const AccountDetails = ({ userDetails }) => {
 /**
  * PasswordChange component manages user password changes
  */
-const PasswordChange = ({ onPasswordChange }) => {
+const PasswordChange = ({onPasswordChange}) => {
     const [formData, setFormData] = useState({
         currentPassword: "",
         newPassword: "",
@@ -51,7 +51,7 @@ const PasswordChange = ({ onPasswordChange }) => {
     });
 
     const handleInputChange = (e) => {
-        const { name, value } = e.target;
+        const {name, value} = e.target;
         setFormData(prev => ({
             ...prev,
             [name]: value
@@ -130,7 +130,7 @@ const PasswordChange = ({ onPasswordChange }) => {
 /**
  * DeleteAccount component handles account deletion flow
  */
-const DeleteAccount = ({ onDelete, showConfirm, setShowConfirm }) => {
+const DeleteAccount = ({onDelete, showConfirm, setShowConfirm}) => {
     return (
         <div className={layoutStyles.card}>
             <div className={layoutStyles.cardHeader}>
@@ -173,7 +173,7 @@ const DeleteAccount = ({ onDelete, showConfirm, setShowConfirm }) => {
 /**
  * AccountTabs component displays navigation tabs for account sections
  */
-const AccountTabs = ({ activeTab, setActiveTab }) => {
+const AccountTabs = ({activeTab, setActiveTab}) => {
     return (
         <div className={formStyles.accountSubmenu}>
             <button
@@ -201,10 +201,10 @@ const AccountTabs = ({ activeTab, setActiveTab }) => {
 /**
  * Main MyAccount component
  */
-const MyAccount = ({ userDetails, deleteAccount }) => {
+const MyAccount = ({userDetails, deleteAccount}) => {
     const navigate = useNavigate();
     const location = useLocation();
-    const { logout } = useContext(AuthContext);
+    const {logout} = useContext(AuthContext);
     const [activeTab, setActiveTab] = useState("details");
     const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
@@ -225,7 +225,7 @@ const MyAccount = ({ userDetails, deleteAccount }) => {
     // Update URL hash when subtab changes
     const handleTabChange = (tab) => {
         setActiveTab(tab);
-        navigate(`#account/${tab}`, { replace: true });
+        navigate(`#account/${tab}`, {replace: true});
     };
 
     const handlePasswordChange = (passwordData) => {
@@ -246,16 +246,16 @@ const MyAccount = ({ userDetails, deleteAccount }) => {
                 <h2>My Account</h2>
             </div>
 
-            <AccountTabs activeTab={activeTab} setActiveTab={handleTabChange} />
+            <AccountTabs activeTab={activeTab} setActiveTab={handleTabChange}/>
 
             {/* Account Details */}
             {activeTab === "details" && (
-                <AccountDetails userDetails={userDetails} />
+                <AccountDetails userDetails={userDetails}/>
             )}
 
             {/* Change Password */}
             {activeTab === "password" && (
-                <PasswordChange onPasswordChange={handlePasswordChange} />
+                <PasswordChange onPasswordChange={handlePasswordChange}/>
             )}
 
             {/* Delete Account */}

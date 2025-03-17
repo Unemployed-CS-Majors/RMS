@@ -1,5 +1,5 @@
 // hooks/useViewport.js
-import { useState, useEffect } from "react";
+import {useEffect, useState} from "react";
 
 export const useViewport = () => {
     const [isMobile, setIsMobile] = useState(false);
@@ -21,5 +21,5 @@ export const useViewport = () => {
         };
     }, []);
 
-    return { isMobile };
+    return {isMobile};
 };

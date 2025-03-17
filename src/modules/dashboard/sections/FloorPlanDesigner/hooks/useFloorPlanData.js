@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import {useEffect, useState} from 'react';
+import {v4 as uuidv4} from 'uuid';
 import tableService from "../../../../../services/table.service";
 import wallsService from "../../../../../services/walls.service";
 import doorService from "../../../../../services/door.service";
 import windowService from "../../../../../services/window.service";
-import { tableTypes } from '../../../../../constants/tableTypes';
+import {tableTypes} from '../../../../../constants/tableTypes';
 
 /**
  * Custom hook for managing floor plan data

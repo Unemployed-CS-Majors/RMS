@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import {useEffect, useState} from 'react';
 import reservationService from '../../../services/reservation.service';
 import openingHoursService from "../../../services/openingHours.service";
 import tableService from "../../../services/table.service";
@@ -35,7 +35,7 @@ export const useActiveTab = (
 
     useEffect(() => {
         const hash = window.location.hash.replace('#', '');
-        if (hash && ["dashboard",'pendingReservations', 'hours', 'tables', 'employees', 'allReservations', 'menu', 'orders', 'restaurantConfig'].includes(hash)) {
+        if (hash && ["dashboard", 'pendingReservations', 'hours', 'tables', 'employees', 'allReservations', 'menu', 'orders', 'restaurantConfig'].includes(hash)) {
             setActiveTab(hash);
         } else {
             window.location.hash = initialTab;

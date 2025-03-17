@@ -1,7 +1,7 @@
-import { useState, useEffect, useContext, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../shared/contexts/AuthContext';
-import { ROUTES } from '../../../constants/routes.js';
+import {useContext, useEffect, useRef, useState} from 'react';
+import {useNavigate} from 'react-router-dom';
+import {AuthContext} from '../../shared/contexts/AuthContext';
+import {ROUTES} from '../../../constants/routes.js';
 
 /**
  * Custom hook to manage authentication form state and logic.
@@ -11,7 +11,7 @@ import { ROUTES } from '../../../constants/routes.js';
 export const useAuthForm = () => {
     const navigate = useNavigate();
     const [loginForm, setLoginForm] = useState(true);
-    const { isLoggedIn, login, register, loginWithGoogle, loginWithFacebook, error } = useContext(AuthContext);
+    const {isLoggedIn, login, register, loginWithGoogle, loginWithFacebook, error} = useContext(AuthContext);
     const [loading, setLoading] = useState(false);
     const [showCountryCodeDropdown, setShowCountryCodeDropdown] = useState(false);
     const countryCodeRef = useRef(null);
@@ -70,7 +70,7 @@ export const useAuthForm = () => {
 
     // Handle form field changes
     const handleChange = (e) => {
-        const { name, value } = e.target;
+        const {name, value} = e.target;
         setFormData((prevData) => ({
             ...prevData,
             [name]: value,

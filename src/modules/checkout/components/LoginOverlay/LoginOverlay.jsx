@@ -9,7 +9,7 @@ import styles from './LoginOverlay.module.css';
  * @param {Function} props.handleBackToMenu - Function to handle the back to menu action.
  * @returns {JSX.Element} The rendered LoginOverlay component.
  */
-const LoginOverlay = ({ handleLoginRedirect, handleBackToMenu }) => {
+const LoginOverlay = ({handleLoginRedirect, handleBackToMenu}) => {
     return (
         <div className={styles.loginOverlay}>
             <div className={styles.loginPrompt}>

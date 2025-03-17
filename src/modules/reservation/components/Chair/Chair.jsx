@@ -13,7 +13,7 @@ import PropTypes from 'prop-types';
  * @param {number} [props.rotation=0] - The rotation angle of the chair in degrees
  * @returns {JSX.Element} The Chair component
  */
-const Chair = ({ cx, cy, color = '#b5651d', rotation = 0 }) => {
+const Chair = ({cx, cy, color = '#b5651d', rotation = 0}) => {
     // Chair dimensions
     const seatWidth = 16;
     const seatDepth = 16;
@@ -53,8 +53,8 @@ const Chair = ({ cx, cy, color = '#b5651d', rotation = 0 }) => {
             />
 
             {/* Chair legs */}
-            <rect x={seatX + 2} y={seatY + seatDepth} width={2} height={legHeight} fill="#5e3816" />
-            <rect x={seatX + seatWidth - 4} y={seatY + seatDepth} width={2} height={legHeight} fill="#5e3816" />
+            <rect x={seatX + 2} y={seatY + seatDepth} width={2} height={legHeight} fill="#5e3816"/>
+            <rect x={seatX + seatWidth - 4} y={seatY + seatDepth} width={2} height={legHeight} fill="#5e3816"/>
 
             {/* Chair shadow */}
             <ellipse

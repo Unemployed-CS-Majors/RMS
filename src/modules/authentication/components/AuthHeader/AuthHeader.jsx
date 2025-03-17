@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaHome } from 'react-icons/fa';
+import {FaHome} from 'react-icons/fa';
 import styles from './AuthHeader.module.css';
 
 /**
@@ -9,11 +9,11 @@ import styles from './AuthHeader.module.css';
  * @param {Function} returnHome - Function to navigate to home page
  * @returns {JSX.Element} Auth header component
  */
-const AuthHeader = ({ isLoginForm, returnHome }) => {
+const AuthHeader = ({isLoginForm, returnHome}) => {
     return (
         <>
             <div className={styles.returnHomeButton} onClick={returnHome}>
-                <FaHome />
+                <FaHome/>
                 <span>Home</span>
             </div>
         </>

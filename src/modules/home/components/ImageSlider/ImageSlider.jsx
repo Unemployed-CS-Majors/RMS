@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import {FaChevronLeft, FaChevronRight} from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import useImageSlider from '../../../shared/hooks/useImageSlider';
 import styles from './ImageSlider.module.css';
@@ -13,7 +13,7 @@ import styles from './ImageSlider.module.css';
  * @param {Array<string>} props.imageUrls - Array of image URLs to display in the slider
  * @returns {JSX.Element} The ImageSlider component
  */
-const ImageSlider = ({ imageUrls }) => {
+const ImageSlider = ({imageUrls}) => {
     const {
         currentIndex,
         isTransitioning,
@@ -46,14 +46,14 @@ const ImageSlider = ({ imageUrls }) => {
                 className={`${styles.sliderNavButton} ${styles.prev}`}
                 aria-label="Previous slide"
             >
-                <FaChevronLeft />
+                <FaChevronLeft/>
             </button>
             <button
                 onClick={goToNext}
                 className={`${styles.sliderNavButton} ${styles.next}`}
                 aria-label="Next slide"
             >
-                <FaChevronRight />
+                <FaChevronRight/>
             </button>
         </div>
     );

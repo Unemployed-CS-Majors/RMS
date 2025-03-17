@@ -1,7 +1,7 @@
 import React from 'react';
 import BarChartComponent from '../charts/BarChartComponent';
-import { CenteredMetric } from '../charts/MetricsDisplay';
-import { formatCurrency } from '../../../../../shared/utils/formatters';
+import {CenteredMetric} from '../charts/MetricsDisplay';
+import {formatCurrency} from '../../../../../shared/utils/formatters';
 import styles from '../charts/ChartComponents.module.css';
 
 /**
@@ -16,7 +16,7 @@ import styles from '../charts/ChartComponents.module.css';
  * @param {number} props.analyticsData.menuItemAnalytics.averagePreparationTime - Average preparation time for menu items
  * @returns {JSX.Element} The MenuItems component
  */
-const MenuItems = ({ analyticsData }) => {
+const MenuItems = ({analyticsData}) => {
     const topItemsData = analyticsData.menuItemAnalytics.topItems
         .slice(0, 5)
         .map(item => ({

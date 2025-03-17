@@ -9,14 +9,14 @@ import styles from './NavigationTabs.module.css';
  * @param {Function} props.setActiveSection - Function to set the active section
  * @returns {JSX.Element} The NavigationTabs component
  */
-const NavigationTabs = ({ activeSection, setActiveSection }) => {
+const NavigationTabs = ({activeSection, setActiveSection}) => {
     // Define all tabs initially
     let tabs = [
-        { id: 'summary', label: 'Overview' },
-        { id: 'revenue', label: 'Revenue' },
-        { id: 'orders', label: 'Orders' },
-        { id: 'menu', label: 'Menu Items' },
-        { id: 'reservations', label: 'Reservations' }
+        {id: 'summary', label: 'Overview'},
+        {id: 'revenue', label: 'Revenue'},
+        {id: 'orders', label: 'Orders'},
+        {id: 'menu', label: 'Menu Items'},
+        {id: 'reservations', label: 'Reservations'}
     ];
 
     return (

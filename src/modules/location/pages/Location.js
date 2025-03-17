@@ -17,7 +17,7 @@ import {useFormattedOpeningHours} from '../hooks/useFormattedOpeningHours';
  * @returns {JSX.Element} The LocationSection component
  */
 const LocationSection = () => {
-    const { config } = useContext(AuthContext);
+    const {config} = useContext(AuthContext);
     const {openingHours, isLoading, error} = useOpeningHours();
     const formattedOpeningHours = useFormattedOpeningHours(openingHours);
 

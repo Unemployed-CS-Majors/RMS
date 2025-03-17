@@ -11,20 +11,20 @@ import styles from './Legend.module.css';
  * @param {boolean} props.isMobile - Flag to indicate if the view is on a mobile device
  * @returns {JSX.Element} The Legend component
  */
-const Legend = ({ isMobile }) => {
+const Legend = ({isMobile}) => {
     return (
         <div className={`${styles.legendContainer} ${isMobile ? styles.mobile : ''}`}>
             <div className={styles.legendItem}>
                 <div
                     className={`${styles.colorBox} ${isMobile ? styles.mobile : ''}`}
-                    style={{ backgroundColor: "#8cb369" }}
+                    style={{backgroundColor: "#8cb369"}}
                 />
                 <span className={styles.legendText}>Available</span>
             </div>
             <div className={styles.legendItem}>
                 <div
                     className={`${styles.colorBox} ${isMobile ? styles.mobile : ''}`}
-                    style={{ backgroundColor: "#718096" }}
+                    style={{backgroundColor: "#718096"}}
                 />
                 <span className={styles.legendText}>Reserved</span>
             </div>

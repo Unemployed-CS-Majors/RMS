@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './MenuManagement.module.css';
 import MenuItemCard from './components/MenuItemCard/MenuItemCard';
 import MenuItemDialog from './components/MenuItemDialog/MenuItemDialog';
@@ -31,7 +31,7 @@ const MenuManagement = ({
                             startEditItem,
                             loading
                         }) => {
-    const [menuOptions, setMenuOptions] = useState({ itemTypes: [], allergens: [] });
+    const [menuOptions, setMenuOptions] = useState({itemTypes: [], allergens: []});
     const [filterType, setFilterType] = useState('all');
     const [searchTerm, setSearchTerm] = useState('');
     const [filteredItems, setFilteredItems] = useState([]);
@@ -44,10 +44,10 @@ const MenuManagement = ({
                 console.log('Fetching menu options...');
                 const options = await menuService.getOptions();
                 console.log('Menu options received:', options);
-                setMenuOptions(options || { itemTypes: [], allergens: [] });
+                setMenuOptions(options || {itemTypes: [], allergens: []});
             } catch (error) {
                 console.error('Failed to fetch menu options:', error);
-                setMenuOptions({ itemTypes: [], allergens: [] });
+                setMenuOptions({itemTypes: [], allergens: []});
             } finally {
                 setOptionsLoading(false);
             }
@@ -155,13 +155,14 @@ const MenuManagement = ({
             </div>
 
             {loading || optionsLoading ? (
-                <LoadingIndicator text="Loading menu items..." />
+                <LoadingIndicator text="Loading menu items..."/>
             ) : (
                 <>
                     {filteredItems.length === 0 ? (
                         <div className={styles.emptyState}>
                             {searchTerm || filterType !== 'all' ?
-                                <p>No menu items found matching your search and filters. Try adjusting your criteria.</p> :
+                                <p>No menu items found matching your search and filters. Try adjusting your
+                                    criteria.</p> :
                                 <p>No menu items found. Add your first item to get started!</p>
                             }
                         </div>

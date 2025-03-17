@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, {useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 import ROUTES from '../../../../constants/routes';
 import styles from './ProfileSidebar.module.css';
 
 /**
  * ProfileSidebar component displays the navigation sidebar/header for the profile page
  */
-const ProfileSidebar = ({ activeTab, handleTabChange, logout }) => {
+const ProfileSidebar = ({activeTab, handleTabChange, logout}) => {
     const [menuOpen, setMenuOpen] = useState(false);
     const navigate = useNavigate();
 

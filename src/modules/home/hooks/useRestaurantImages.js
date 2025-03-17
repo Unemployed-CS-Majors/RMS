@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import {useMemo} from 'react';
 import image2 from "../../../assets/image2.jpg";
 import image22 from "../../../assets/image22.jpg";
 
@@ -10,7 +10,7 @@ import image22 from "../../../assets/image22.jpg";
 const useRestaurantImages = () => {
     const restaurantImages = useMemo(() => [image2, image22], []);
 
-    return { restaurantImages };
+    return {restaurantImages};
 };
 
 export default useRestaurantImages;

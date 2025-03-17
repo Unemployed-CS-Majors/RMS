@@ -1,6 +1,6 @@
 import React from "react";
-import { MdClose } from "react-icons/md";
-import { FiMinus, FiPlus } from "react-icons/fi";
+import {MdClose} from "react-icons/md";
+import {FiMinus, FiPlus} from "react-icons/fi";
 import styles from "./ItemDetailsModal.module.css";
 
 /**
@@ -79,7 +79,7 @@ const ItemDetailsModal = ({
                     onClick={closeModal}
                     aria-label="Close details"
                 >
-                    <MdClose />
+                    <MdClose/>
                 </button>
 
                 <div className={styles.itemDetailContent}>
@@ -137,7 +137,7 @@ const ItemDetailsModal = ({
                                         disabled={!itemQuantity}
                                         aria-label="Decrease quantity"
                                     >
-                                        <FiMinus />
+                                        <FiMinus/>
                                     </button>
 
                                     <span className={styles.quantityDisplay}>
@@ -149,7 +149,7 @@ const ItemDetailsModal = ({
                                         onClick={() => addToCart(selectedItem)}
                                         aria-label="Increase quantity"
                                     >
-                                        <FiPlus />
+                                        <FiPlus/>
                                     </button>
                                 </div>
 

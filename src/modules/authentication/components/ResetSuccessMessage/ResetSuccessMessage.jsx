@@ -8,7 +8,7 @@ import styles from './ResetSuccessMessage.module.css';
  * @param {Function} returnToLogin - Function to navigate back to login
  * @returns {JSX.Element} Success message component
  */
-const ResetSuccessMessage = ({ email, returnToLogin }) => {
+const ResetSuccessMessage = ({email, returnToLogin}) => {
     return (
         <div className={styles.resetSuccess}>
             <div className={styles.authHeader}>

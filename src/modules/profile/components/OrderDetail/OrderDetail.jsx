@@ -37,7 +37,7 @@ const formatPaymentMethod = (method) => {
 /**
  * OrderItems component displays order items in a table
  */
-const OrderItems = ({ items, total }) => {
+const OrderItems = ({items, total}) => {
     return (
         <div className={tableStyles.historyTableContainer}>
             <table className={tableStyles.historyTable}>
@@ -59,8 +59,8 @@ const OrderItems = ({ items, total }) => {
                     </tr>
                 ))}
                 <tr className={tableStyles.totalRow}>
-                    <td colSpan="3" style={{ textAlign: 'right', fontWeight: '600' }}>Total:</td>
-                    <td style={{ fontWeight: '600' }}>${total.toFixed(2)}</td>
+                    <td colSpan="3" style={{textAlign: 'right', fontWeight: '600'}}>Total:</td>
+                    <td style={{fontWeight: '600'}}>${total.toFixed(2)}</td>
                 </tr>
                 </tbody>
             </table>
@@ -71,7 +71,7 @@ const OrderItems = ({ items, total }) => {
 /**
  * DeliveryAddress component displays the delivery address if available
  */
-const DeliveryAddress = ({ address }) => {
+const DeliveryAddress = ({address}) => {
     if (!address) return null;
 
     return (
@@ -81,8 +81,8 @@ const DeliveryAddress = ({ address }) => {
             </h4>
             <div className={styles.addressBlock}>
                 <span>
-                    {address.street}<br />
-                    {address.city}, {address.county} {address.eircode}<br />
+                    {address.street}<br/>
+                    {address.city}, {address.county} {address.eircode}<br/>
                     {address.country}
                 </span>
             </div>
@@ -93,12 +93,12 @@ const DeliveryAddress = ({ address }) => {
 /**
  * OrderDetail component displays details for a single order
  */
-const OrderDetail = ({ order }) => {
+const OrderDetail = ({order}) => {
     if (!order) return null;
 
     return (
         <>
-            <div className={reservationStyles.reservationField} style={{ marginBottom: '10px' }}>
+            <div className={reservationStyles.reservationField} style={{marginBottom: '10px'}}>
                 <span className={reservationStyles.fieldLabel}>Order ID</span>
                 <span className={reservationStyles.fieldValue}>{order.id}</span>
             </div>
@@ -111,7 +111,7 @@ const OrderDetail = ({ order }) => {
                 <div className={reservationStyles.reservationField}>
                     <span className={reservationStyles.fieldLabel}>Status</span>
                     <span className={reservationStyles.fieldValue}>
-                        <StatusBadge status={order.status} />
+                        <StatusBadge status={order.status}/>
                     </span>
                 </div>
                 <div className={reservationStyles.reservationField}>
@@ -134,14 +134,14 @@ const OrderDetail = ({ order }) => {
 
             {/* Display delivery address if available */}
             {order.deliveryMethod === 'home_delivery' && (
-                <DeliveryAddress address={order.deliveryAddress} />
+                <DeliveryAddress address={order.deliveryAddress}/>
             )}
 
             <h4 className={styles.sectionTitle}>Order Items</h4>
 
-            <OrderItems items={order.items} total={order.total} />
+            <OrderItems items={order.items} total={order.total}/>
         </>
     );
 };
 
-export { OrderDetail, OrderItems, DeliveryAddress };
+export {OrderDetail, OrderItems, DeliveryAddress};

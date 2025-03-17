@@ -1,7 +1,7 @@
 import React from "react";
-import { FaCalendarAlt } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
-import { ROUTES } from "../../../../constants/routes.js";
+import {FaCalendarAlt} from "react-icons/fa";
+import {useNavigate} from "react-router-dom";
+import {ROUTES} from "../../../../constants/routes.js";
 import ModernImageSlider from "../../components/ImageSlider/ImageSlider";
 import useHomeImages from "../../hooks/useHomeImages";
 import styles from "./HeroSection.module.css";
@@ -14,7 +14,7 @@ import styles from "./HeroSection.module.css";
  * @returns {JSX.Element} The HeroSection component
  */
 const HeroSection = () => {
-    const { foodImages } = useHomeImages();
+    const {foodImages} = useHomeImages();
     const navigate = useNavigate();
 
     /**
@@ -27,7 +27,7 @@ const HeroSection = () => {
     return (
         <div className={styles.mainContentContainer}>
             <div className={styles.imgContainer}>
-                <ModernImageSlider imageUrls={foodImages} />
+                <ModernImageSlider imageUrls={foodImages}/>
             </div>
             <div className={styles.content}>
                 <h1>
@@ -39,7 +39,7 @@ const HeroSection = () => {
                     Where good food meets great company.
                 </p>
                 <button className={styles.reserveBtn} onClick={goToReservation}>
-                    Reserve Now <FaCalendarAlt />
+                    Reserve Now <FaCalendarAlt/>
                 </button>
             </div>
         </div>

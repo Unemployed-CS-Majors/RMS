@@ -11,7 +11,7 @@ import styles from './MenuItemCard.module.css';
  * @param {Function} onDelete - Function to call when delete button is clicked
  * @param {Array} allergens - List of all allergen options for lookup
  */
-const MenuItemCard = ({ item, onEdit, onDelete, allergens }) => {
+const MenuItemCard = ({item, onEdit, onDelete, allergens}) => {
     // Format price to display with 2 decimal places
     const formattedPrice = typeof item.price === 'number'
         ? `€${item.price.toFixed(2)}`
