@@ -1,0 +1,17 @@
+:root {
+    --primary: #ff7d05;
+    --primary-light: #ffebdc;
+    --primary-dark: #e66b04;
+    --text-dark: #2d3142;
+    --text-medium: #4f5464;
+    --text-light: #767b91;
+    --white: #ffffff;
+    --gray-light: #f8f9fa;
+    --gray-medium: #e9ecef;
+    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 15px 40px rgba(0, 0, 0, 0.12);
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --transition: all 0.3s ease;
+}

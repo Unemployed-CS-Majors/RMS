@@ -1,0 +1,238 @@
+@import '../../../../styles/variables.module.css';
+
+.openhoursContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    overflow: visible;
+    max-width: 1200px;
+    width: 100%;
+    background: linear-gradient(135deg, var(--white) 50%, var(--primary-light) 50%);
+    margin-bottom: 3rem;
+    transition: var(--transition);
+    padding: 0;
+}
+
+.openhoursContainer:hover {
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-5px);
+}
+
+.openhoursText,
+.imgContainer {
+    height: auto;
+    width: 50%;
+    position: relative;
+}
+
+.openhoursText {
+    display: flex;
+    justify-content: flex-start;
+    padding: 4rem;
+    border: none;
+    border-radius: 0;
+    flex-direction: column;
+    background-color: transparent;
+}
+
+.openhoursTextTop {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.openhoursTextTop h1 {
+    font-size: 2.5rem;
+    color: var(--text-dark);
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.openhoursTextTop h1::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary);
+    border-radius: 2px;
+}
+
+.clockIcon {
+    font-size: 2.125rem;
+    margin-left: 1rem;
+    color: var(--primary);
+}
+
+.openhoursTextBtm {
+    display: flex;
+    flex-direction: column;
+}
+
+.openhoursTextBtm p {
+    font-weight: 500;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: var(--text-medium);
+    display: flex;
+    align-items: center;
+}
+
+.timeDash {
+    color: var(--primary);
+    margin: 0 8px;
+    font-weight: 600;
+}
+
+.phoneNumberTxt {
+    margin-top: 2.5rem;
+    display: flex;
+    align-items: center;
+    background-color: var(--white);
+    padding: 1rem 1.5rem;
+    border-radius: 50px;
+    box-shadow: var(--shadow-soft);
+    width: fit-content;
+}
+
+.phoneIcon {
+    font-size: 2.5rem;
+    margin-right: 1rem;
+    color: var(--primary);
+}
+
+.phoneNumber {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.imgContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+    position: relative;
+}
+
+.imgContainer img {
+    position: absolute;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition);
+}
+
+.imgContainer img:first-child {
+    left: 10%;
+    top: -1rem;
+    width: 60%;
+    z-index: 1;
+    border: 5px solid var(--white);
+}
+
+.imgContainer img:last-child {
+    right: 10%;
+    top: 5rem;
+    width: 45%;
+    z-index: 2;
+    border: 5px solid var(--white);
+}
+
+.imgContainer img:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-medium);
+    z-index: 3;
+}
+
+.errorMessage {
+    color: #e74c3c;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 992px) {
+    .openhoursText,
+    .imgContainer {
+        padding: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .openhoursContainer {
+        background: var(--white);
+    }
+
+    .openhoursText,
+    .imgContainer {
+        width: 100%;
+    }
+
+    .openhoursText {
+        padding: 2.5rem;
+        order: 2;
+    }
+
+    .openhoursTextTop h1 {
+        font-size: 2rem;
+    }
+
+    .imgContainer {
+        height: 350px;
+        order: 1;
+        padding: 0;
+    }
+
+    .imgContainer img {
+        position: relative;
+        display: block;
+        width: 70%;
+        margin: 1rem auto;
+        position: absolute;
+    }
+
+    .imgContainer img:first-child {
+        left: 10%;
+        top: 2rem;
+    }
+
+    .imgContainer img:last-child {
+        right: 10%;
+        top: 8rem;
+    }
+
+    .phoneIcon {
+        font-size: 2rem;
+    }
+
+    .phoneNumber {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .openhoursText {
+        padding: 2rem 1.5rem;
+    }
+
+    .phoneNumberTxt {
+        padding: 0.75rem 1.25rem;
+    }
+
+    .phoneIcon {
+        font-size: 1.75rem;
+    }
+
+    .phoneNumber {
+        font-size: 1.1rem;
+    }
+
+    .imgContainer {
+        height: 300px;
+    }
+}

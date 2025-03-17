@@ -1,0 +1,56 @@
+.door {
+    fill: #8B4513;
+    stroke: #663300;
+    stroke-width: 2;
+}
+
+.doorArc {
+    fill: none;
+    stroke: #663300;
+    stroke-width: 2;
+}
+
+.tableId {
+    font-size: 12px;
+    fill: black;
+    text-anchor: middle;
+    pointer-events: none;
+}
+
+.resizeHandle {
+    fill: white;
+    stroke: black;
+    stroke-width: 1;
+    cursor: nwse-resize;
+}
+
+.resizeHandle:hover {
+    animation: pulse 1s infinite;
+}
+
+@keyframes elementAppear {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.doorNewAnimation {
+    animation: elementAppear 0.4s ease-out forwards;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}

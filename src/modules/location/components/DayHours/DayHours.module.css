@@ -1,0 +1,15 @@
+
+.dayHours {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.day {
+    font-weight: 500;
+    color: #555;
+}
+
+.hours {
+    color: #333;
+}

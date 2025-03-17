@@ -1,0 +1,224 @@
+
+.tableContainer {
+    background-color: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.reservationsTable {
+    width: 100%;
+    min-width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+    table-layout: auto;
+    flex: 1;
+}
+
+.reservationsTable th {
+    padding: 0.75rem 1.5rem;
+    text-align: left;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #6b7280;
+    background-color: #f9fafb;
+    border-bottom: 1px solid #e5e7eb;
+    white-space: nowrap;
+}
+
+.reservationsTable td {
+    padding: 1rem 1.5rem;
+    vertical-align: middle;
+    border-bottom: 1px solid #e5e7eb;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.reservationsTable tbody tr {
+    transition: background-color 0.2s;
+}
+
+.reservationsTable tbody tr:hover {
+    background-color: #f9fafb;
+}
+
+.reservationsTable tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.guestName {
+    font-weight: 500;
+    color: #111827;
+}
+
+.tableBadge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background-color: #e0e7ff;
+    color: #4338ca;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 9999px;
+    white-space: nowrap;
+}
+
+.statusBadge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 9999px;
+    border: 1px solid;
+}
+
+.statusConfirmed {
+    background-color: #d1fae5;
+    color: #065f46;
+    border-color: #a7f3d0;
+}
+
+.statusPending {
+    background-color: #fef3c7;
+    color: #92400e;
+    border-color: #fde68a;
+}
+
+.statusCompleted {
+    background-color: #dbeafe;
+    color: #1e40af;
+    border-color: #bfdbfe;
+}
+
+.statusCancelled {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border-color: #fecaca;
+}
+
+.guestCount {
+    display: flex;
+    align-items: center;
+}
+
+.iconPeople {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    margin-right: 0.25rem;
+    vertical-align: middle;
+}
+
+.emptyState {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 1rem;
+    text-align: center;
+    color: #6b7280;
+    width: 100%;
+}
+
+.emptyStateMessage {
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .reservationsTable {
+        display: block;
+        width: 100%;
+        min-width: unset;
+        table-layout: auto;
+    }
+
+    .reservationsTable thead {
+        display: none;
+    }
+
+    .reservationsTable tbody {
+        display: block;
+        width: 100%;
+    }
+
+    .reservationsTable tr {
+        display: block;
+        margin-bottom: 1rem;
+        border: 1px solid #e5e7eb;
+        padding: 0;
+        background-color: #ffffff;
+        border-radius: 0.5rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        width: 100%;
+    }
+
+    .reservationsTable tbody tr:last-child {
+        margin-bottom: 0;
+    }
+
+    .reservationsTable td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.75rem 1rem;
+        text-align: right;
+        border-bottom: 1px solid #e5e7eb;
+        white-space: normal;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .reservationsTable td:last-child {
+        border-bottom: none;
+    }
+
+    .reservationsTable td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: #6b7280;
+        text-align: left;
+        flex: 1;
+    }
+
+    .guestName {
+        font-weight: 600;
+    }
+
+    .statusBadge {
+        margin-left: auto;
+        text-align: right;
+    }
+
+    .tableBadge {
+        margin-left: auto;
+    }
+
+    .guestCount {
+        margin-left: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .reservationsTable td {
+        padding: 0.625rem 0.75rem;
+        font-size: 0.8125rem;
+    }
+
+    .statusBadge, .tableBadge {
+        padding: 0.2rem 0.5rem;
+        font-size: 0.6875rem;
+    }
+}

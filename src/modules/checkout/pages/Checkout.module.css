@@ -1,0 +1,92 @@
+.myCheckoutContainer {
+    width: 100%;
+    background: #f8f9fa;
+    min-width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.pageTitle {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 2rem 0;
+    position: relative;
+    color: #333333;
+    width: 100%;
+}
+
+.pageTitle::after {
+    content: '';
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #ff8c00, #ffa333);
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+.wrapper {
+    position: relative;
+    width: 100%;
+    background: #f8f9fa;
+}
+
+.main {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 32px;
+    width: 100%;
+    background: #f8f9fa;
+}
+
+.steps {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    background: #f8f9fa;
+}
+
+.blurred {
+    filter: blur(5px);
+    pointer-events: none;
+    user-select: none;
+}
+
+@media (max-width: 992px) {
+    .main {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .steps {
+        order: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 16px;
+    }
+
+    .pageTitle {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .pageTitle {
+        font-size: 1.8rem;
+    }
+}

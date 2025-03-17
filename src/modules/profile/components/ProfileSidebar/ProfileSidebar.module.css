@@ -1,0 +1,142 @@
+.sidebar {
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.sidebarHeader {
+    padding: 20px;
+    border-bottom: 1px solid #eaeaea;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sidebarHeader h2 {
+    color: #FF7D05;
+    margin: 0;
+    font-size: 20px;
+}
+
+.menuToggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+}
+
+.sidebarMenu {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebarMenu li {
+    padding: 12px 20px;
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    transition: all 0.2s ease;
+}
+
+.sidebarMenu li:hover {
+    background-color: rgba(255, 125, 5, 0.1);
+    color: #FF7D05;
+    border-left: 3px solid #FF7D05;
+}
+
+.sidebarMenu li.active {
+    background-color: rgba(255, 125, 5, 0.1);
+    color: #FF7D05;
+    font-weight: 600;
+    border-left: 3px solid #FF7D05;
+}
+
+.logoutContainer {
+    padding: 0 20px;
+    margin-top: auto;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.logoutBtn {
+    background-color: #f8f8f8;
+    color: #333;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    width: 80%;
+    font-weight: 500;
+    font-size: 15px;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.logoutBtn:hover {
+    background-color: #f0f0f0;
+    color: #666;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.logoutMobile {
+    display: none;
+}
+
+.desktopOnly {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .sidebar {
+        width: 240px;
+        min-width: 240px;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+    }
+
+    .desktopOnly {
+        display: flex;
+    }
+}
+
+@media (max-width: 767px) {
+    .menuToggle {
+        display: block;
+    }
+
+    .sidebarMenu {
+        display: none;
+    }
+
+    .sidebarMenu.show {
+        display: flex;
+    }
+
+    .logoutMobile {
+        display: block;
+    }
+
+    .logoutContainer {
+        margin-bottom: 20px;
+    }
+}

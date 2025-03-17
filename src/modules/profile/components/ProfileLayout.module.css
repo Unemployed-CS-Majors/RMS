@@ -1,0 +1,142 @@
+.profileLayout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f8f8;
+    width: 100%;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-x: hidden;
+}
+
+.contentHeader {
+    margin-bottom: 10px;
+}
+
+.contentHeader h2,
+.contentHeaderAccount h2 {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    color: #333;
+    font-size: 22px;
+}
+
+.card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    margin: 0 auto;
+    overflow-x: auto;
+}
+
+.cardHeader {
+    padding: 15px 20px;
+    border-bottom: 1px solid #eaeaea;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cardHeader h3 {
+    margin: 0;
+    color: #333;
+    font-size: 18px;
+}
+
+.cardBody {
+    padding: 20px;
+}
+
+.cardActions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnPrimary,
+.btnSecondary,
+.btnDanger {
+    width: 100%;
+    max-width: 250px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.btnPrimary {
+    background-color: #FF7D05;
+    color: white;
+    border: none;
+}
+
+.btnPrimary:hover {
+    background-color: #e67100;
+}
+
+.btnSecondary {
+    background-color: white;
+    color: #FF7D05;
+    border: 2px solid #FF7D05;
+}
+
+.btnSecondary:hover {
+    background-color: rgba(255, 125, 5, 0.1);
+}
+
+.btnDanger {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+}
+
+.btnDanger:hover {
+    background-color: #c0392b;
+}
+
+@media (min-width: 768px) {
+    .profileLayout {
+        flex-direction: row;
+    }
+
+    .content {
+        padding: 30px;
+    }
+
+    .cardActions {
+        flex-direction: row;
+    }
+
+    .btnPrimary,
+    .btnSecondary,
+    .btnDanger {
+        width: auto;
+    }
+
+    .contentHeader h2,
+    .contentHeaderAccount h2 {
+        font-size: 26px;
+    }
+
+    .cardHeader h3 {
+        font-size: 20px;
+    }
+}

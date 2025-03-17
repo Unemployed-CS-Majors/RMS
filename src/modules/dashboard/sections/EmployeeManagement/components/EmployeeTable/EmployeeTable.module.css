@@ -1,0 +1,184 @@
+.tableContainer {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.employeeTable {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.employeeTable th {
+    text-align: left;
+    padding: 16px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #6b7280;
+    background-color: #f9fafb;
+    border-bottom: 2px solid #f3f4f6;
+}
+
+.employeeTable td {
+    padding: 16px 20px;
+    border-bottom: 1px solid #f3f4f6;
+    font-size: 0.95rem;
+    color: #374151;
+}
+
+.employeeTable tr:last-child td {
+    border-bottom: none;
+}
+
+.employeeTable tr:hover {
+    background-color: #f9fafb;
+}
+
+.idCell {
+    font-family: monospace;
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+.nameCell {
+    font-weight: 500;
+}
+
+.emailCell {
+    color: #4b5563;
+}
+
+.phoneCell {
+    font-family: monospace;
+    color: #4b5563;
+}
+
+.roleBadge {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.roleBadge.employee {
+    background-color: #dbeafe;
+    color: #1e40af;
+}
+
+.roleBadge.owner {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.actionsCell {
+    width: 60px;
+}
+
+.emptyState {
+    padding: 40px !important;
+}
+
+.emptyContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.emptyIcon {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+    opacity: 0.5;
+}
+
+.emptyContent p {
+    color: #6b7280;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+@media (max-width: 767px) {
+    .employeeTable {
+        display: block;
+    }
+
+    .employeeTable thead {
+        display: none;
+    }
+
+    .employeeTable tbody {
+        display: block;
+        width: 100%;
+    }
+
+    .employeeTable tr {
+        display: block;
+        margin-bottom: 15px;
+        border-bottom: 1px solid #f3f4f6;
+        padding-bottom: 15px;
+    }
+
+    .employeeTable tr:last-child {
+        margin-bottom: 0;
+        border-bottom: none;
+    }
+
+    .employeeTable td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 15px;
+        text-align: right;
+        position: relative;
+        border-bottom: none;
+    }
+
+    .employeeTable td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: #6b7280;
+        text-align: left;
+        flex: 1;
+    }
+
+    .employeeTable .roleCell {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    .employeeTable .roleCell::before {
+        margin-right: auto;
+    }
+
+    .employeeTable .actionsCell {
+        justify-content: flex-start;
+        padding-left: 20px;
+    }
+
+    .employeeTable .actionsCell::before {
+        content: '';
+        display: none;
+    }
+
+    .employeeTable tbody tr {
+        margin-bottom: 15px;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .roleBadge {
+        margin-left: 10px;
+    }
+
+    .emptyContent {
+        padding: 20px 0;
+    }
+}

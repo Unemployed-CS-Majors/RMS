@@ -1,0 +1,94 @@
+.formGroup {
+    margin-bottom: 20px;
+}
+
+.editInput {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    color: #333;
+}
+
+.editInput:focus {
+    outline: none;
+    border-color: #FF7D05;
+    box-shadow: 0 0 0 2px rgba(255, 125, 5, 0.2);
+}
+
+.inputSmallText {
+    font-size: 13px;
+    color: #666;
+    margin-top: 4px;
+}
+
+.accountSubmenu {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eaeaea;
+    padding-bottom: 10px;
+    width: 100%;
+    overflow-x: auto;
+}
+
+.accountTab {
+    flex: 1;
+    min-width: 80px;
+    background: none;
+    border: none;
+    padding: 10px 8px;
+    font-size: 14px;
+    color: #666;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.accountTab:hover {
+    color: #FF7D05;
+}
+
+.accountTab.active {
+    color: #FF7D05;
+    font-weight: 600;
+    position: relative;
+}
+
+.accountTab.active::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #FF7D05;
+}
+
+.warningText {
+    color: #e74c3c;
+    margin-bottom: 20px;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.passwordInput {
+    padding: 12px 15px;
+    font-size: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    width: 100%;
+}
+
+.passwordInput:focus {
+    border-color: #FF7D05;
+    box-shadow: 0 0 0 3px rgba(255, 125, 5, 0.2);
+}
+
+.passwordInput::placeholder {
+    color: #aaa;
+}
