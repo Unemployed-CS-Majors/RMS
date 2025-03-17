@@ -1,0 +1,42 @@
+.ordersGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.deliveryAddress {
+    margin-top: 15px;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.deliveryAddress h4 {
+    margin-bottom: 10px;
+    font-size: 15px;
+    color: #FF7D05;
+    font-weight: 500;
+}
+
+.addressBlock {
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.sectionTitle {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    color: #FF7D05;
+    font-weight: 500;
+}
+
+@media (min-width: 768px) {
+    .ordersGrid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}

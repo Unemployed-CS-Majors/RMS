@@ -1,0 +1,45 @@
+.legendContainer {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    padding: 4px 12px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid rgba(234, 234, 234, 0.3);
+    font-size: 0.8rem;
+    pointer-events: none;
+    backdrop-filter: blur(2px);
+    z-index: 80;
+}
+
+.legendContainer.mobile {
+    font-size: 0.7rem;
+}
+
+.legendItem {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.colorBox {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+}
+
+.colorBox.mobile {
+    width: 10px;
+    height: 10px;
+}
+
+.legendText {
+    color: #333;
+    font-weight: 500;
+    white-space: nowrap;
+}

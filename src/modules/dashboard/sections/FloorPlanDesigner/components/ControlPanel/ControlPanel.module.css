@@ -1,0 +1,206 @@
+.controls {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    padding: 0;
+    margin-bottom: 15px;
+    margin-right: 20px;
+    border: 1px solid #e0e0e0;
+    overflow: hidden;
+    top: 15px;
+    right: 15px;
+    z-index: 1000;
+}
+
+.controlsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f5f7f9;
+    padding: 12px 15px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.controlsHeader h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.controlsSection {
+    padding: 15px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.controlsSection:last-child {
+    border-bottom: none;
+}
+
+.sectionTitle {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0 0 10px 0;
+    color: #666;
+}
+
+.buttonGroup {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.toolButton {
+    flex: 1 0 calc(33.333% - 8px);
+    min-width: 50px;
+    height: 60px;
+    border: 1px solid #e0e0e0;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+    padding: 8px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.selectButton {
+    flex: 1 0 calc(100% - 8px);
+    height: 70px;
+    margin-bottom: 8px;
+    background-color: #f2f7ff;
+    border-color: #c0d7f7;
+}
+
+.toolButton:hover {
+    background-color: #f0f0f0;
+    border-color: #d0d0d0;
+}
+
+.toolButton.active {
+    background-color: #e8f0fe;
+    border-color: #4a90e2;
+    color: #4a90e2;
+}
+
+.selectButton.active {
+    background-color: #d6e6ff;
+    border-color: #4a90e2;
+}
+
+.toolIcon {
+    display: block;
+    width: 24px;
+    height: 24px;
+    margin-bottom: 4px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.selectButton .toolIcon {
+    width: 28px;
+    height: 28px;
+}
+
+.selectIcon::before {
+    content: "🔍";
+    font-size: 22px;
+}
+
+.tableIcon::before {
+    content: "🍽️";
+    font-size: 18px;
+}
+
+.wallIcon::before {
+    content: "🧱";
+    font-size: 18px;
+}
+
+.doorIcon::before {
+    content: "🚪";
+    font-size: 18px;
+}
+
+.windowIcon::before {
+    content: "🪟";
+    font-size: 18px;
+}
+
+.toolButton span {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.selectButton span {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.tableSelect {
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+    background-color: #f9f9f9;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.previewContainer {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.toolHelp {
+    font-size: 13px;
+    color: #666;
+    background-color: #f5f7f9;
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin-top: 5px;
+}
+
+.toolHelp p {
+    margin: 0;
+}
+
+.controlsFooter {
+    background-color: #fcfcfc;
+}
+
+.toggleControlsButton {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 99;
+    padding: 10px 15px;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.toggleControlsButton:hover {
+    background-color: #357abd;
+}
+
+.toggleControlsButton::before {
+    content: "🛠️";
+    font-size: 16px;
+}

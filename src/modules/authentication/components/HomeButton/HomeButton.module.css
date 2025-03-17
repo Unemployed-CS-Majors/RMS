@@ -1,0 +1,37 @@
+.returnHomeButton {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    background-color: rgba(34, 34, 34, 0.8);
+    backdrop-filter: blur(5px);
+    padding: 0.75rem 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 125, 5, 0.3);
+}
+
+.returnHomeButton:hover {
+    background-color: rgba(255, 125, 5, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.returnHomeButton span {
+    color: #ff7d05;
+    margin-left: 8px;
+    font-weight: 500;
+}
+
+.returnHomeButton svg {
+    color: #ff7d05;
+}
+
+@media only screen and (max-width: 480px) {
+    .returnHomeButton {
+        padding: 0.6rem 1rem;
+    }
+}

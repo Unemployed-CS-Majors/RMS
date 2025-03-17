@@ -1,0 +1,16 @@
+
+.headerLeft {
+    margin-left: 0.5rem;
+    cursor: pointer;
+}
+
+.logo {
+    font-family: "Lavishly Yours", serif;
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+.logoHighlight {
+    color: #FF7D05;
+    font-family: "Lavishly Yours", serif;
+}

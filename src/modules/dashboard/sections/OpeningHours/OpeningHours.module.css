@@ -1,0 +1,200 @@
+
+.hoursContainer {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.hoursHeader {
+    padding: 20px 24px;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.hoursTitle {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #111827;
+}
+
+.hoursTableContainer {
+    padding: 0 24px;
+    overflow-x: auto;
+}
+
+.hoursTable {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.hoursTable th {
+    text-align: left;
+    padding: 16px 16px 16px 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #6b7280;
+    border-bottom: 2px solid #f3f4f6;
+}
+
+.hoursTable td {
+    padding: 20px 16px 20px 0;
+    border-bottom: 1px solid #f3f4f6;
+    font-size: 0.95rem;
+}
+
+.hoursTable tr:last-child td {
+    border-bottom: none;
+}
+
+.hoursTable tr:hover {
+    background-color: #f9fafb;
+}
+
+.dayCell {
+    width: 120px;
+}
+
+.dayName {
+    text-transform: capitalize;
+    font-weight: 500;
+}
+
+.statusIndicator {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.statusOpen {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.statusClosed {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+.statusToggle {
+    display: flex;
+    align-items: center;
+}
+
+.toggleSwitch {
+    position: relative;
+    display: inline-block;
+    width: 42px;
+    height: 22px;
+    margin-right: 10px;
+}
+
+.toggleSwitch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggleSlider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #e5e7eb;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.toggleSlider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .toggleSlider {
+    background-color: #10b981;
+}
+
+input:checked + .toggleSlider:before {
+    transform: translateX(18px);
+}
+
+.toggleLabel {
+    font-size: 0.85rem;
+    color: #4b5563;
+}
+
+.timeInputWrapper {
+    position: relative;
+}
+
+.timeInput {
+    padding: 8px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    width: 140px;
+    transition: all 0.2s ease;
+}
+
+.timeInput:focus {
+    outline: none;
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.timeInput.disabled {
+    background-color: #f3f4f6;
+    color: #9ca3af;
+    cursor: not-allowed;
+}
+
+.timeDisplay {
+    font-family: monospace;
+    font-size: 0.95rem;
+}
+
+.saveButtonContainer {
+    padding: 20px 24px;
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid #f3f4f6;
+}
+
+.saveButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #4f46e5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.saveButton:hover {
+    background-color: #4338ca;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(79, 70, 229, 0.2);
+}
+
+.saveIcon {
+    margin-right: 8px;
+    font-size: 1rem;
+}

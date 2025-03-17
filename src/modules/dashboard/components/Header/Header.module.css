@@ -1,0 +1,163 @@
+
+.appHeader {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    height: 64px;
+    padding: 0 24px;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+    position: relative;
+    z-index: 10;
+}
+
+.headerTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0;
+    flex: 1;
+}
+
+.headerTitleWithIcon {
+    display: flex;
+    align-items: center;
+}
+
+.headerIcon {
+    margin-right: 12px;
+    width: 24px;
+    height: 24px;
+    color: #4f46e5;
+}
+
+.headerControls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.modeLabel {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #4b5563;
+}
+
+.toggleContainer {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 24px;
+}
+
+.toggleInput {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggleSlider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #d1d5db;
+    transition: 0.3s;
+    border-radius: 24px;
+}
+
+.toggleSlider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: 0.3s;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.toggleInput:checked + .toggleSlider {
+    background-color: #4f46e5;
+}
+
+.toggleInput:checked + .toggleSlider:before {
+    transform: translateX(24px);
+}
+
+.toggleInput:focus + .toggleSlider {
+    box-shadow: 0 0 1px #4f46e5;
+}
+
+.headerButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.primaryButton {
+    background-color: #4f46e5;
+    color: white;
+}
+
+.primaryButton:hover {
+    background-color: #4338ca;
+}
+
+.primaryButton:active {
+    transform: translateY(1px);
+}
+
+.secondaryButton {
+    background-color: #f3f4f6;
+    color: #1f2937;
+}
+
+.secondaryButton:hover {
+    background-color: #e5e7eb;
+}
+
+.secondaryButton:active {
+    transform: translateY(1px);
+}
+
+.headerButtonIcon {
+    margin-right: 8px;
+    width: 16px;
+    height: 16px;
+}
+
+.headerBadge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 8px;
+    background-color: #ef4444;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 9999px;
+    min-width: 20px;
+    height: 20px;
+}
+
+@media (max-width: 640px) {
+    .appHeader {
+        padding: 0 16px;
+    }
+
+    .headerTitle {
+        font-size: 1.125rem;
+    }
+}

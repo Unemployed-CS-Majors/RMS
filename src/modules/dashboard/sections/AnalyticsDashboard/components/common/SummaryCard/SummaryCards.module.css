@@ -1,0 +1,80 @@
+.summaryCards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+}
+
+.summaryCard {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.summaryIcon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-right: 16px;
+    flex-shrink: 0;
+}
+
+.revenueIcon {
+    background-color: rgba(79, 70, 229, 0.1);
+    color: #4f46e5;
+}
+
+.ordersIcon {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+}
+
+.reservationsIcon {
+    background-color: rgba(245, 158, 11, 0.1);
+    color: #f59e0b;
+}
+
+.summaryData {
+    flex: 1;
+}
+
+.summaryTitle {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #6b7280;
+    margin: 0 0 4px 0;
+}
+
+.summaryValue {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0 0 4px 0;
+}
+
+.summarySubtext {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin: 0;
+}
+
+.summaryChange {
+    font-size: 0.875rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.summaryChange.positive {
+    color: #10b981;
+}
+
+.summaryChange.negative {
+    color: #ef4444;
+}

@@ -1,4 +1,43 @@
-/*@tailwind base;*/
-@tailwind components;
-/*@tailwind utilities;*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
+:root {
+    --primary: #ff7d05;
+    --primary-light: #ffebdc;
+    --primary-dark: #e66b04;
+    --text-dark: #2d3142;
+    --text-medium: #4f5464;
+    --text-light: #767b91;
+    --white: #ffffff;
+    --gray-light: #f8f9fa;
+    --gray-medium: #e9ecef;
+    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 15px 40px rgba(0, 0, 0, 0.12);
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --transition: all 0.3s ease;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+button, input {
+    font-family: inherit;
+}
+
+input, button, textarea, select {
+    max-width: 100%;
+}
+
+.input-container {
+    width: 100%;
+    max-width: 100%;
+}
+
+input:focus, button:focus {
+    outline: none;
+}

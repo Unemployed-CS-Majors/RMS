@@ -1,7 +1,12 @@
 import axiosInstance from '../config/apiConfig';
 
 const floorPlanService = {
-    get : async () => {
+    /**
+     * Retrieves the floor plan data
+     *
+     * @returns {Promise<Object>} The floor plan data
+     */
+    get: async () => {
         const response = await axiosInstance.get(`/floorPlan`);
         return response.data.data;
     }

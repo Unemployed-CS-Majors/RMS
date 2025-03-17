@@ -1,0 +1,129 @@
+.elementDetails {
+    position: absolute;
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    width: 250px;
+    z-index: 1000;
+    overflow: hidden;
+    animation: fadeIn 0.2s ease-out;
+    border: 1px solid #e0e0e0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.elementDetailsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f5f7f9;
+    padding: 10px 15px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.elementDetailsHeader h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.closeButton {
+    background: none;
+    border: none;
+    font-size: 20px;
+    line-height: 20px;
+    cursor: pointer;
+    color: #666;
+    padding: 0;
+    margin: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.closeButton:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: #333;
+}
+
+.elementDetailsContent {
+    padding: 15px;
+}
+
+.elementDetailsContent p {
+    margin: 8px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.elementDetailsActions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.actionButton {
+    flex: 1 0 calc(50% - 8px);
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    color: white;
+}
+
+.buttonIcon {
+    margin-right: 6px;
+    font-size: 14px;
+}
+
+.rotateButton {
+    background-color: #4a90e2;
+}
+
+.rotateButton:hover {
+    background-color: #3a7bc8;
+}
+
+.deleteButton {
+    background-color: #e74c3c;
+}
+
+.deleteButton:hover {
+    background-color: #c0392b;
+}
+
+.activateButton {
+    background-color: #2ecc71;
+}
+
+.activateButton:hover {
+    background-color: #27ae60;
+}
+
+.deactivateButton {
+    background-color: #f39c12;
+}
+
+.deactivateButton:hover {
+    background-color: #e67e22;
+}
