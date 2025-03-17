@@ -2,7 +2,13 @@ import React from "react";
 import styles from "./ErrorState.module.css";
 
 /**
- * ErrorState component for displaying error messages
+ * ErrorState component
+ *
+ * Displays an error message with an icon.
+ *
+ * @param {Object} props - The component props
+ * @param {string} props.message - The error message to display
+ * @returns {JSX.Element} The ErrorState component
  */
 const ErrorState = ({ message }) => {
     return (

@@ -6,6 +6,20 @@ import doorService from "../../../../../services/door.service";
 import windowService from "../../../../../services/window.service";
 import { DrawingMode } from '../../../../../constants/drawingModes';
 
+/**
+ * Custom hook for managing element handlers in the floor plan designer
+ *
+ * @param {Array} tables - List of tables
+ * @param {Function} setTables - Function to set the list of tables
+ * @param {Array} walls - List of walls
+ * @param {Function} setWalls - Function to set the list of walls
+ * @param {Array} doors - List of doors
+ * @param {Function} setDoors - Function to set the list of doors
+ * @param {Array} windows - List of windows
+ * @param {Function} setWindows - Function to set the list of windows
+ * @param {Function} getCursorPosition - Function to get the cursor position relative to the SVG
+ * @returns {Object} The element handlers
+ */
 export const useElementHandlers = (tables, setTables, walls, setWalls, doors, setDoors, windows, setWindows, getCursorPosition) => {
     const [isDragging, setIsDragging] = useState(false);
     const [draggedItem, setDraggedItem] = useState(null);

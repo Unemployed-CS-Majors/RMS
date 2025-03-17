@@ -2,6 +2,20 @@ import React from "react";
 import { FaSearch, FaTimes, FaFilter } from "react-icons/fa";
 import styles from "./SearchBar.module.css";
 
+/**
+ * SearchBar component
+ *
+ * Renders a search bar with an input field for searching food, categories, or allergens.
+ * Includes a button to clear the search term and a button to toggle allergen filters.
+ *
+ * @param {Object} props - The component props
+ * @param {string} props.searchTerm - The current search term
+ * @param {Function} props.setSearchTerm - Function to set the search term
+ * @param {boolean} props.showAllergenFilter - Whether the allergen filter is shown
+ * @param {Function} props.toggleAllergenFilter - Function to toggle the allergen filter
+ * @param {Array} props.excludedAllergens - The list of excluded allergens
+ * @returns {JSX.Element} The SearchBar component
+ */
 const SearchBar = ({
                        searchTerm,
                        setSearchTerm,

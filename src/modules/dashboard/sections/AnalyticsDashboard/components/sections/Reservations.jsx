@@ -5,6 +5,21 @@ import { MetricsGrid } from '../charts/MetricsDisplay';
 import { formatPercent, getFullDayName } from '../../../../../shared/utils/formatters';
 import styles from '../charts/ChartComponents.module.css';
 
+/**
+ * Reservations component for displaying analytics data related to reservations
+ *
+ * @param {Object} props - Component props
+ * @param {Object} props.analyticsData - Analytics data for reservations
+ * @param {Object} props.analyticsData.reservationAnalytics - Reservation analytics data
+ * @param {Object} props.analyticsData.reservationAnalytics.reservationsByDayOfWeek - Reservations grouped by day of the week
+ * @param {Object} props.analyticsData.reservationAnalytics.reservationsByStatus - Reservations grouped by status
+ * @param {Object} props.analyticsData.reservationAnalytics.tablePopularity - Table popularity data
+ * @param {number} props.analyticsData.reservationAnalytics.totalReservations - Total number of reservations
+ * @param {number} props.analyticsData.reservationAnalytics.averagePartySize - Average party size for reservations
+ * @param {number} props.analyticsData.reservationAnalytics.cancellationRate - Cancellation rate for reservations
+ * @param {number} props.timeRange - Time range for the analytics data
+ * @returns {JSX.Element} The Reservations component
+ */
 const Reservations = ({ analyticsData, timeRange }) => {
     const reservationsByDayData = Object.entries(analyticsData.reservationAnalytics.reservationsByDayOfWeek)
         .map(([day, count]) => ({

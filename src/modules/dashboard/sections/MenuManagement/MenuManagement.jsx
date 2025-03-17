@@ -5,6 +5,21 @@ import MenuItemDialog from './components/MenuItemDialog/MenuItemDialog';
 import menuService from '../../../../services/menuItem.service';
 import LoadingIndicator from '../Loading/LoadingIndicator';
 
+/**
+ * MenuManagement component for managing menu items
+ *
+ * @param {Object} props - Component props
+ * @param {Array} props.menuItems - List of menu items
+ * @param {Function} props.createMenuItem - Function to create a new menu item
+ * @param {Function} props.updateMenuItem - Function to update an existing menu item
+ * @param {Function} props.deleteMenuItem - Function to delete a menu item
+ * @param {boolean} props.showDialog - Flag indicating if the dialog is shown
+ * @param {Object} props.editingItem - The menu item being edited
+ * @param {Function} props.setShowDialog - Function to set the showDialog state
+ * @param {Function} props.startEditItem - Function to start editing a menu item
+ * @param {boolean} props.loading - Flag indicating if the data is loading
+ * @returns {JSX.Element} The MenuManagement component
+ */
 const MenuManagement = ({
                             menuItems,
                             createMenuItem,
@@ -72,10 +87,18 @@ const MenuManagement = ({
         filterItems();
     }, [filterType, searchTerm, menuItems]);
 
+    /**
+     * Handle search input change
+     *
+     * @param {Object} e - The event object
+     */
     const handleSearchChange = (e) => {
         setSearchTerm(e.target.value);
     };
 
+    /**
+     * Clear the search input
+     */
     const clearSearch = () => {
         setSearchTerm('');
     };

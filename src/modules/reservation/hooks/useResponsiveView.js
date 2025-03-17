@@ -1,12 +1,17 @@
-import { useState, useEffect, useContext } from 'react';
-import reservationService from '../../../services/reservation.service';
-import { AuthContext } from '../../shared/contexts/AuthContext';
+import { useEffect, useState } from 'react';
 
-// Hook for managing device responsiveness
+/**
+ * Custom hook for managing device responsiveness.
+ *
+ * @returns {boolean} True if the device is mobile, otherwise false.
+ */
 export const useResponsiveView = () => {
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
+        /**
+         * Handles the window resize event to update the isMobile state.
+         */
         const handleResize = () => {
             setIsMobile(window.innerWidth <= 768);
         };

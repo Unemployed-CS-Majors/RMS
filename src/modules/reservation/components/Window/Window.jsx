@@ -1,6 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+/**
+ * Window component
+ *
+ * Renders a window with specified coordinates, dimensions, type, and state.
+ *
+ * @param {Object} props - The component props
+ * @param {number} props.x - The x-coordinate of the window's position
+ * @param {number} props.y - The y-coordinate of the window's position
+ * @param {number} [props.width=60] - The width of the window
+ * @param {number} [props.height=10] - The height of the window
+ * @param {number} [props.wallThickness=8] - The thickness of the wall
+ * @param {number} [props.rotation=0] - The rotation angle of the window in degrees
+ * @param {string} [props.windowType='fixed'] - The type of the window ('fixed', 'sliding', 'casement', 'bay')
+ * @param {boolean} [props.isOpen=false] - Flag to indicate if the window is open
+ * @param {number} [props.openPercentage=50] - The percentage the window is open
+ * @param {boolean} [props.isSelected=false] - Flag to indicate if the window is selected
+ * @param {Function} [props.onClick=() => {}] - The function to call when the window is clicked
+ * @param {string} props.id - The unique identifier for the window
+ * @returns {JSX.Element} The Window component
+ */
 const Window = ({
                     x,
                     y,
@@ -8,12 +28,11 @@ const Window = ({
                     height = 10,
                     wallThickness = 8,
                     rotation = 0,
-                    windowType = 'fixed', // 'fixed', 'sliding', 'casement', 'bay'
+                    windowType = 'fixed',
                     isOpen = false,
                     openPercentage = 50,
                     isSelected = false,
-                    onClick = () => {
-                    },
+                    onClick = () => {},
                     id
                 }) => {
     // Window styles
@@ -43,19 +62,16 @@ const Window = ({
             onClick={handleClick}
         >
             <defs>
-                {}
                 <pattern id={`glass-pattern-${id}`} patternUnits="userSpaceOnUse" width="10" height="10">
                     <rect width="10" height="10" fill={glassColor} fillOpacity="0.4"/>
                     <line x1="0" y1="0" x2="10" y2="10" stroke="white" strokeWidth="0.5" strokeOpacity="0.1"/>
                     <line x1="10" y1="0" x2="0" y2="10" stroke="white" strokeWidth="0.5" strokeOpacity="0.1"/>
                 </pattern>
 
-                {}
                 <filter id={`window-shadow-${id}`} x="-20%" y="-20%" width="140%" height="140%">
                     <feDropShadow dx="1" dy="1" stdDeviation="1" floodOpacity="0.3"/>
                 </filter>
 
-                {}
                 <filter id={`glass-reflection-${id}`}>
                     <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur"/>
                     <feSpecularLighting result="specOut" in="blur" specularExponent="20" lightingColor="white">
@@ -65,7 +81,6 @@ const Window = ({
                 </filter>
             </defs>
 
-            {}
             {isSelected && (
                 <rect
                     x={centerX - wallThickness / 2 - 2}
@@ -80,7 +95,6 @@ const Window = ({
                 />
             )}
 
-            {}
             <rect
                 x={centerX - wallThickness / 2}
                 y={centerY - width / 2}
@@ -91,10 +105,8 @@ const Window = ({
                 strokeWidth="0.75"
             />
 
-            {}
             {windowType === 'fixed' && (
                 <>
-                    {}
                     <rect
                         x={centerX - wallThickness / 2}
                         y={centerY - width / 2}
@@ -105,7 +117,6 @@ const Window = ({
                         strokeWidth="1"
                     />
 
-                    {}
                     <rect
                         x={centerX - wallThickness / 2 + 2}
                         y={centerY - width / 2 + 2}
@@ -129,10 +140,8 @@ const Window = ({
                 </>
             )}
 
-            {}
             {windowType === 'sliding' && (
                 <>
-                    {}
                     <rect
                         x={centerX - wallThickness / 2}
                         y={centerY - width / 2}
@@ -143,7 +152,6 @@ const Window = ({
                         strokeWidth="1"
                     />
 
-                    {}
                     <line
                         x1={centerX - wallThickness / 2}
                         y1={centerY}
@@ -153,7 +161,6 @@ const Window = ({
                         strokeWidth="1"
                     />
 
-                    {}
                     <rect
                         x={centerX - wallThickness / 2 + 2}
                         y={centerY - width / 2 + 2}
@@ -165,7 +172,6 @@ const Window = ({
                         filter={`url(#glass-reflection-${id})`}
                     />
 
-                    {}
                     <rect
                         x={centerX - wallThickness / 2 + 2 + slidingOffset}
                         y={centerY + 1}
@@ -179,10 +185,8 @@ const Window = ({
                 </>
             )}
 
-            {}
             {windowType === 'casement' && (
                 <>
-                    {}
                     <rect
                         x={centerX - wallThickness / 2}
                         y={centerY - width / 2}
@@ -193,7 +197,6 @@ const Window = ({
                         strokeWidth="1"
                     />
 
-                    {}
                     <rect
                         x={centerX - wallThickness / 2 + 2}
                         y={centerY - width / 2 + 2}
@@ -205,7 +208,6 @@ const Window = ({
                         filter={`url(#glass-reflection-${id})`}
                     />
 
-                    {}
                     <rect
                         x={centerX + 1}
                         y={centerY - width / 2 + 2}
@@ -220,10 +222,8 @@ const Window = ({
                 </>
             )}
 
-            {}
             {windowType === 'bay' && (
                 <>
-                    {}
                     <rect
                         x={centerX - wallThickness / 2}
                         y={centerY - width / 2}
@@ -234,7 +234,6 @@ const Window = ({
                         strokeWidth="1"
                     />
 
-                    {}
                     <polygon
                         points={`
               ${centerX - wallThickness / 2}, ${centerY - width / 2}
@@ -247,7 +246,6 @@ const Window = ({
                         strokeWidth="1"
                     />
 
-                    {}
                     <polygon
                         points={`
               ${centerX + wallThickness / 2}, ${centerY - width / 2}
@@ -260,7 +258,6 @@ const Window = ({
                         strokeWidth="1"
                     />
 
-                    {}
                     <rect
                         x={centerX - wallThickness / 2 + 2}
                         y={centerY - width / 2 + 2}
@@ -272,7 +269,6 @@ const Window = ({
                         filter={`url(#glass-reflection-${id})`}
                     />
 
-                    {}
                     <polygon
                         points={`
               ${centerX - wallThickness / 2 + 2}, ${centerY - width / 2 + 2}
@@ -286,7 +282,6 @@ const Window = ({
                         filter={`url(#glass-reflection-${id})`}
                     />
 
-                    {}
                     <polygon
                         points={`
               ${centerX + wallThickness / 2 - 2}, ${centerY - width / 2 + 2}
@@ -302,7 +297,6 @@ const Window = ({
                 </>
             )}
 
-            {}
             <text
                 x={centerX}
                 y={centerY}

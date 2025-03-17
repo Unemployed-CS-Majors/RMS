@@ -1,6 +1,21 @@
 import React from 'react';
 import styles from './SummaryCards.module.css';
 
+/**
+ * SummaryCards component for displaying dashboard summary information
+ *
+ * @param {Object} props - Component props
+ * @param {Object} props.dashboardSummary - Summary data for the dashboard
+ * @param {number} props.dashboardSummary.todayRevenue - Revenue for today
+ * @param {number} props.dashboardSummary.revenueChange - Percentage change in revenue from yesterday
+ * @param {number} props.dashboardSummary.todayOrders - Number of orders for today
+ * @param {number} props.dashboardSummary.activeOrdersCount - Number of active orders
+ * @param {number} props.dashboardSummary.todayReservationsCount - Number of reservations for today
+ * @param {Object} props.operationalAnalytics - Operational analytics data
+ * @param {Object} props.operationalAnalytics.currentStats - Current operational statistics
+ * @param {number} props.operationalAnalytics.currentStats.tableUtilizationRate - Table utilization rate
+ * @returns {JSX.Element} The SummaryCards component
+ */
 const SummaryCards = ({ dashboardSummary, operationalAnalytics }) => {
     return (
         <div className={styles.summaryCards}>

@@ -12,6 +12,13 @@ import useCheckout from '../hooks/useCheckout';
 import useUserDetails from '../hooks/useUserDetails';
 import styles from './Checkout.module.css';
 
+/**
+ * Checkout component handles the checkout process, including displaying personal details,
+ * collection method, payment method, and order summary. It also manages the state and operations
+ * related to the checkout process.
+ *
+ * @returns {JSX.Element} The rendered Checkout component.
+ */
 const Checkout = () => {
   const navigate = useNavigate();
   const {
@@ -49,17 +56,21 @@ const Checkout = () => {
     closeModal
   } = useCheckout(cartItems, clearCart);
 
-  // Redirect to menu if cart is empty
+  // Scroll to top on component mount
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  // Redirect to menu if cart is empty
   useEffect(() => {
     if (cartItems.length === 0) {
       navigate('/menu');
     }
   }, [cartItems, navigate]);
 
+  /**
+   * Handles navigation back to the menu page.
+   */
   const handleBackToMenu = () => {
     if (cartItems.length !== 0) {
       navigate('/menu');

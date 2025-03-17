@@ -6,12 +6,17 @@ import TableNumberModal from './components/TableNumberModal/TableNumberModal';
 import {tableTypes} from '../../../../constants/tableTypes';
 import {DrawingMode} from '../../../../constants/drawingModes';
 import FloorPlanCanvas from './components/FloorPlanCanvas/FloorPlanCanvas';
-
-// Import custom hooks
 import {useFloorPlanData} from './hooks/useFloorPlanData';
 import {useElementHandlers} from './hooks/useElementHandlers';
 import {useCanvasUtils} from './hooks/useCanvasUtils';
 
+/**
+ * FloorPlanDesigner component for designing the floor plan
+ *
+ * @param {Object} props - Component props
+ * @param {boolean} props.editMode - Flag indicating if edit mode is enabled
+ * @returns {JSX.Element} The FloorPlanDesigner component
+ */
 const FloorPlanDesigner = ({ editMode }) => {
     // Drawing mode and table type selection
     const [currentDrawingMode, setCurrentDrawingMode] = useState(DrawingMode.SELECT);
@@ -66,7 +71,11 @@ const FloorPlanDesigner = ({ editMode }) => {
         getCursorPosition
     );
 
-    // Modified handler for adding a table
+    /**
+     * Handler for adding a table
+     *
+     * @param {Object} event - The event object
+     */
     const handleAddTable = (event) => {
         if (currentDrawingMode !== DrawingMode.TABLE) return;
 
@@ -81,7 +90,11 @@ const FloorPlanDesigner = ({ editMode }) => {
         setShowTableModal(true);
     };
 
-    // Handler for modal confirmation
+    /**
+     * Handler for modal confirmation
+     *
+     * @param {number} tableNum - The table number
+     */
     const handleTableModalConfirm = (tableNum) => {
         if (pendingTableEvent && tableNum) {
             // Call the addTable function with the saved event, current drawing mode, selected table type, and the table number
@@ -93,7 +106,9 @@ const FloorPlanDesigner = ({ editMode }) => {
         setPendingTableEvent(null);
     };
 
-    // Handler for modal cancellation
+    /**
+     * Handler for modal cancellation
+     */
     const handleTableModalCancel = () => {
         setShowTableModal(false);
         setPendingTableEvent(null);

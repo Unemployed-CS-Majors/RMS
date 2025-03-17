@@ -1,8 +1,24 @@
 import React from 'react';
 import styles from './OrderList.module.css';
 
-const OrderList = ({orders, onSelectOrder, onStatusUpdate}) => {
-    // Function to format date and time
+/**
+ * OrderList component
+ *
+ * Displays a list of orders with details and actions.
+ *
+ * @param {Object} props - Component props
+ * @param {Array} props.orders - List of orders to display
+ * @param {Function} props.onSelectOrder - Function to handle order selection
+ * @param {Function} props.onStatusUpdate - Function to handle status updates
+ * @returns {JSX.Element} The OrderList component
+ */
+const OrderList = ({ orders, onSelectOrder, onStatusUpdate }) => {
+    /**
+     * Format date and time for display
+     *
+     * @param {number} timestamp - The timestamp to format
+     * @returns {string} The formatted date and time string
+     */
     const formatDateTime = (timestamp) => {
         const date = new Date(timestamp);
         return new Intl.DateTimeFormat('en-US', {
@@ -14,7 +30,12 @@ const OrderList = ({orders, onSelectOrder, onStatusUpdate}) => {
         }).format(date);
     };
 
-    // Function to determine badge color based on status
+    /**
+     * Determine badge color class based on status
+     *
+     * @param {string} status - The status of the order
+     * @returns {string} The CSS class for the status badge
+     */
     const getStatusBadgeClass = (status) => {
         switch (status) {
             case 'pending_payment':
@@ -36,14 +57,24 @@ const OrderList = ({orders, onSelectOrder, onStatusUpdate}) => {
         }
     };
 
-    // Function to format status for display
+    /**
+     * Format status for display
+     *
+     * @param {string} status - The status of the order
+     * @returns {string} The formatted status string
+     */
     const formatStatus = (status) => {
         return status.split('_').map(word =>
             word.charAt(0).toUpperCase() + word.slice(1)
         ).join(' ');
     };
 
-    // Function to format payment method for display
+    /**
+     * Format payment method for display
+     *
+     * @param {string} method - The payment method
+     * @returns {string} The formatted payment method string
+     */
     const formatPaymentMethod = (method) => {
         switch (method) {
             case 'online':
@@ -57,7 +88,12 @@ const OrderList = ({orders, onSelectOrder, onStatusUpdate}) => {
         }
     };
 
-    // Function to format delivery method for display
+    /**
+     * Format delivery method for display
+     *
+     * @param {string} method - The delivery method
+     * @returns {string} The formatted delivery method string
+     */
     const formatDeliveryMethod = (method) => {
         switch (method) {
             case 'home_delivery':

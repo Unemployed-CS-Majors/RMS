@@ -11,6 +11,18 @@ import {
 import styles from './PaymentMethod.module.css';
 import { AuthContext } from "../../../shared/contexts/AuthContext";
 
+/**
+ * PaymentMethod component renders the payment method selection step in the checkout process.
+ *
+ * @param {Object} props - The properties object.
+ * @param {boolean} props.isOpen - Flag indicating if the step content is open.
+ * @param {Function} props.toggleContent - Function to toggle the step content visibility.
+ * @param {boolean} props.isCompleted - Flag indicating if the step is completed.
+ * @param {string} props.collectionMethod - The selected collection method ('pickup' or 'home_delivery').
+ * @param {string} props.paymentMethod - The selected payment method ('online', 'in_store', or 'cash_on_delivery').
+ * @param {Function} props.handlePaymentMethodChange - Function to handle the change of payment method.
+ * @returns {JSX.Element} The rendered PaymentMethod component.
+ */
 const PaymentMethod = ({
                            isOpen,
                            toggleContent,
@@ -21,7 +33,12 @@ const PaymentMethod = ({
                        }) => {
     const { config } = useContext(AuthContext);
 
-    // Extract payment-related feature flags
+    /**
+     * Checks if a feature is enabled based on the feature name.
+     *
+     * @param {string} featureName - The name of the feature to check.
+     * @returns {boolean} True if the feature is enabled, false otherwise.
+     */
     const isFeatureEnabled = (featureName) => {
         if (!config?.features || !Array.isArray(config.features)) return false;
         const feature = config.features.find(f => f.name === featureName);

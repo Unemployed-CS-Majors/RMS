@@ -3,6 +3,16 @@ import styles from './RestaurantConfig.module.css';
 import { useRestaurantConfig } from '../../hooks/useRestaurantConfig';
 import LoadingIndicator from '../Loading/LoadingIndicator';
 
+/**
+ * RestaurantConfig component
+ *
+ * Manages the restaurant configuration settings including contact information, address, map location, and features.
+ *
+ * @param {Object} props - Component props
+ * @param {boolean} props.loading - Flag indicating if the configuration is loading
+ * @param {Function} props.setLoading - Function to set the loading state
+ * @returns {JSX.Element} The RestaurantConfig component
+ */
 const RestaurantConfig = ({ loading, setLoading }) => {
     // Use the custom hook
     const {

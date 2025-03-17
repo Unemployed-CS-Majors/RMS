@@ -2,14 +2,30 @@ import React, { useState, useEffect } from 'react';
 import LoadingIndicator from '../../../Loading/LoadingIndicator';
 import styles from './OrderDetails.module.css';
 
+/**
+ * OrderDetails component
+ *
+ * Displays detailed information about an order, including items, status, and actions to update the status.
+ *
+ * @param {Object} props - Component props
+ * @param {Object} props.order - The order object containing order details
+ * @param {Array} props.orderItems - List of items in the order
+ * @param {boolean} props.loading - Flag indicating if the order details are loading
+ * @param {Function} props.onClose - Function to close the order details view
+ * @param {Function} props.onStatusUpdate - Function to update the order status
+ * @returns {JSX.Element} The OrderDetails component
+ */
 const OrderDetails = ({ order, orderItems, loading, onClose, onStatusUpdate }) => {
     const [updatingStatus, setUpdatingStatus] = useState(false);
     const [updatingStatusId, setUpdatingStatusId] = useState(null);
 
-    // Get available next status options based on current status
+    /**
+     * Get available next status options based on current status
+     *
+     * @param {string} currentStatus - The current status of the order
+     * @returns {Array} List of available status transitions
+     */
     const getAvailableStatusTransitions = (currentStatus) => {
-        // Define status transitions
-        // This prevents skipping steps in the order process
         const statusTransitions = {
             'pending_payment': ['paid', 'canceled'],
             'paid': ['in_progress', 'canceled'],
@@ -24,11 +40,15 @@ const OrderDetails = ({ order, orderItems, loading, onClose, onStatusUpdate }) =
             return [];
         }
 
-        // Return only the statuses that are valid transitions from the current status
         return statusTransitions[currentStatus];
     };
 
-    // Format date for display
+    /**
+     * Format date for display
+     *
+     * @param {number} timestamp - The timestamp to format
+     * @returns {string} The formatted date string
+     */
     const formatDate = (timestamp) => {
         if (!timestamp) return 'N/A';
         const date = new Date(timestamp);
@@ -41,7 +61,11 @@ const OrderDetails = ({ order, orderItems, loading, onClose, onStatusUpdate }) =
         }).format(date);
     };
 
-    // Handle status button click
+    /**
+     * Handle status button click
+     *
+     * @param {string} newStatus - The new status to set
+     */
     const handleStatusButtonClick = async (newStatus) => {
         if (newStatus === order.status) return;
 
@@ -52,7 +76,12 @@ const OrderDetails = ({ order, orderItems, loading, onClose, onStatusUpdate }) =
         setUpdatingStatusId(null);
     };
 
-    // Format delivery method for display
+    /**
+     * Format delivery method for display
+     *
+     * @param {string} method - The delivery method
+     * @returns {string} The formatted delivery method
+     */
     const formatDeliveryMethod = (method) => {
         switch (method) {
             case 'home_delivery':
@@ -64,7 +93,12 @@ const OrderDetails = ({ order, orderItems, loading, onClose, onStatusUpdate }) =
         }
     };
 
-    // Format payment method for display
+    /**
+     * Format payment method for display
+     *
+     * @param {string} method - The payment method
+     * @returns {string} The formatted payment method
+     */
     const formatPaymentMethod = (method) => {
         switch (method) {
             case 'online':
@@ -78,7 +112,12 @@ const OrderDetails = ({ order, orderItems, loading, onClose, onStatusUpdate }) =
         }
     };
 
-    // Get status button color class
+    /**
+     * Get status button color class
+     *
+     * @param {string} status - The status
+     * @returns {string} The CSS class for the status button
+     */
     const getStatusButtonClass = (status) => {
         switch (status) {
             case 'paid':
@@ -98,7 +137,12 @@ const OrderDetails = ({ order, orderItems, loading, onClose, onStatusUpdate }) =
         }
     };
 
-    // Get button label for status
+    /**
+     * Get button label for status
+     *
+     * @param {string} status - The status
+     * @returns {string} The label for the status button
+     */
     const getStatusButtonLabel = (status) => {
         switch (status) {
             case 'paid':
@@ -268,7 +312,12 @@ const OrderDetails = ({ order, orderItems, loading, onClose, onStatusUpdate }) =
     );
 };
 
-// Helper function to get status badge class
+/**
+ * Helper function to get status badge class
+ *
+ * @param {string} status - The status
+ * @returns {string} The CSS class for the status badge
+ */
 function getStatusClass(status) {
     switch (status) {
         case 'pending_payment':
@@ -290,7 +339,12 @@ function getStatusClass(status) {
     }
 }
 
-// Helper function to format status text
+/**
+ * Helper function to format status text
+ *
+ * @param {string} status - The status
+ * @returns {string} The formatted status text
+ */
 function formatStatusText(status) {
     return status.split('_').map(word =>
         word.charAt(0).toUpperCase() + word.slice(1)

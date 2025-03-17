@@ -2,6 +2,32 @@ import React, { useEffect, useState } from 'react';
 import styles from './TableComponent.module.css';
 import TableWithChairs from '../../../../../reservation/components/TableWithChairs/TableWithChairs';
 
+/**
+ * TableComponent for rendering a table element in the floor plan
+ *
+ * @param {Object} props - Component props
+ * @param {Object} props.table - Table data
+ * @param {number} props.table.id - Unique identifier for the table
+ * @param {number} props.table.intId - Internal ID of the table
+ * @param {number} props.table.x - X-coordinate of the table
+ * @param {number} props.table.y - Y-coordinate of the table
+ * @param {Object} props.table.type - Type of the table
+ * @param {boolean} props.table.isActive - Flag indicating if the table is active
+ * @param {number} [props.table.rotation=0] - Rotation angle of the table
+ * @param {string} props.table.tabeleNum - Table number label
+ * @param {boolean} props.editMode - Flag indicating if edit mode is enabled
+ * @param {string} props.currentDrawingMode - The current drawing mode
+ * @param {boolean} props.isDragging - Flag indicating if an element is being dragged
+ * @param {Object} props.draggedItem - The currently dragged item
+ * @param {Function} props.showElementDetails - Function to show details of the table element
+ * @param {Function} props.startDragElement - Function to start dragging the table element
+ * @param {Object} props.svgRef - Reference to the SVG element
+ * @param {boolean} props.isNew - Flag indicating if the table is newly created
+ * @param {boolean} props.isDeleting - Flag indicating if the table is being deleted
+ * @param {boolean} props.isActivating - Flag indicating if the table is being activated
+ * @param {boolean} props.isDeactivating - Flag indicating if the table is being deactivated
+ * @returns {JSX.Element} The TableComponent
+ */
 const TableComponent = ({
                             table,
                             editMode,

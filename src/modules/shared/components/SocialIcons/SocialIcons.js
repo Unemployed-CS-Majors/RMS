@@ -5,7 +5,13 @@ import PropTypes from 'prop-types';
 import styles from './SocialIcons.module.css';
 
 /**
- * Component for displaying social media icons with consistent styling
+ * SocialIcons component
+ *
+ * Displays social media icons with consistent styling.
+ *
+ * @param {Object} props - The component props
+ * @param {string} [props.className] - Additional class names for custom styling
+ * @returns {JSX.Element} The SocialIcons component
  */
 const SocialIcons = ({ className = '' }) => {
     return (

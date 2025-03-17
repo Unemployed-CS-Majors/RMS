@@ -1,6 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+/**
+ * Door component
+ *
+ * Renders a door with specified position, dimensions, type, and state (open/closed).
+ * Supports different door types: hinged, sliding, and double.
+ *
+ * @param {Object} props - The component props
+ * @param {number} props.x - The x-coordinate of the door's position
+ * @param {number} props.y - The y-coordinate of the door's position
+ * @param {number} [props.width=80] - The width of the door
+ * @param {number} [props.height=30] - The height of the door
+ * @param {number} [props.wallThickness=8] - The thickness of the wall
+ * @param {number} [props.rotation=0] - The rotation angle of the door in degrees
+ * @param {boolean} [props.isOpen=false] - Whether the door is open
+ * @param {number} [props.openPercentage=75] - The percentage the door is open (for sliding doors)
+ * @param {string} [props.doorType='hinged'] - The type of the door ('hinged', 'sliding', 'double')
+ * @param {boolean} [props.isSelected=false] - Whether the door is selected
+ * @param {string} [props.color='#855E42'] - The color of the door
+ * @param {Function} [props.onClick=() => {}] - The function to call when the door is clicked
+ * @param {string} props.id - The unique identifier for the door
+ * @returns {JSX.Element} The Door component
+ */
 const Door = ({
                   x,
                   y,
@@ -10,7 +32,7 @@ const Door = ({
                   rotation = 0,
                   isOpen = false,
                   openPercentage = 75,
-                  doorType = 'hinged', // 'hinged', 'sliding', 'double'
+                  doorType = 'hinged',
                   isSelected = false,
                   color = '#855E42',
                   onClick = () => {},
@@ -54,19 +76,16 @@ const Door = ({
             onClick={handleClick}
         >
             <defs>
-                {}
                 <pattern id={`door-pattern-${id}`} patternUnits="userSpaceOnUse" width="30" height="30">
                     <rect width="30" height="30" fill={doorColor} />
                     <rect x="5" y="5" width="20" height="20" fill={`${doorColor}aa`} stroke={doorBorder} strokeWidth="0.5" />
                 </pattern>
 
-                {}
                 <filter id={`door-shadow-${id}`} x="-20%" y="-20%" width="140%" height="140%">
                     <feDropShadow dx="1" dy="1" stdDeviation="1" floodOpacity="0.3" />
                 </filter>
             </defs>
 
-            {}
             <rect
                 x={centerX - wallThickness / 2}
                 y={centerY - width}
@@ -77,7 +96,6 @@ const Door = ({
                 strokeWidth="0.75"
             />
 
-            {}
             {isOpen && doorType === 'hinged' && (
                 <path
                     d={getDoorSwingPath()}
@@ -89,7 +107,6 @@ const Door = ({
                 />
             )}
 
-            {}
             {isSelected && (
                 <rect
                     x={centerX - wallThickness / 2 - 2}
@@ -104,10 +121,8 @@ const Door = ({
                 />
             )}
 
-            {}
             {doorType === 'hinged' && (
                 <>
-                    {}
                     {!isOpen && (
                         <rect
                             x={centerX - wallThickness / 2}
@@ -121,7 +136,6 @@ const Door = ({
                         />
                     )}
 
-                    {}
                     {isOpen && (
                         <rect
                             x={centerX}
@@ -136,7 +150,6 @@ const Door = ({
                         />
                     )}
 
-                    {}
                     <circle
                         cx={centerX + (wallThickness / 2) - 4}
                         cy={centerY - width + 30}
@@ -149,10 +162,8 @@ const Door = ({
                 </>
             )}
 
-            {}
             {doorType === 'sliding' && (
                 <>
-                    {}
                     <line
                         x1={centerX - wallThickness / 2}
                         y1={centerY - width - 4}
@@ -162,7 +173,6 @@ const Door = ({
                         strokeWidth="2"
                     />
 
-                    {}
                     <rect
                         x={centerX - wallThickness / 2 + (isOpen ? width * (openPercentage / 100) - width : 0)}
                         y={centerY - width}
@@ -174,7 +184,6 @@ const Door = ({
                         filter={`url(#door-shadow-${id})`}
                     />
 
-                    {}
                     <rect
                         x={centerX - wallThickness / 2 + (isOpen ? width * (openPercentage / 100) - width : 0) + wallThickness - 4}
                         y={centerY - width + 40}
@@ -189,10 +198,8 @@ const Door = ({
                 </>
             )}
 
-            {}
             {doorType === 'double' && (
                 <>
-                    {}
                     <rect
                         x={centerX - wallThickness / 2}
                         y={centerY - width}
@@ -205,7 +212,6 @@ const Door = ({
                         filter={`url(#door-shadow-${id})`}
                     />
 
-                    {}
                     <rect
                         x={centerX}
                         y={centerY - width}
@@ -218,7 +224,6 @@ const Door = ({
                         filter={`url(#door-shadow-${id})`}
                     />
 
-                    {}
                     <circle
                         cx={centerX - 2}
                         cy={centerY - width + 40}
@@ -238,7 +243,6 @@ const Door = ({
                 </>
             )}
 
-            {}
             <text
                 x={centerX}
                 y={centerY - width / 2}

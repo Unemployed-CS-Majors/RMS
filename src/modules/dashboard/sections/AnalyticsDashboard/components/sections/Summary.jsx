@@ -5,6 +5,21 @@ import PieChartComponent from '../charts/PieChartComponent';
 import { formatCurrency, formatStatusLabel, getDayName } from '../../../../../shared/utils/formatters';
 import styles from '../charts/ChartComponents.module.css';
 
+/**
+ * Summary component for displaying a summary of various analytics data
+ *
+ * @param {Object} props - Component props
+ * @param {Object} props.analyticsData - Analytics data for the summary
+ * @param {Object} props.analyticsData.revenueAnalytics - Revenue analytics data
+ * @param {Object} props.analyticsData.revenueAnalytics.dailyRevenue - Daily revenue data
+ * @param {Object} props.analyticsData.orderStatusAnalytics - Order status analytics data
+ * @param {Object} props.analyticsData.orderStatusAnalytics.ordersByStatus - Orders grouped by status
+ * @param {Object} props.analyticsData.menuItemAnalytics - Menu item analytics data
+ * @param {Array} props.analyticsData.menuItemAnalytics.topItems - Top menu items by quantity
+ * @param {Object} props.analyticsData.reservationAnalytics - Reservation analytics data
+ * @param {Object} props.analyticsData.reservationAnalytics.reservationsByDayOfWeek - Reservations grouped by day of the week
+ * @returns {JSX.Element} The Summary component
+ */
 const Summary = ({ analyticsData }) => {
     const weeklyRevenueData = Object.entries(analyticsData.revenueAnalytics.dailyRevenue)
         .map(([date, value]) => ({

@@ -1,7 +1,11 @@
 import { useState, useEffect } from 'react';
 import openingHoursService from "../../../services/openingHours.service";
 
-// Custom hook to fetch and manage opening hours
+/**
+ * Custom hook to fetch and manage opening hours.
+ *
+ * @returns {Object} An object containing the opening hours, loading state, and error state.
+ */
 export const useOpeningHours = () => {
     const [openingHours, setOpeningHours] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -26,4 +30,3 @@ export const useOpeningHours = () => {
 
     return { openingHours, isLoading, error };
 };
-

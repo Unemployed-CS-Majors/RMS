@@ -4,6 +4,20 @@ import { MdLocalShipping, MdOutlineDone, MdOutlineKeyboardArrowDown, MdOutlineKe
 import styles from './CollectionMethod.module.css';
 import { AuthContext } from "../../../shared/contexts/AuthContext";
 
+/**
+ * CollectionMethod component renders the collection method selection step in the checkout process.
+ *
+ * @param {Object} props - The properties object.
+ * @param {boolean} props.isOpen - Flag indicating if the step content is open.
+ * @param {Function} props.toggleContent - Function to toggle the step content visibility.
+ * @param {boolean} props.isCompleted - Flag indicating if the step is completed.
+ * @param {string} props.collectionMethod - The selected collection method ('pickup' or 'home_delivery').
+ * @param {boolean} props.isDelivery - Flag indicating if the delivery option is selected.
+ * @param {Object} props.address - The address object containing delivery address details.
+ * @param {Function} props.setAddress - Function to update the address state.
+ * @param {Function} props.handleCollectionMethodChange - Function to handle the change of collection method.
+ * @returns {JSX.Element} The rendered CollectionMethod component.
+ */
 const CollectionMethod = ({
                               isOpen,
                               toggleContent,

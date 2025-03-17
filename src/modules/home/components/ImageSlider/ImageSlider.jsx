@@ -4,6 +4,15 @@ import PropTypes from 'prop-types';
 import useImageSlider from '../../../shared/hooks/useImageSlider';
 import styles from './ImageSlider.module.css';
 
+/**
+ * ImageSlider component
+ *
+ * Displays a slider with images and navigation controls.
+ *
+ * @param {Object} props - Component props
+ * @param {Array<string>} props.imageUrls - Array of image URLs to display in the slider
+ * @returns {JSX.Element} The ImageSlider component
+ */
 const ImageSlider = ({ imageUrls }) => {
     const {
         currentIndex,

@@ -2,7 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Legend.module.css';
 
-// Bottom positioned Legend component
+/**
+ * Legend component
+ *
+ * Renders a legend indicating the availability status with color codes.
+ *
+ * @param {Object} props - The component props
+ * @param {boolean} props.isMobile - Flag to indicate if the view is on a mobile device
+ * @returns {JSX.Element} The Legend component
+ */
 const Legend = ({ isMobile }) => {
     return (
         <div className={`${styles.legendContainer} ${isMobile ? styles.mobile : ''}`}>

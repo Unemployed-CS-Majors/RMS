@@ -2,6 +2,18 @@ import React from "react";
 import MenuItem from "../MenuItem/MenuItem";
 import styles from "./MenuItemsList.module.css";
 
+/**
+ * MenuItemsList component
+ *
+ * Renders a list of menu items. If no items are found, displays a message indicating that no items were found.
+ *
+ * @param {Object} props - The component props
+ * @param {Array} props.filteredItems - The list of filtered menu items to display
+ * @param {Function} props.openItemDetails - Function to open the item details modal
+ * @param {Function} props.addToCart - Function to add an item to the cart
+ * @param {boolean} props.orderEnabled - Whether ordering is enabled
+ * @returns {JSX.Element} The MenuItemsList component
+ */
 const MenuItemsList = ({ filteredItems, openItemDetails, addToCart, orderEnabled }) => {
     if (filteredItems.length === 0) {
         return (

@@ -2,6 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { FiCheckCircle, FiCreditCard } from 'react-icons/fi';
 import styles from './OrderProcessingModal.module.css';
 
+/**
+ * OrderProcessingModal component displays a modal with the order processing status.
+ *
+ * @param {Object} props - The properties object.
+ * @param {boolean} props.isOpen - Flag indicating if the modal is open.
+ * @param {string} props.orderStatus - The current status of the order ('processing', 'success', 'error').
+ * @param {string} props.paymentMethod - The payment method used for the order ('online' or other).
+ * @param {string} props.redirectUrl - The URL to redirect to after successful order processing.
+ * @param {Function} props.onClose - Function to handle closing the modal.
+ * @returns {JSX.Element|null} The rendered OrderProcessingModal component or null if not open.
+ */
 const OrderProcessingModal = ({
                                   isOpen,
                                   orderStatus,

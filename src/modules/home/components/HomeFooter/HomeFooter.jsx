@@ -5,9 +5,16 @@ import SocialIcons from "../../../shared/components/SocialIcons/SocialIcons";
 import useCurrentYear from "../../../shared/hooks/useCurrentYear";
 import {AuthContext} from "../../../shared/contexts/AuthContext";
 
+/**
+ * HomeFooter component
+ *
+ * Displays the footer section of the home page with contact information, quick links, and social media icons.
+ *
+ * @returns {JSX.Element} The HomeFooter component
+ */
 export default function HomeFooter() {
     const { currentYear } = useCurrentYear();
-    const {config} = useContext(AuthContext)
+    const {config} = useContext(AuthContext);
     return (
         <div className={styles.footerContainer}>
             <div className={styles.footerContent}>

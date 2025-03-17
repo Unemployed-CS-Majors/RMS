@@ -12,6 +12,14 @@ import MobileCart from "../components/MobileCart/MobileCart";
 import LoadingIndicator from "../../dashboard/sections/Loading/LoadingIndicator";
 import styles from "./Menu.module.css";
 
+/**
+ * Menu component
+ *
+ * Renders the main menu page with search, filtering, and cart functionalities.
+ * Displays menu items, item details, and handles mobile and desktop cart views.
+ *
+ * @returns {JSX.Element} The Menu component
+ */
 const Menu = () => {
     const {
         // Search & filtering

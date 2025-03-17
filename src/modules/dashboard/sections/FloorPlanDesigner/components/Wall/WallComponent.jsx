@@ -1,6 +1,23 @@
 import React from 'react';
 import styles from './WallComponent.module.css';
 
+/**
+ * WallComponent for rendering a wall element in the floor plan
+ *
+ * @param {Object} props - Component props
+ * @param {Object} props.wall - Wall data
+ * @param {number} props.wall.id - Unique identifier for the wall
+ * @param {number} props.wall.intId - Internal ID of the wall
+ * @param {number} props.wall.x1 - X-coordinate of the wall's starting point
+ * @param {number} props.wall.y1 - Y-coordinate of the wall's starting point
+ * @param {number} props.wall.x2 - X-coordinate of the wall's ending point
+ * @param {number} props.wall.y2 - Y-coordinate of the wall's ending point
+ * @param {boolean} props.editMode - Flag indicating if edit mode is enabled
+ * @param {Function} props.showElementDetails - Function to show details of the wall element
+ * @param {Function} props.startDragElement - Function to start dragging the wall element
+ * @param {Function} props.startResize - Function to start resizing the wall element
+ * @returns {JSX.Element} The WallComponent
+ */
 const WallComponent = ({
                            wall,
                            editMode,

@@ -9,6 +9,14 @@ import ProfileButton from "./ProfileButton/ProfileButton";
 import { FaBars, FaTimes } from "react-icons/fa";
 import styles from "./Navigation.module.css";
 
+/**
+ * Navigation component
+ *
+ * Renders the navigation bar with logo, navigation tabs, and authentication/profile buttons.
+ * Handles mobile and desktop views, and manages navigation based on URL hash.
+ *
+ * @returns {JSX.Element} The Navigation component
+ */
 const Navigation = () => {
     const [currentPage, setCurrentPage] = useState("Home");
     const [isMobile, setIsMobile] = useState(false);
@@ -34,26 +42,43 @@ const Navigation = () => {
         }
     }, [location]);
 
+    /**
+     * Handles the login button click event
+     */
     const handleLoginClick = () => {
         navigate(ROUTES.AUTH);
         setMenuOpen(false);
     };
 
+    /**
+     * Handles the sign-up button click event
+     */
     const handleSignUpClick = () => {
         navigate(ROUTES.AUTH);
         setMenuOpen(false);
     };
 
+    /**
+     * Handles the profile button click event
+     */
     const handleProfileClick = () => {
         navigate(ROUTES.PROFILE);
         setMenuOpen(false);
     };
 
+    /**
+     * Handles the dashboard button click event
+     */
     const handleDashboardClick = () => {
         navigate(ROUTES.ADMIN);
         setMenuOpen(false);
     };
 
+    /**
+     * Handles the current page change event
+     *
+     * @param {string} page - The new current page
+     */
     const handleCurrentPage = (page) => {
         setCurrentPage(page);
         setMenuOpen(false);
@@ -86,6 +111,9 @@ const Navigation = () => {
         }
     }, [isMobile]);
 
+    /**
+     * Toggles the mobile menu open/close state
+     */
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
     };

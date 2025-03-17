@@ -1,6 +1,23 @@
 import React from 'react';
 import styles from './OrderFilters.module.css';
 
+/**
+ * OrderFilters component
+ *
+ * Provides UI for filtering orders by status and date range.
+ *
+ * @param {Object} props - Component props
+ * @param {Array} props.statusOptions - Array of status options for the filter
+ * @param {string} props.currentStatus - Currently selected status filter
+ * @param {Object} props.dateRange - Object containing start and end date for the date range filter
+ * @param {Function} props.onStatusChange - Function to handle status filter change
+ * @param {Function} props.onDateRangeChange - Function to handle date range filter change
+ * @param {boolean} props.isVisible - Flag indicating if the filter panel is visible
+ * @param {Function} props.onClose - Function to close the filter panel
+ * @param {Function} props.onApplyFilters - Function to apply the selected filters
+ * @param {Function} props.onResetFilters - Function to reset the filters
+ * @returns {JSX.Element} The OrderFilters component
+ */
 const OrderFilters = ({
                           statusOptions,
                           currentStatus,
@@ -12,12 +29,20 @@ const OrderFilters = ({
                           onApplyFilters,
                           onResetFilters
                       }) => {
-    // Handle status filter change
+    /**
+     * Handle status filter change
+     *
+     * @param {Object} e - The event object
+     */
     const handleStatusChange = (e) => {
         onStatusChange(e.target.value);
     };
 
-    // Handle date range changes
+    /**
+     * Handle start date change
+     *
+     * @param {Object} e - The event object
+     */
     const handleStartDateChange = (e) => {
         onDateRangeChange({
             ...dateRange,
@@ -25,6 +50,11 @@ const OrderFilters = ({
         });
     };
 
+    /**
+     * Handle end date change
+     *
+     * @param {Object} e - The event object
+     */
     const handleEndDateChange = (e) => {
         onDateRangeChange({
             ...dateRange,
@@ -32,7 +62,9 @@ const OrderFilters = ({
         });
     };
 
-    // Clear date filters
+    /**
+     * Clear date filters
+     */
     const handleClearDates = () => {
         onDateRangeChange({ start: null, end: null });
     };

@@ -7,6 +7,13 @@ import styles from "./OpeningHoursSection.module.css";
 import { AuthContext } from "../../../shared/contexts/AuthContext";
 import { convertTo12HourFormat } from "../../../shared/utils/timeUtils";
 
+/**
+ * OpeningHoursSection component
+ *
+ * Renders the "Opening Hours" section of the home page, including the opening hours, contact phone number, and images of the restaurant.
+ *
+ * @returns {JSX.Element} The OpeningHoursSection component
+ */
 const OpeningHoursSection = () => {
     const { openingHours, isLoading, error } = useOpeningHours();
     const { restaurantImages } = useRestaurantImages();
@@ -30,10 +37,7 @@ const OpeningHoursSection = () => {
                             hours.startTime != null && hours.endTime != null ? (
                                 <p key={index}>
                                     {hours.day.charAt(0).toUpperCase() + hours.day.slice(1)} <span className={styles.timeDash}>-</span>
-                                    {convertTo12HourFormat(hours.startTime)[0]}{' '}
-                                    <span className={styles.timeDash}>{convertTo12HourFormat(hours.startTime)[1]}</span> -&nbsp;
-                                    {convertTo12HourFormat(hours.endTime)[0]}{' '}
-                                    <span className={styles.timeDash}>{convertTo12HourFormat(hours.endTime)[1]}</span>
+                                    {convertTo12HourFormat(hours.startTime)} <span className={styles.timeDash}>-</span> {convertTo12HourFormat(hours.endTime)}
                                 </p>
                             ) : null
                         )}

@@ -41,7 +41,11 @@ const MenuItemDialog = ({ item, menuOptions, onClose, onSave }) => {
         }
     }, [item]);
 
-    // Handle input changes
+    /**
+     * Handle input changes
+     *
+     * @param {Object} e - The event object
+     */
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -58,7 +62,11 @@ const MenuItemDialog = ({ item, menuOptions, onClose, onSave }) => {
         }
     };
 
-    // Handle allergen checkbox changes
+    /**
+     * Handle allergen checkbox changes
+     *
+     * @param {string} allergenValue - The value of the allergen
+     */
     const handleAllergenChange = (allergenValue) => {
         const updatedAllergens = [...formData.allergens];
 
@@ -77,7 +85,11 @@ const MenuItemDialog = ({ item, menuOptions, onClose, onSave }) => {
         });
     };
 
-    // Handle image upload
+    /**
+     * Handle image upload
+     *
+     * @param {Object} e - The event object
+     */
     const handleImageUpload = (e) => {
         const file = e.target.files[0];
         if (!file) return;
@@ -109,7 +121,11 @@ const MenuItemDialog = ({ item, menuOptions, onClose, onSave }) => {
         }
     };
 
-    // Validate form
+    /**
+     * Validate form
+     *
+     * @returns {boolean} True if the form is valid, otherwise false
+     */
     const validateForm = () => {
         const newErrors = {};
 
@@ -134,7 +150,11 @@ const MenuItemDialog = ({ item, menuOptions, onClose, onSave }) => {
         return Object.keys(newErrors).length === 0;
     };
 
-    // Handle form submission
+    /**
+     * Handle form submission
+     *
+     * @param {Object} e - The event object
+     */
     const handleSubmit = (e) => {
         e.preventDefault();
 

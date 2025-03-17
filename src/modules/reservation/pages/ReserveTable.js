@@ -8,6 +8,13 @@ import { AuthContext } from "../../shared/contexts/AuthContext";
 import { useResponsiveView } from "../hooks/useResponsiveView";
 import { useReservationForm } from "../hooks/useReservationForm";
 
+/**
+ * ReserveTable component
+ *
+ * Renders the reservation page with an interactive floor plan and reservation form.
+ *
+ * @returns {JSX.Element} The ReserveTable component
+ */
 const ReserveTable = () => {
     const { isLoggedIn } = useContext(AuthContext);
     const isMobile = useResponsiveView();
@@ -24,6 +31,7 @@ const ReserveTable = () => {
         freeTables,
         loading,
         error,
+        setError,
         success,
         searchFreeTables,
         createReservation
@@ -33,15 +41,17 @@ const ReserveTable = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedTableId, setSelectedTableId] = useState(null);
 
-    // Handle table selection - opens the modal
+    /**
+     * Handles table selection and opens the reservation modal.
+     *
+     * @param {string} tableId - The ID of the selected table
+     */
     const handleTableSelect = async (tableId) => {
-        // Check if user is authenticated
         if (!isLoggedIn) {
             setError("Please log in to select a table");
             return;
         }
 
-        // Only allow selection of available tables
         const selectedTable = freeTables.find(table => table.id.toString() === tableId);
         if (!selectedTable || !selectedTable.isActive) {
             console.error(`Table ${tableId} is not available for reservation`);
@@ -52,7 +62,9 @@ const ReserveTable = () => {
         setIsModalOpen(true);
     };
 
-    // Process the actual reservation
+    /**
+     * Confirms the reservation for the selected table.
+     */
     const handleConfirmReservation = async () => {
         const success = await createReservation(selectedTableId);
         if (success) {
@@ -60,7 +72,9 @@ const ReserveTable = () => {
         }
     };
 
-    // Close modal handler
+    /**
+     * Closes the reservation modal.
+     */
     const handleCloseModal = () => {
         setIsModalOpen(false);
     };
@@ -104,10 +118,8 @@ const ReserveTable = () => {
             )}
 
             {!isLoggedIn ? (
-                // Show login prompt if user is not authenticated
                 <LoginPrompt isMobile={isMobile} />
             ) : (
-                // Show reservation UI if user is authenticated
                 <div
                     style={{
                         display: 'flex',

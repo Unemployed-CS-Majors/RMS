@@ -4,10 +4,18 @@ import { countryCodes } from '../../../shared/utils/countryCodeData';
 import styles from './RegisterForm.module.css';
 
 /**
- * Registration form component
+ * RegisterForm component renders a registration form with fields for user details.
  *
- * @param {Object} props - Component props
- * @returns {JSX.Element} Register form component
+ * @param {Object} props - The properties object.
+ * @param {Object} props.formData - The form data containing user input values.
+ * @param {Function} props.handleChange - The function to handle input changes.
+ * @param {Function} props.handleSubmit - The function to handle form submission.
+ * @param {Function} props.showLogin - The function to switch to the login form.
+ * @param {Object} props.countryCodeRef - The reference to the country code selector element.
+ * @param {boolean} props.showCountryCodeDropdown - The flag to show/hide the country code dropdown.
+ * @param {Function} props.toggleCountryCodeDropdown - The function to toggle the country code dropdown.
+ * @param {Function} props.handleCountryCodeSelect - The function to handle country code selection.
+ * @returns {JSX.Element} The rendered registration form component.
  */
 const RegisterForm = ({
                           formData,

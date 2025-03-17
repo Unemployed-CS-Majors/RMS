@@ -6,6 +6,18 @@ import LoadingIndicator from '../Loading/LoadingIndicator';
 import orderService from '../../../../services/order.service';
 import menuItemService from '../../../../services/menuItem.service';
 
+/**
+ * OrderManagement component
+ *
+ * Manages the display and filtering of orders, and shows detailed information for a selected order.
+ *
+ * @param {Object} props - Component props
+ * @param {Array} props.orders - List of orders
+ * @param {boolean} props.loading - Flag indicating if the orders are loading
+ * @param {boolean} props.showFilters - Flag indicating if the filter panel is visible
+ * @param {Function} props.toggleShowFilters - Function to toggle the visibility of the filter panel
+ * @returns {JSX.Element} The OrderManagement component
+ */
 const OrderManagement = ({orders, loading, showFilters, toggleShowFilters}) => {
     const [filteredOrders, setFilteredOrders] = useState([]);
     const [selectedOrder, setSelectedOrder] = useState(null);
@@ -60,7 +72,13 @@ const OrderManagement = ({orders, loading, showFilters, toggleShowFilters}) => {
         setFilteredOrders(result);
     }, [orders, statusFilter, dateRange]);
 
-    // Get detailed order information when an order is selected
+    /**
+     * Handle order selection
+     *
+     * Fetches detailed information for the selected order and its items.
+     *
+     * @param {Object} order - The selected order
+     */
     const handleOrderSelect = async (order) => {
         setSelectedOrder(order);
         setLoadingDetails(true);
@@ -91,31 +109,57 @@ const OrderManagement = ({orders, loading, showFilters, toggleShowFilters}) => {
         }
     };
 
+    /**
+     * Handle closing of order details
+     */
     const handleCloseDetails = () => {
         setShowOrderDetails(false);
         setSelectedOrder(null);
         setSelectedOrderItems([]);
     };
 
+    /**
+     * Handle temporary status filter change
+     *
+     * @param {string} newStatus - The new status filter
+     */
     const handleTempStatusChange = (newStatus) => {
         setTempStatusFilter(newStatus);
     };
 
+    /**
+     * Handle temporary date range filter change
+     *
+     * @param {Object} newRange - The new date range filter
+     */
     const handleTempDateRangeChange = (newRange) => {
         setTempDateRange(newRange);
     };
 
+    /**
+     * Apply the temporary filters
+     */
     const handleApplyFilters = () => {
         setStatusFilter(tempStatusFilter);
         setDateRange(tempDateRange);
         toggleShowFilters();
     };
 
+    /**
+     * Reset the temporary filters
+     */
     const handleResetFilters = () => {
         setTempStatusFilter('all');
         setTempDateRange({start: null, end: null});
     };
 
+    /**
+     * Handle status update for an order
+     *
+     * @param {string} orderId - The ID of the order to update
+     * @param {string} newStatus - The new status to set
+     * @returns {Promise<boolean>} True if the update was successful, false otherwise
+     */
     const handleStatusUpdate = async (orderId, newStatus) => {
         try {
             await orderService.updateStatus(orderId, newStatus);
@@ -143,7 +187,6 @@ const OrderManagement = ({orders, loading, showFilters, toggleShowFilters}) => {
     }
 
     return (
-
         <>
             <OrderList
                 orders={filteredOrders}
@@ -173,7 +216,6 @@ const OrderManagement = ({orders, loading, showFilters, toggleShowFilters}) => {
                 />
             )}
         </>
-
     );
 };
 

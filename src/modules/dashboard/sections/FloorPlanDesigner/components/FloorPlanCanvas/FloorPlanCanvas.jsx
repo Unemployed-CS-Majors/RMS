@@ -3,8 +3,35 @@ import TableComponent from '../Table/TableComponent';
 import WallComponent from '../Wall/WallComponent';
 import DoorComponent from '../Door/DoorComponent';
 import WindowComponent from '../Window/WindowComponent';
-import {DrawingMode} from "../../../../../../constants/drawingModes";
+import { DrawingMode } from "../../../../../../constants/drawingModes";
 
+/**
+ * FloorPlanCanvas component for rendering the floor plan with interactive elements
+ *
+ * @param {Object} props - Component props
+ * @param {Object} props.svgRef - Reference to the SVG element
+ * @param {Object} props.svgDimensions - Dimensions of the SVG element
+ * @param {boolean} props.editMode - Flag indicating if edit mode is enabled
+ * @param {string} props.currentDrawingMode - The current drawing mode
+ * @param {Array} props.tables - Array of table elements
+ * @param {Array} props.walls - Array of wall elements
+ * @param {Array} props.doors - Array of door elements
+ * @param {Array} props.windows - Array of window elements
+ * @param {Object} props.startPoint - Starting point for drawing walls
+ * @param {boolean} props.isDragging - Flag indicating if an element is being dragged
+ * @param {Object} props.draggedItem - The currently dragged item
+ * @param {Function} props.addTable - Function to add a table
+ * @param {Function} props.addDoor - Function to add a door
+ * @param {Function} props.addWindow - Function to add a window
+ * @param {Function} props.startDrawWall - Function to start drawing a wall
+ * @param {Function} props.endDrawWall - Function to end drawing a wall
+ * @param {Function} props.stopDragging - Function to stop dragging an element
+ * @param {Function} props.dragElement - Function to drag an element
+ * @param {Function} props.startDragElement - Function to start dragging an element
+ * @param {Function} props.showElementDetails - Function to show details of an element
+ * @param {Function} props.startResize - Function to start resizing an element
+ * @returns {JSX.Element} The FloorPlanCanvas component
+ */
 const FloorPlanCanvas = ({
                              svgRef,
                              svgDimensions,

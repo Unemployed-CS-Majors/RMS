@@ -4,6 +4,21 @@ import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import CartItem from "../CartItem/CartItem";
 import styles from "./CartSidebar.module.css";
 
+/**
+ * CartSidebar component
+ *
+ * Renders the sidebar for the shopping cart, displaying the items in the cart,
+ * the total price, and a button to proceed to checkout.
+ *
+ * @param {Object} props - The component props
+ * @param {Array} props.cart - The list of items in the cart
+ * @param {Function} props.addToCart - Function to add an item to the cart
+ * @param {Function} props.removeFromCart - Function to remove an item from the cart
+ * @param {Function} props.getTotal - Function to get the total price of the items in the cart
+ * @param {Function} props.getItemTotalPrice - Function to get the total price of a single item
+ * @param {Function} props.goToCheckout - Function to proceed to the checkout page
+ * @returns {JSX.Element} The CartSidebar component
+ */
 const CartSidebar = ({ cart, addToCart, removeFromCart, getTotal, getItemTotalPrice, goToCheckout }) => {
     return (
         <div className={styles.checkoutContainer}>

@@ -2,6 +2,13 @@ import React, {useContext} from "react";
 import {AuthContext} from "../../../shared/contexts/AuthContext";
 import styles from "./Map.module.css";
 
+/**
+ * Map component
+ *
+ * Renders a Google Maps iframe based on the configuration from AuthContext.
+ *
+ * @returns {JSX.Element} The Map component
+ */
 const Map = () => {
     const {config} = useContext(AuthContext)
     return (

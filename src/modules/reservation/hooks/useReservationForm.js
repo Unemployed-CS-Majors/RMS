@@ -2,6 +2,11 @@ import { useState, useContext } from 'react';
 import reservationService from '../../../services/reservation.service';
 import { AuthContext } from '../../shared/contexts/AuthContext';
 
+/**
+ * Custom hook for managing reservation form state and actions.
+ *
+ * @returns {Object} The reservation form state and actions
+ */
 export const useReservationForm = () => {
     const [date, setDate] = useState(null);
     const [startTime, setStartTime] = useState({hour: '12', minute: '00', ampm: 'AM'});
@@ -14,7 +19,16 @@ export const useReservationForm = () => {
 
     const { isLoggedIn } = useContext(AuthContext);
 
-    // Utility function to format date and time
+    /**
+     * Utility function to format date and time.
+     *
+     * @param {Date} date - The date object
+     * @param {Object} time - The time object
+     * @param {string} time.hour - The hour
+     * @param {string} time.minute - The minute
+     * @param {string} time.ampm - The AM/PM indicator
+     * @returns {string|null} The formatted date-time string or null if invalid
+     */
     const formatDateTime = (date, time) => {
         try {
             if (!date || !(date instanceof Date) || isNaN(date)) {
@@ -24,7 +38,6 @@ export const useReservationForm = () => {
 
             const formattedDate = date.toISOString().split('T')[0];
 
-            // Validate time object
             if (!time || !time.hour || !time.minute || !time.ampm) {
                 console.error("Invalid time object:", time);
                 return null;
@@ -32,7 +45,6 @@ export const useReservationForm = () => {
 
             const hours = parseInt(time.hour, 10);
 
-            // Validate hours
             if (isNaN(hours) || hours < 1 || hours > 12) {
                 console.error("Invalid hours:", time.hour);
                 return null;
@@ -47,7 +59,11 @@ export const useReservationForm = () => {
         }
     };
 
-    // Validation logic
+    /**
+     * Validates the input fields of the reservation form.
+     *
+     * @returns {boolean} True if inputs are valid, otherwise false
+     */
     const validateInputs = () => {
         setError(null);
 
@@ -71,7 +87,6 @@ export const useReservationForm = () => {
             return false;
         }
 
-        // Calculate start and end times in minutes for comparison
         const startHour = parseInt(startTime.hour, 10);
         const startMinute = parseInt(startTime.minute, 10);
         const startInMinutes = (startTime.ampm === 'PM' && startHour !== 12 ? startHour + 12 : startHour) * 60 + startMinute;
@@ -80,7 +95,6 @@ export const useReservationForm = () => {
         const endMinute = parseInt(endTime.minute, 10);
         const endInMinutes = (endTime.ampm === 'PM' && endHour !== 12 ? endHour + 12 : endHour) * 60 + endMinute;
 
-        // Check if end time is after start time
         if (endInMinutes <= startInMinutes) {
             setError("End time must be after start time");
             return false;
@@ -94,12 +108,14 @@ export const useReservationForm = () => {
         return true;
     };
 
-    // Search for free tables
+    /**
+     * Searches for free tables based on the form inputs.
+     *
+     * @returns {Promise<Array|null>} The available tables or null if an error occurs
+     */
     const searchFreeTables = async () => {
-        // Reset states
         setSuccess(null);
 
-        // Check if user is authenticated
         if (!isLoggedIn) {
             setError("Please log in to search for available tables");
             return null;
@@ -109,7 +125,6 @@ export const useReservationForm = () => {
             setLoading(true);
             setError(null);
 
-            // Validate inputs
             if (!validateInputs()) {
                 setLoading(false);
                 return null;
@@ -118,7 +133,6 @@ export const useReservationForm = () => {
             const startDateTime = formatDateTime(date, startTime);
             const endDateTime = formatDateTime(date, endTime);
 
-            // Validate formatted date times
             if (!startDateTime || !endDateTime) {
                 setError("Invalid date or time format. Please try again");
                 setLoading(false);
@@ -127,7 +141,6 @@ export const useReservationForm = () => {
 
             const response = await reservationService.getFreeTables(startDateTime, endDateTime, number);
 
-            // Validate API response
             if (!response || !Array.isArray(response)) {
                 console.error("Unexpected API response format:", response);
                 setError("Received invalid data from the server. Please try again");
@@ -160,9 +173,13 @@ export const useReservationForm = () => {
         }
     };
 
-    // Create reservation
+    /**
+     * Creates a reservation for a specified table.
+     *
+     * @param {string} tableId - The ID of the table to reserve
+     * @returns {Promise<boolean>} True if the reservation is successful, otherwise false
+     */
     const createReservation = async (tableId) => {
-        // Check if user is authenticated
         if (!isLoggedIn) {
             setError("Please log in to confirm your reservation");
             return false;
@@ -173,7 +190,6 @@ export const useReservationForm = () => {
             setError(null);
             setSuccess(null);
 
-            // Validate inputs
             if (!validateInputs()) {
                 setLoading(false);
                 return false;
@@ -182,14 +198,12 @@ export const useReservationForm = () => {
             const startDateTime = formatDateTime(date, startTime);
             const endDateTime = formatDateTime(date, endTime);
 
-            // Validate formatted date times
             if (!startDateTime || !endDateTime) {
                 setError("Invalid date or time format. Please try again");
                 setLoading(false);
                 return false;
             }
 
-            // Validate people number
             let peopleCount;
             try {
                 peopleCount = parseInt(number, 10);
@@ -211,21 +225,18 @@ export const useReservationForm = () => {
                 peopleCount
             );
 
-            // Update free tables
             const updatedTables = freeTables.map((table) =>
                 table.id === tableId ? {...table, isActive: false} : table
             );
 
             setFreeTables(updatedTables);
 
-            // Show success message
             setSuccess(`Reservation confirmed for Table ${tableId} on ${date.toLocaleDateString()} at ${startTime.hour}:${startTime.minute} ${startTime.ampm} for ${peopleCount} ${peopleCount > 1 ? 'people' : 'person'}`);
 
             return true;
         } catch (err) {
             console.error('Error creating reservation:', err);
 
-            // Provide more specific error messages based on the error
             if (err.response) {
                 const status = err.response.status;
                 if (status === 400) {
@@ -261,6 +272,7 @@ export const useReservationForm = () => {
         freeTables,
         loading,
         error,
+        setError,
         success,
         searchFreeTables,
         createReservation

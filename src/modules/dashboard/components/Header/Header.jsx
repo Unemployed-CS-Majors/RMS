@@ -1,6 +1,22 @@
 import React from 'react';
 import styles from './Header.module.css';
 
+/**
+ * Header component for the dashboard, displaying the appropriate icon and title based on the active tab.
+ * It also provides controls for various actions depending on the active tab.
+ *
+ * @param {Object} props - The properties object.
+ * @param {string} props.activeTab - The currently active tab.
+ * @param {boolean} props.editingHours - Flag indicating if the hours are in editing mode.
+ * @param {Function} props.toggleHoursEditMode - Function to toggle the hours edit mode.
+ * @param {Function} props.approveAllReservations - Function to approve all pending reservations.
+ * @param {boolean} props.tablesEditMode - Flag indicating if the tables are in editing mode.
+ * @param {Function} props.toggleTablesEditMode - Function to toggle the tables edit mode.
+ * @param {Function} props.toggleAddEmployee - Function to toggle the add employee modal.
+ * @param {Function} props.toggleShowFilters - Function to toggle the display of filters.
+ * @param {Function} props.toggleAddMenuItem - Function to toggle the add menu item modal.
+ * @returns {JSX.Element} The rendered Header component.
+ */
 const Header = ({
                     activeTab,
                     editingHours,

@@ -2,6 +2,21 @@ import React from "react";
 import { MdClose } from "react-icons/md";
 import styles from "./AllergenFilter.module.css";
 
+/**
+ * AllergenFilter component
+ *
+ * Renders a filter panel to exclude dishes containing selected allergens.
+ *
+ * @param {Object} props - The component props
+ * @param {boolean} props.showAllergenFilter - Whether to show the allergen filter panel
+ * @param {Function} props.toggleAllergenFilter - Function to toggle the allergen filter panel
+ * @param {Array} props.allAllergens - List of all available allergens
+ * @param {Array} props.excludedAllergens - List of allergens to be excluded
+ * @param {Function} props.toggleAllergen - Function to toggle the exclusion of an allergen
+ * @param {Function} props.clearAllergenFilters - Function to clear all allergen filters
+ * @param {Object} props.filterRef - Reference to the filter panel element
+ * @returns {JSX.Element|null} The AllergenFilter component
+ */
 const AllergenFilter = ({
                             showAllergenFilter,
                             toggleAllergenFilter,

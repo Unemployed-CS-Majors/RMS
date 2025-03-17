@@ -3,6 +3,23 @@ import { MdClose } from "react-icons/md";
 import { FiMinus, FiPlus } from "react-icons/fi";
 import styles from "./ItemDetailsModal.module.css";
 
+/**
+ * ItemDetailsModal component
+ *
+ * Renders a modal displaying detailed information about a selected item,
+ * including its image, name, category, price, description, preparation time,
+ * calories, and allergens. Allows adding or removing the item from the cart.
+ *
+ * @param {Object} props - The component props
+ * @param {Object} props.selectedItem - The currently selected item
+ * @param {Function} props.setSelectedItem - Function to set the selected item
+ * @param {Object} props.detailsRef - Reference to the modal element
+ * @param {Array} props.cart - The list of items in the cart
+ * @param {Function} props.addToCart - Function to add an item to the cart
+ * @param {Function} props.removeFromCart - Function to remove an item from the cart
+ * @param {boolean} props.orderEnabled - Whether ordering is enabled
+ * @returns {JSX.Element|null} The ItemDetailsModal component
+ */
 const ItemDetailsModal = ({
                               selectedItem,
                               setSelectedItem,

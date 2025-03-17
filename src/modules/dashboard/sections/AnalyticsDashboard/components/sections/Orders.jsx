@@ -5,6 +5,18 @@ import { CenteredMetric } from '../charts/MetricsDisplay';
 import { formatStatusLabel, formatMethodLabel } from '../../../../../shared/utils/formatters';
 import styles from '../charts/ChartComponents.module.css';
 
+/**
+ * Orders component for displaying analytics data related to orders
+ *
+ * @param {Object} props - Component props
+ * @param {Object} props.analyticsData - Analytics data for orders
+ * @param {Object} props.analyticsData.orderStatusAnalytics - Order status analytics data
+ * @param {Object} props.analyticsData.orderStatusAnalytics.ordersByStatus - Orders grouped by status
+ * @param {Object} props.analyticsData.orderStatusAnalytics.ordersByPaymentMethod - Orders grouped by payment method
+ * @param {Object} props.analyticsData.orderStatusAnalytics.ordersByDeliveryMethod - Orders grouped by delivery method
+ * @param {number} props.analyticsData.orderStatusAnalytics.averageCompletionTime - Average order completion time
+ * @returns {JSX.Element} The Orders component
+ */
 const Orders = ({ analyticsData }) => {
     const ordersByStatusData = Object.entries(analyticsData.orderStatusAnalytics.ordersByStatus)
         .map(([status, count]) => ({

@@ -6,10 +6,20 @@ import ModernImageSlider from "../../components/ImageSlider/ImageSlider";
 import useHomeImages from "../../hooks/useHomeImages";
 import styles from "./HeroSection.module.css";
 
+/**
+ * HeroSection component
+ *
+ * Renders the hero section of the home page, including an image slider and a call-to-action button for reservations.
+ *
+ * @returns {JSX.Element} The HeroSection component
+ */
 const HeroSection = () => {
     const { foodImages } = useHomeImages();
     const navigate = useNavigate();
 
+    /**
+     * Navigates to the reservation page.
+     */
     const goToReservation = () => {
         navigate(ROUTES.RESERVE_TABLE);
     };

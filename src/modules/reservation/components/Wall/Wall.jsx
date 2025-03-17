@@ -1,6 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+/**
+ * Wall component
+ *
+ * Renders a wall with specified coordinates, thickness, and color.
+ *
+ * @param {Object} props - The component props
+ * @param {number} props.x1 - The x-coordinate of the starting point of the wall
+ * @param {number} props.y1 - The y-coordinate of the starting point of the wall
+ * @param {number} props.x2 - The x-coordinate of the ending point of the wall
+ * @param {number} props.y2 - The y-coordinate of the ending point of the wall
+ * @param {number} [props.thickness=8] - The thickness of the wall
+ * @param {string} [props.color='#555'] - The color of the wall
+ * @param {boolean} [props.isSelected=false] - Flag to indicate if the wall is selected
+ * @param {Function} [props.onClick=() => {}] - The function to call when the wall is clicked
+ * @param {string} props.id - The unique identifier for the wall
+ * @returns {JSX.Element} The Wall component
+ */
 const Wall = ({
                   x1,
                   y1,
@@ -30,7 +47,6 @@ const Wall = ({
     return (
         <g onClick={handleClick}>
             <defs>
-                {}
                 <pattern id={`wall-pattern-${id}`} patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="rotate(45)">
                     <rect width="20" height="20" fill={color} />
                     <rect width="10" height="20" fill={`${color}ee`} />
@@ -38,13 +54,11 @@ const Wall = ({
                     <line x1="10" y1="0" x2="10" y2="20" stroke="#444" strokeWidth="0.5" strokeOpacity="0.1" />
                 </pattern>
 
-                {}
                 <filter id={`wall-shadow-${id}`} x="-20%" y="-20%" width="140%" height="140%">
                     <feDropShadow dx="1" dy="1" stdDeviation="1" floodOpacity="0.3" />
                 </filter>
             </defs>
 
-            {}
             {isSelected && (
                 <rect
                     x={-selectionThickness / 2}
@@ -60,7 +74,6 @@ const Wall = ({
                 />
             )}
 
-            {}
             <rect
                 x={-thickness / 2}
                 y={-thickness / 2}
@@ -74,7 +87,6 @@ const Wall = ({
                 style={{ cursor: 'pointer' }}
             />
 
-            {}
             <line
                 x1={x1}
                 y1={y1}

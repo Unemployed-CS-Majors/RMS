@@ -6,6 +6,20 @@ import doorService from "../../../../../services/door.service";
 import windowService from "../../../../../services/window.service";
 import { tableTypes } from '../../../../../constants/tableTypes';
 
+/**
+ * Custom hook for managing floor plan data
+ *
+ * @returns {Object} The floor plan data and related state management functions
+ * @returns {Array} tables - List of tables in the floor plan
+ * @returns {Function} setTables - Function to set the list of tables
+ * @returns {Array} walls - List of walls in the floor plan
+ * @returns {Function} setWalls - Function to set the list of walls
+ * @returns {Array} doors - List of doors in the floor plan
+ * @returns {Function} setDoors - Function to set the list of doors
+ * @returns {Array} windows - List of windows in the floor plan
+ * @returns {Function} setWindows - Function to set the list of windows
+ * @returns {boolean} isLoading - Flag indicating if the data is being loaded
+ */
 export const useFloorPlanData = () => {
     const [tables, setTables] = useState([]);
     const [walls, setWalls] = useState([]);
@@ -33,6 +47,9 @@ export const useFloorPlanData = () => {
         fetchAllData();
     }, []);
 
+    /**
+     * Fetch tables data from the service
+     */
     const fetchTables = async () => {
         try {
             const data = await tableService.getAll();
@@ -51,6 +68,9 @@ export const useFloorPlanData = () => {
         }
     };
 
+    /**
+     * Fetch walls data from the service
+     */
     const fetchWalls = async () => {
         try {
             const data = await wallsService.getAll();
@@ -67,6 +87,9 @@ export const useFloorPlanData = () => {
         }
     };
 
+    /**
+     * Fetch doors data from the service
+     */
     const fetchDoors = async () => {
         try {
             const data = await doorService.getAll();
@@ -83,6 +106,9 @@ export const useFloorPlanData = () => {
         }
     };
 
+    /**
+     * Fetch windows data from the service
+     */
     const fetchWindows = async () => {
         try {
             const data = await windowService.getAll();

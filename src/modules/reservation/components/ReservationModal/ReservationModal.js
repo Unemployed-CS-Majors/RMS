@@ -2,6 +2,29 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './ReservationModal.module.css';
 
+/**
+ * ReservationModal component
+ *
+ * Displays a modal for reserving a table with specified details.
+ *
+ * @param {Object} props - The component props
+ * @param {boolean} props.isOpen - Flag to indicate if the modal is open
+ * @param {Function} props.onClose - Function to call when the modal is closed
+ * @param {string} props.tableId - The ID of the table to reserve
+ * @param {Date} props.date - The date of the reservation
+ * @param {Object} props.startTime - The start time of the reservation
+ * @param {string} props.startTime.hour - The hour of the start time
+ * @param {string} props.startTime.minute - The minute of the start time
+ * @param {string} props.startTime.ampm - The AM/PM of the start time
+ * @param {Object} props.endTime - The end time of the reservation
+ * @param {string} props.endTime.hour - The hour of the end time
+ * @param {string} props.endTime.minute - The minute of the end time
+ * @param {string} props.endTime.ampm - The AM/PM of the end time
+ * @param {number|string} props.people - The number of people for the reservation
+ * @param {Function} props.onConfirm - Function to call when the reservation is confirmed
+ * @param {boolean} [props.loading=false] - Flag to indicate if the reservation is being processed
+ * @returns {JSX.Element|null} The ReservationModal component
+ */
 const ReservationModal = ({
                               isOpen,
                               onClose,

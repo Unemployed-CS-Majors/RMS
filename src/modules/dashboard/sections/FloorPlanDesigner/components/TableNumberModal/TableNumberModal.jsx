@@ -1,10 +1,26 @@
 import React, { useState } from 'react';
 import styles from './TableNumberModal.module.css';
 
+/**
+ * TableNumberModal component for adding a new table with a specified number
+ *
+ * @param {Object} props - Component props
+ * @param {Function} props.onConfirm - Callback function to confirm the table number
+ * @param {Function} props.onCancel - Callback function to cancel the modal
+ * @param {Object} props.position - Position to display the modal
+ * @param {number} props.position.x - X-coordinate for the modal position
+ * @param {number} props.position.y - Y-coordinate for the modal position
+ * @returns {JSX.Element} The TableNumberModal component
+ */
 const TableNumberModal = ({ onConfirm, onCancel, position }) => {
     const [tableNum, setTableNum] = useState('');
     const [error, setError] = useState('');
 
+    /**
+     * Handle form submission to validate and confirm the table number
+     *
+     * @param {Object} e - Event object
+     */
     const handleSubmit = (e) => {
         e.preventDefault();
 

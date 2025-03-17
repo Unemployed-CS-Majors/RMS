@@ -1,6 +1,17 @@
 import React from 'react';
 import styles from './PendingReservations.module.css';
 
+/**
+ * PendingReservations component
+ *
+ * Displays a list of pending reservations with options to approve or reject each reservation.
+ *
+ * @param {Object} props - Component props
+ * @param {Array} props.pendingReservations - Array of pending reservation objects
+ * @param {Function} props.handleApproveReservation - Function to handle approving a reservation
+ * @param {Function} props.handleRejectReservation - Function to handle rejecting a reservation
+ * @returns {JSX.Element} The PendingReservations component
+ */
 const PendingReservations = ({ pendingReservations, handleApproveReservation, handleRejectReservation }) => {
     return (
         <div className={styles.reservationContainer}>

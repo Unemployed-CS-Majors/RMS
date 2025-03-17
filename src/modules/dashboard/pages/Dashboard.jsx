@@ -13,8 +13,6 @@ import FloorPlanDesigner from '../sections/FloorPlanDesigner/FloorPlanDesigner';
 import MenuManagement from '../sections/MenuManagement/MenuManagement';
 import RestaurantConfig from '../sections/RestaurantConfig/RestaurantConfig';
 import LoadingIndicator from '../sections/Loading/LoadingIndicator';
-
-// Custom hooks
 import { useActiveTab } from '../hooks/useActiveTab';
 import { useReservationManagement } from '../hooks/useReservationManagement';
 import { useHoursManagement } from '../hooks/useHoursManagement';
@@ -29,7 +27,8 @@ import AnalyticsDashboard from "../sections/AnalyticsDashboard/AnalyticsDashboar
 /**
  * RestaurantDashboard component
  *
- * Main dashboard for restaurant management
+ * This component serves as the main dashboard for managing various aspects of the restaurant.
+ * It includes sections for reservations, opening hours, employee management, menu management, and more.
  */
 const RestaurantDashboard = () => {
     const { tab } = useParams();

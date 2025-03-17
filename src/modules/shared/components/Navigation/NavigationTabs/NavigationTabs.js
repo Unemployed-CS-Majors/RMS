@@ -3,10 +3,26 @@ import { motion } from "framer-motion";
 import { AuthContext } from "../../../contexts/AuthContext";
 import styles from "./NavigationTabs.module.css";
 
+/**
+ * NavigationTabs component
+ *
+ * Renders the navigation tabs with animation effects and handles feature-based tab visibility.
+ *
+ * @param {Object} props - The component props
+ * @param {string} props.currentPage - The current active page
+ * @param {Function} props.handleCurrentPage - The function to call when a tab is clicked
+ * @param {boolean} props.isMobile - Flag to indicate if the view is on a mobile device
+ * @returns {JSX.Element} The NavigationTabs component
+ */
 const NavigationTabs = ({ currentPage, handleCurrentPage, isMobile }) => {
     const { config } = useContext(AuthContext);
 
-    // Helper function to check if a feature is enabled
+    /**
+     * Helper function to check if a feature is enabled
+     *
+     * @param {string} featureName - The name of the feature to check
+     * @returns {boolean} True if the feature is enabled, false otherwise
+     */
     const isFeatureEnabled = (featureName) => {
         if (!config?.features || !Array.isArray(config.features)) return true;
         const feature = config.features.find(f => f.name === featureName);

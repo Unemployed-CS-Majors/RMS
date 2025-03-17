@@ -1,13 +1,9 @@
 import React from "react";
 import styles from "./Auth.module.css";
 import AuthBackground from "../../../assets/auth-background.jpg";
-
-// Components
 import HomeButton from "../components/HomeButton/HomeButton";
 import ForgotPasswordForm from "../components/ForgotPasswordForm/ForgotPasswordForm";
 import ResetSuccessMessage from "../components/ResetSuccessMessage/ResetSuccessMessage";
-
-// Custom hooks
 import { useForgotPassword } from "../hooks/useForgotPassword";
 
 /**

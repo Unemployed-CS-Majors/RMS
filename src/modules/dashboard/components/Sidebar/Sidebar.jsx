@@ -3,6 +3,16 @@ import cookieManager from "../../../shared/utils/cookieManager";
 import cookieKeys from "../../../../constants/cookieKeys";
 import styles from "./Sidebar.module.css";
 
+/**
+ * Sidebar component for the dashboard, providing navigation and management options.
+ *
+ * @param {Object} props - The properties object.
+ * @param {string} props.activeTab - The currently active tab.
+ * @param {Function} props.setActiveTab - Function to set the active tab.
+ * @param {Array} props.pendingReservations - List of pending reservations.
+ * @param {Function} props.onToggle - Function to notify parent component when sidebar state changes.
+ * @returns {JSX.Element} The rendered Sidebar component.
+ */
 const Sidebar = ({activeTab, setActiveTab, pendingReservations, onToggle}) => {
     const [collapsed, setCollapsed] = useState(false);
 
@@ -43,10 +53,18 @@ const Sidebar = ({activeTab, setActiveTab, pendingReservations, onToggle}) => {
         }
     }, [collapsed, onToggle]);
 
+    /**
+     * Toggles the sidebar collapsed state.
+     */
     const toggleSidebar = () => {
         setCollapsed(!collapsed);
     };
 
+    /**
+     * Toggles the collapse state of a section.
+     *
+     * @param {string} section - The section to toggle.
+     */
     const toggleSection = (section) => {
         setCollapsedSections(prev => ({
             ...prev,
@@ -83,7 +101,6 @@ const Sidebar = ({activeTab, setActiveTab, pendingReservations, onToggle}) => {
                     </button>
                 </div>
                 <nav className={styles.sidebarNav}>
-                    {/* General Navigation */}
                     <div className={styles.navSection}>
                         {!collapsed && (
                             <div
@@ -123,7 +140,6 @@ const Sidebar = ({activeTab, setActiveTab, pendingReservations, onToggle}) => {
                         )}
                     </div>
 
-                    {/* Analytics Section - NEW */}
                     {isOwner && (
                         <div className={styles.navSection}>
                             {!collapsed && (
@@ -158,8 +174,6 @@ const Sidebar = ({activeTab, setActiveTab, pendingReservations, onToggle}) => {
                     )
                     }
 
-
-                    {/* Reservations Section */}
                     <div className={styles.navSection}>
                         {!collapsed && (
                             <div
@@ -238,7 +252,6 @@ const Sidebar = ({activeTab, setActiveTab, pendingReservations, onToggle}) => {
                         )}
                     </div>
 
-                    {/* Restaurant Management Section - Only for Owner */}
                     {isOwner && (
                         <div className={styles.navSection}>
                             {!collapsed && (
@@ -294,7 +307,6 @@ const Sidebar = ({activeTab, setActiveTab, pendingReservations, onToggle}) => {
                         </div>
                     )}
 
-                    {/* Administration Section - Only for Owner */}
                     {isOwner && (
                         <div className={styles.navSection}>
                             {!collapsed && (

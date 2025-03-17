@@ -3,14 +3,40 @@ import PropTypes from "prop-types";
 import Chair from "../Chair/Chair";
 import styles from "./TableWithChairs.module.css";
 
+/**
+ * TableWithChairs component
+ *
+ * Renders a table with chairs around it, supporting both round and rectangular tables.
+ *
+ * @param {Object} props - The component props
+ * @param {string} props.id - The unique identifier for the table
+ * @param {number} props.x - The x-coordinate of the table's position
+ * @param {number} props.y - The y-coordinate of the table's position
+ * @param {Object} props.tableType - The type of the table, including dimensions and chair positions
+ * @param {number} props.tableType.width - The width of the table
+ * @param {number} props.tableType.height - The height of the table
+ * @param {number} props.tableType.chairsTop - The number of chairs on the top side
+ * @param {number} props.tableType.chairsBottom - The number of chairs on the bottom side
+ * @param {number} props.tableType.chairsLeft - The number of chairs on the left side
+ * @param {number} props.tableType.chairsRight - The number of chairs on the right side
+ * @param {boolean} props.tableType.isRound - Whether the table is round
+ * @param {boolean} [props.isAvailable=true] - Whether the table is available for reservation
+ * @param {string} [props.label] - The label to display on the table
+ * @param {Function} [props.onClick=() => {}] - The function to call when the table is clicked
+ * @param {number} [props.rotation=0] - The rotation angle of the table in degrees
+ * @param {boolean} [props.isMobile=false] - Flag to indicate if the view is on a mobile device
+ * @param {boolean} [props.isDragging=false] - Flag to indicate if the table is being dragged
+ * @param {boolean} [props.isSelected=false] - Flag to indicate if the table is selected
+ * @returns {JSX.Element} The TableWithChairs component
+ */
 const TableWithChairs = ({
                              id,
                              x,
                              y,
                              tableType,
-                             isAvailable,
+                             isAvailable = true,
                              label,
-                             onClick,
+                             onClick = () => {},
                              rotation = 0,
                              isMobile = false,
                              isDragging = false,

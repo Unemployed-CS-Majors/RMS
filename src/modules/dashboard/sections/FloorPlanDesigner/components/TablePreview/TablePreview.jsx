@@ -3,6 +3,13 @@ import styles from './TablePreview.module.css';
 import TableWithChairs from '../../../../../reservation/components/TableWithChairs/TableWithChairs';
 import { tableTypes } from '../../../../../../constants/tableTypes';
 
+/**
+ * TablePreview component for rendering a preview of the selected table type
+ *
+ * @param {Object} props - Component props
+ * @param {Object} props.selectedTableType - The selected table type to preview
+ * @returns {JSX.Element} The TablePreview component
+ */
 const TablePreview = ({ selectedTableType }) => {
     const table = {
         id: "preview",

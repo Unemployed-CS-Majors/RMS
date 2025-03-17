@@ -12,7 +12,11 @@ import userService from "../../../services/user.service";
 export const useEmployeeManagement = (employees, setEmployees) => {
     const [addEmployee, setAddEmployee] = useState(false);
 
-    // Handle removing an employee
+    /**
+     * Handle removing an employee
+     *
+     * @param {string} id - The ID of the employee to remove
+     */
     const handleRemoveEmployee = async (id) => {
         if (window.confirm('Are you sure you want to remove this employee?')) {
             try {
@@ -24,7 +28,11 @@ export const useEmployeeManagement = (employees, setEmployees) => {
         }
     };
 
-    // Create a new employee
+    /**
+     * Create a new employee
+     *
+     * @param {Object} employee - The employee object to create
+     */
     const createNewEmployee = async (employee) => {
         try {
             if (employee.role === "owner") {
@@ -45,7 +53,12 @@ export const useEmployeeManagement = (employees, setEmployees) => {
         }
     };
 
-    // Update an employee's role
+    /**
+     * Update an employee's role
+     *
+     * @param {string} id - The ID of the employee to update
+     * @param {string} role - The new role of the employee
+     */
     const updateEmployeeRole = async (id, role) => {
         try {
             await userService.changePrivilege(id, role);
@@ -56,7 +69,9 @@ export const useEmployeeManagement = (employees, setEmployees) => {
         }
     };
 
-    // Toggle add employee dialog
+    /**
+     * Toggle add employee dialog
+     */
     const toggleAddEmployee = () => {
         setAddEmployee(!addEmployee);
     };

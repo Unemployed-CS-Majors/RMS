@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import restaurantConfigService from '../../../services/restaurantConfig.service';
 
 /**
- * Custom hook for restaurant configuration management
+ * Custom hook for managing restaurant configuration
  *
- * @param {Function} setLoading - Loading state setter
- * @returns {Object} - Restaurant configuration state and management functions
+ * @param {Function} setLoading - Setter for loading state
+ * @returns {Object} Restaurant configuration state and functions
  */
 export const useRestaurantConfig = (setLoading) => {
     // State for restaurant configuration
@@ -39,34 +39,25 @@ export const useRestaurantConfig = (setLoading) => {
     const [validationErrors, setValidationErrors] = useState({});
     const [notification, setNotification] = useState({ show: false, type: '', message: '' });
 
-    // Fetch restaurant configuration
+    /**
+     * Fetch restaurant configuration from the server
+     */
     const fetchRestaurantConfig = async () => {
         try {
             const configResponse = await restaurantConfigService.getRestaurantConfig();
-            console.log(configResponse);
             if (configResponse) {
-                // Set phone number if available
-                console.log(configResponse);
                 if (configResponse.phoneNumber) {
                     setPhoneNumber(configResponse.phoneNumber.phoneNumber || '');
-                    console.log(phoneNumber);
                 }
-
-                // Set email if available
                 if (configResponse.email) {
                     setEmail(configResponse.email.email || '');
                 }
-
-                // Set address if available
                 if (configResponse.address) {
                     setAddress(configResponse.address);
                 }
-
-                // Set map iframe if available
                 if (configResponse.map) {
                     setMapIFrame(configResponse.map.mapUrl || '');
                 }
-
                 if (configResponse.features) {
                     const featuresObj = {};
                     configResponse.features.forEach(feature => {
@@ -74,15 +65,12 @@ export const useRestaurantConfig = (setLoading) => {
                     });
                     setFeatures(featuresObj);
                 }
-
                 if (!configResponse.phoneNumber && !configResponse.email) {
                     setEditingContact(true);
                 }
-
                 if (!configResponse.address) {
                     setEditingAddress(true);
                 }
-
                 if (!configResponse.map) {
                     setEditingMap(true);
                 }
@@ -96,10 +84,14 @@ export const useRestaurantConfig = (setLoading) => {
     // Load data on mount
     useEffect(() => {
         fetchRestaurantConfig();
-        console.log('fetchRestaurantConfig called')
     }, []);
 
-    // Helper function to show notifications
+    /**
+     * Show a notification
+     *
+     * @param {string} type - The type of notification (e.g., 'success', 'error')
+     * @param {string} message - The notification message
+     */
     const showNotification = (type, message) => {
         setNotification({ show: true, type, message });
         setTimeout(() => {
@@ -107,7 +99,12 @@ export const useRestaurantConfig = (setLoading) => {
         }, 5000);
     };
 
-    // Validation functions
+    /**
+     * Validate phone number
+     *
+     * @param {string} phone - The phone number to validate
+     * @returns {Object} Validation errors
+     */
     const validatePhoneNumber = (phone) => {
         const errors = {};
         if (!phone) {
@@ -118,6 +115,12 @@ export const useRestaurantConfig = (setLoading) => {
         return errors;
     };
 
+    /**
+     * Validate email
+     *
+     * @param {string} emailValue - The email to validate
+     * @returns {Object} Validation errors
+     */
     const validateEmail = (emailValue) => {
         const errors = {};
         if (!emailValue) {
@@ -128,6 +131,12 @@ export const useRestaurantConfig = (setLoading) => {
         return errors;
     };
 
+    /**
+     * Validate address
+     *
+     * @param {Object} addressData - The address to validate
+     * @returns {Object} Validation errors
+     */
     const validateAddress = (addressData) => {
         const errors = {};
         if (!addressData.street) errors.street = 'Street is required';
@@ -138,6 +147,12 @@ export const useRestaurantConfig = (setLoading) => {
         return errors;
     };
 
+    /**
+     * Validate map iframe
+     *
+     * @param {string} iframe - The iframe to validate
+     * @returns {Object} Validation errors
+     */
     const validateMapIFrame = (iframe) => {
         const errors = {};
         if (!iframe) {
@@ -148,9 +163,11 @@ export const useRestaurantConfig = (setLoading) => {
         return errors;
     };
 
-    // Save contact information
+    /**
+     * Save contact information
+     * @returns {boolean} Success status
+     */
     const saveContactInfo = async () => {
-        // Validate inputs
         const phoneErrors = validatePhoneNumber(phoneNumber);
         const emailErrors = validateEmail(email);
 
@@ -163,14 +180,12 @@ export const useRestaurantConfig = (setLoading) => {
         setLoading(true);
 
         try {
-            // Update phone number
             if (phoneNumber) {
                 await restaurantConfigService.updatePhoneNumber({ phoneNumber });
             } else {
                 await restaurantConfigService.deletePhoneNumber();
             }
 
-            // Update email
             if (email) {
                 await restaurantConfigService.updateEmail({ email });
             } else {
@@ -189,9 +204,11 @@ export const useRestaurantConfig = (setLoading) => {
         }
     };
 
-    // Save address
+    /**
+     * Save address
+     * @returns {boolean} Success status
+     */
     const saveAddress = async () => {
-        // Validate address
         const addressErrors = validateAddress(address);
 
         if (Object.keys(addressErrors).length > 0) {
@@ -216,9 +233,11 @@ export const useRestaurantConfig = (setLoading) => {
         }
     };
 
-    // Save map
+    /**
+     * Save map
+     * @returns {boolean} Success status
+     */
     const saveMap = async () => {
-        // Validate map iframe
         const mapErrors = validateMapIFrame(mapIFrame);
 
         if (Object.keys(mapErrors).length > 0) {
@@ -243,7 +262,12 @@ export const useRestaurantConfig = (setLoading) => {
         }
     };
 
-    // Toggle feature
+    /**
+     * Toggle feature
+     *
+     * @param {string} feature - The feature to toggle
+     * @returns {boolean} Success status
+     */
     const toggleFeature = async (feature) => {
         const newFeatures = {
             ...features,
@@ -261,7 +285,6 @@ export const useRestaurantConfig = (setLoading) => {
             showNotification('success', `${feature} has been ${newFeatures[feature] ? 'enabled' : 'disabled'}`);
             return true;
         } catch (error) {
-            // Revert on error
             setFeatures(features);
             console.error('Error updating feature:', error);
             showNotification('error', `Failed to update ${feature}`);

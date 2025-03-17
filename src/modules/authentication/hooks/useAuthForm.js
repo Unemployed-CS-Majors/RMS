@@ -4,9 +4,9 @@ import { AuthContext } from '../../shared/contexts/AuthContext';
 import { ROUTES } from '../../../constants/routes.js';
 
 /**
- * Custom hook for managing auth form state and actions
+ * Custom hook to manage authentication form state and logic.
  *
- * @returns {Object} Auth form state and handlers
+ * @returns {Object} The state and handlers for the authentication form.
  */
 export const useAuthForm = () => {
     const navigate = useNavigate();

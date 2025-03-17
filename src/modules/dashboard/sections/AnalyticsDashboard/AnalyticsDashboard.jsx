@@ -1,9 +1,9 @@
 // src/components/Dashboard/AnalyticsDashboard/AnalyticsDashboard.jsx
 import React from 'react';
 import LoadingIndicator from "../Loading/LoadingIndicator";
-import FilterBar from './components/common/FilterBar';
-import SummaryCards from './components/common/SummaryCards';
-import NavigationTabs from './components/common/NavigationTabs';
+import FilterBar from './components/common/FilterBar/FilterBar';
+import SummaryCards from './components/common/SummaryCard/SummaryCards';
+import NavigationTabs from './components/common/NavigationTabs/NavigationTabs';
 import Summary from './components/sections/Summary';
 import Revenue from './components/sections/Revenue';
 import Orders from './components/sections/Orders';

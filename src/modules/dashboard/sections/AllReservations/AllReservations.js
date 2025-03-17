@@ -1,12 +1,8 @@
 import React from 'react';
 import styles from './AllReservations.module.css';
-
-// Component imports
 import ReservationsTable from './components/ReservationTable/ReservationsTable';
 import FilterSidebar from './components/FilterSidebar/FilterSidebar';
 import ResultsCounter from './components/ResultCounter/ResultsCounter';
-
-// Custom hooks
 import { useReservationFilters } from './hooks/useReservationFilters';
 
 /**

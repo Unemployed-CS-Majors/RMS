@@ -1,6 +1,14 @@
 import React from 'react';
 import styles from './NavigationTabs.module.css';
 
+/**
+ * NavigationTabs component for switching between different sections
+ *
+ * @param {Object} props - Component props
+ * @param {string} props.activeSection - The currently active section
+ * @param {Function} props.setActiveSection - Function to set the active section
+ * @returns {JSX.Element} The NavigationTabs component
+ */
 const NavigationTabs = ({ activeSection, setActiveSection }) => {
     // Define all tabs initially
     let tabs = [

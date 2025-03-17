@@ -2,6 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './NotFound.module.css';
 
+/**
+ * NotFound component
+ *
+ * Renders a 404 Not Found page with a message and a link to go back to the home page.
+ *
+ * @returns {JSX.Element} The NotFound component
+ */
 const NotFound = () => {
     return (
         <div className={styles.container}>

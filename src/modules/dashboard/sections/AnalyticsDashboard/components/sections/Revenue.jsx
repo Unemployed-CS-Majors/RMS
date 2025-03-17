@@ -5,6 +5,20 @@ import { MetricsList } from '../charts/MetricsDisplay';
 import { formatCurrency, formatMethodLabel } from '../../../../../shared/utils/formatters';
 import styles from '../charts/ChartComponents.module.css';
 
+/**
+ * Revenue component for displaying analytics data related to revenue
+ *
+ * @param {Object} props - Component props
+ * @param {Object} props.analyticsData - Analytics data for revenue
+ * @param {Object} props.analyticsData.revenueAnalytics - Revenue analytics data
+ * @param {Object} props.analyticsData.revenueAnalytics.revenueByPaymentMethod - Revenue grouped by payment method
+ * @param {Object} props.analyticsData.revenueAnalytics.revenueByDeliveryMethod - Revenue grouped by delivery method
+ * @param {Object} props.analyticsData.revenueAnalytics.weeklyRevenue - Weekly revenue data
+ * @param {number} props.analyticsData.revenueAnalytics.totalRevenue - Total revenue for the period
+ * @param {number} props.analyticsData.revenueAnalytics.averageOrderValue - Average order value
+ * @param {number} props.timeRange - Time range for the analytics data
+ * @returns {JSX.Element} The Revenue component
+ */
 const Revenue = ({ analyticsData, timeRange }) => {
     const paymentMethodData = Object.entries(analyticsData.revenueAnalytics.revenueByPaymentMethod)
         .filter(([method, value]) => value > 0)

@@ -1,6 +1,23 @@
 import React from 'react';
 import styles from './DoorComponent.module.css';
 
+/**
+ * DoorComponent for rendering a door element in the floor plan
+ *
+ * @param {Object} props - Component props
+ * @param {Object} props.door - Door data
+ * @param {number} props.door.x - X-coordinate of the door
+ * @param {number} props.door.y - Y-coordinate of the door
+ * @param {number} props.door.width - Width of the door
+ * @param {number} props.door.height - Height of the door
+ * @param {number} [props.door.rotation=0] - Rotation angle of the door
+ * @param {number} props.door.intId - Internal ID of the door
+ * @param {boolean} props.editMode - Flag indicating if edit mode is enabled
+ * @param {Function} props.showElementDetails - Function to show details of the door element
+ * @param {Function} props.startDragElement - Function to start dragging the door element
+ * @param {Function} props.startResize - Function to start resizing the door element
+ * @returns {JSX.Element} The DoorComponent
+ */
 const DoorComponent = ({
                            door,
                            editMode,

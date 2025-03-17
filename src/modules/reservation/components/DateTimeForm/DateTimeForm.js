@@ -3,6 +3,25 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from "./DateTimeForm.module.css";
 
+/**
+ * DateTimeForm component
+ *
+ * Renders a form for selecting a reservation date, start time, end time, and number of people.
+ * Includes a search button to find available tables.
+ *
+ * @param {Object} props - The component props
+ * @param {Date} props.date - The selected date
+ * @param {Function} props.setDate - Function to set the selected date
+ * @param {Object} props.startTime - The selected start time
+ * @param {Function} props.setStartTime - Function to set the start time
+ * @param {Object} props.endTime - The selected end time
+ * @param {Function} props.setEndTime - Function to set the end time
+ * @param {number} props.number - The number of people for the reservation
+ * @param {Function} props.setNumber - Function to set the number of people
+ * @param {Function} props.onSearch - Function to handle the search action
+ * @param {boolean} props.loading - Whether the search is in progress
+ * @returns {JSX.Element} The DateTimeForm component
+ */
 const DateTimeForm = ({
                           date,
                           setDate,

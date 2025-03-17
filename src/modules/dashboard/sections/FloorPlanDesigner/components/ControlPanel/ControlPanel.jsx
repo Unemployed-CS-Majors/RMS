@@ -3,6 +3,18 @@ import styles from './ControlPanel.module.css';
 import { DrawingMode } from "../../../../../../constants/drawingModes";
 import TablePreview from "../TablePreview/TablePreview";
 
+/**
+ * ControlPanel component for managing the drawing mode and table type selection
+ *
+ * @param {Object} props - Component props
+ * @param {string} props.currentDrawingMode - The current drawing mode
+ * @param {Function} props.setCurrentDrawingMode - Function to set the current drawing mode
+ * @param {Object} props.selectedTableType - The currently selected table type
+ * @param {Function} props.setSelectedTableType - Function to set the selected table type
+ * @param {Object} props.tableTypes - Available table types
+ * @param {Function} props.onClose - Function to handle closing the control panel
+ * @returns {JSX.Element} The ControlPanel component
+ */
 const ControlPanel = ({
                           currentDrawingMode,
                           setCurrentDrawingMode,
@@ -11,7 +23,11 @@ const ControlPanel = ({
                           tableTypes,
                           onClose
                       }) => {
-    // Prevent clicks inside the panel from propagating to the parent
+    /**
+     * Prevent clicks inside the panel from propagating to the parent
+     *
+     * @param {Object} e - Event object
+     */
     const handlePanelClick = (e) => {
         e.stopPropagation();
     };
@@ -27,7 +43,7 @@ const ControlPanel = ({
                 <div className={styles.buttonGroup}>
                     <button
                         onClick={() => setCurrentDrawingMode(DrawingMode.SELECT)}
-                        className={`${styles.toolButton} ${styles.selectButton} 
+                        className={`${styles.toolButton} ${styles.selectButton}
                             ${currentDrawingMode === DrawingMode.SELECT ? styles.active : ''}`}
                     >
                         <i className={`${styles.toolIcon} ${styles.selectIcon}`}></i>
@@ -36,7 +52,7 @@ const ControlPanel = ({
 
                     <button
                         onClick={() => setCurrentDrawingMode(DrawingMode.WINDOW)}
-                        className={`${styles.toolButton} 
+                        className={`${styles.toolButton}
                             ${currentDrawingMode === DrawingMode.WINDOW ? styles.active : ''}`}
                     >
                         <i className={`${styles.toolIcon} ${styles.windowIcon}`}></i>
@@ -45,7 +61,7 @@ const ControlPanel = ({
 
                     <button
                         onClick={() => setCurrentDrawingMode(DrawingMode.WALL)}
-                        className={`${styles.toolButton} 
+                        className={`${styles.toolButton}
                             ${currentDrawingMode === DrawingMode.WALL ? styles.active : ''}`}
                     >
                         <i className={`${styles.toolIcon} ${styles.wallIcon}`}></i>
@@ -54,7 +70,7 @@ const ControlPanel = ({
 
                     <button
                         onClick={() => setCurrentDrawingMode(DrawingMode.DOOR)}
-                        className={`${styles.toolButton} 
+                        className={`${styles.toolButton}
                             ${currentDrawingMode === DrawingMode.DOOR ? styles.active : ''}`}
                     >
                         <i className={`${styles.toolIcon} ${styles.doorIcon}`}></i>
@@ -63,7 +79,7 @@ const ControlPanel = ({
 
                     <button
                         onClick={() => setCurrentDrawingMode(DrawingMode.TABLE)}
-                        className={`${styles.toolButton} 
+                        className={`${styles.toolButton}
                             ${currentDrawingMode === DrawingMode.TABLE ? styles.active : ''}`}
                     >
                         <i className={`${styles.toolIcon} ${styles.tableIcon}`}></i>

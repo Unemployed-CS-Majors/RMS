@@ -1,7 +1,14 @@
-import {useState} from 'react';
-import {useNavigate} from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import orderService from '../../../services/order.service';
 
+/**
+ * Custom hook to manage the checkout process.
+ *
+ * @param {Array} cartItems - The list of items in the cart.
+ * @param {Function} clearCart - Function to clear the cart.
+ * @returns {Object} The checkout state and operations.
+ */
 const useCheckout = (cartItems, clearCart) => {
     const navigate = useNavigate();
     const [isDelivery, setIsDelivery] = useState(false);
@@ -30,6 +37,11 @@ const useCheckout = (cartItems, clearCart) => {
         3: true,
     });
 
+    /**
+     * Toggles the visibility of the content for a given step.
+     *
+     * @param {number} step - The step number to toggle.
+     */
     const toggleContent = step => {
         setToggleState(prevState => ({
             ...prevState,
@@ -37,19 +49,37 @@ const useCheckout = (cartItems, clearCart) => {
         }));
     };
 
+    /**
+     * Handles the change of collection method.
+     *
+     * @param {string} method - The selected collection method.
+     */
     const handleCollectionMethodChange = method => {
         setCollectionMethod(method);
         setIsDelivery(method === 'home_delivery');
     };
 
+    /**
+     * Handles the change of payment method.
+     *
+     * @param {string} method - The selected payment method.
+     */
     const handlePaymentMethodChange = method => {
         setPaymentMethod(method);
     };
 
+    /**
+     * Checks if the address is complete.
+     *
+     * @returns {boolean} True if the address is complete, false otherwise.
+     */
     const addressIsComplete = () => {
         return address.street && address.city && address.county && address.eirCode && address.country;
     };
 
+    /**
+     * Closes the order processing modal.
+     */
     const closeModal = () => {
         setModalOpen(false);
 
@@ -59,6 +89,11 @@ const useCheckout = (cartItems, clearCart) => {
         }
     };
 
+    /**
+     * Validates the checkout inputs.
+     *
+     * @returns {boolean} True if the inputs are valid, false otherwise.
+     */
     const validateCheckoutInputs = () => {
         setError(null);
 
@@ -81,6 +116,9 @@ const useCheckout = (cartItems, clearCart) => {
         return true;
     };
 
+    /**
+     * Handles placing the order.
+     */
     const handlePlaceOrder = async () => {
         setError(null);
         setSuccess(null);

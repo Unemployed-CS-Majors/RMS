@@ -5,7 +5,6 @@ import tableService from "../../../services/table.service";
 import userService from "../../../services/user.service";
 import menuService from "../../../services/menuItem.service";
 import orderService from "../../../services/order.service";
-import restaurantConfigService from "../../../services/restaurantConfig.service";
 
 /**
  * Custom hook for managing active tab and related data fetching
@@ -17,6 +16,7 @@ import restaurantConfigService from "../../../services/restaurantConfig.service"
  * @param {Function} setTables - Setter for tables
  * @param {Function} setEmployees - Setter for employees
  * @param {Function} setMenuItems - Setter for menu items
+ * @param {Function} setOrders - Setter for orders
  * @param {Function} setLoading - Setter for loading state
  * @returns {Array} Active tab and function to change active tab
  */

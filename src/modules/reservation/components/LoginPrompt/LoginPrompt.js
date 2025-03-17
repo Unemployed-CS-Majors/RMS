@@ -3,9 +3,22 @@ import { useNavigate } from 'react-router-dom';
 import styles from './LoginPrompt.module.css';
 import { ROUTES } from '../../../../constants/routes';
 
+/**
+ * LoginPrompt component
+ *
+ * Displays a prompt for the user to log in to make a reservation.
+ *
+ * @param {Object} props - The component props
+ * @param {boolean} props.isMobile - Flag to indicate if the view is on a mobile device
+ * @returns {JSX.Element} The LoginPrompt component
+ */
 const LoginPrompt = ({ isMobile }) => {
     const navigate = useNavigate();
 
+    /**
+     * Handles the click event for the login button.
+     * Navigates the user to the authentication route.
+     */
     const handleLoginClick = () => {
         navigate(ROUTES.AUTH);
     };

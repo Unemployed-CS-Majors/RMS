@@ -4,6 +4,24 @@ import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import CartItem from "../CartItem/CartItem";
 import styles from "./MobileCart.module.css";
 
+/**
+ * MobileCart component
+ *
+ * Renders a mobile-friendly shopping cart sidebar that displays the items in the cart,
+ * the total price, and a button to proceed to checkout. It also handles toggling the cart visibility
+ * and closing the cart when clicking outside of it.
+ *
+ * @param {Object} props - The component props
+ * @param {Array} props.cart - The list of items in the cart
+ * @param {boolean} props.showMobileCart - Whether the mobile cart is visible
+ * @param {Function} props.toggleMobileCart - Function to toggle the visibility of the mobile cart
+ * @param {Function} props.addToCart - Function to add an item to the cart
+ * @param {Function} props.removeFromCart - Function to remove an item from the cart
+ * @param {Function} props.getTotal - Function to get the total price of the items in the cart
+ * @param {Function} props.getItemTotalPrice - Function to get the total price of a single item
+ * @param {Function} props.goToCheckout - Function to proceed to the checkout page
+ * @returns {JSX.Element} The MobileCart component
+ */
 const MobileCart = ({
                         cart,
                         showMobileCart,

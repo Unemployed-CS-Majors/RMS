@@ -16,7 +16,13 @@ export const useHoursManagement = (
 ) => {
     const [editingHours, setEditingHours] = useState(false);
 
-    // Handle changing opening hours fields
+    /**
+     * Handle changing opening hours fields
+     *
+     * @param {number} dayId - The ID of the day to update
+     * @param {string} field - The field to update (e.g., startTime, endTime)
+     * @param {string} value - The new value for the field
+     */
     const handleHoursChange = (dayId, field, value) => {
         setOpeningHours((prevHours) =>
             prevHours.map((day) =>
@@ -25,7 +31,11 @@ export const useHoursManagement = (
         );
     };
 
-    // Toggle day open/closed
+    /**
+     * Toggle day open/closed
+     *
+     * @param {number} dayId - The ID of the day to toggle
+     */
     const handleToggleDay = (dayId) => {
         setOpeningHours((prevHours) =>
             prevHours.map((hours) =>
@@ -34,12 +44,16 @@ export const useHoursManagement = (
         );
     };
 
-    // Toggle edit mode
+    /**
+     * Toggle edit mode
+     */
     const toggleHoursEditMode = () => {
         setEditingHours(!editingHours);
     };
 
-    // Save hours to the server
+    /**
+     * Save hours to the server
+     */
     const saveHours = async () => {
         setLoading(true);
         setEditingHours(false);

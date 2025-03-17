@@ -4,6 +4,19 @@ import { IoFlameOutline } from "react-icons/io5";
 import { FiPlus } from "react-icons/fi";
 import styles from "./MenuItem.module.css";
 
+/**
+ * MenuItem component
+ *
+ * Renders a menu item with its image, name, category, preparation time, calories,
+ * and allergens. Allows adding the item to the cart and opening the item details modal.
+ *
+ * @param {Object} props - The component props
+ * @param {Object} props.item - The menu item object
+ * @param {Function} props.openItemDetails - Function to open the item details modal
+ * @param {Function} props.addToCart - Function to add the item to the cart
+ * @param {boolean} props.orderEnabled - Whether ordering is enabled
+ * @returns {JSX.Element} The MenuItem component
+ */
 const MenuItem = ({ item, openItemDetails, addToCart, orderEnabled }) => {
     // Display allergen information as badges
     const renderAllergens = (item) => {
@@ -17,8 +30,8 @@ const MenuItem = ({ item, openItemDetails, addToCart, orderEnabled }) => {
                         className={styles.allergenBadge}
                         title={`Contains ${allergen.charAt(0).toUpperCase() + allergen.slice(1)}`}
                     >
-            <span>{allergen.charAt(0).toUpperCase()}</span>
-          </span>
+                        <span>{allergen.charAt(0).toUpperCase()}</span>
+                    </span>
                 ))}
             </div>
         );

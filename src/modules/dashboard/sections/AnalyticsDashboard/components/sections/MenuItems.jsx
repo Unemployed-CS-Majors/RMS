@@ -4,6 +4,18 @@ import { CenteredMetric } from '../charts/MetricsDisplay';
 import { formatCurrency } from '../../../../../shared/utils/formatters';
 import styles from '../charts/ChartComponents.module.css';
 
+/**
+ * MenuItems component for displaying analytics data related to menu items
+ *
+ * @param {Object} props - Component props
+ * @param {Object} props.analyticsData - Analytics data for menu items
+ * @param {Object} props.analyticsData.menuItemAnalytics - Menu item analytics data
+ * @param {Array} props.analyticsData.menuItemAnalytics.topItems - Top menu items by quantity
+ * @param {Array} props.analyticsData.menuItemAnalytics.bottomItems - Bottom menu items by quantity
+ * @param {Array} props.analyticsData.menuItemAnalytics.itemsByRevenue - Top menu items by revenue
+ * @param {number} props.analyticsData.menuItemAnalytics.averagePreparationTime - Average preparation time for menu items
+ * @returns {JSX.Element} The MenuItems component
+ */
 const MenuItems = ({ analyticsData }) => {
     const topItemsData = analyticsData.menuItemAnalytics.topItems
         .slice(0, 5)

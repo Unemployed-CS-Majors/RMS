@@ -1,6 +1,19 @@
 import React, { useEffect, useRef } from 'react';
 import styles from './ElementDetails.module.css';
 
+/**
+ * ElementDetails component for displaying and managing details of a selected element
+ *
+ * @param {Object} props - Component props
+ * @param {Object} props.selectedElement - The currently selected element
+ * @param {Object} props.elementDetailsPosition - The position of the element details panel
+ * @param {Function} props.rotateElement - Function to rotate the selected element
+ * @param {Function} props.deleteElement - Function to delete the selected element
+ * @param {Function} props.activateTable - Function to activate the selected table element
+ * @param {Function} props.deactivateTable - Function to deactivate the selected table element
+ * @param {Function} props.onClose - Function to close the element details panel
+ * @returns {JSX.Element} The ElementDetails component
+ */
 const ElementDetails = ({
                             selectedElement,
                             elementDetailsPosition,

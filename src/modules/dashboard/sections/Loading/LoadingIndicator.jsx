@@ -1,6 +1,15 @@
 import React from 'react';
 import styles from './LoadingIndicator.module.css';
 
+/**
+ * LoadingIndicator component for displaying a loading spinner with optional text
+ *
+ * @param {Object} props - Component props
+ * @param {string} [props.size='medium'] - Size of the loading indicator ('small', 'medium', 'large')
+ * @param {boolean} [props.fullScreen=false] - Flag indicating if the loading indicator should cover the full screen
+ * @param {string} [props.text='Loading...'] - Text to display below the loading spinner
+ * @returns {JSX.Element} The LoadingIndicator component
+ */
 const LoadingIndicator = ({size = 'medium', fullScreen = false, text = 'Loading...'}) => {
     const sizeClass = {
         small: styles.loadingIndicatorSm,

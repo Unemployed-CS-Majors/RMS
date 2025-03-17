@@ -128,5 +128,3 @@ export const useMenuManagement = (menuItems, setMenuItems) => {
         deleteMenuItem
     };
 };
-
-export default useMenuManagement;

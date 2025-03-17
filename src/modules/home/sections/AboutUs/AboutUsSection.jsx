@@ -2,6 +2,13 @@ import React from "react";
 import useAboutImages from "../../hooks/useAboutImages";
 import styles from "./AboutUsSection.module.css";
 
+/**
+ * AboutUsSection component
+ *
+ * Renders the "About Us" section of the home page, including a description of the restaurant and a gallery of images.
+ *
+ * @returns {JSX.Element} The AboutUsSection component
+ */
 const AboutUsSection = () => {
     const { aboutImages } = useAboutImages();
 

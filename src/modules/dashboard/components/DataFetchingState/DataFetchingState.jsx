@@ -2,6 +2,20 @@ import React from 'react';
 import LoadingIndicator from '../../sections/Loading/LoadingIndicator';
 import styles from './DataFetchingState.module.css';
 
+/**
+ * DataFetchingState component handles the display of different states during data fetching.
+ *
+ * @param {Object} props - The properties object.
+ * @param {boolean} props.isLoading - Flag indicating if data is being loaded.
+ * @param {boolean} props.isError - Flag indicating if there was an error during data fetching.
+ * @param {boolean} props.isEmpty - Flag indicating if there is no data available.
+ * @param {string} [props.loadingText='Loading data...'] - Text to display while loading.
+ * @param {string} [props.errorText='Something went wrong. Please try again.'] - Text to display if there is an error.
+ * @param {string} [props.emptyText='No data available.'] - Text to display if there is no data.
+ * @param {Function} [props.onRetry=null] - Function to call when retrying data fetch.
+ * @param {React.ReactNode} props.children - The children components to render when data is successfully fetched.
+ * @returns {JSX.Element} The rendered DataFetchingState component.
+ */
 const DataFetchingState = ({
                                isLoading,
                                isError,
