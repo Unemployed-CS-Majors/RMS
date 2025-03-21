@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import AppRoutes from './routing/AppRoutes';
 import './config/FirebaseConfig';
 
@@ -11,12 +11,15 @@ import './config/FirebaseConfig';
  * @component
  */
 function App() {
-    useEffect(() => {
-        // Remove the 'cart' item from local storage when the component mounts
-        localStorage.removeItem('cart');
-    }, []);
+  useEffect(() => {
+    // Remove the 'cart' item from local storage when the component mounts on the first visit
+    if (!sessionStorage.getItem('firstVisit')) {
+      localStorage.removeItem('cart');
+      sessionStorage.setItem('firstVisit', 'true');
+    }
+  }, []);
 
-    return <AppRoutes/>;
+  return <AppRoutes />;
 }
 
 export default App;
