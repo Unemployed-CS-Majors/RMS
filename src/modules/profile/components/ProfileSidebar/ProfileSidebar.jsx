@@ -64,9 +64,6 @@ const ProfileSidebar = ({activeTab, handleTabChange, logout}) => {
             </ul>
             {/* Separate logout container for desktop */}
             <div className={`${styles.logoutContainer} ${styles.desktopOnly}`}>
-                <button onClick={handleLogoutClick} className={styles.logoutBtn}>
-                    Logout
-                </button>
             </div>
         </nav>
     );
