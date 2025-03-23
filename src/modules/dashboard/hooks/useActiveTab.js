@@ -40,7 +40,7 @@ export const useActiveTab = (
             window.location.hash = initialTab;
         }
     }, [initialTab]);
-    use
+
     // Update tab when hash changes
     useEffect(() => {
         const handleHashChange = () => {
