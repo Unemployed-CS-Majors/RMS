@@ -32,7 +32,6 @@ export const useActiveTab = (
     setLoading,
 ) => {
     const [activeTab, setActiveTab] = useState(initialTab);
-
     useEffect(() => {
         const hash = window.location.hash.replace('#', '');
         if (hash && ["dashboard", 'pendingReservations', 'hours', 'tables', 'employees', 'allReservations', 'menu', 'orders', 'restaurantConfig'].includes(hash)) {
@@ -41,7 +40,7 @@ export const useActiveTab = (
             window.location.hash = initialTab;
         }
     }, [initialTab]);
-
+    use
     // Update tab when hash changes
     useEffect(() => {
         const handleHashChange = () => {
