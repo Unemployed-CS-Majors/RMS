@@ -1,7 +1,7 @@
-import {useContext, useEffect, useRef, useState} from 'react';
-import {useNavigate} from 'react-router-dom';
-import {AuthContext} from '../../shared/contexts/AuthContext';
-import {ROUTES} from '../../../constants/routes.js';
+import { useContext, useEffect, useRef, useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { AuthContext } from '../../shared/contexts/AuthContext';
+import { ROUTES } from '../../../constants/routes.js';
 
 /**
  * Custom hook to manage authentication form state and logic.
@@ -9,159 +9,163 @@ import {ROUTES} from '../../../constants/routes.js';
  * @returns {Object} The state and handlers for the authentication form.
  */
 export const useAuthForm = () => {
-    const navigate = useNavigate();
-    const [loginForm, setLoginForm] = useState(true);
-    const {isLoggedIn, login, register, loginWithGoogle, loginWithFacebook, error} = useContext(AuthContext);
-    const [loading, setLoading] = useState(false);
-    const [showCountryCodeDropdown, setShowCountryCodeDropdown] = useState(false);
-    const countryCodeRef = useRef(null);
-    const [formError, setFormError] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [loginForm, setLoginForm] = useState(true);
+  const { isLoggedIn, login, register, loginWithGoogle, loginWithFacebook, error } = useContext(AuthContext);
+  const [loading, setLoading] = useState(false);
+  const [showCountryCodeDropdown, setShowCountryCodeDropdown] = useState(false);
+  const countryCodeRef = useRef(null);
+  const [formError, setFormError] = useState('');
 
-    const [formData, setFormData] = useState({
-        firstName: "",
-        lastName: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
-        countryCode: "+353",
-        phoneNumber: "",
-    });
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    countryCode: '+353',
+    phoneNumber: '',
+  });
 
-    // Redirect if logged in and set error from context
-    useEffect(() => {
-        if (isLoggedIn) {
-            navigate(ROUTES.HOME);
-        }
+  // Get the redirect path from state or default to home
+  const redirectPath = location.state?.from || ROUTES.HOME;
 
-        // Set error from context if available
-        if (error) {
-            setFormError(error);
-        }
-    }, [isLoggedIn, navigate, error]);
+  // Redirect if logged in and set error from context
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate(redirectPath); // Use the redirect path if provided
+    }
 
-    // Handle clicks outside the country code dropdown
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (countryCodeRef.current && !countryCodeRef.current.contains(event.target)) {
-                setShowCountryCodeDropdown(false);
-            }
-        };
+    // Set error from context if available
+    if (error) {
+      setFormError(error);
+    }
+  }, [isLoggedIn, navigate, error, redirectPath]);
 
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, []);
-
-    // Toggle between login and register forms
-    const showLogin = () => {
-        setLoginForm(true);
-        setFormError("");
-    };
-
-    const showRegister = () => {
-        setLoginForm(false);
-        setFormError("");
-    };
-
-    // Form validation and navigation helpers
-    const checkPassword = () => formData.password === formData.confirmPassword;
-    const returnHome = () => navigate(ROUTES.HOME);
-
-    // Handle form field changes
-    const handleChange = (e) => {
-        const {name, value} = e.target;
-        setFormData((prevData) => ({
-            ...prevData,
-            [name]: value,
-        }));
-
-        // Clear errors when user types
-        if (formError) setFormError("");
-    };
-
-    // Country code dropdown handlers
-    const handleCountryCodeSelect = (code) => {
-        setFormData((prevData) => ({
-            ...prevData,
-            countryCode: code,
-        }));
+  // Handle clicks outside the country code dropdown
+  useEffect(() => {
+    const handleClickOutside = event => {
+      if (countryCodeRef.current && !countryCodeRef.current.contains(event.target)) {
         setShowCountryCodeDropdown(false);
+      }
     };
 
-    const toggleCountryCodeDropdown = () => {
-        setShowCountryCodeDropdown(!showCountryCodeDropdown);
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
     };
+  }, []);
 
-    // Form submission handlers
-    const handleRegister = async (e) => {
-        e.preventDefault();
-        setFormError("");
+  // Toggle between login and register forms
+  const showLogin = () => {
+    setLoginForm(true);
+    setFormError('');
+  };
 
-        if (!checkPassword()) {
-            setFormError("Passwords do not match");
-            return;
-        }
+  const showRegister = () => {
+    setLoginForm(false);
+    setFormError('');
+  };
 
-        const result = await register(formData, () => showLogin());
-        if (!result?.success && !error) {
-            setFormError("Registration failed. Please try again.");
-        }
-    };
+  // Form validation and navigation helpers
+  const checkPassword = () => formData.password === formData.confirmPassword;
+  const returnHome = () => navigate(ROUTES.HOME);
 
-    const handleLogin = async (e) => {
-        e.preventDefault();
-        setFormError("");
+  // Handle form field changes
+  const handleChange = e => {
+    const { name, value } = e.target;
+    setFormData(prevData => ({
+      ...prevData,
+      [name]: value,
+    }));
 
-        const result = await login(formData.email, formData.password);
-        if (!result?.success && !error) {
-            setFormError("Login failed. Please check your credentials.");
-        }
-    };
+    // Clear errors when user types
+    if (formError) setFormError('');
+  };
 
-    // Social auth handlers
-    const handleGoogleAuth = async () => {
-        if (loading) return; // Prevent multiple clicks
-        setFormError("");
-        setLoading(true);
+  // Country code dropdown handlers
+  const handleCountryCodeSelect = code => {
+    setFormData(prevData => ({
+      ...prevData,
+      countryCode: code,
+    }));
+    setShowCountryCodeDropdown(false);
+  };
 
-        try {
-            await loginWithGoogle();
-        } catch (error) {
-            setFormError("Google authentication failed. Please try again.");
-        } finally {
-            setLoading(false);
-        }
-    };
+  const toggleCountryCodeDropdown = () => {
+    setShowCountryCodeDropdown(!showCountryCodeDropdown);
+  };
 
-    const handleFacebookAuth = async () => {
-        setFormError("");
-        setLoading(true);
-        try {
-            await loginWithFacebook();
-        } catch (error) {
-            setFormError("Facebook authentication failed. Please try again.");
-        } finally {
-            setLoading(false);
-        }
-    };
+  // Form submission handlers
+  const handleRegister = async e => {
+    e.preventDefault();
+    setFormError('');
 
-    return {
-        loginForm,
-        formData,
-        formError,
-        loading,
-        showCountryCodeDropdown,
-        countryCodeRef,
-        showLogin,
-        showRegister,
-        returnHome,
-        handleChange,
-        handleCountryCodeSelect,
-        toggleCountryCodeDropdown,
-        handleRegister,
-        handleLogin,
-        handleGoogleAuth,
-        handleFacebookAuth
-    };
+    if (!checkPassword()) {
+      setFormError('Passwords do not match');
+      return;
+    }
+
+    const result = await register(formData, () => showLogin());
+    if (!result?.success && !error) {
+      setFormError('Registration failed. Please try again.');
+    }
+  };
+
+  const handleLogin = async e => {
+    e.preventDefault();
+    setFormError('');
+
+    const result = await login(formData.email, formData.password);
+    if (!result?.success && !error) {
+      setFormError('Login failed. Please check your credentials.');
+    }
+  };
+
+  // Social auth handlers
+  const handleGoogleAuth = async () => {
+    if (loading) return; // Prevent multiple clicks
+    setFormError('');
+    setLoading(true);
+
+    try {
+      await loginWithGoogle();
+    } catch (error) {
+      setFormError('Google authentication failed. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleFacebookAuth = async () => {
+    setFormError('');
+    setLoading(true);
+    try {
+      await loginWithFacebook();
+    } catch (error) {
+      setFormError('Facebook authentication failed. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return {
+    loginForm,
+    formData,
+    formError,
+    loading,
+    showCountryCodeDropdown,
+    countryCodeRef,
+    showLogin,
+    showRegister,
+    returnHome,
+    handleChange,
+    handleCountryCodeSelect,
+    toggleCountryCodeDropdown,
+    handleRegister,
+    handleLogin,
+    handleGoogleAuth,
+    handleFacebookAuth,
+  };
 };

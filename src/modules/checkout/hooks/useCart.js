@@ -13,11 +13,11 @@ import menuService from '../../../services/menuItem.service';
  * @returns {Function} clearCart - Function to clear the cart.
  */
 const useCart = () => {
-  const [cartItems, setCartItems] = useState(() => JSON.parse(localStorage.getItem('cart')) || []);
+  const [cartItems, setCartItems] = useState(() => JSON.parse(sessionStorage.getItem('cart')) || []);
   const [menuItems, setMenuItems] = useState([]);
 
   useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cartItems));
+    sessionStorage.setItem('cart', JSON.stringify(cartItems));
   }, [cartItems]);
 
   useEffect(() => {
@@ -82,7 +82,7 @@ const useCart = () => {
    * Clears the cart.
    */
   const clearCart = () => {
-    localStorage.removeItem('cart');
+    sessionStorage.removeItem('cart');
   };
 
   return {
