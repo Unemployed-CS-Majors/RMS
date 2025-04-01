@@ -45,7 +45,7 @@ const RestaurantConfig = ({ loading, setLoading }) => {
   if (loading) {
     return (
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100%' }}>
-        <LoadingIndicator text='Loading Restaurant Configuration...' />;
+        <LoadingIndicator text='Loading Restaurant Configuration...' />
       </div>
     );
   }
